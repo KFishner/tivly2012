@@ -28,7 +28,7 @@ def login (request):
 #            redirect = 'http://mygoods.co/offer/recid'
 #        
 #        except:
-    redirect = 'http://mygoods.co'
+    redirect = 'http://mygoods.co/home'
         
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     
