@@ -38,21 +38,21 @@ def login (request):
 #        return HttpResponseRedirect() 
 
 def home(request):
-    try:
-        fbUser = facebookLogin(request)
-
-        try:
-            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+#    try:
+#        fbUser = facebookLogin(request)
+#
+#        try:
+#            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+#    
+#        except:
+#            cardspringID = IDGenerator()
+#            CreateAUser(request,cardspringID)
+#            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)
+#            CSUser.save()   
+#    except:
+    csid = request.COOKIES.get('csID')
+    CSUser = CardSpringUser.objects.get(csID = csid)
     
-        except:
-            cardspringID = IDGenerator()
-            CreateAUser(request,cardspringID)
-            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)
-            CSUser.save()   
-    except:
-        csid = request.COOKIES.get('csID')
-        CSUser = CardSpringUser.objects.get(csID = csid)
-        
     
     
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
