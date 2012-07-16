@@ -1,0 +1,163 @@
+body {
+    margin:0px;
+    padding:0px;
+    height:100%;
+    width:100%;
+}
+h1{
+    font-size:42px;
+    font-family: myriad;
+    text-shadow: 0px 1px #666;
+    padding:0px;
+    margin:0px;
+}
+h2{
+    font-size:20px;
+    padding:0px;
+    margin:0px;
+}
+h2 span{
+    font-size:20px;
+    padding:0px;
+    margin:0px;
+    color:red;
+}
+h3{
+    font-size:16px;
+    color:gray;
+    padding:0px;
+    margin:0px;
+    margin-bottom:7px;
+}
+img{
+    margin:0px;
+    padding:0px;
+}
+#colorwrap{
+height:75px;}
+
+#headerwrap{
+    width:1050px;
+    margin: 0 auto;
+    position:relative;
+}
+#logo a img{
+    border-bottom-right-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+    box-shadow: 0px 3px 5px #666;
+    display:inline-block;
+    float:left;
+    position:absolute;
+    top:0px;
+}
+
+#myvenues a img{
+    display:inline-block;
+    float:left;
+    position:absolute;
+    top:-.1in;
+    left:245px;
+    }
+#myvenues a img:hover{
+    position:absolute;
+    top:0in;
+}
+#myrewards a img{
+    display:inline-block;
+    float:left;
+    position:absolute;
+    top:-.1in;
+    left:460px;
+    }
+#myrewards a img:hover{
+    position:asbolute;
+    top:0in;
+}
+.nav{
+    display:inline-block;
+    float:right;
+}
+.nav ul li{
+    display:inline-block;
+    float:left;
+    padding-right:5px;
+}
+.nav ul li a{
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    text-decoration:none;
+}
+#wrap{
+    width:950px;
+    margin: 0 auto;
+    position:relative;
+    top:75px;
+}
+#sort p{
+    font-size:42px;
+    font-family: myriad;
+    text-shadow: 0px 1px #666;
+    padding:0px;
+    margin:0px;
+    margin-bottom:10px;
+    border-bottom: 1px dotted gray;
+}
+
+#venuetable{
+    box-shadow: 3px 0px 8px gray;
+}
+
+#infoTable{
+    box-shadow: 3px 0px 8px gray;
+}
+#nav2 ul{
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+    
+}
+#nav2 ul li{
+    display:inline-block;
+}
+#nav2 ul li a{
+    padding-right:10px;
+    font-size: 18px;
+    color:white;
+}
+#nav2 ul li a:hover{
+    font-weight:bold;
+}
+td{
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:5px;
+}
+
+#Infotable table tr td:hover{
+    box-shadow: 2px 2px 2px gray;
+    position:relative;
+    bottom:1px;
+}
+
+#venuetable table tr td:hover{
+	background-color: #ff9966;
+    box-shadow: 2px 2px 2px gray;
+    position:relative;
+    bottom:1px;
+}
+td a img{
+    box-shadow: 4px 3px 4px #666666;
+}
+#footer{
+    width:1050px;
+    margin: 0 auto;
+    position:relative;
+    height:75px;
+    margin-top:100px;
+}
+#footer .nav ul li{
+    display:inline-block;
+    float:left;
+    padding-right:20px;
+}

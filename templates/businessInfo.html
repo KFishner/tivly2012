@@ -1,0 +1,136 @@
+{% extends "base.html"%} {% block extraHead %}
+
+<!-- Add jQuery UI -->
+<link href="{{ STATIC_URL }}merchants.css" rel="stylesheet"
+	type="text/css" />
+<link type="text/css"
+	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+<!-- Add Progressbar UI -->
+<script>
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: {{ progressBar1 }}
+		});
+		$( "#progressbar2" ).progressbar({
+			value: {{ progressBar2 }}
+		});
+		$( "#progressbar3" ).progressbar({
+			value: {{ progressBar3 }}
+		});                 
+	});
+</script>
+{% endblock %} {% block content %}
+<div id="infoTable" style="background: white">
+	<p>{{ business.businessName }}
+	<p>
+	<div id="content">
+		<div id="rinfo" style="background: white">
+			<img src='{{ business.pictureLocation }}'
+				style="border: 2px solid black">
+			<p>{{business.description}}</p>
+		</div>
+		<div id="metrics" style="border: 2px solid orange">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Rewards</a></li>
+					<li><a href="#tabs-2">My Cred</a></li>
+					<li><a href="#tabs-3">Get Social</a></li>
+				</ul>
+				<div id="tabs-1">
+					<div class="redwoodsrewards">
+						<table id="theader">
+							<tr>
+								<th>My Total Cred at {{business.businessName}}</th>
+								<th class="tdr">{{ points.points }}</th>
+						</table>
+						<table>
+							<tr>
+								<th>Reward</th>
+								<th class="tdr">Points Needed</th>
+							</tr>
+							<tr>
+								<td>{{ rewards0.description }}</td>
+								<td class="tdr">{{ rewards1.pointsNeeded }}</td>
+							</tr>
+							<tr>
+								<td colspan="2"><div id="progressbar"></div></td>
+							</tr>
+							<tr>
+								<td>{{ rewards1.description }}</td>
+								<td class="tdr">{{ rewards2.pointsNeeded }}</td>
+							</tr>
+							<tr>
+								<td colspan="2"><div id="progressbar2"></div></td>
+							</tr>
+							<tr>
+								<td>{{ rewards2.description }}</td>
+								<td class="tdr">{{ rewards3.pointsNeeded }}</td>
+							</tr>
+							<tr>
+								<td colspan="2"><div id="progressbar3"></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="tabs-2">
+					<div class="redwoodscred">
+						<table id="theader">
+							<tr>
+								<th>My Total Cred at {{business.businessName}}</th>
+								<th class="tdr">{{point.points}}</th>
+						</table>
+						<table>
+							<tr>
+								<th>Action</th>
+								<th class="tdr">#</th>
+								<th class="tdr">Points</th>
+							</tr>
+							<tr class="credtable">
+								<td>My Visits</td>
+								<td class="tdr">{{points.visits}}</td>
+								<td class="tdr">{{points.visits}}</td>
+							</tr>
+							<tr class="credtable">
+								<td>Recommended to Friends</td>
+								<td class="tdr">{{recommended }}</td>
+								<td class="tdr">{{ redeemed }}</td>
+							</tr>
+							<tr class="credtable">
+								<td>Redeemed by Friends</td>
+								<td class="tdr">{{redeemed}}</td>
+								<td class="tdr">{{redeemed}}</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="tabs-3">
+					<div class="getsocial">
+						<h1>Spread the word</h1>
+						<h3>Give your friends a {{rewards0.description}}</h3>
+						<h2>Every time a friend goes, you get rewarded!</h2>
+						<div class="fb-like" data-href="http://tivly.com" data-send="true"
+							data-width="300" data-show-faces="false"></div>
+						<!-- <div>
+							<a href="https://twitter.com/share" class="twitter-share-button"
+								data-size="large">Tweet</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</div> -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+{% endblock %}
