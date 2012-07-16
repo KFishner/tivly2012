@@ -50,6 +50,7 @@ def home(request):
 #            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)
 #            CSUser.save()   
 #    except:
+    URL = settings.URL
     csid = request.COOKIES.get('csID')
     CSUser = CardSpringUser.objects.get(csID = csid)
     
@@ -92,6 +93,7 @@ def businessInfo(request, bname):
     return response
 
 def recommendation(request,bname):
+    URL = settings.URL
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
     rewards = Rewards.objects.filter(businessID = business.businessID)
@@ -109,7 +111,7 @@ def giveIntroOffer(request, recid):
         fbUser = facebookLogin(request)
     
     except:
-        response = HttpResponseRedirect("http://127.0.0.1:8000/")
+        response = HttpResponseRedirect(settings.URL)
         response.set_cookie('recid', recid)
         return response
 

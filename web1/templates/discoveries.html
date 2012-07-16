@@ -8,12 +8,12 @@
 					{{business.businessName}}- <span>{{reward.description}}</span>
 				</h2>
 				<h3>{{business.city}}</h3> <a
-				href="http://mygoods.co/venues/{{business.website}}"><img
+				href="{{ URL }}/venues/{{business.website}}"><img
 					src='{{business.pictureLocation}}' style="border: 2px solid black"></a>
 				<div id="nav2">
 		<ul>
 		<li>
-		<a class="fancybox fancybox.iframe" href="http://mygoods.co/maps/{{ business.businessID }}">Map</a></li>
+		<a class="fancybox fancybox.iframe" href="{{ URL }}/maps/{{ business.businessID }}">Map</a></li>
 		</ul>
 		</div>
 		</a></td> {% endfor %}
