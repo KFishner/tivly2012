@@ -11,23 +11,24 @@ from googlemaps import GoogleMaps
 import json
 
 def login (request):
-#    needLogin = False
-#    
-#    try:
-#        fbUser = FBUser.objects.filter(email = request.COOKIES.get('email'))
-#        if fbUser is None:
-#            needLogin = True
-#    
-#    except:
-#        needLogin = True
+    needLogin = False
+    
+    try:
+        fbUser = FBUser.objects.filter(email = request.COOKIES.get('email'))
+        if fbUser is None:
+            needLogin = True
+    
+    except:
+        needLogin = True
         
-#    if needLogin:
-#    try:
-#        recid = request.COOKIES.get('recid')
-#        redirect = 'http://127.0.0.1:8000/offer/recid'
-#    
-#    except:
-    redirect = 'http://127.0.0.1:8000/home'
+    if needLogin:
+   
+        try:
+            recid = request.COOKIES.get('recid')
+            redirect = 'http://mygoods.co/offer/recid'
+        
+        except:
+            redirect = 'http://mygoods.co/home'
         
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     
