@@ -1,5 +1,5 @@
 # Django settings for web1 project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -22,10 +22,10 @@ CARDSPRING_APP_SECRET = 'AYgLnr6S7rkgu9aEMAiEGiPFXqIwxlxu'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'web1db',                      # Or path to database file if using sqlite3.
-        'USER': 'antiguab',                      # Not used with sqlite3.
-        'PASSWORD': '6104330240',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'NAME': 'heroku_063679ad3e51f7b',                      # Or path to database file if using sqlite3.
+        'USER': 'bdcc025d2dc912',                      # Not used with sqlite3.
+        'PASSWORD': '42d8ab4f',                  # Not used with sqlite3.
+        'HOST': 'us-cdbr-east.cleardb.com',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
@@ -115,11 +115,13 @@ ROOT_URLCONF = 'web1.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'web1.wsgi.application'
 
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/Users/bryanantigua/Documents/workspace/web1/templates',
+    PROJECT_PATH +'/templates',
 )
 
 
