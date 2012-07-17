@@ -9,8 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-URL = 'http://127.0.0.1:8000'
-#URL = 'http://mygoods.co'
+#URL = 'http://127.0.0.1:8000'
+URL = 'http://mygoods.co'
 FACEBOOK_APP_ID = '324960610922985'
 FACEBOOK_API_KEY = '324960610922985'
 FACEBOOK_API_SECRET = 'cc0fd7f6e5cb3f21f8ba428b056023b8'
