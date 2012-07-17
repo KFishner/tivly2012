@@ -83,8 +83,6 @@ class MyRecommendations(models.Model):
     businessID = models.CharField(max_length = 40)
     rID = models.CharField(max_length = 6)
     recID = models.CharField(max_length = 30)
-    received = models.BooleanField()
-    redeemed = models.BooleanField()
     reccsID = models.CharField(max_length = 6, blank = True, null = True)
 
 class MyRewards(models.Model):

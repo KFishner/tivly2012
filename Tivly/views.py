@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 from Tivly.models import CardSpringUser, Rewards, Businesses, UserPoints, MyRewards, Cards,MyRecommendations
 from Management import IDGenerator
 from CardSpring import CreateAUser,CreateUserAppConnection,CreateACard
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from googlemaps import GoogleMaps
 import json
 
@@ -26,8 +26,11 @@ def home(request):
         except:
             cardspringID = IDGenerator()
             CreateAUser(request,cardspringID)
-            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)
-            CSUser.save()   
+            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)            
+            CSUser.save()
+            recid = request.COOKIES.get('recID')
+            setReward(CSUser.csID,request,recid)
+            return redirect(settings.URL+'/new_discoveries')
             
     except:
         CSUser = CardSpringUser(csID = request.COOKIES.get('csID'))
@@ -79,37 +82,32 @@ def recommendation(request,bname):
         if reward.pointsNeeded == 0: 
             rewards0 = reward 
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, received = False, redeemed = False, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = request.COOKIES.get('csID'))
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = request.COOKIES.get('csID'))
     myRecommendation.save()
-
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
 def giveIntroOffer(request, recid):
-#      
-#    rewardLookUp = MyRecommendations.objects.filter(recID = recid)[0]
-#    if rewardLookUp.received == False:
-#           
-#        try:
-#            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-#
-#        except:
-#            cardspringID = IDGenerator()
-#            CreateAUser(request,cardspringID)
-#            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)
-#            CSUser.save()  
-#        
-#        if rewardLookUp.csID == CSUser.csID:
-#            rewardLookUp.delete()
-#            return render_to_response('offer.html', locals(),context_instance= RequestContext(request))
-#        rewardLookUp.received = True
-#        rewardLookUp.reccsID = CSUser.csID
-#        rewardLookUp.save()
-#        
-#        myReward = MyRewards(csID = CSUser.csID, reward = rewardLookUp )
-#        CreateUserAppConnection(request,CSUser.csID,rewardLookUp.appID)
-#        myReward.save()
-#    
-    return render_to_response('offer.html', locals(),context_instance= RequestContext(request))
+        
+    try:
+        csid = request.COOKIES.get('csID')
+  
+    except:
+        response = redirect(settings.URL)
+        response.set_cookies(recid, 'recID')
+        return response
+    
+    setReward(csid,request, recid)      
+     
+    return redirect(settings.URL+'/home')
+
+def setReward(csid,request, recid):
+    recommendation = MyRecommendations.objects.filter(recID = recid)[0]
+    CreateUserAppConnection(csid,recommendation.appID)
+    recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
+    myReward = MyRewards(csID = csid, reward = recReward, reccomendedBy = recommendation.csID)
+    myReward.save()
+    recommendation.delete()  
     
 def logout(request):
     return render_to_response('base.html',context_instance= RequestContext(request))

@@ -9,8 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-#URL = 'http://127.0.0.1:8000'
-URL = 'http://mygoods.co'
+URL = 'http://127.0.0.1:8000'
+#URL = 'http://mygoods.co'
 FACEBOOK_APP_ID = '324960610922985'
 FACEBOOK_API_KEY = '324960610922985'
 FACEBOOK_API_SECRET = 'cc0fd7f6e5cb3f21f8ba428b056023b8'
@@ -30,6 +30,18 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'web1db',                      # Or path to database file if using sqlite3.
+#        'USER': 'antiguab',                      # Not used with sqlite3.
+#        'PASSWORD': '6104330240',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

@@ -9,8 +9,8 @@
 		<script>
 			window.fbAsyncInit = function() {
 				FB.init({
-					appId : '162129900588207', // App ID
-					channelUrl : '//wwww.tivly.com/channel.html', // Channel File
+					appId : {{ FACEBOOK_APP_ID }}, // App ID
+					channelUrl : '{{ URL }}', // Channel File
 					status : true, // check login status
 					cookie : true, // enable cookies to allow the server to access the session
 					xfbml : true  // parse XFBML
@@ -40,7 +40,7 @@
 					return;
 				js = d.createElement(s);
 				js.id = id;
-				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=162129900588207";
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ FACEBOOK_APP_ID }}";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
@@ -92,7 +92,7 @@
 				<h1>Recommend {{business.businessName}} and</h1>
 				<h5>Give your friends a {{ rewards0.description }}</h5>
 				<h2>Every time a friend goes, you get rewarded!</h2>
-				<div class="fb-like" data-href="tivly.com/offer/{{ recid }}" data-send="true" data-width="300" data-show-faces="false"></div>
+				<div class="fb-like" data-href="{{ URL }}/offer/{{ recid }}" data-send="true" data-width="300" data-show-faces="false"></div>
 				<div>
 					<!--  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a> 
 					<script>

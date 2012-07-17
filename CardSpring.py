@@ -6,6 +6,7 @@ Created on Jun 30, 2012
 '''
 import urllib2
 import urllib
+import httplib2
 
 
 from web1 import settings
@@ -18,7 +19,47 @@ def Authenticate():
     opener = urllib2.build_opener(handler)
     opener.addheaders = [('Accept', 'application/json'),("Content-Type","application/x-www-form-urlencoded")]
     urllib2.install_opener(opener)
+    
+def AuthenticateWithHttplib2():
+    h = httplib2.Http()
+    h.add_credentials(settings.CARDSPRING_APP_ID, settings.CARDSPRING_APP_SECRET)
+    header = {"Content-type": "application/x-www-form-urlencoded","Accept":"application/json"}
+    auth = {'h': h, 'header' : header}
+    return auth
 
+def DeleteAUser(csID):
+    auth = AuthenticateWithHttplib2()
+    response, content = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID, method = "DELETE", headers = auth['header'])
+    return response
+
+def DeleteACard(csID,token):
+    auth = AuthenticateWithHttplib2()
+    response, content = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID+'/cards/'+token, method = "DELETE", headers = auth['header'])
+    return response
+
+def DeleteABusinessConnection(businessID):
+    auth = AuthenticateWithHttplib2()
+    response, content = auth['h'].request("https://api.cardspring.com/v1/businesses/"+businessID+"/connection", method = "DELETE", headers = auth['header'])
+    return response
+    
+def DeleteAnApp(businessID, appID):
+    auth = AuthenticateWithHttplib2()
+    response, content = auth['h'].request("https://api-test.cardspring.com/v1/businesses/"+businessID+"/apps/"+appID, method = "DELETE", headers = auth['header'])
+    return response
+
+def ModifyAnApp(businessID,appID, values):
+    auth = AuthenticateWithHttplib2()
+    data = urllib.urlencode(values)
+    response, content = auth['h'].request('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps/'+appID, method = "PUT",body = data, headers = auth['header'])
+    return response
+
+def DeleteAUserApp(csID,appID):
+    auth = AuthenticateWithHttplib2()
+    response, content = auth['h'].request('https://api-test.cardspring.com/v1/users/'+csID+'/apps/'+appID, method = "DELETE",headers = auth['header'])
+    return response
+
+
+    
 def GetPublisherInfo():
     Authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1')
