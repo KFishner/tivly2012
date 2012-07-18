@@ -27,5 +27,5 @@ urlpatterns = patterns('',
     url(r'^newdiscoveries/$', discoveries),
     url(r'rec/(?P<bname>\w{0,50})/$', recommendation),
     url(r'venues/(?P<bname>\w{0,50})/$', businessInfo),
-    url(r'offer/(?P<recid>\w{0,6})/$', giveIntroOffer)
+    url(r'offer/(?P<recid>\w{0,6})/$', getOffer)
 )

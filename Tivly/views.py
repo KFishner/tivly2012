@@ -103,19 +103,18 @@ def recommendation(request,bname):
 
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
-def giveIntroOffer(request, recid):
+def getOffer(request, recid):
         
-    try:
-        csid = request.COOKIES.get('csID')
+    csid = request.COOKIES.get('csID')
   
-    except:
+    if csid is None:
         response = redirect(settings.URL)
         response.set_cookies(recid, 'recID')
         return response
     
-    setReward(csid,request, recid)      
-     
-    return redirect(settings.URL+'/home')
+    else:
+        setReward(csid,request, recid)      
+        return redirect(settings.URL+'/home')
 
 def setReward(csid,request, recid):
     recommendation = MyRecommendations.objects.filter(recID = recid)[0]
