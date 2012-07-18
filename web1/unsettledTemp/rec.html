@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ rewards0.description }}</title>
+		<link href="{{ STATIC_URL }}recommend/recommend.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId : {{ FACEBOOK_APP_ID }}, // App ID
+					channelUrl : '{{ URL }}', // Channel File
+					status : true, // check login status
+					cookie : true, // enable cookies to allow the server to access the session
+					xfbml : true  // parse XFBML
+				});
+
+				// Additional initialization code here
+			};
+			// Load the SDK Asynchronously
+			( function(d) {
+				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+				if(d.getElementById(id)) {
+					return;
+				}
+				js = d.createElement('script');
+				js.id = id;
+				js.async = true;
+				js.src = "//connect.facebook.net/en_US/all.js";
+				ref.parentNode.insertBefore(js, ref);
+			}(document));
+
+		</script>
+		<div id="fb-root"></div>
+		<script>
+			( function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if(d.getElementById(id))
+					return;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ FACEBOOK_APP_ID }}";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+		</script>
+		<div id="wrapper" style="border: 4px double black">
+			<div id="restaurant">
+				<h1>{{ business.businessName }}</h1>
+				<h2>{{ businnes.city}} - {{business.street}}</h2>
+				<img src="{{business.pictureLocation}}">
+				<h3>Hours of Operation</h3>
+				<div id="hours">
+					<div id="hoursleft">
+						<h4>Monday</h4>
+						<p>
+							{{business.mondayHours}}
+						</p>
+						<h4>Tuesday</h4>
+						<p>
+							{{business.tuesdayHours}}
+						</p>
+						<h4>Wednesday</h4>
+						<p>
+							{{business.wednesdayHours}}
+						</p>
+					</div>
+					<div id="hoursmid">
+						<h4>Thursday</h4>
+						<p>
+							{{business.thurdayHours}}
+						</p>
+						<h4>Friday</h4>
+						<p>
+							{{business.fridayHours}}
+						</p>
+					</div>
+					<div id="hoursright">
+						<h4>Saturday</h4>
+						<p>
+							{{business.saturdayHours}}
+						</p>
+						<h4>Sunday</h4>
+						<p>
+							{{business.sundayHours}}
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="social">
+				<h1>Recommend {{business.businessName}} and</h1>
+				<h5>Give your friends a {{ rewards0.description }}</h5>
+				<h2>Every time a friend goes, you get rewarded!</h2>
+				<div class="fb-like" data-href="{{ URL }}/offer/{{ recid }}" data-send="true" data-width="300" data-show-faces="false"></div>
+				<div>
+					<!--  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a> 
+					<script>
+						! function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if(!d.getElementById(id)) {
+								js = d.createElement(s);
+								js.id = id;
+								js.src = "//platform.twitter.com/widgets.js";
+								fjs.parentNode.insertBefore(js, fjs);
+							}
+						}(document, "script", "twitter-wjs");
+
+					</script> -->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

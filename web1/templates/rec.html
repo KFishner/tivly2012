@@ -1,114 +1,134 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{{ rewards0.description }}</title>
-		<link href="{{ STATIC_URL }}recommend/recommend.css" rel="stylesheet" type="text/css" />
-	</head>
-	<body>
-		<div id="fb-root"></div>
-		<script>
-			window.fbAsyncInit = function() {
-				FB.init({
-					appId : {{ FACEBOOK_APP_ID }}, // App ID
-					channelUrl : '{{ URL }}', // Channel File
-					status : true, // check login status
-					cookie : true, // enable cookies to allow the server to access the session
-					xfbml : true  // parse XFBML
-				});
+<head>
+<title>{{ business.businessName }} - {{business.city }}</title>
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet"
+	type="text/css" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-				// Additional initialization code here
-			};
-			// Load the SDK Asynchronously
-			( function(d) {
-				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-				if(d.getElementById(id)) {
-					return;
-				}
-				js = d.createElement('script');
-				js.id = id;
-				js.async = true;
-				js.src = "//connect.facebook.net/en_US/all.js";
-				ref.parentNode.insertBefore(js, ref);
-			}(document));
+<!-- Include CSS -->
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet"
+	type="text/css" />
+<link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet"
+	type="text/css" media="screen" />
 
-		</script>
-		<div id="fb-root"></div>
-		<script>
-			( function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if(d.getElementById(id))
-					return;
-				js = d.createElement(s);
-				js.id = id;
-				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId={{ FACEBOOK_APP_ID }}";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
+<!-- Include Scripts -->
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+<script type="text/javascript"
+	src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
 
-		</script>
-		<div id="wrapper" style="border: 4px double black">
-			<div id="restaurant">
-				<h1>{{ business.businessName }}</h1>
-				<h2>{{ businnes.city}} - {{business.street}}</h2>
-				<img src="{{business.pictureLocation}}">
-				<h3>Hours of Operation</h3>
-				<div id="hours">
-					<div id="hoursleft">
-						<h4>Monday</h4>
-						<p>
-							{{business.mondayHours}}
-						</p>
-						<h4>Tuesday</h4>
-						<p>
-							{{business.tuesdayHours}}
-						</p>
-						<h4>Wednesday</h4>
-						<p>
-							{{business.wednesdayHours}}
-						</p>
-					</div>
-					<div id="hoursmid">
-						<h4>Thursday</h4>
-						<p>
-							{{business.thurdayHours}}
-						</p>
-						<h4>Friday</h4>
-						<p>
-							{{business.fridayHours}}
-						</p>
-					</div>
-					<div id="hoursright">
-						<h4>Saturday</h4>
-						<p>
-							{{business.saturdayHours}}
-						</p>
-						<h4>Sunday</h4>
-						<p>
-							{{business.sundayHours}}
-						</p>
-					</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32882337-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Add jQuery UI -->
+<link type="text/css"
+	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+</head>
+
+<div class="container" style="width: 95%">
+
+	<div class="grid onehalf" style="width: 40%; margin-top: 20px;">
+		<h3 style="font-size: 44px;">{{business.Name}}</h3>
+		<h3 style="color: #ACB3BA; margin-top: 0px; padding-top: 0px;">{{business.city }}</h3>
+		<img src="{{business.pictureLocation}}"
+			style="border: 1px solid black; box-shadow: 4px 3px 4px #666666;" />
+	</div>
+
+	<div class="grid onehalf last" style="width: 55%; margin-top: 20px;">
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
+				<li><a href="#tabs-2" style="font-size: 20px">My
+						{{business.businessName}}</a></li>
+			</ul>
+			<div id="tabs-1">
+				<div class="getsocial">
+					<h1>Share {{ business.businessName }} with your friends!</h1>
+					<h2 style="font-size: 24px">
+						They get a <span style="color: #ff9966">{{rewards0.description }}</span>, and you do too - everyone's a winner
+					</h2>
 				</div>
+				<!-- Start Shareaholic Sexy Bookmark HTML-->
+				<div class="shr_class shareaholic-show-on-load"></div>
+				<!-- End Shareaholic Sexy Bookmark HTML -->
+				<!-- Start Shareaholic Sexy Bookmark settings -->
+				<script type="text/javascript">
+var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ recid }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"${title} - ${short_link} via @Shareaholic"}};
+var SHRSB_Globals = {"perfoption":"1"};
+</script>
+				<!-- End Shareaholic Sexy Bookmark settings -->
+				<!-- Start Shareaholic Sexy Bookmark script -->
+				<script type="text/javascript">
+(function() {
+var sb = document.createElement("script"); sb.type = "text/javascript";sb.async = true;
+sb.src = ("https:" == document.location.protocol ? "https://dtym7iokkjlif.cloudfront.net" : "http://cdn.shareaholic.com") + "/media/js/jquery.shareaholic-publishers-sb.min.js";
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb, s);
+})();
+</script>
+
+				<!-- End Shareaholic Sexy Bookmark script -->
 			</div>
-			<div id="social">
-				<h1>Recommend {{business.businessName}} and</h1>
-				<h5>Give your friends a {{ rewards0.description }}</h5>
-				<h2>Every time a friend goes, you get rewarded!</h2>
-				<div class="fb-like" data-href="{{ URL }}/offer/{{ recid }}" data-send="true" data-width="300" data-show-faces="false"></div>
-				<div>
-					<!--  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a> 
-					<script>
-						! function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0];
-							if(!d.getElementById(id)) {
-								js = d.createElement(s);
-								js.id = id;
-								js.src = "//platform.twitter.com/widgets.js";
-								fjs.parentNode.insertBefore(js, fjs);
-							}
-						}(document, "script", "twitter-wjs");
-
-					</script> -->
-				</div>
+			<div id="tabs-2">
+				<table>
+					<tr>
+						<td style="padding-right: 100px">Recommended to Friends</td>
+						<td>{{ recommended }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px">Redeemed by Friends</td>
+						<td>{{ redeemed }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px">My Used Rewards</td>
+						<td>{{ myRewardsUsed }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px; color: #09c">Remaining
+							Rewards</td>
+						<td style="color: #09c">{{ myRewardsRemaining }}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
-	</body>
+
+	</div>
+</div>
+
+</div>
+<!-- END MAIN CONTAINER -->
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
 </html>

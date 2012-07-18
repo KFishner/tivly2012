@@ -61,6 +61,7 @@ class CardSpringUser(models.Model):
     points = models.IntegerField()
     fbID = models.BigIntegerField(blank = True, null = True)
     TwitID = models.BigIntegerField(blank = True, null = True)
+    dateJoined = models.DateField(blank = True, null = True)
 
     
 class Cards(models.Model):
@@ -84,11 +85,16 @@ class MyRecommendations(models.Model):
     rID = models.CharField(max_length = 6)
     recID = models.CharField(max_length = 30)
     reccsID = models.CharField(max_length = 6, blank = True, null = True)
+    dateGiven= models.DateField(blank = True, null = True)
+
 
 class MyRewards(models.Model):
     csID = models.CharField(max_length = 6)
     reccomendedBy = models.CharField(max_length = 6)
     reward = models.ForeignKey(Rewards)
+    used = models.BooleanField(default=False)
+    dateUsed = models.DateField(blank = True, null = True)
+
 
 #######################################################
 ######              ANALYTICS                    ######
@@ -105,6 +111,14 @@ class Transaction(models.Model):
     card_token = models.CharField(max_length = 30)
     transaction_id = models.CharField(max_length = 30)
     store_id = models.CharField(max_length = 30) 
+    date = models.DateField(blank = True, null = True)
+    
+class ContactUsForm(models.Model):
+    name = models.CharField(max_length = 40)
+    email = models.CharField(max_length = 60)
+    message = models.CharField(max_length = 400)
+    
+
     
 
      

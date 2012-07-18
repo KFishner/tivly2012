@@ -1,0 +1,35 @@
+{%extends 'base.html' %} 
+{%block MixPanel%}
+<script type="text/javascript">
+    mixpanel.track("My Favorites Viewed")
+</script>
+{%endblock%} 
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
+		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
+			href="http://tivly.com/merchants/">Click for details</a>
+	</h1>
+	<h1 class="page-header heart clear">My Favorites</h1>
+	<table>
+		<tr>
+			{% for business in businessList %}
+			<td>
+				<div class="grid onethird">
+					<h3>{{ business.businessName }}</h3>
+					<h6>{{business.city}}</h6>
+					<a href="baume.html"><img
+						src="{{ business.pictureLocation }}" /></a> <a
+						href="rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
+				</div>
+			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
+		</tr>
+		<tr>
+		{% endif %} 
+		{% endfor %}
+		</tr>
+	</table>
+<!-- END MAIN CONTAINER -->
+{%endblock%}

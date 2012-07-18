@@ -3,11 +3,13 @@ from web1 import settings
 from django.template import RequestContext
 from Facebook import facebookLogin
 from django.shortcuts import render_to_response
-from Tivly.models import CardSpringUser, Rewards, Businesses, UserPoints, MyRewards, Cards,MyRecommendations
+from Tivly.models import *
 from Management import IDGenerator
 from CardSpring import CreateAUser,CreateUserAppConnection,CreateACard
 from django.shortcuts import redirect
 from googlemaps import GoogleMaps
+from datetime import datetime
+
 import json
 
 def login (request):       
@@ -26,14 +28,14 @@ def home(request):
         except:
             cardspringID = IDGenerator()
             CreateAUser(request,cardspringID)
-            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id)            
+            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())            
             CSUser.save()
             recid = request.COOKIES.get('recID')
             setReward(CSUser.csID,request,recid)
-            return redirect(settings.URL+'/new_discoveries')
+            return redirect(settings.URL+'/newdiscoveries')
             
     except:
-        CSUser = CardSpringUser(csID = request.COOKIES.get('csID'))
+        CSUser = CardSpringUser.objects.filter(csID = request.COOKIES.get('csID'))[0]
    
     URL = settings.URL    
 
@@ -49,7 +51,7 @@ def home(request):
         
     allPoints = UserPoints.objects.filter(csID = CSUser.csID)
 
-    response = render_to_response('index.html', locals(),context_instance= RequestContext(request))
+    response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('csID',CSUser.csID)
     return response
 
@@ -58,8 +60,12 @@ def businessInfo(request, bname):
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
     points = UserPoints.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID)[0]
-    recommended = len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID, received = True))
-    redeemed =len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID, redeemed = True))
+    recommended = len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID))
+    
+    allRewards = Rewards.objects.filter(businessID = business.businessID)
+    redeemed = 0
+    for rewardLookUp in allRewards:
+        redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
     rewards = Rewards.objects.filter(businessID = business.businessID).order_by('pointsNeeded')
     rewards0 = rewards[0] 
     rewards1 = rewards[1]  
@@ -82,9 +88,19 @@ def recommendation(request,bname):
         if reward.pointsNeeded == 0: 
             rewards0 = reward 
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = request.COOKIES.get('csID'))
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = request.COOKIES.get('csID'), dateGiven = datetime.now())
     myRecommendation.save()
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    
+    recommended = len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID))
+    allRewards = Rewards.objects.filter(businessID = business.businessID)
+    redeemed = 0
+    
+    for rewardLookUp in allRewards:
+        redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
+    
+    myRewardsRemaining = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'),used = False))
+    myRewardsUsed = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'),used = True))
+
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
 def giveIntroOffer(request, recid):
@@ -105,7 +121,7 @@ def setReward(csid,request, recid):
     recommendation = MyRecommendations.objects.filter(recID = recid)[0]
     CreateUserAppConnection(csid,recommendation.appID)
     recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
-    myReward = MyRewards(csID = csid, reward = recReward, reccomendedBy = recommendation.csID)
+    myReward = MyRewards(csID = csid, reward = recReward, reccomendedBy = recommendation.csID, used = False)
     myReward.save()
     recommendation.delete()  
     
@@ -150,7 +166,7 @@ def discoveries(request):
             if reward.reward.pointsNeeded <= pointValue and pointValue != -1:
                 business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
                 redeemable[reward.reward] = business
-    return render_to_response('discoveries.html', locals(),context_instance= RequestContext(request))
+    return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
 
 def getMap(request,businessid):
     GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
@@ -167,17 +183,31 @@ def accountInfo(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
 
 def aboutUs(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
+    return render_to_response('aboutUs.html',context_instance= RequestContext(request))
 
 def jobs(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
+    return render_to_response('jobs.html',context_instance= RequestContext(request))
 
 def privacy(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
 
 def contact(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
-
+    errors = []
+    popup = False
+    if request.method == 'POST':
+        if not request.POST.get('name', ''):
+            errors.append('Enter a name please')
+        if request.POST.get('email') and '@' not in request.POST['email']:
+            errors.append('Enter a valid e-mail address.')
+        if not request.POST.get('message', ''):
+            errors.append('Enter a message.')
+            
+        if not errors:
+            popup = True
+            cuf = ContactUsForm(name = request.POST.get('name'), email = request.POST.get('email'), message = request.POST.get('message'))
+            cuf.save()
+            return render_to_response('contact.html', locals(),context_instance= RequestContext(request))
+    return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
 
         
         

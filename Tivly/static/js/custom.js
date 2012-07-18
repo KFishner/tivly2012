@@ -37,8 +37,16 @@ $(document).ready(function(){
 	
 	$(".fancybox").fancybox({
 		padding:0,
+		height:340,
+		closeClick:true,
 		openEffect:'elastic',
-		closeEffect:'elastic'
+		closeEffect:'elastic',
+		helpers : {
+			overlay : {
+			    opacity: .8,
+			    css : {
+				'background-color' : '#666',}
+			}}
 	});
 	
 /*-----------------------------------------------------------------------------------*/

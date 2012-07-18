@@ -1,118 +1,104 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Tivly - Social Discovery</title>
-<link href="{{ STATIC_URL }}tivly.css" rel="stylesheet" type="text/css" />
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<script type="text/javascript">
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-32882337-1']);
-			_gaq.push(['_trackPageview']); (function() {
-				var ga = document.createElement('script');
-				ga.type = 'text/javascript';
-				ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(ga, s);
-			})();
 
-		</script>
-<!-- Add jQuery library -->
-<script type="text/javascript" src='{{ STATIC_URL }}jquery.js'></script>
-<!-- Add mousewheel plugin (this is optional) -->
-<script type="text/javascript" src="{{ STATIC_URL }}fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-<!-- Add fancyBox -->
-<link rel="stylesheet"
-	href="{{ STATIC_URL }}fancybox/source/jquery.fancybox.css"
-	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="{{ STATIC_URL }}fancybox/source/jquery.fancybox.pack.js"></script>
-<script>
-			$(document).ready(function() {
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{%block title%}{% endblock%}</title>
+    <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon">
 
-				$(".fancybox").fancybox({
-					maxWidth : 800,
-					maxHeight : 600,
-					fitToView : true,
-					width : '70%',
-					height : '70%',
-					autoSize : true,
-					closeClick : true,
-					openEffect : 'elastic',
-					closeEffect : 'elastic'
-				});
+    
+    <!-- Include CSS -->
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 
-			});
-			//Change title position and overlay color
-			$(".fancybox").fancybox({
-				helpers : {
-					title : {
-					},
-					overlay : {
-						css : {
-							'background-color' : '#fff'
-						}
-					}
-				}
-			});
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
 
-		</script>
-<!-- Optionally add helpers - button, thumbnail and/or media -->
-<link rel="stylesheet"
-	href="{{ STATIC_URL }}fancybox/source/helpers/jquery.fancybox-buttons.css"
-	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="{{ STATIC_URL }}fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript"
-	src="{{ STATIC_URL }}fancybox/source/helpers/jquery.fancybox-media.js"></script>
-<link rel="stylesheet"
-	href="{{ STATIC_URL }}fancybox/source/helpers/jquery.fancybox-thumbs.css"
-	type="text/css" media="screen" />
-<script type="text/javascript"
-	src="{{ STATIC_URL }}fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
- {% block extraHead %}{% endblock %}
+<!-- Google Analytics -->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32882337-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<!-- start Mixpanel -->
+    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
+    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
+    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
+<!-- end Mixpanel -->
+
+{%block extrahHead%}{%endblock%}
 </head>
-<body
-	style="background-image: url('{{STATIC_URL }}images/ricepaper.png')">
-	<div id="colorwrap" style="background-color: #2e2d2c">
-		<div id="headerwrap">
-			<div class="nav">
-				<ul>
-					<li><a href="/me">My Account |</a></li>
-					<li><a href="/logout">Logout</a></li>
-				</ul>
-			</div>
-			<div id="logo">
-				<a href="/home"><img src='{{ STATIC_URL }}images/tivlybadge.png'
-					width=200px height=100px></a>
-			</div>
-			<div id="myvenues">
-				<a href="/home"><img src='{{ STATIC_URL }}images/myvenues.png'></a>
-			</div>
-			<div id="myrewards">
-				<a href="/new_discoveries"><img
-					src='{{ STATIC_URL }}images/myrewards.png'></a>
-			</div>
-		</div>
-	</div>
-	<div id="wrap">
-		<div id="sort">
-			<p>{% block title %}{% endblock %}
-			<p>
-			{% block content%}{% endblock %}
-		</div>
-	</div>
-	<div id="color" style="background-color: #2e2d2c">
-		<div id="footer">
-			<div class="nav">
-				<ul>
-					<li><a href="/me">About Us</a></li>
-					<li><a href="/jobs">Jobs</a></li>
-					<li><a href="/privacy">Privacy</a></li>
-					<li><a href="/contact">Contact</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<body>
+{%block MixPanel%}{%endblock%}
+
+<!-- START HEADER -->
+<div id="header">
+
+	<div class="container">
+    
+    
+    	<!-- start primary nav -->
+        <div class="header-right">
+        
+            <div id="primary-nav" class="header-right">
+            
+                <ul class="sf-menu">
+                    <li><a href="/home"><img src="{{ STATIC_URL }}images/myfavorites.png"/></a></li>
+                    <li><a href="/newdiscoveries"><img src="{{ STATIC_URL }}images/newdiscoveries.png"/></a></li>
+		    <li><a href="#">|  My Account</a></li>
+
+                </ul>
+                
+            </div>
+        
+        </div><!-- end nav -->
+        
+        <!-- LOGO -->        
+    	<a href="/home" id="logo"><img src="{{ STATIC_URL }}images/logo.png" border="0" alt="logo" /></a>
+        
+        <br class="clear" />
+        
+    </div>
+    
+</div><!-- END HEADER -->
+
+
+{%block content%}{%endblock%}
+
+<!-- START FOOTER -->
+<div id="footer">
+
+	<div class="container">
+    
+    
+
+    
+    	<div id="footer-right">
+        
+            <a href="http://www.facebook.com/gotivly" target="_blank" class="social facebook">Fan Us</a> <a href="https://twitter.com/tivlytweets" target="_blank" class="social twitter">Follow Us</a><br /><a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
+            
+        </div>
+    
+		<a id="top" href="#">Top</a> | <a href="/aboutUs">About Us</a> | <a href="/jobs">Jobs</a> | <a href="/contact">Contact</a><br />
+        &copy 2012 tivly Corporation<br />
+        
+        <br class="clear" />
+    
+  </div>
+    
+</div><!-- END FOOTER -->
+
 </body>
 </html>

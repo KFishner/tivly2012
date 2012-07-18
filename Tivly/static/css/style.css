@@ -183,6 +183,13 @@ p.grid{
 	border-bottom:none;
 }
 
+.share-header{
+	cursor:default;
+	border-top:1px solid #EFEFEF;
+	border-bottom:1px solid #EFEFEF;
+	padding:20px 0px 20px 33px;
+	margin:20px 0 20px 0 !important;
+}
 h1.page-header{
 	cursor:default;
 	border-top:1px solid #EFEFEF;
@@ -193,10 +200,21 @@ h1.page-header{
 	font-size:37px;
 	font-style: italic;
 }
+h3.page-header{
+	cursor:default;
+	border-top:1px solid #EFEFEF;
+	border-bottom:1px solid #EFEFEF;
+	padding:10px 0px 10px 33px;
+	margin:20px 0 20px 0 !important;
+	font-size:44px;
+	font-family: cursive;
+	margin:0 0 8px 0;
+}
 
 h1.page-header.cloud{background:url(../images/cloud.png) no-repeat 0 center scroll;}
 h1.page-header.heart{background:url(../images/icons/heart.png) no-repeat 0 center scroll;}
 h1.page-header.search{background:url(../images/icons/search.png) no-repeat 0 center scroll;}
+h1.page-header.eat{background:url(../images/icons/eat.png) no-repeat 0 center scroll;}
 h1.page-header.features{background:url(../images/icons/features.png) no-repeat 0 center scroll;}
 h1.page-header.contact{background:url(../images/contact.png) no-repeat 0 center scroll;}
 h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scroll;}
@@ -270,7 +288,7 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 
 #primary-nav ul li li:hover ul, #primary-nav ul li li.sfHover ul, #primary-nav ul li li li:hover ul, #primary-nav ul li li li.sfHover ul, #primary-nav ul li li li li:hover ul, #primary-nav ul li li li li.sfHover ul{
     left: 180px;
-    top: -1px;
+    top: 0px;
 }
 
 #primary-nav ul a{
@@ -639,6 +657,16 @@ background:url(../images/logo-contact2.png) no-repeat;
 	top:0px;
 	left:0px;
 	border-bottom:none;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Table Styling
+/*-----------------------------------------------------------------------------------*/
+
+td{
+	padding-top:20px;
+	border-bottom:1px dotted gray;
+	font-size:22px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -1021,7 +1049,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 	margin-bottom:5px;
 }
 
-.grid.onehalf{width:460px;}
+.grid.onehalf{width:420px;}
 .grid.onethird{height:225px; width:278px; padding-left:15px;}
 	.grid.onethird h3{
 		padding:0px;
@@ -1047,7 +1075,8 @@ background:url(../images/logo-contact2.png) no-repeat;
 		font-size: 16px;
 		text-decoration: underline;
 	}
-
+.grid.onethirdone{width:150px;margin:0px;padding:0px}
+	.grid.onethirdone p{margin:0px;padding:0px;margin-right:10px;}
 .grid.onefourth{width:210px;}
 .grid.onefifth{width:160px;}
 .grid.onesixth{width:126px;}
