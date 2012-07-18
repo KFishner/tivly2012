@@ -17,6 +17,13 @@ def login (request):
     redirect = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('login.html', locals())
 
+def loginWithRec (request,recid):
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    redirect = settings.FACEBOOK_REDIRECT_URI
+    response = render_to_response('login.html', locals())
+    response.set_cookie('recID',recid)
+    
+
 def home(request):
     
     try:
@@ -108,9 +115,7 @@ def getOffer(request, recid):
     csid = request.COOKIES.get('csID')
   
     if csid is None:
-        response = redirect(settings.URL)
-        response.set_cookies(recid, 'recID')
-        return response
+        loginWithRec(request,recid)
     
     else:
         setReward(csid,request, recid)      
