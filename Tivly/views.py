@@ -41,8 +41,8 @@ def home(request):
             response.set_cookie('csID',CSUser.csID)
             justCreated = True
     except:
-        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-    
+        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+                                            
     try:
         recid = request.COOKIES.get('recID')
         setReward(CSUser.csID,request,recid)
