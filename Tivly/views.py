@@ -30,16 +30,17 @@ def home(request):
     try:
         fbUser = facebookLogin(request)
 
-        try:
-            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+        
+        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
             
-        except:
+        if CSUser is None:
             cardspringID = IDGenerator()
             CreateAUser(request,cardspringID)
             CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())            
             CSUser.save()
             recid = request.COOKIES.get('recID')
             setReward(CSUser.csID,request,recid)
+            
             return redirect(settings.URL+'/newdiscoveries')
             
     except:
