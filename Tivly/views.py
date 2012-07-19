@@ -28,9 +28,10 @@ def loginWithRec (request,recid):
 def home(request):
     fbUser = facebookLogin(request)
     cardspringID = IDGenerator()
-    CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+    try:
+        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
     
-    if not CSUser.exists():
+    except:
         CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
         CSUser.save()                
         CreateAUser(request,cardspringID)
