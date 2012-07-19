@@ -168,19 +168,20 @@ def discoveries(request):
     if not cc:
         hasCard = False
     
-    else:
-        myRewards = MyRewards.objects.filter(csID = csid)
-        myUserPoints = UserPoints.objects.filter(csID = csid)
-        pointValue = -1
-        redeemable = {}
-        for reward in myRewards:
-            for userPoints in myUserPoints:
-                if userPoints.businessID == reward.reward.businessID:
-                    pointValue = userPoints.points
-                
-            if reward.reward.pointsNeeded <= pointValue and pointValue != -1:
-                business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
-                redeemable[reward.reward] = business
+    
+    myRewards = MyRewards.objects.filter(csID = csid)
+    myUserPoints = UserPoints.objects.filter(csID = csid)
+    pointValue = -1
+    redeemable = {}
+    for reward in myRewards:
+        for userPoints in myUserPoints:
+            if userPoints.businessID == reward.reward.businessID:
+                pointValue = userPoints.points
+            
+        if reward.reward.pointsNeeded <= pointValue and pointValue != -1:
+            business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
+            redeemable[reward.reward] = business
+            
     return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
 
 def getMap(request,businessid):
