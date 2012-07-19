@@ -34,7 +34,7 @@ def home(request):
     except:
         CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
         CSUser.save()                
-        CreateAUser(request,cardspringID)
+        CreateAUser(cardspringID)
     
     recid = request.COOKIES.get('recID')
     setReward(CSUser.csID,request,recid)
