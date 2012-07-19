@@ -22,6 +22,7 @@ def loginWithRec (request,recid):
     redirect = settings.FACEBOOK_REDIRECT_URI
     response = render_to_response('login.html', locals())
     response.set_cookie('recID',recid)
+    return response
     
 
 def home(request):
