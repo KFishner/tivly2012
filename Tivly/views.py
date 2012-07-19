@@ -1,4 +1,4 @@
-    # Create your views here.
+# Create your views here.
 from web1 import settings
 from django.template import RequestContext
 from Facebook import facebookLogin
@@ -27,6 +27,7 @@ def loginWithRec (request,recid):
 
 def home(request):
     justCreated = False
+    
     try:
         fbUser = facebookLogin(request)
         cardspringID = IDGenerator()
@@ -43,16 +44,18 @@ def home(request):
     except:
         CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
                                             
+
+    recid = request.COOKIES.get('recID')
+    rec = MyRecommendations.objects.filter(recID = recid)
+    
     try:
-        recid = request.COOKIES.get('recID')
-        rec = MyRecommendations.objects.filter(recID = recid)
+        userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
+    except:
         userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
         userPoints.save()
-        setReward(CSUser.csID,request,recid)
 
-    
-    except:
-        recid = ""   
+    setReward(CSUser.csID,request,recid)
+  
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
