@@ -37,7 +37,11 @@ values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','busines
 #print DeleteAUserApp(csid,newappid)
 
 #print GetAppConnections(csid).read()
-print DeleteAUserApp(csid,newappid)
+#print DeleteAUserApp(csid,newappid)
+
+response = render_to_response('login.html')
+response.set_cookie('recID','O15UKY')
+response
 
 def Strip(csid,fn):
     rewardsList = MyRewards.objects.filter(csID =csid)
