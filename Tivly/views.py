@@ -44,10 +44,7 @@ def home(request):
         setReward(CSUser.csID,request,recid)
     
     except:
-        continue
-    
-    
-       
+        recid = ""   
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
