@@ -26,16 +26,18 @@ def loginWithRec (request,recid):
     
 
 def home(request):
-    fbUser = facebookLogin(request)
-    cardspringID = IDGenerator()
     try:
-        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-    
+        fbUser = facebookLogin(request)
+        cardspringID = IDGenerator()
+        try:
+            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+        
+        except:
+            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
+            CSUser.save()                
+            CreateAUser(cardspringID)
     except:
-        CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
-        CSUser.save()                
-        CreateAUser(cardspringID)
-    
+        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
     recid = request.COOKIES.get('recID')
     setReward(CSUser.csID,request,recid)
        
