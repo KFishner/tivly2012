@@ -46,7 +46,7 @@ def home(request):
     try:
         recid = request.COOKIES.get('recID')
         rec = MyRecommendations.objects.filter(recID = recid)
-        userPoints = UserPoints(csID = CSUser.csID, rec.businessID, points = 0, visits = 0)
+        userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
         userPoints.save()
         setReward(CSUser.csID,request,recid)
 
