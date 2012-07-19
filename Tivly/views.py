@@ -31,7 +31,7 @@ def home(request):
         fbUser = facebookLogin(request)
 
         
-        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)[0]
             
         if CSUser is None:
             cardspringID = IDGenerator()
