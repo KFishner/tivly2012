@@ -116,7 +116,7 @@ def getOffer(request, recid):
     csid = request.COOKIES.get('csID')
   
     if csid is None:
-        loginWithRec(request,recid)
+        return loginWithRec(request,recid)
     
     else:
         setReward(csid,request, recid)      
