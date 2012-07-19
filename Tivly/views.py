@@ -26,26 +26,18 @@ def loginWithRec (request,recid):
     
 
 def home(request):
+    fbUser = facebookLogin(request)
+    cardspringID = IDGenerator()
+    CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
     
-    try:
-        fbUser = facebookLogin(request)
-
-        
-        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)[0]
-            
-        if CSUser is None:
-            cardspringID = IDGenerator()
-            CreateAUser(request,cardspringID)
-            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())            
-            CSUser.save()
-            recid = request.COOKIES.get('recID')
-            setReward(CSUser.csID,request,recid)
-            
-            return redirect(settings.URL+'/newdiscoveries')
-            
-    except:
-        CSUser = CardSpringUser.objects.filter(csID = request.COOKIES.get('csID'))[0]
-   
+    if not CSUser.exists():
+        CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
+        CSUser.save()                
+        CreateAUser(request,cardspringID)
+    
+    recid = request.COOKIES.get('recID')
+    setReward(CSUser.csID,request,recid)
+       
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
