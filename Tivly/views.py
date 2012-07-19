@@ -26,6 +26,7 @@ def loginWithRec (request,recid):
     
 
 def home(request):
+    justCreated = False
     try:
         fbUser = facebookLogin(request)
         cardspringID = IDGenerator()
@@ -36,6 +37,9 @@ def home(request):
             CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
             CSUser.save()                
             CreateAUser(cardspringID)
+            response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
+            response.set_cookie('csID',CSUser.csID)
+            justCreated = True
     except:
         CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
     
@@ -59,6 +63,8 @@ def home(request):
         
     allPoints = UserPoints.objects.filter(csID = CSUser.csID)
 
+    if justCreated:
+        return response
     response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('csID',CSUser.csID)
     return response
