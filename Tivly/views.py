@@ -46,7 +46,7 @@ def home(request):
                                             
 
     recid = request.COOKIES.get('recID')
-    rec = MyRecommendations.objects.filter(recID = recid)
+    rec = MyRecommendations.objects.filter(recID = recid)[0]
     
     try:
         userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)

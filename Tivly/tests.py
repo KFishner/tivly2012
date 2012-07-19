@@ -36,7 +36,7 @@ values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','busines
 #print ListApps(bID).read()
 #print DeleteAUserApp(csid,newappid)
 
-print GetAppConnections(csid).read()
+#print GetAppConnections(csid).read()
 print DeleteAUserApp(csid,newappid)
 
 def Strip(csid,fn):
