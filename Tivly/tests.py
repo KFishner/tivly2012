@@ -32,7 +32,7 @@ csid = 'J2ON89'
 request = {}
 values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 
-print DeleteAUserApp(csid,appid)
+print GetUsers().read()
 ###########################################################################################
 #try:
 #    

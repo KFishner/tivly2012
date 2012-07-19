@@ -38,8 +38,15 @@ def home(request):
             CreateAUser(cardspringID)
     except:
         CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-    recid = request.COOKIES.get('recID')
-    setReward(CSUser.csID,request,recid)
+    
+    try:
+        recid = request.COOKIES.get('recID')
+        setReward(CSUser.csID,request,recid)
+    
+    except:
+        continue
+    
+    
        
     URL = settings.URL    
 
