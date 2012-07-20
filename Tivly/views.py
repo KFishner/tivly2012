@@ -216,9 +216,9 @@ def discoveries(request):
     
     myRewards = MyRewards.objects.filter(csID = csid)
     myUserPoints = UserPoints.objects.filter(csID = csid)
-    pointValue = -1
     redeemable = {}
     for reward in myRewards:
+        pointValue = -1
         for userPoints in myUserPoints:
             if userPoints.businessID == reward.reward.businessID:
                 pointValue = userPoints.points
