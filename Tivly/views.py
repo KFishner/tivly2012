@@ -92,8 +92,18 @@ def home(request):
         response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
         response.set_cookie('csID',CSUser.csID)
         justCreated = True
-        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+        CSUser = CardSpringUser.objects.get(csID = cardspringID)
     
+    recid = request.COOKIES.get('recID')
+    rec = MyRecommendations.objects.filter(recid)[0]
+    
+    try:
+        userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
+    except:
+        userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
+        userPoints.save()
+
+    setReward(CSUser.csID,request,recid)
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
