@@ -85,6 +85,7 @@ def home(request):
         CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
         
     except:
+        cardspringID = IDGenerator()
         CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
         CSUser.save()                
         CreateAUser(cardspringID)
