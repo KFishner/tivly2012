@@ -20,6 +20,9 @@ def login (request):
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI+'/'+recid
+    response = render_to_response('login.html', locals())
+    cardSpringID = IDGenerator()
+    response.set_cookie('csID',cardSpringID)
     return render_to_response('login.html', locals())
 
 def homeWithRec(request, recid):
@@ -76,9 +79,10 @@ def home(request):
     
     try:
         fbUser = facebookLogin(request)
-        cardspringID = IDGenerator()
+        cardspringID = request.COOKIES.get('csID')
         try:
-            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+#            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+            CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
         
         except:
             CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
@@ -88,8 +92,8 @@ def home(request):
             response.set_cookie('csID',CSUser.csID)
             justCreated = True
     except:
-        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
-                                
+            CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+    
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
