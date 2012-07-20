@@ -22,7 +22,7 @@
 					<h6>{{business.city}}</h6>
 					<a href="baume.html"><img
 						src="{{ business.pictureLocation }}" /></a> <a
-						href="rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
+						href="{{ URL }}rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
 				</div>
 			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
 		</tr>
