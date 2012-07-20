@@ -97,16 +97,19 @@ def home(request):
     recid = request.COOKIES.get('recID')
     
     if recid is not None:
-        rec = MyRecommendations.objects.filter(recID = recid)
-        
-        if rec.isEmpty:
-            try:
-                userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
-            except:
-                userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
-                userPoints.save()
+        try:
+            rec = MyRecommendations.objects.filter(recID = recid)[0]
             
-            setReward(CSUser.csID,request,recid)
+            if rec.isEmpty:
+                try:
+                    userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
+                except:
+                    userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
+                    userPoints.save()
+                
+                setReward(CSUser.csID,request,recid)
+        except:
+            recid = ""
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
