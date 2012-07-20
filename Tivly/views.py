@@ -19,7 +19,7 @@ def login (request):
 
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI+'/'+recid
+    redirect = settings.FACEBOOK_REDIRECT_URI+'/getrec/'+recid
     return render_to_response('login.html', locals())
 
 def homeWithRec(request, recid):
