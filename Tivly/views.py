@@ -161,6 +161,11 @@ def recommendation(request,bname):
 def getOffer(request, recid):
         
     csid = request.COOKIES.get('csID')
+    try:
+        CSUser = CardSpringUser.objects.filter(csID = csid)
+    
+    except:
+        return loginWithRec(request,recid)
   
     if csid is None:
         return loginWithRec(request,recid)
