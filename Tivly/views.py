@@ -19,10 +19,11 @@ def login (request):
 
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI+'/'+recid
+    redirect = settings.FACEBOOK_REDIRECT_URI
     response = render_to_response('login.html', locals())
     cardSpringID = IDGenerator()
     response.set_cookie('csID',cardSpringID)
+    response.set_cookie('recID',recid)
     return render_to_response('login.html', locals())
 
 def homeWithRec(request, recid):
