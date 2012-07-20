@@ -24,9 +24,9 @@ def loginWithRec (request,recid):
 
 def homeWithRec(request, recid):
     justCreated = False
-    fbUser = facebookLogin(request)
 
     try:
+        fbUser = facebookLogin(request)
         cardspringID = IDGenerator()
         try:
             CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
