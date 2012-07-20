@@ -97,7 +97,7 @@ def home(request):
     recid = request.COOKIES.get('recID')
     
     if recid is not None:
-        rec = MyRecommendations.objects.filter(recID = recid)[0]
+        rec = MyRecommendations.objects.filter(recID = recid)
         
         if rec.isEmpty:
             try:
