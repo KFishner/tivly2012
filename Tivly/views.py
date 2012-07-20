@@ -19,11 +19,56 @@ def login (request):
 
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
-    response = render_to_response('login.html', locals())
-    response.set_cookie('recID',recid)
-    return response
+    redirect = settings.FACEBOOK_REDIRECT_URI+'/'+recid
+    return render_to_response('login.html', locals())
+
+def homeWithRec(request, recid):
+    justCreated = False
+    try:
+        fbUser = facebookLogin(request)
+        cardspringID = IDGenerator()
+        try:
+            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+        
+        except:
+            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
+            CSUser.save()                
+            CreateAUser(cardspringID)
+            response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
+            response.set_cookie('csID',CSUser.csID)
+            justCreated = True
+    except:
+        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+                            
+    rec = MyRecommendations.objects.filter(recID = recid)[0]
     
+    try:
+        userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
+    except:
+        userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
+        userPoints.save()
+
+    setReward(CSUser.csID,request,recid)
+  
+    URL = settings.URL    
+
+    myRewards = MyRewards.objects.filter(csID = CSUser.csID)
+    businessList= []
+    
+    for reward in myRewards:
+        business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
+        if business in businessList:
+            continue
+        else:
+            businessList.append(business)
+        
+    allPoints = UserPoints.objects.filter(csID = CSUser.csID)
+
+    if justCreated:
+        return response
+    response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
+    response.set_cookie('csID',CSUser.csID)
+    return response
 
 def home(request):
     justCreated = False
@@ -43,19 +88,7 @@ def home(request):
             justCreated = True
     except:
         CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
-                                            
-
-    recid = request.COOKIES.get('recID')
-    rec = MyRecommendations.objects.filter(recID = recid)[0]
-    
-    try:
-        userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
-    except:
-        userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
-        userPoints.save()
-
-    setReward(CSUser.csID,request,recid)
-  
+                                
     URL = settings.URL    
 
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
@@ -132,7 +165,16 @@ def getOffer(request, recid):
         return loginWithRec(request,recid)
     
     else:
-        setReward(csid,request, recid)      
+        rec = MyRecommendations.objects.filter(recID = recid)[0]
+        
+        try:
+            userPoints = UserPoints.objects.get(csID = csid, businessID = rec.businessID)
+        except:
+        
+            userPoints = UserPoints(csID = csid, businessID = rec.businessID, points = 0, visits = 0)
+            userPoints.save() 
+        
+        setReward(csid,request, recid)    
         return redirect(settings.URL+'/home')
 
 def setReward(csid,request, recid):
