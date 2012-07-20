@@ -76,23 +76,21 @@ def homeWithRec(request, recid):
 
 def home(request):
     justCreated = False
-    
+    fbUser = facebookLogin(request)
+
     try:
-        fbUser = facebookLogin(request)
         cardspringID = request.COOKIES.get('csID')
-        try:
 #            CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-            CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
         
-        except:
-            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
-            CSUser.save()                
-            CreateAUser(cardspringID)
-            response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
-            response.set_cookie('csID',CSUser.csID)
-            justCreated = True
     except:
-            CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+        CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
+        CSUser.save()                
+        CreateAUser(cardspringID)
+        response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
+        response.set_cookie('csID',CSUser.csID)
+        justCreated = True
+        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
     
     URL = settings.URL    
 
