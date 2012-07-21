@@ -33,26 +33,27 @@ from urlparse import parse_qsl
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 
-#DeleteAUser('XEA0RZ')
-#csu = CardSpringUser.objects.get(csID = 'XEA0RZ')
-#csu.delete()
-#print 'csu deleted'
-#fbu = FBUser.objects.get(first_name = 'Bryan')
-#token = FBAccessTokens.objects.get(user = fbu)
-#token.delete()
-#print 'token deleted'
-#Fbf = FBFriends.objects.filter(user = fbu)
-#for f in Fbf:
-#    f.delete()
-#print 'friends deleted!'    
-#myr = MyRewards.objects.filter(csID = 'XEA0RZ')
-#
-#for r in myr:
-#    r.delete()
-#    print 'reward deleted'
-#
-#fbu.delete()
-#print 'fb deleted'
+csid = 'LGCIWP'
+DeleteAUser(csid)
+csu = CardSpringUser.objects.get(csID = csid)
+csu.delete()
+print 'csu deleted'
+fbu = FBUser.objects.get(first_name = 'Bryan')
+token = FBAccessTokens.objects.get(user = fbu)
+token.delete()
+print 'token deleted'
+Fbf = FBFriends.objects.filter(user = fbu)
+for f in Fbf:
+    f.delete()
+print 'friends deleted!'    
+myr = MyRewards.objects.filter(csID = csid)
+
+for r in myr:
+    r.delete()
+    print 'reward deleted'
+
+fbu.delete()
+print 'fb deleted'
 
 print 'you\'re wiped !'
 
