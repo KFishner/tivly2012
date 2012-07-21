@@ -33,7 +33,7 @@ from urlparse import parse_qsl
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 
-DeleteAUser('J2ON89')
+#DeleteAUser('J2ON89')
 #csu = CardSpringUser.objects.get(csID = 'J2ON89')
 #csu.delete()
 #print 'csu deleted'
@@ -53,7 +53,7 @@ DeleteAUser('J2ON89')
 #
 #fbu.delete()
 #print 'fb deleted'
-
+#
 #print 'you\'re wiped !'
 #
 #print GetUsers().read()

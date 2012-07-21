@@ -55,10 +55,11 @@ def facebookLogin(request):
                 continue
     
     if atcreated == False:
-        if dic.get('access_token') != FBAccessTokens.objects.filter(user = fbUser)[0]:
-            accessToken =  FBAccessTokens.objects.filter(user = fbUser)[0]
-            accessToken.accessToken = dic.get('access_token')
-            accessToken.expiration_accessToken = dic.get('expires')
-            accessToken.save()
-            
+        FBA = FBAccessTokens.objects.filter(user = fbUser)
+        if FBA.exists():
+            if dic.get('access_token') != FBAccessTokens.objects.filter(user = fbUser)[0]:
+                accessToken =  FBAccessTokens.objects.filter(user = fbUser)[0]
+                accessToken.accessToken = dic.get('access_token')
+                accessToken.expiration_accessToken = dic.get('expires')
+                accessToken.save()            
     return fbUser
