@@ -14,7 +14,6 @@
 			href="http://tivly.com/merchants/l">Click for details</a>
 	</h1>
 	<h1 class="page-header search clear">New Discoveries</h1>
-{% if hasCard %}
 	<table>
 		<tr>
 			{%for reward,business in redeemable.items %}
@@ -36,15 +35,18 @@
 	</table>
 	<br class="clear" />
 	<br class="clear" />
-{%else%} {%if request.method == 'GET'%} No Credit Card Found! Submit a
+{% if not hasCard %} {%if request.method == 'GET'%} No Credit Card Found! Submit a
 credit card and start saving today! 
-{%endif%} {% if errors and request.method == 'POST' %}
+{%endif%} 
+{% if errors and request.method == 'POST' %}
 <ul>
 	{% for error in errors %}
 	<li>{{ error }}</li> {% endfor %}
 </ul>
-{% endif %} {% if not errors and request.method == 'POST'%} Thank you!
-You can now redeem your offer {% endif %}
+{% endif %} 
+{% if not errors and request.method == 'POST'%} 
+Thank you!You can now redeem your offer 
+{% endif %}
 <form action="." method="POST" id="CCregistration_form">
 	{%csrf_token%} <div style="border:2px solid red;background-color:#ffcccc;display:inline-block;padding:5px;border-radius: 10px 10px;">Card Number <input class="card-number" type="string" name="number"
 		value=""> </input><br /> Expiration Date: <select class="expiration-month" name="month">

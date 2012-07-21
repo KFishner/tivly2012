@@ -33,7 +33,7 @@ from urlparse import parse_qsl
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 
-csid = 'LGCIWP'
+csid = 'PLZBS0'
 DeleteAUser(csid)
 csu = CardSpringUser.objects.get(csID = csid)
 csu.delete()
