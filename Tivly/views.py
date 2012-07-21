@@ -51,6 +51,7 @@ def home(request):
         justCreated = True
         CSUser = CardSpringUser.objects.get(csID = cardspringID)
     
+    CSUser = CSUser[0]
     recid = request.COOKIES.get('recID', None)
     
     if recid is not None:
