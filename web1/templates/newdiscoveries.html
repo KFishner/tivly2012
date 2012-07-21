@@ -19,12 +19,11 @@
 			{%for reward,business in redeemable.items %}
 			<td>
 				<div class="grid onethird">
-					<h3>{{reward.description }}</h3>
+					<h5>{{ business.businessName }} - {{reward.description }}</h5>
 					<h6>{{ business.city }}</h6>
 					<a href="baume.html"><img
 						src="{{business.pictureLocation }}" /></a> <a
 						href="baumerecommend.html">Recommend</a>
-					<h5>{{ business.businessName }}</h5>
 				</div>
 			</td> 
 			{% if not forloop.last and forloop.count|divisibleby:"3"%}
@@ -48,29 +47,44 @@ credit card and start saving today!
 {% if not errors and request.method == 'POST'%} 
 Thank you!You can now redeem your offer 
 {% endif %}
-<form action="." method="POST" id="CCregistration_form">
-	{%csrf_token%} <div style="border:2px solid red;background-color:#ffcccc;display:inline-block;padding:5px;border-radius: 10px 10px;">Card Number <input class="card-number" type="string" name="number"
-		value=""> </input><br /> Expiration Date: <select class="expiration-month" name="month">
-		<option value="12">12</option>
-		<option value="11">11</option>
-		<option value="10">10</option>
-		<option value="09">09</option>
-		<option value="08">08</option>
-		<option value="07">07</option>
-		<option value="06">06</option>
-		<option value="05">05</option>
-		<option value="04">04</option>
-		<option value="03">03</option>
-		<option value="02">02</option>
+ <form action="." method="POST" id="CCregistration_form">
+<div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
+    <p style="margin:0px;padding:0px;color:red;font-size:22px; text-align: center">- Warning - You're not getting all the benefits of tivly!</p><p style="margin:0px;padding:0px;">Enter your information to share and redeem rewards instantly with the swipe of your card!</p><a href="faq.html" style="margin-left:210px;">Click to Learn More</a><br />
+    <label for="form-number">Card Number: </label><input class="card-number" style="border-radius: 5px 5px;" type="string" name="number"
+		value="">* </input><br />
+    <label for="form-number">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
+		<option value="02">02</option>
+		<option value="03">03</option>
+		<option value="04">04</option>
+		<option value="05">05</option>
+		<option value="06">06</option>
+		<option value="07">07</option>
+		<option value="08">08</option>
+		<option value="09">09</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+
 	</select> <select class="expiration-year" name="year">
+		<option value="2013">2012</option>
 		<option value="2013">2013</option>
 		<option value="2014">2014</option>
 		<option value="2015">2015</option>
 		<option value="2016">2016</option>
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
-	</select><br /> <input type="submit" class="submit-button" value="submit"> </input></div>
+	</select>*<br /> <input type="submit" id="submit-button" value="submit" style="    -webkit-transition: background-color .3s linear;
+	-moz-transition: background-color .3s linear;
+	-o-transition: background-color .3s linear;
+	-ms-transition: background-color .3s linear;
+	transition: background-color .3s linear;
+	border:0px;
+	background-color:#ACB3BA;
+	padding:6px 10px;
+	color:#ffffff;
+        box-shadow: 3px 3px 3px gray;
+	cursor:pointer;"> </input></div>
 </form>
 <script src="https://js.cardspring.com/v1/cs.js"></script>
 <script>
