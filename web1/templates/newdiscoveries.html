@@ -19,11 +19,12 @@
 			{%for reward,business in redeemable.items %}
 			<td>
 				<div class="grid onethird">
-					<h3>{{ business.businessName }} - {{reward.description }}</h3>
+					<h3>{{reward.description }}</h3>
 					<h6>{{ business.city }}</h6>
 					<a href="baume.html"><img
 						src="{{business.pictureLocation }}" /></a> <a
 						href="baumerecommend.html">Recommend</a>
+					<h5>{{ business.businessName }}</h5>
 				</div>
 			</td> 
 			{% if not forloop.last and forloop.count|divisibleby:"3"%}
