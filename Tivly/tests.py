@@ -33,8 +33,8 @@ from urlparse import parse_qsl
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 
-#DeleteAUser('J2ON89')
-#csu = CardSpringUser.objects.get(csID = 'J2ON89')
+#DeleteAUser('XEA0RZ')
+#csu = CardSpringUser.objects.get(csID = 'XEA0RZ')
 #csu.delete()
 #print 'csu deleted'
 #fbu = FBUser.objects.get(first_name = 'Bryan')
@@ -45,7 +45,7 @@ from urlparse import parse_qsl
 #for f in Fbf:
 #    f.delete()
 #print 'friends deleted!'    
-#myr = MyRewards.objects.filter(csID = 'J2ON89')
+#myr = MyRewards.objects.filter(csID = 'XEA0RZ')
 #
 #for r in myr:
 #    r.delete()
@@ -53,10 +53,10 @@ from urlparse import parse_qsl
 #
 #fbu.delete()
 #print 'fb deleted'
-#
-#print 'you\'re wiped !'
-#
-#print GetUsers().read()
+
+print 'you\'re wiped !'
+
+print GetUsers().read()
 
 
 

@@ -38,10 +38,10 @@ def home(request):
             CSUser.save()                
             CreateAUser(cardspringID)
             justCreated = True
-            CSUser = CardSpringUser.objects.get(csID = cardspringID)
+            CSUser = CardSpringUser.objects.filter(csID = cardspringID)
     
     elif cardspringID is not None:
-        CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
+        CSUser = CardSpringUser.objects.filter(csID = request.COOKIES.get('csID'))
     
     else:
         cardspringID = IDGenerator()
@@ -49,7 +49,7 @@ def home(request):
         CSUser.save()                
         CreateAUser(cardspringID)
         justCreated = True
-        CSUser = CardSpringUser.objects.get(csID = cardspringID)
+        CSUser = CardSpringUser.objects.filter(csID = cardspringID)
     
     CSUser = CSUser[0]
     recid = request.COOKIES.get('recID', None)
