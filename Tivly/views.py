@@ -58,7 +58,7 @@ def home(request):
         
         if rec.exists():
             rec = rec[0]
-            userPoints = UserPoints.objects.get(csID = CSUser.csID, businessID = rec.businessID)
+            userPoints = UserPoints.objects.filter(csID = CSUser.csID, businessID = rec.businessID)
             
             if not userPoints.exist():
                 userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
