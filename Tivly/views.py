@@ -80,7 +80,7 @@ def home(request):
         
     allPoints = UserPoints.objects.filter(csID = CSUser.csID)
 
-    if justCreated:
+    if justCreated is True:
         response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
         response.set_cookie('csID',CSUser.csID)
         return response
