@@ -31,7 +31,14 @@ def home(request):
 
     if code is not None:
         fbUser = facebookLogin(request)
-        CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
+        CSUser = CardSpringUser.objects.filter(fbID = fbUser.fb_id)
+        if not CSUser.exists():
+            cardspringID = IDGenerator()
+            CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
+            CSUser.save()                
+            CreateAUser(cardspringID)
+            justCreated = True
+            CSUser = CardSpringUser.objects.get(csID = cardspringID)
     
     elif cardspringID is not None:
         CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
