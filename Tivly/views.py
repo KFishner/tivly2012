@@ -61,7 +61,7 @@ def home(request):
             rec = rec[0]
             userPoints = UserPoints.objects.filter(csID = CSUser.csID, businessID = rec.businessID)
             
-            if not userPoints.exist():
+            if not userPoints.exists():
                 userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
                 userPoints.save()
                 setReward(CSUser.csID,request,recid)
