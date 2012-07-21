@@ -32,11 +32,9 @@ def home(request):
     if code is not None:
         fbUser = facebookLogin(request)
         CSUser = CardSpringUser.objects.get(fbID = fbUser.fb_id)
-        return None
     
     elif cardspringID is not None:
         CSUser = CardSpringUser.objects.get(csID = request.COOKIES.get('csID'))
-        return None
     
     else:
         cardspringID = IDGenerator()
