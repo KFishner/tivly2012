@@ -16,7 +16,6 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     
     url(r'^me/$', accountInfo),
-    url(r'^logout/$', logout),
     url(r'^aboutus/$', aboutUs),
     url(r'jobs/$', jobs),
     url(r'privacy/$', privacy),

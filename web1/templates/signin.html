@@ -1,67 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+{%block title%} Signin - Tivly {%endblock%}
+{%extraHead%}
+<style type="text/css">
+body {background-image: url('images/signinbg.png');width:100%;height:100%}
+</style>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Signin - Tivly</title>
-    <link href="images/favicon.ico" rel="shortcut icon">
+<script type="text/javascript"
+        src="https://js.cardspring.com/v1/cs.js">
+</script>
+{%endblock%}
 
-    
-    <!-- Include CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
-
-    <!-- Include Scripts -->	
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/jquery.color.js"></script>
-    <script type="text/javascript" src="js/slides.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>	
-    <script type="text/javascript" src="js/custom.js"></script>
-    
-
-
-<!-- Google Analytics -->
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-32882337-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-<!-- start Mixpanel -->
-    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
-    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
-    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
-<!-- end Mixpanel -->
-
-
-</head>
-
-<body style="background-image: url('images/signinbg.png');width:100%;height:100%">
+{%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("Signin Viewed")
 </script>
+{%endblock%}
+
+{%block content%}
 <div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
     <div class="grid onehalf" style="width:40%; margin-top:20px;">
-                <img src="images/tagline.png" style="margin-left:45px;"/>
+                <img src="{{STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
     </div>
 
     <div class="grid onehalf last" style="width:55%; margin-top:20px;">
-        <h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span></h2><img src="images/facebooklogin.png" />
+        <h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span>
+        </h2><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
+      <img src="http://developers.facebook.com/images/devsite/login-button.png"/>
+ </a>
+
     <br class="clear" />
         <h2>Enter your card information so we can load it with discounts</h2>
                 <!-- start payment card form -->
-        <form id="contactform" method="post" action="ajax.php">
-            <p style="font-size: 18px;">
-                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
-            </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+         <form action="" method="POST" id="registration_form">
+ {%csrf_token%}
+<div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
+    <label for="form-number">Card Number: </label><input class="card-number" style="border-radius: 5px 5px;" type="string" name="number"
+		value="">* </input><br />
+    <label for="form-number">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -83,10 +57,41 @@
 		<option value="2016">2016</option>
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
-	</select>*</p>
-                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
-            </p>
-        </form><!-- end form -->
+	</select>*<br /> <input type="submit" id="submit-button" value="submit" style="    -webkit-transition: background-color .3s linear;
+	-moz-transition: background-color .3s linear;
+	-o-transition: background-color .3s linear;
+	-ms-transition: background-color .3s linear;
+	transition: background-color .3s linear;
+	border:0px;
+	background-color:#ACB3BA;
+	padding:6px 10px;
+	color:#ffffff;
+        box-shadow: 3px 3px 3px gray;
+	cursor:pointer;"></div>
+</form>
+<br/>
+<br/>
+<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#registration_form').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			CardSpring.addCard(cardSpringResponseHandler, {
+				publisher_id : publisher_id,
+				security_token : security_token,
+				timestamp : timestamp,
+				hmac : hmac
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : user_id
+			}, "all");
+			return false;
+		});
+	});
+
+</script><!-- end form -->
 
     </div>
 </div>
