@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     
     url(r'^me/$', accountInfo),
     url(r'^logout/$', logout),
-    url(r'^aboutUs/$', aboutus),
+    url(r'^aboutus/$', aboutUs),
     url(r'jobs/$', jobs),
     url(r'privacy/$', privacy),
     url(r'contact/$', contact),
