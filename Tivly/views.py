@@ -108,7 +108,7 @@ def businessInfo(request, bname):
     rewards3 = rewards[3] 
     
     
-    rlat,rlang = getMap(business.businessID)
+    lat,lng,rlat,rlng = getMap(business.businessID)
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
 
@@ -220,7 +220,7 @@ def getMap(businessid):
     rlat = lat + .003
     rlng = lng - .008
     
-    return rlat,rlng
+    return lat,lng,rlat,rlng
 
 def accountInfo(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
