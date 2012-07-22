@@ -16,12 +16,12 @@ import json
 def login (request):       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
-    return render_to_response('signin.html', locals())
+    return render_to_response('signin.html', locals(),context_instance= RequestContext(request))
 
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
-    response = render_to_response('signin.html', locals())
+    response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('recID',recid)
     return response
 
