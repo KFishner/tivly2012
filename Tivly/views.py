@@ -251,7 +251,7 @@ def accountInfo(request):
     URL = settings.URL
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
-    return render_to_response('base.html',context_instance= RequestContext(request))
+    return render_to_response('myaccount.html',context_instance= RequestContext(request))
 
 def aboutUs(request):
     return render_to_response('aboutus.html',context_instance= RequestContext(request))
