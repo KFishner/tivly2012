@@ -16,7 +16,27 @@ import json
 def login (request):       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
+    errors = []
+    if request.method == 'POST':
+        number = request.POST.get('number')
+        if not number:
+            errors.append('Enter a correct credit card number')
+        
+        month = request.POST.get('month')
+        if not month:
+            errors.append('Enter a correct month')
+        
+        year = request.POST.get('year')
+        if not year:
+            errors.append('Enter a correct year')
+        
+        if not errors:
+            exp = year+"-"+month
+            result = json.load(request.POST.get())
+            d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
+            d.save()
     return render_to_response('signin.html', locals(),context_instance= RequestContext(request))
+    
 
 def loginWithRec (request,recid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
