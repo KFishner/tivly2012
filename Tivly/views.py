@@ -97,7 +97,7 @@ def businessInfo(request, bname):
     
     allMyRewards = MyRewards.objects.filter(csID = request.COOKIES.get('csID'))
     used = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'), used = True))
-    left = len(allMyRewards) - len(used)
+    left = len(allMyRewards) - used
     for rewardLookUp in allRewards:
         redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
     
