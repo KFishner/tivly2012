@@ -81,7 +81,7 @@ def home(request):
     allPoints = UserPoints.objects.filter(csID = CSUser.csID)
 
     
-    response = render_to_response('myfvorites.html', locals(),context_instance= RequestContext(request))
+    response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('csID',CSUser.csID)
     return response
 
