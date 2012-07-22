@@ -25,6 +25,16 @@ alert(Thank you!You can now redeem your offer);
 </script> 
 {% endif %}
 
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
+		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
+			href="http://tivly.com/merchants/l">Click for details</a>
+	</h1>
+	<h1 class="page-header search clear">New Discoveries</h1>
+	
+	
 
  <form action="." method="POST" id="registration_form">
  {%csrf_token%}
@@ -90,15 +100,6 @@ alert(Thank you!You can now redeem your offer);
 
 </script>
 {%endif%}
-
-<!-- START MAIN CONTAINER -->
-<div class="container">
-
-	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
-		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
-			href="http://tivly.com/merchants/l">Click for details</a>
-	</h1>
-	<h1 class="page-header search clear">New Discoveries</h1>
 	<table>
 		<tr>
 			{%for reward,business in redeemable.items %}
