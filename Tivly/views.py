@@ -3,12 +3,12 @@ from web1 import settings
 from django.template import RequestContext
 from Facebook import facebookLogin
 from django.shortcuts import render_to_response
-from Tivly.models import *
 from Management import IDGenerator
-from CardSpring import CreateAUser,CreateUserAppConnection,CreateACard
+from CardSpring import CreateAUser,CreateUserAppConnection
 from django.shortcuts import redirect
 from googlemaps import GoogleMaps
 from datetime import datetime
+from Tivly.models import CardSpringUser, MyRecommendations,UserPoints, Businesses, MyRewards, Rewards, ContactUsForm, Cards
 
 import json
 
@@ -217,8 +217,8 @@ def getMap(businessid):
     address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
     lat, lng = gmaps.address_to_latlng(address)
     
-    rlat = lat + .003
-    rlng = lng - .008
+    rlat = lat 
+    rlng = lng
     
     return lat,lng,rlat,rlng
 
