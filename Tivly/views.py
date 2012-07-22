@@ -8,6 +8,7 @@ from CardSpring import CreateAUser,CreateUserAppConnection
 from django.shortcuts import redirect
 from googlemaps import GoogleMaps
 from datetime import datetime
+from CallBack import callBack
 from Tivly.models import CardSpringUser, MyRecommendations,UserPoints, Businesses, MyRewards, Rewards, ContactUsForm, Cards
 
 import json
@@ -241,7 +242,15 @@ def contact(request):
     return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
 
 
+def callback(request):
+    if request.method == "POST":
+        callBack(request)
+        
+
 def accountInfo(request):
+    URL = settings.URL
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    redirect = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('base.html',context_instance= RequestContext(request))
 
 def aboutUs(request):

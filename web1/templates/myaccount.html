@@ -1,101 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+{%block title%} My Account - Tivly {%endblock%}
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>My Account - Tivly</title>
-    <link href="favicon.ico" rel="shortcut icon">
-
-    
-    <!-- Include CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
-
-    <!-- Include Scripts -->	
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/jquery.color.js"></script>
-    <script type="text/javascript" src="js/slides.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>	
-    <script type="text/javascript" src="js/custom.js"></script>
-    
-    <!-- Google Analytics -->	
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-32882337-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <!-- Google Analytics -->
-<!-- start Mixpanel -->
-<script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
-a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
-mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
-<!-- end Mixpanel -->
-    
-</head>
-
-<body>
+{% block MixPanel %}
 <script type="text/javascript">
     mixpanel.track("My Account Visited")
 </script>
-<!-- START HEADER -->
-<div id="header">
+{% endblock %}
 
-	<div class="container">
-    
-    
-    	<!-- start primary nav -->
-        <div class="header-right">
-        
-            <div id="primary-nav" class="header-right">
-            
-                <ul class="sf-menu">
-                    <li><a href="myfavorites.html"><img src="images/myfavorites.png"/></a></li>
-                    <li><a href="newdiscoveries.html"><img src="images/newdiscoveries.png"/></a></li>
-		    <li><a href="myaccount.html">|  My Account</a></li>
-
-                </ul>
-                
-            </div>
-        
-        </div><!-- end nav -->
-        
-        <!-- LOGO -->        
-    	<a href="myfavorites.html" id="logo"><img src="images/logo.png" border="0" alt="WhiteBox Premium App Site Template" /></a>
-        
-        <br class="clear" />
-        
-    </div>
-    
-</div><!-- END HEADER -->
-
-
-<!-- START MAIN CONTAINER -->
+{%block content%}
 <div class="container">
 
     <h1 class="page-header key">My Account</h1>
     
         <table>
             <tr>
-                <td>Connect with Facebook</td>
-                <td></td>
-            </tr>
+                <td><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
+      				<img src="http://developers.facebook.com/images/devsite/login-button.png"/></a></td>
+         <!--    </tr>
                 <td>Connect with Twitter</td>
                 <td></td>
-            <tr>
+            <tr> -->
                 <td>Connect Payment Card</td>
-                <td>        <form id="contactform" method="post" action="ajax.php">
-            <p style="font-size: 18px;">
-                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
-            </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+                <td>       
+ <form action="" method="POST" id="registration_form">
+ {%csrf_token%}
+<div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
+    <p style="margin:0px;padding:0px;color:red;font-size:22px; text-align: center">- Warning - You're not getting all the benefits of tivly!</p><p style="margin:0px;padding:0px;">Enter your information to share and redeem rewards instantly with the swipe of your card!</p><a href="{{ URL }}/faq" style="margin-left:210px;">Click to Learn More</a><br />
+    <label for="form-number">Card Number: </label><input class="card-number" style="border-radius: 5px 5px;" type="string" name="number"
+		value="">* </input><br />
+    <label for="form-number">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -117,10 +49,41 @@ mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
 		<option value="2016">2016</option>
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
-	</select>*</p>
-                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
-            </p>
-        </form></td><!-- end form -->
+	</select>*<br /> <input type="submit" id="submit-button" value="submit" style="    -webkit-transition: background-color .3s linear;
+	-moz-transition: background-color .3s linear;
+	-o-transition: background-color .3s linear;
+	-ms-transition: background-color .3s linear;
+	transition: background-color .3s linear;
+	border:0px;
+	background-color:#ACB3BA;
+	padding:6px 10px;
+	color:#ffffff;
+        box-shadow: 3px 3px 3px gray;
+	cursor:pointer;"></div>
+</form>
+<br/>
+<br/>
+<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#registration_form').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			CardSpring.addCard(cardSpringResponseHandler, {
+				publisher_id : publisher_id,
+				security_token : security_token,
+				timestamp : timestamp,
+				hmac : hmac
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : user_id
+			}, "all");
+			return false;
+		});
+	});
+
+</script></td><!-- end form -->
             </tr>
             <tr>
                 <td style="border:none">Delete Account</td>
@@ -134,64 +97,5 @@ mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
     <br class="clear" />
     
 </div><!-- END MAIN CONTAINER -->
+{%endblock%}
 
-
-<!-- start subscribe area -->
-<div id="subscribe-area">
-
-	<a id="sub-close" href="#_"><img src="images/close.png" alt="close" /></a>
-    
-    
-	<!-- start container -->
-	<div class="container">
-        
-        <h2>Subscribe To Our Newsletter<br /><span>(no spam, we promise!)</span></h2>
-        
-        <form id="subform" action="/" method="post">
-        	
-            <div class="form-input">
-            	<label>Your Name:</label>
-                <input name="sname" type="text" id="sname"/>
-            </div>
-            
-          <div class="form-input">
-            	<label>Email Address:</label>
-              <input name="semail" type="text" id="semail"/>
-            </div>
-            
-            <div class="form-input last">
-                <input type="image" src="images/submit.png" name="submit" id="sub-submit" />
-            </div>
-            
-        </form>
-    
-    </div><!-- end container -->
-    
-</div><!-- end subscribe area -->
-
-
-<!-- START FOOTER -->
-<div id="footer">
-
-	<div class="container">
-    
-    
-
-    
-    	<div id="footer-right">
-        
-            <a href="http://www.facebook.com/gotivly" target="_blank" class="social facebook">Fan Us</a> <a href="https://twitter.com/tivlytweets" target="_blank" class="social twitter">Follow Us</a> 
-            
-        </div>
-    
-		<a id="top" href="#">Top</a> | <a href="aboutus.html">About Us</a> | <a href="jobs.html">Jobs</a> | <a href="contact.html">Contact</a><br />
-        &copy 2012 tivly Corporation<br />
-        
-        <br class="clear" />
-    
-  </div>
-    
-</div><!-- END FOOTER -->
-
-</body>
-</html>
