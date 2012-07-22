@@ -6,35 +6,7 @@
     mixpanel.track("New Discoveries Viewed")
 </script>
 {%endblock%} {%block content%}
-<!-- START MAIN CONTAINER -->
-<div class="container">
 
-	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
-		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
-			href="http://tivly.com/merchants/l">Click for details</a>
-	</h1>
-	<h1 class="page-header search clear">New Discoveries</h1>
-	<table>
-		<tr>
-			{%for reward,business in redeemable.items %}
-			<td>
-				<div class="grid onethird">
-					<h5>{{ business.businessName }} - {{reward.description }}</h5>
-					<h6>{{ business.city }}</h6>
-					<a href="baume.html"><img
-						src="{{business.pictureLocation }}" /></a> <a
-						href="baumerecommend.html">Recommend</a>
-				</div>
-			</td> 
-			{% if not forloop.last and forloop.count|divisibleby:"3"%}
-		</tr>
-		<tr>
-		{% endif %} 
-		{% endfor %}
-		</tr>
-	</table>
-	<br class="clear" />
-	<br class="clear" />
 {% if not hasCard %} {%if request.method == 'GET'%} No Credit Card Found! Submit a
 credit card and start saving today! 
 {%endif%} 
@@ -111,6 +83,36 @@ Thank you!You can now redeem your offer
 
 </script>
 {%endif%}
+
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
+		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
+			href="http://tivly.com/merchants/l">Click for details</a>
+	</h1>
+	<h1 class="page-header search clear">New Discoveries</h1>
+	<table>
+		<tr>
+			{%for reward,business in redeemable.items %}
+			<td>
+				<div class="grid onethird">
+					<h5>{{ business.businessName }} - {{reward.description }}</h5>
+					<h6>{{ business.city }}</h6>
+					<a href="baume.html"><img
+						src="{{business.pictureLocation }}" /></a> <a
+						href="baumerecommend.html">Recommend</a>
+				</div>
+			</td> 
+			{% if not forloop.last and forloop.count|divisibleby:"3"%}
+		</tr>
+		<tr>
+		{% endif %} 
+		{% endfor %}
+		</tr>
+	</table>
+	<br class="clear" />
+	<br class="clear" />
 </div>
 <!-- END MAIN CONTAINER -->
 {%endblock%}
