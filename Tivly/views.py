@@ -25,7 +25,7 @@ def loginWithRec (request,recid):
     return response
 
 def home(request):
-    justCreated = False
+    URL = settings.URL
     code = request.GET.get('code', None)    
     cardspringID = request.COOKIES.get('csID',None)
 
@@ -94,8 +94,13 @@ def businessInfo(request, bname):
     
     allRewards = Rewards.objects.filter(businessID = business.businessID)
     redeemed = 0
+    
+    allMyRewards = MyRewards.objects.filter(csID = request.COOKIES.get('csID'))
+    used = MyRewards.objects.filter(csID = request.COOKIES.get('csID'), used = True)
+    left = len(allMyRewards) - len(used)
     for rewardLookUp in allRewards:
         redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
+    
     rewards = Rewards.objects.filter(businessID = business.businessID).order_by('pointsNeeded')
     rewards0 = rewards[0] 
     rewards1 = rewards[1]  
@@ -168,6 +173,7 @@ def logout(request):
 
 def discoveries(request):
     errors = []
+    URL = settings.URL
     if request.method == 'POST':
         number = request.POST.get('number')
         if not number:

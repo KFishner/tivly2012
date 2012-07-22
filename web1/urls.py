@@ -26,6 +26,6 @@ urlpatterns = patterns('',
     url(r'maps/(?P<businessid>\w{0,50})/$', getMap),
     url(r'^newdiscoveries/$', discoveries),
     url(r'rec/(?P<bname>\w{0,50})/$', recommendation),
-    url(r'venues/(?P<bname>\w{0,50})/$', businessInfo),
+    url(r'business/(?P<bname>\w{0,50})/$', businessInfo),
     url(r'offer/(?P<recid>\w{0,6})/$', getOffer)
 )
