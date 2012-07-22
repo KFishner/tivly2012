@@ -227,7 +227,7 @@ def accountInfo(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
 
 def aboutUs(request):
-    return render_to_response('aboutUs.html',context_instance= RequestContext(request))
+    return render_to_response('aboutus.html',context_instance= RequestContext(request))
 
 def jobs(request):
     return render_to_response('jobs.html',context_instance= RequestContext(request))
