@@ -4,12 +4,12 @@ from django.template import RequestContext
 from Facebook import facebookLogin
 from django.shortcuts import render_to_response
 from Management import IDGenerator
-from CardSpring import CreateAUser,CreateUserAppConnection
+from CardSpring import CreateAUser,CreateUserAppConnection, DeleteAUser
 from django.shortcuts import redirect
 from googlemaps import GoogleMaps
 from datetime import datetime
 from CallBack import callBack
-from Tivly.models import CardSpringUser, MyRecommendations,UserPoints, Businesses, MyRewards, Rewards, ContactUsForm, Cards
+from Tivly.models import CardSpringUser, MyRecommendations,UserPoints, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 
 import json
 
@@ -253,6 +253,32 @@ def accountInfo(request):
     redirect = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('myaccount.html',context_instance= RequestContext(request))
 
+def deleteAccount(request):
+    csid = request.COOKIES.get('csID')
+    csu = CardSpringUser.objects.get(csID = csid)
+    fbu = FBUser.objects.get(fb_id = csu.fbID)
+    token = FBAccessTokens.objects.get(user = fbu)
+    Fbf = FBFriends.objects.filter(user = fbu)
+    myr = MyRewards.objects.filter(csID = csid)
+    
+    DeleteAUser(csid)
+    csu.delete()
+   
+    token.delete()
+    for f in Fbf:
+        f.delete()
+    
+    for r in myr:
+        r.delete()
+    
+    fbu.delete()
+    deleted = True
+    URL = settings.URL
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    redirect = settings.FACEBOOK_REDIRECT_URI
+    return render_to_response('myaccount.html',context_instance= RequestContext(request))
+
+    
 def aboutUs(request):
     return render_to_response('aboutus.html',context_instance= RequestContext(request))
 
@@ -263,7 +289,7 @@ def privacy(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
 
         
-        
+    
 
 
 

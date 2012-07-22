@@ -26,7 +26,7 @@
  <form action="" method="POST" id="registration_form">
  {%csrf_token%}
 <div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
-    <p style="margin:0px;padding:0px;color:red;font-size:22px; text-align: center">- Warning - You're not getting all the benefits of tivly!</p><p style="margin:0px;padding:0px;">Enter your information to share and redeem rewards instantly with the swipe of your card!</p><a href="{{ URL }}/faq" style="margin-left:210px;">Click to Learn More</a><br />
+    <p style="margin:0px;padding:0px;color:red;font-size:22px; text-align: center">- Warning - You're not getting all the benefits of tivly!</p><p style="margin:0px;padding:0px;">Enter your information to share and redeem rewards instantly with the swipe of your card!</p><a href="http://tivly.com/faq/" style="margin-left:210px;">Click to Learn More</a><br />
     <label for="form-number">Card Number: </label><input class="card-number" style="border-radius: 5px 5px;" type="string" name="number"
 		value="">* </input><br />
     <label for="form-number">Expiration Date: <select class="expiration-month" name="month">
@@ -88,7 +88,7 @@
 </script></td><!-- end form -->
             </tr>
             <tr>
-                <td style="border:none">Delete Account</td>
+                <td href ="{{ URL }}/delete" style="border:none">Delete Account</td>
             </tr>
         </table>
     
