@@ -109,7 +109,7 @@ alert(Thank you!You can now redeem your offer);
 					<h6>{{ business.city }}</h6>
 					<a href="{{ URL }}/business/{{business.businessName"><img
 						src="{{business.pictureLocation }}" /></a> <a
-						href="baumerecommend.html">Recommend</a>
+						href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
 				</div>
 			</td> 
 			{% if not forloop.last and forloop.count|divisibleby:"3"%}
