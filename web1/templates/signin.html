@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Signin - Tivly</title>
+    <link href="images/favicon.ico" rel="shortcut icon">
+
+    
+    <!-- Include CSS -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript" src="js/slides.min.js"></script>
+    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="js/custom.js"></script>
+    
+
+
+<!-- Google Analytics -->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32882337-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<!-- start Mixpanel -->
+    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
+    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
+    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
+<!-- end Mixpanel -->
+
+
+</head>
+
+<body style="background-image: url('images/signinbg.png');width:100%;height:100%">
+<script type="text/javascript">
+    mixpanel.track("Signin Viewed")
+</script>
+<div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
+    <div class="grid onehalf" style="width:40%; margin-top:20px;">
+                <img src="images/tagline.png" style="margin-left:45px;"/>
+    </div>
+
+    <div class="grid onehalf last" style="width:55%; margin-top:20px;">
+        <h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span></h2><img src="images/facebooklogin.png" />
+    <br class="clear" />
+        <h2>Enter your card information so we can load it with discounts</h2>
+                <!-- start payment card form -->
+        <form id="contactform" method="post" action="ajax.php">
+            <p style="font-size: 18px;">
+                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+            </p>
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+		<option value="01">01</option>
+		<option value="02">02</option>
+		<option value="03">03</option>
+		<option value="04">04</option>
+		<option value="05">05</option>
+		<option value="06">06</option>
+		<option value="07">07</option>
+		<option value="08">08</option>
+		<option value="09">09</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+
+	</select> <select class="expiration-year" name="year">
+		<option value="2013">2012</option>
+		<option value="2013">2013</option>
+		<option value="2014">2014</option>
+		<option value="2015">2015</option>
+		<option value="2016">2016</option>
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+	</select>*</p>
+                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
+            </p>
+        </form><!-- end form -->
+
+    </div>
+</div>
+<!-- END MAIN CONTAINER -->
+
+
+
+
+
+</body>
+</html>
