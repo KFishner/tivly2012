@@ -81,7 +81,7 @@ def home(request):
     allPoints = UserPoints.objects.filter(csID = CSUser.csID)
 
     
-    response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
+    response = render_to_response('myfvorites.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('csID',CSUser.csID)
     return response
 
@@ -108,7 +108,7 @@ def businessInfo(request, bname):
     rewards3 = rewards[3] 
     
     
-    lat,lng,rlat,rlng = getMap(business.businessID)
+    lat,lng = getMap(business.businessID)
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
 
@@ -176,17 +176,21 @@ def discoveries(request):
         number = request.POST.get('number')
         if not number:
             errors.append('Enter a correct credit card number')
+        
         month = request.POST.get('month')
         if not month:
             errors.append('Enter a correct month')
-        year = request.POST.get('year')
-        if not month:
-            errors.append('Enter a correct year')
-        exp = year+"-"+month
-        result = json.load(request.POST.get())
-        d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
-        d.save()
         
+        year = request.POST.get('year')
+        if not year:
+            errors.append('Enter a correct year')
+        
+        if not errors:
+            exp = year+"-"+month
+            result = json.load(request.POST.get())
+            d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
+            d.save()
+            
     csid = request.COOKIES.get('csID')
     cc = Cards.objects.filter(csID = csid)
     hasCard = True
@@ -216,23 +220,7 @@ def getMap(businessid):
     business = Businesses.objects.filter(businessID = businessid)[0]
     address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
     lat, lng = gmaps.address_to_latlng(address)
-    
-    rlat = lat 
-    rlng = lng
-    
-    return lat,lng,rlat,rlng
-
-def accountInfo(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
-
-def aboutUs(request):
-    return render_to_response('aboutus.html',context_instance= RequestContext(request))
-
-def jobs(request):
-    return render_to_response('jobs.html',context_instance= RequestContext(request))
-
-def privacy(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
+    return lat,lng
 
 def contact(request):
     errors = []
@@ -251,6 +239,19 @@ def contact(request):
             cuf.save()
             return render_to_response('contact.html', locals(),context_instance= RequestContext(request))
     return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
+
+
+def accountInfo(request):
+    return render_to_response('base.html',context_instance= RequestContext(request))
+
+def aboutUs(request):
+    return render_to_response('aboutus.html',context_instance= RequestContext(request))
+
+def jobs(request):
+    return render_to_response('jobs.html',context_instance= RequestContext(request))
+
+def privacy(request):
+    return render_to_response('base.html',context_instance= RequestContext(request))
 
         
         
