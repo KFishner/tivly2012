@@ -54,7 +54,7 @@
 {%block content%}
 <!-- START MAIN CONTAINER -->
 <div class="container">
-<h1 class="page-header eat clear">Baume</h1>
+<h1 class="page-header eat clear">{{ business.businessName }}</h1>
 
     <div class="grid onehalf" style="margin-top:20px;">
                 <img src="{{ business.pictureLocation }}" style="border:1px solid black;box-shadow: 4px 3px 4px #666666;">
@@ -62,7 +62,6 @@
     </div>
 
     <div class="grid onehalf last" style="margin-top:20px;">
-           <div class="grid onehalf last" style="width: 55%; margin-top: 20px;">
 		<div id="tabs">
 			<ul>
 				<li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
