@@ -11,45 +11,65 @@
                 <p>{{ business.description }}</p>
     </div>
 
-    <div class="grid onehalf last" style="margin-top:20px;">
-            <div id="tabs">
-                <ul>
-                        <li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
-                        <li><a href="#tabs-2" style="font-size: 20px">My {{ business.businessName }}</a></li>
-                </ul>
-                <div id="tabs-1">
-                    <div class="getsocial">
-                        <h1>Share {{ business.businessName }} with your friends!</h1>
-                        <h2 style="font-size:24px">They get a <span style="color:#ff9966">{{ rewards0.description }}</span>, and you do too - everyone's a winner</h2>
-                        <span class='st_facebook_vcount' displayText='Facebook'></span>
-                        <span class='st_twitter_vcount' displayText='Tweet'></span>
-                        <span class='st_linkedin_vcount' displayText='LinkedIn'></span>
-                        <span class='st_email_vcount' displayText='Email'></span>
-                        <span class='st_sharethis_vcount' displayText='ShareThis'></span>
-                    </div>
-                </div>
-                <div id="tabs-2">
-                        <table>
-                            <tr>
-                                <td style="padding-right:100px">Recommended to Friends</td>
-                                <td>{{ recommended }}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding-right:100px">Redeemed by Friends</td>
-                                <td>{{ redeemed }}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding-right:100px">My Used Rewards</td>
-                                <td>{{ used }}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding-right:100px; color:#09c">Remaining Rewards</td>
-                                <td style="color:#09c">{{ left }}</td>
-                            </tr>
-                        </table>
-                </div>
-                </div>
-    </div>
+  <div class="grid onehalf last" style="width: 55%; margin-top: 20px;">
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
+				<li><a href="#tabs-2" style="font-size: 20px">My
+						{{business.businessName}}</a></li>
+			</ul>
+			<div id="tabs-1">
+				<div class="getsocial">
+					<h1>Share {{ business.businessName }} with your friends!</h1>
+					<h2 style="font-size: 24px">
+						They get a <span style="color: #ff9966">{{rewards0.description }}</span>, and you do too - everyone's a winner
+					</h2>
+				</div>
+				<!-- Start Shareaholic Sexy Bookmark HTML-->
+				<div class="shr_class shareaholic-show-on-load"></div>
+				<!-- End Shareaholic Sexy Bookmark HTML -->
+				<!-- Start Shareaholic Sexy Bookmark settings -->
+				<script type="text/javascript">
+var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ recid }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"${title} - ${short_link} via @Shareaholic"}};
+var SHRSB_Globals = {"perfoption":"1"};
+</script>
+				<!-- End Shareaholic Sexy Bookmark settings -->
+				<!-- Start Shareaholic Sexy Bookmark script -->
+				<script type="text/javascript">
+(function() {
+var sb = document.createElement("script"); sb.type = "text/javascript";sb.async = true;
+sb.src = ("https:" == document.location.protocol ? "https://dtym7iokkjlif.cloudfront.net" : "http://cdn.shareaholic.com") + "/media/js/jquery.shareaholic-publishers-sb.min.js";
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb, s);
+})();
+</script>
+
+				<!-- End Shareaholic Sexy Bookmark script -->
+			</div>
+			<div id="tabs-2">
+				<table>
+					<tr>
+						<td style="padding-right: 100px">Recommended to Friends</td>
+						<td>{{ recommended }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px">Redeemed by Friends</td>
+						<td>{{ redeemed }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px">My Used Rewards</td>
+						<td>{{ myRewardsUsed }}</td>
+					</tr>
+					<tr>
+						<td style="padding-right: 100px; color: #09c">Remaining
+							Rewards</td>
+						<td style="color: #09c">{{ myRewardsRemaining }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>
 <br class="clear" />
 
     <div class="grid onehalf" style="margin-top:20px;">
