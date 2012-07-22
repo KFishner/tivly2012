@@ -107,10 +107,8 @@ def businessInfo(request, bname):
     rewards2 = rewards[2] 
     rewards3 = rewards[3] 
     
-    progressBar1 = int(float(points.points) / float(rewards1.pointsNeeded) * 100)
-    progressBar2 = int(float(points.points) / float(rewards2.pointsNeeded) * 100)
-    progressBar3 = int(float(points.points) / float(rewards3.pointsNeeded) * 100)
- 
+    
+    rlat,rlang = getMap(business.businessID)
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
 
@@ -212,7 +210,7 @@ def discoveries(request):
             
     return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
 
-def getMap(request,businessid):
+def getMap(businessid):
     GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
     gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
     business = Businesses.objects.filter(businessID = businessid)[0]
@@ -221,7 +219,8 @@ def getMap(request,businessid):
     
     rlat = lat + .003
     rlng = lng - .008
-    return render_to_response('map.html', locals(),context_instance = RequestContext(request))
+    
+    return rlat,rlng
 
 def accountInfo(request):
     return render_to_response('base.html',context_instance= RequestContext(request))
