@@ -1,22 +1,52 @@
-{% extends 'base.html'%}
-{%block title%} Signin - Tivly {%endblock%}
-{% block extraHead%}
-<style type="text/css">
-body {background-image: url('images/signinbg.png');width:100%;height:100%}
-</style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 
-<script type="text/javascript"
-        src="https://js.cardspring.com/v1/cs.js">
-</script>
-{%endblock%}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Signin - Tivly</title>
+    <link href="images/favicon.ico" rel="shortcut icon">
 
-{%block MixPanel%}
+    
+    <!-- Include CSS -->
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
+    
+
+
+<!-- Google Analytics -->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32882337-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<!-- start Mixpanel -->
+    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
+    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
+    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
+<!-- end Mixpanel -->
+
+
+</head>
+
+<body style="background-image: url('images/signinbg.png');width:100%;height:100%">
 <script type="text/javascript">
     mixpanel.track("Signin Viewed")
 </script>
-{%endblock%}
-
-{%block content%}
 <div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
     <div class="grid onehalf" style="width:40%; margin-top:20px;">
                 <img src="{{STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
@@ -97,4 +127,6 @@ body {background-image: url('images/signinbg.png');width:100%;height:100%}
     </div>
 </div>
 <!-- END MAIN CONTAINER -->
-{%endblock%}
+
+</body>
+</html>
