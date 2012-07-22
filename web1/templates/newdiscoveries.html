@@ -1,15 +1,18 @@
 {%extends 'base.html'%} 
 {% block title %}My Discoveries{%endblock%} 
 
+{block extraHead%}
+<script type="text/javascript"
+        src="https://js.cardspring.com/v1/cs.js">
+</script>
+{%block extrahead%}
 {%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("New Discoveries Viewed")
 </script>
 {%endblock%} {%block content%}
 
-{% if not hasCard %} {%if request.method == 'GET'%} No Credit Card Found! Submit a
-credit card and start saving today! 
-{%endif%} 
+{% if not hasCard %} 
 {% if errors and request.method == 'POST' %}
 <ul>
 	{% for error in errors %}
@@ -17,9 +20,13 @@ credit card and start saving today!
 </ul>
 {% endif %} 
 {% if not errors and request.method == 'POST'%} 
-Thank you!You can now redeem your offer 
+<script>
+alert(Thank you!You can now redeem your offer);
+</script> 
 {% endif %}
- <form action="." method="POST" id="CCregistration_form">
+
+
+ <form action="." method="POST" id="registration_form">
  {%csrf_token%}
 <div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
     <p style="margin:0px;padding:0px;color:red;font-size:22px; text-align: center">- Warning - You're not getting all the benefits of tivly!</p><p style="margin:0px;padding:0px;">Enter your information to share and redeem rewards instantly with the swipe of your card!</p><a href="faq.html" style="margin-left:210px;">Click to Learn More</a><br />
@@ -57,7 +64,7 @@ Thank you!You can now redeem your offer
 	padding:6px 10px;
 	color:#ffffff;
         box-shadow: 3px 3px 3px gray;
-	cursor:pointer;"> </input></div>
+	cursor:pointer;"></div>
 </form>
 <br/>
 <br/>

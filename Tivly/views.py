@@ -179,8 +179,7 @@ def discoveries(request):
         if not month:
             errors.append('Enter a correct year')
         exp = year+"-"+month
-        response = CreateACard(request.COOKIES.get('csID'), number, exp)
-        result = json.load(response)
+        result = json.load(request.POST.get())
         d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
         d.save()
         

@@ -16,10 +16,6 @@ import unicodedata
 import httplib2
 from web1 import settings
 from urlparse import parse_qsl
-
-
-
-
 #request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
@@ -32,32 +28,34 @@ from urlparse import parse_qsl
 #csid = 'J2ON89'   
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
+#############################################
+#csid = 'PLZBS0'
+#DeleteAUser(csid)
+#csu = CardSpringUser.objects.get(csID = csid)
+#csu.delete()
+#print 'csu deleted'
+#fbu = FBUser.objects.get(first_name = 'Bryan')
+#token = FBAccessTokens.objects.get(user = fbu)
+#token.delete()
+#print 'token deleted'
+#Fbf = FBFriends.objects.filter(user = fbu)
+#for f in Fbf:
+#    f.delete()
+#print 'friends deleted!'    
+#myr = MyRewards.objects.filter(csID = csid)
+#
+#for r in myr:
+#    r.delete()
+#    print 'reward deleted'
+#
+#fbu.delete()
+#print 'fb deleted'
+#
+#print 'you\'re wiped !'
+#
 
-csid = 'PLZBS0'
-DeleteAUser(csid)
-csu = CardSpringUser.objects.get(csID = csid)
-csu.delete()
-print 'csu deleted'
-fbu = FBUser.objects.get(first_name = 'Bryan')
-token = FBAccessTokens.objects.get(user = fbu)
-token.delete()
-print 'token deleted'
-Fbf = FBFriends.objects.filter(user = fbu)
-for f in Fbf:
-    f.delete()
-print 'friends deleted!'    
-myr = MyRewards.objects.filter(csID = csid)
-
-for r in myr:
-    r.delete()
-    print 'reward deleted'
-
-fbu.delete()
-print 'fb deleted'
-
-print 'you\'re wiped !'
-
-print GetUsers().read()
+response = CreateACard('5RVRHK','1129384599856','2020-03')
+print response
 
 
 
