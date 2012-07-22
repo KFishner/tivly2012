@@ -64,9 +64,10 @@
          <form action="" method="POST" id="registration_form">
  {%csrf_token%}
 <div style="background-color: #ffcccc;display:inline-block;padding:10px;border-radius: 6px 6px;box-shadow: 4px 4px 4px gray">
-    <label for="form-number">Card Number: </label><input class="card-number" style="border-radius: 5px 5px;" type="string" name="number"
-		value="">* </input><br />
-    <label for="form-number">Expiration Date: <select class="expiration-month" name="month">
+   <p style="font-size: 18px;">
+                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+            </p>
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -88,17 +89,9 @@
 		<option value="2016">2016</option>
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
-	</select>*<br /> <input type="submit" id="submit-button" value="submit" style="    -webkit-transition: background-color .3s linear;
-	-moz-transition: background-color .3s linear;
-	-o-transition: background-color .3s linear;
-	-ms-transition: background-color .3s linear;
-	transition: background-color .3s linear;
-	border:0px;
-	background-color:#ACB3BA;
-	padding:6px 10px;
-	color:#ffffff;
-        box-shadow: 3px 3px 3px gray;
-	cursor:pointer;"></div>
+	</select>*</p>
+                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
+            </p>
 </form>
 <br/>
 <br/>
