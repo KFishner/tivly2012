@@ -9,7 +9,7 @@ from googlemaps import GoogleMaps
 from Tivly.models import Businesses
 
     
-def getMap(self,businessid):
+def getMap(businessid):
     GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
     gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
     business = Businesses.objects.filter(businessID = businessid)[0]
