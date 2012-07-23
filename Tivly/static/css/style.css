@@ -953,7 +953,7 @@ td{
 	font-size:12px;
 }
 
-#commentform #submit, #contactform #submit, .searchform #submit{
+#commentform #submit, #contactform #submit, .searchform, #registration_form #submit-button{
     -webkit-transition: background-color .3s linear;
 	-moz-transition: background-color .3s linear;
 	-o-transition: background-color .3s linear;
