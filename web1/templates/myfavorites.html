@@ -66,4 +66,30 @@ $(".fancybox").fancybox({
 		</tr>
 	</table>
 <!-- END MAIN CONTAINER -->
+
+<script>
+$(document).ready(function() {
+$(".fancybox").fancybox({ 
+    'padding':          0,
+    'width':        800,
+    'height':       350,
+    'padding':      0, 
+    'margin':      0, 
+    'speedIn':      300,
+    'speedOut':     300,
+    'transitionIn': 'elastic',
+    'transitionOut': 'elastic',
+    'easingIn':     'swing',
+    'easingOut':    'swing',
+    'titleShow' : false,
+    		helpers : {
+			overlay : {
+			    opacity: .8,
+			    css : {
+				'background-color' : '#666',
+				'box-shadow' : '0px 0px 20px white',}
+			}}
+}); 
+    $(".fancybox").trigger('click');
+});</script>
 {%endblock%}
