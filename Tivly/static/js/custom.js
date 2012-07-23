@@ -38,7 +38,7 @@ $(document).ready(function(){
 	$(".fancybox").fancybox({
 		padding:0,
 		height:340,
-		closeClick:true,
+		closeClick:false,
 		openEffect:'elastic',
 		closeEffect:'elastic',
 		helpers : {
@@ -48,6 +48,21 @@ $(document).ready(function(){
 				'background-color' : '#666',}
 			}}
 	});
+
+$(".fancybox2").fancybox({
+		padding:0,
+		height:340,
+		closeClick:false,
+		openEffect:'elastic',
+		closeEffect:'elastic',
+		helpers : {
+			overlay : {
+			    opacity: .8,
+			    css : {
+				'background-color' : '#666',}
+			}}
+	});
+
 	
 /*-----------------------------------------------------------------------------------*/
 /*	Lightbox Hovers
