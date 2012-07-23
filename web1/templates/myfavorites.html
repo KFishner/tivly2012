@@ -44,7 +44,7 @@ $(".cclogin").fancybox({
 			href="{{ URL }}/merchantsignup">Click for details</a>
 	</h1>
 	<h1 class="page-header heart clear">My Favorites</h1>
-	{% if hasCard%}
+	{% if not hasCard%}
 	<div id="cclogin"><a href="{{ URL }}/creditcardsubmit" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter payment card information to get the full tivly experience</a> <a href="{{ URL }}/faq2" style="text-decoration: none;border:none;font-size:18px"> (Learn More)</a>
 	{%endif%}
 	<table>
