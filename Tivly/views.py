@@ -9,6 +9,7 @@ from CallBack import callBack
 from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
 from GMaps import getMap
+import CSUser
  
 
 def login (request):
@@ -35,7 +36,7 @@ def home(request):
     #template variables...
     URL = settings.URL
     
-    CSUser = CardSpringUser(request)
+    CSUser = CSUser(request)
     recid =request.COOKIES.get('recID', None)
     rec = MyRecommendations.objects.filter(recID = recid)
     
@@ -58,7 +59,7 @@ def home(request):
 def businessInfo(request, bname):
     #template variables...
     bname =  bname.replace('_',' ')
-    CSUser = CardSpringUser(request)
+    CSUser = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
@@ -71,7 +72,7 @@ def businessInfo(request, bname):
 def recommendation(request,bname):
     #template variables...
     URL = settings.URL
-    CSUser = CardSpringUser(request)
+    CSUser = CSUser(request)
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
    
@@ -95,13 +96,13 @@ def getOffer(request, recid):
         return loginWithRec(request,recid)
   
     else:
-        CSUser = CardSpringUser(request)
+        CSUser = CSUser(request)
         CSUser.addRecommendationToRewards(request,CSUser,recid)
         return redirect(settings.URL+'/home')  
 
 def newDiscoveries(request):
     #template variables...
-    CSUser = CardSpringUser(request)
+    CSUser = CSUser(request)
     URL = settings.URL
     
     if request.method == 'POST':

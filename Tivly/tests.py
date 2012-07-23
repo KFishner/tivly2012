@@ -16,7 +16,7 @@ import unicodedata
 import httplib2
 from web1 import settings
 from urlparse import parse_qsl
-#request = {}
+request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
 #appid = 'NLWgAaWVclvK'
@@ -55,8 +55,9 @@ from urlparse import parse_qsl
 #
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
-recid = 'YU9D4N'
-print MyRecommendations.objects.filter(recID = recid)
+CSUser = CardSpringUser(request)
+print CSUser.myRewards
+
 
 
 
