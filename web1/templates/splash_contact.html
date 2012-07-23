@@ -1,0 +1,80 @@
+{%extends 'base.html'%}
+
+{%block title%}Tivly- Rewarding Discovery{%endblock%}
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+{% if popup %}
+<script>confirm("Thanks for contacting us! We will reply within 24 hours");</script>
+{% endif %}
+
+    <h1 class="page-header contact">Contact Page</h1>
+    
+    <div class="grid onehalf">
+    	 {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    	{% endif %}
+    
+    	<h4>Send A Message</h4>
+        
+    	<p>We'll get back to you within 24 hours</p>
+    	
+        <!-- start contact form -->
+        <form id="contactform" method="post" action="">
+        {% csrf_token %}
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="name" name="name" />
+                <label for="form-name">Name *</label>
+            </p>
+            <p>
+                <input type="email" tabindex="2" size="22" value="" id="email" name="email" />
+                <label for="form-email">Email <span>(No Spam We Promise)</span> *</label>
+            </p>
+            <p>
+                <textarea tabindex="4" rows="10" cols="58" id="message" name="message"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
+            </p>
+        </form><!-- end contact form -->
+    
+    </div>
+    
+    <div class="grid onehalf last">
+    
+    	<a href="http://www.facebook.com/gotivly" target="_blank"><h4>Become A Fan</h4></a>
+        
+        <!-- facebook like box -->
+    
+        <!-- Google Plus Badge -->
+            
+    </div>
+
+
+    
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+
+
+<<!-- start subscribe area -->
+<div id="subscribe-area">
+
+	<a id="sub-close" href="#_"><img src="images/close.png" alt="close" /></a>
+    
+    
+	<!-- start container -->
+	<div class="container">
+        
+        <div class="fb-login-button" style="text-align: center;" data-show-faces="true" data-width="400" data-max-rows="2"></div>
+    
+    </div><!-- end container -->
+    
+</div><!-- end subscribe area -->
+{%endblock%}

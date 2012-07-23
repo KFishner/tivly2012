@@ -139,8 +139,9 @@ TEMPLATE_DIRS = (
 
 
 INSTALLED_APPS = (
-   'south',
+    'south',
     'Tivly',
+    'Splash',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',

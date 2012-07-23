@@ -1,4 +1,4 @@
-from django.conf.urls import patterns,url
+from django.conf.urls import patterns,include,url
 from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure, creditCardSubmission, faq2
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -20,4 +20,8 @@ urlpatterns = patterns('',
     url(r'offer/(?P<recid>\w{0,6})/$', getOffer),
     url(r'creditcard',creditCardSubmission),
     url(r'faq2', faq2),
+)
+
+urlpatterns = patterns('',
+    url(r'^splash/', include('Splash.urls')),
 )

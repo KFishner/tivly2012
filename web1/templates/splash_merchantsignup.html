@@ -1,0 +1,110 @@
+{%extends 'base.html'%}
+
+{%block title%}Tivly - Loyalty in One Swipe{%endblock%}
+
+{%block extraScript%}
+<script type="text/javascript">
+    mixpanel.track("Merchant Signup Visited")
+</script>
+{%endblock%}
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+    <h1 class="page-header contact">Merchant Contact Form</h1>
+    
+    <div class="grid onehalf">
+    {% if popup %}
+	<script>confirm("Thanks for contacting us! We will reply within 24 hours");</script>
+	{% endif %}
+	
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    	<h4>Send A Message</h4>
+        
+    	<p style="color:#ff9966">We'll get back to you in 24 hours will full details on tivly features</p>
+    	
+        <!-- start contact form -->
+        <form id="contactform" method="post" action="">
+        {%csrf_token%}
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="name" name="name" />
+                <label for="name">Name *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="restaurant" />
+                <label for="restaurant">Restaurant Name *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="email" />
+                <label for="email">Email Address*</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="phone" />
+                <label for="phone">Phone Number (mobile)*</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="address" />
+                <label for="address">Street Address*</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="city" />
+                <label for="city">City*</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="state" />
+                <label for="state">State*</label>
+            </p>
+            <p>
+                <input type="text" tabindex="2" size="22" value="" id="email" name="zip" />
+                <label for="zip">Zip Code*</label>
+            </p>
+            <p>
+                <textarea tabindex="4" rows="6" cols="58" id="message" name="message"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
+            </p>
+        </form><!-- end contact form -->
+    
+    </div>
+    
+
+
+
+    
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+
+
+<!-- start subscribe area -->
+<div id="subscribe-area">
+
+	<a id="sub-close" href="#_"><img src="images/close.png" alt="close" /></a>
+    
+    
+	<!-- start container -->
+	<div class="container">
+        
+        <div class="fb-login-button" style="text-align: center;" data-show-faces="true" data-width="400" data-max-rows="2"></div>
+    
+    </div><!-- end container -->
+    
+</div><!-- end subscribe area -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324960610922985";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{%endblock%}

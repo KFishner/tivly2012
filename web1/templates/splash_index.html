@@ -1,0 +1,170 @@
+{%extends 'base.html'%}
+{%block title%}Tivly- Rewarding Discovery{%endblock%}
+
+{%block extraHead%} <meta name="google-site-verification" content="kKhNkhNGqjYuNXW_UtOZyLhg1_JSIdwlOyYxP7W738U" />
+ {%endblock%}
+{% block extraScript%}
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '162129900588207', // App ID
+      channelUrl : '//WWW.tivly.COM/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+<script type="text/javascript">
+    mixpanel.track("Landing Page Loaded")
+</script>
+<script>
+    mixpanel.track_links("#app-store a, #mxp a", "User Subscribe")
+</script>
+
+{% endblock%}
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="slider-wrapper">
+    
+
+    <!-- start slider -->  
+    <div id="feature-slider">                
+    
+        <!-- start slides_container-->
+        <div class="slides_container">
+      
+            <!-- start slide -->
+            <div class="slide">
+            
+            	
+                <div class="cloud-container">
+                    <div class="cloud-icons"></div>
+                    <img src="{{ STATIC_URL }}images/app-cloud.png" alt="app cloud" class="app-cloud" />
+				</div>
+                
+                <br class="clear" />
+                
+			</div><!-- end slide -->
+            
+            
+        
+
+	    
+            
+            <!-- start slide -->
+            <div class="slide">
+                
+		<h4 style="color:#ff9966">Share your favorite places</h4>
+		<p class="grid onethird"><img src="{{ STATIC_URL }}images/screens/scbaume.png" alt="screen1" /></p>
+                <h4 style="color:#ff9966">Take your friends' recommendations</h4>
+		<p class="grid onethird"><img src="{{ STATIC_URL }}images/screens/scfbpost.png" alt="screen1" /></p>
+                <h4 style="color:#ff9966">Get rewarded and explore as VIPs</h4>
+		<p class="grid onethird last"><img src="{{ STATIC_URL }}images/screens/scpoints.png" style="width:295px" alt="screen1" /></p>
+
+
+            
+		<h2>Referral has never been easier - <strong style="color:#ff9966">share favorite restaurants</strong> via Facebook, Twitter, or email to <strong style="color:#ff9966">get rewarded</strong> with discounts and exclusive prizes!</h2>
+            </div>
+	    <!-- end slide -->
+	    
+            <!-- start slide -->
+            <div class="slide">
+                        
+                <div class="grid onehalf">
+                
+                  <h2 class="text-replace">Share all your favorite restaurants from<span style="color:#ff9966"> one easy place</span></h2>
+                    
+                    <p class="justify">The more you share, the more rewards you and your friends get! A 10% discount is sent with every recommendation and <strong>automatically loaded to your friends' credit card</strong> when they sign up. When a friend uses your recommendation, you get one point which can be redeemed for a 10% discount of your own. Reach 10 points and get exclusive dinners at your favorite restaurants - all for just sharing. Check out <strong style="color:#ff9966">screenshots</strong> to see how simple tivly is. Free lunch has never been easier.</p>
+                    
+                    <p><strong>Go ahead! Click one of the images to the right, <em>you won't be disappointed!</em></strong></p>
+                                                                                
+                </div>
+                
+                <div class="grid onehalf last">
+                                
+                	<ul class="screenshots">
+                    	<li><a href="{{ STATIC_URL }}images/screens/scmyfavorites.png" class="fancybox" title="Share all your favorite restaurants from one easy place" rel="screens"><img src="{{ STATIC_URL }}images/screens/smallmyfavorites.png" alt="screen1" /><span></span></a></li>
+                    	<li><a href="{{ STATIC_URL }}images/screens/scbaumehome.png" class="fancybox" title="Share via Facebook, Twitter, LinkedIn, or email" rel="screens"><img src="{{ STATIC_URL }}images/screens/smallbaumehome.png" alt="screen2" /><span></span></a></li>
+                    	<li><a href="{{ STATIC_URL }}images/screens/scbaumeshare.png" class="fancybox" title="Follow your rewards at all locations" rel="screens"><img src="{{ STATIC_URL }}images/screens/smallbaumeshare.png" alt="screen3" /><span></span></a></li>
+                    	<li><a href="{{ STATIC_URL }}images/screens/screwards.png" class="fancybox" title="There is such thing as a free lunch" rel="screens"><img src="{{ STATIC_URL }}images/screens/screwardss.png" alt="screen4" /><span></span></a></li>
+                    	</ul><br class="clear"/>
+                        
+                </div>
+                
+            </div><!-- end slide -->
+            
+                   
+        </div><!-- end slide_container -->
+        
+        <a href="#_" class="prev" title="Previous Slide">Previous</a><a href="#_" class="next" title="Next Slide">Next</a>
+                                         
+    </div><!-- end slider -->    
+    
+        
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+
+
+<!-- start subscribe area -->
+<div id="subscribe-area">
+
+	<a id="sub-close" href="#_"><img src="{{STATIC_URL}}images/close.png" alt="close" /></a>
+    
+    
+	<!-- start container -->
+	<div class="container" style="text-align: center;">
+        
+	<div class="fb-login-button" style="text-align: center; margin: 30px" data-show-faces="true" data-width="400" data-max-rows="2" size="xlarge">Connect with Facebook</div>    
+    </div><!-- end container -->
+    
+</div><!-- end subscribe area -->
+
+
+    <!-- start container -->
+    <div class="container">
+    
+    	<h2 class="slide-break">Why Choose <span class="wb-logo">tivly</span> to Discover<br /><span class="wb-small">(other than saving money)</span></h2>
+    
+        <ul id="features">
+	    
+	    <li class="icon eat"><strong>Share your favorite restaurants</strong> - Send recommendations and discounts to friends through facebook, twitter, linkedIn, and email. When they take your recommendations, you get rewarded.</li>            
+
+   	    <li class="right icon search"><strong>Discover your friends' great finds</strong> - Everyone has a friend who is "in the know." Now you can take their recommendations with ease! (and get "in the know" yourself)</li>
+
+	    <li class="icon tag"><strong>Rewards automatically on your credit card</strong> - Keep swiping your card at your favorite restaurants and tivly automatically loads rewards onto your card - just swipe to redeem.</li>
+
+            <li class="right icon heart"><strong>All your favorite restaurants in one place</strong> - Now when you recommend a restaurant to a friend, they get the full details - menu, location, hours - everything they need to enjoy your favorite spot!</li>
+
+            
+        </ul>
+        
+        <br class="clear" />
+        
+        
+        <!-- start app store button area -->
+        <div id="app-store">
+		
+        	<a href="#subscribe-area" class="sublink" data-to=".pagination"><img src="{{ STATIC_URL }}images/signup-circle.png" alt="App Store" /></a> 
+        
+        </div><!-- end app store area -->
+        
+    </div><!-- end container -->
+
+</div><!-- end bottom content -->
+{%endblock%}

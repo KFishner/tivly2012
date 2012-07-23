@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{%block title%}Merchants - Tivly{%endblock%}
+
+{%block extraScript%}
+<script type="text/javascript">
+    mixpanel.track("Merchant Page Visited")
+</script>
+{%endblock%}
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+
+    <h1 class="page-header features">Grow <span style="color:#0099cc">revenue by 15%</span> and <span style="color:#ff9966">customer base by 5%</span></h1>
+    
+    <img src="{{ STATIC_URL }}images/infograph2.jpg"/>
+    
+    <h1 class="page-header features clear">Not your average referral program. Complete services for <span style="color:#ff9966">customer marketing, acquisition, and retention</span>. Get customers through the door and <span style="color:#0099cc">keep their business</span>.</h1>
+
+        	
+    
+            <div class="grid onehalf">
+                <h1>Marketing & Acquisition</h1>
+            <ul id="features">
+        
+            <li class="icon comment"><strong>Social Word of Mouth</strong> - Let your loyal customers market for you. Offer your customers rewards for recommending your restaurant to friends through Facebook, twitter, and email.</li>
+            
+	    <li class="icon tag"><strong>Promotions & Discounts</strong> - Offer unique promotions and discounts to bring in new customers, and use the retention features to keep their business.</li>
+	    
+            <li class="icon key"><strong>Social Media Growth</strong> - Grow your social media presence everytime your restaurant gets recommended. We can manage your Facebook page and twitter feed for you.</li>
+
+        </ul>
+                
+        </div>
+            <div class="grid onehalf last">
+                <h1>Retention</h1>
+                        <ul id="features">
+        
+            <li class="icon user"><strong>Fully Customized Loyalty</strong> - Create rewards that you and your customers love.</li>
+            
+	    <li class="icon newpage"><strong>Advanced Customer Analytics</strong> - Optimize your promotional campaigns to offer specific customers the right incentives to keep them coming back for seconds (and thirds).</li>
+	      
+        </ul>
+        </div>
+        <br class="clear" />
+
+        <h1 class="slide-break"><a href="http://tivly.com/merchantsignup"><span class="wb-logo2"></span></a><br /><span style="color:#ff9966">First month is free.</span> Contact us for all the pricing details!</h2>
+        <br class="clear" />
+
+</div><!-- END MAIN CONTAINER -->
+{%endblock%}
