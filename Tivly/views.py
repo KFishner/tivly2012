@@ -53,7 +53,7 @@ def home(request):
             businessList.append(business)
     
     response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
-    response.set_cookie('csID',user.csUSer.csID)
+    response.set_cookie('csID',user.csUser.csID)
     return response
 
 def businessInfo(request, bname):
