@@ -22,6 +22,6 @@ urlpatterns = patterns('',
     url(r'faq2', faq2),
 )
 
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^splash/', include('Splash.urls')),
 )
