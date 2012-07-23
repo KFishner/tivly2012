@@ -9,7 +9,7 @@ from CallBack import callBack
 from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
 from GMaps import getMap
-import CSUser
+from CSUserObject import CSUser
  
 
 def login (request):
