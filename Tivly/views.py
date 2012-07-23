@@ -36,16 +36,16 @@ def home(request):
     #template variables...
     URL = settings.URL
     
-    CSUser = CSUser(request)
+    user = CSUser(request)
     recid =request.COOKIES.get('recID', None)
     rec = MyRecommendations.objects.filter(recID = recid)
     
     if rec.exists():
-        CSUser.addRecommendationToRewards(recid)
+        user.addRecommendationToRewards(recid)
 
     businessList= []
     
-    for reward in CSUser.myRewards:
+    for reward in user.myRewards:
         business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
         if business in businessList:
             continue
@@ -53,17 +53,17 @@ def home(request):
             businessList.append(business)
     
     response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
-    response.set_cookie('csID',CSUser.csID)
+    response.set_cookie('csID',user.csID)
     return response
 
 def businessInfo(request, bname):
     #template variables...
     bname =  bname.replace('_',' ')
-    CSUser = CSUser(request)
+    user = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
-    used,left,redeemed,recommended = CSUser.getRewardStatistics(business)
+    used,left,redeemed,recommended = user.getRewardStatistics(business)
     
     
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
@@ -72,7 +72,7 @@ def businessInfo(request, bname):
 def recommendation(request,bname):
     #template variables...
     URL = settings.URL
-    CSUser = CSUser(request)
+    user = CSUser(request)
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
    
@@ -81,34 +81,34 @@ def recommendation(request,bname):
         if reward.pointsNeeded == 0: 
             rewards0 = reward 
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = CSUser.csID, dateGiven = datetime.now())
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csID, dateGiven = datetime.now())
     myRecommendation.save()
     
-    used,left,redeemed,recommended = CSUser.getRewardStatistics(business)
+    used,left,redeemed,recommended = user.getRewardStatistics(business)
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
 def getOffer(request, recid):
     #template variables ... 
     csid = request.COOKIES.get('csID', None)
-    CSUser = CardSpringUser.objects.filter(csID = csid)
+    user = CardSpringUser.objects.filter(csID = csid)
     
-    if not CSUser.exists() or csid is None:
+    if not user.exists() or csid is None:
         return loginWithRec(request,recid)
   
     else:
-        CSUser = CSUser(request)
-        CSUser.addRecommendationToRewards(request,CSUser,recid)
+        user = CSUser(request)
+        user.addRecommendationToRewards(recid)
         return redirect(settings.URL+'/home')  
 
 def newDiscoveries(request):
     #template variables...
-    CSUser = CSUser(request)
+    user = CSUser(request)
     URL = settings.URL
     
     if request.method == 'POST':
         errors = validateCard(request)
         
-    cc = Cards.objects.filter(csID = CSUser.csID)
+    cc = Cards.objects.filter(csID = user.csID)
     
     if cc:
         hasCard = True
@@ -117,8 +117,8 @@ def newDiscoveries(request):
         hasCard = False
     
     
-    myRewards = CSUser.myRewards
-    myUserPoints = CSUser.userPoints
+    myRewards = user.myRewards
+    myUserPoints = user.userPoints
     
     redeemable = {}
     for reward in myRewards:
