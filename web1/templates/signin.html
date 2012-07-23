@@ -76,8 +76,11 @@
     <div class="grid onehalf" style="width:40%; margin-top:20px;">
                 <img src="{{ STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
     </div>
-
+	
     <div class="grid onehalf last" style="width:55%; margin-top:20px;">
+    	<a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
+      <img src="http://developers.facebook.com/images/devsite/login-button.png"/>
+ 		</a>
         <div style="position:relative;text-align: center;margin-top:50px;"><h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span></h2>
         <div class="fb-login-button" data-show-faces="true" data-width="300" data-max-rows="2" size = "large">Login with Facebook</div>
         </div>
