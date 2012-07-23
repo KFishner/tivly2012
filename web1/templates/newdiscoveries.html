@@ -26,7 +26,8 @@
 {% if errors and request.method == 'POST' %}
 <ul>
 	{% for error in errors %}
-	<li>{{ error }}</li> {% endfor %}
+	<li>{{ error }}</li> 
+	{% endfor %}
 </ul>
 {% endif %} 
 {% if not errors and request.method == 'POST'%} 

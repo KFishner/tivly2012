@@ -4,7 +4,7 @@ Created on Jul 3, 2012
 @author: bryanantigua
 '''
 from Tivly.models import Businesses, Rewards
-from CardSpring import createBusinessConnection,createAnApp
+from CardSpringActions import createBusinessConnection,createAnApp
 import string
 import random
 

@@ -5,7 +5,7 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
-from CardSpring import * 
+from CardSpringActions import * 
 from Tivly.models import *
 from Tivly.views import *
 import urllib2
