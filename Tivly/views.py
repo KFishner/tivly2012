@@ -53,7 +53,7 @@ def home(request):
             businessList.append(business)
     
     response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
-    response.set_cookie('csID',user.csID)
+    response.set_cookie('csID',user.csUSer.csID)
     return response
 
 def businessInfo(request, bname):
@@ -81,7 +81,7 @@ def recommendation(request,bname):
         if reward.pointsNeeded == 0: 
             rewards0 = reward 
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csID, dateGiven = datetime.now())
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csUser.csID, dateGiven = datetime.now())
     myRecommendation.save()
     
     used,left,redeemed,recommended = user.getRewardStatistics(business)
@@ -108,7 +108,7 @@ def newDiscoveries(request):
     if request.method == 'POST':
         errors = validateCard(request)
         
-    cc = Cards.objects.filter(csID = user.csID)
+    cc = Cards.objects.filter(csID = user.csUser.csID)
     
     if cc:
         hasCard = True
