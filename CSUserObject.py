@@ -14,7 +14,7 @@ class CSUser:
     def __init__(self, request):
         self.csUser = self.getCardSpringUser(request)
         self.fbUser = FBUser.objects.get(fb_id = self.csUser.fbID)
-        self.myCurrentRecommendations = MyRecommendations.objects.filter(csid = self.csUser.csID)
+        self.myCurrentRecommendations = MyRecommendations.objects.filter(csID = self.csUser.csID)
         self.cards = Cards.objects.filter(csID = self.csUser.csID)
         self.userPoints = UserPoints.objects.filter(csID = self.csUser.csID)
         self.myRewards = MyRewards.objects.filter(csID = self.csUser.csID)
