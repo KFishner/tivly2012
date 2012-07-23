@@ -16,6 +16,7 @@ import unicodedata
 import httplib2
 from web1 import settings
 from urlparse import parse_qsl
+from CSUser import CSUser
 request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
@@ -55,7 +56,7 @@ request = {}
 #
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
-CSUser = CardSpringUser(request)
+CSUser = CSUser(request)
 print CSUser.myRewards
 
 

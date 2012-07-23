@@ -9,7 +9,7 @@ from CardSpringActions import createAUser,createUserAppConnection
 from datetime import datetime
 from Tivly.models import FBUser,MyRecommendations,Cards, UserPoints, MyRewards,Rewards
 
-class CardSpringUser:
+class CSUser:
     
     def __init__(self, request):
         self.csUser = self.getCardSpringUser(request)
