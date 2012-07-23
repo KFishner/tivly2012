@@ -9,7 +9,7 @@
 <!-- Add Fancybox Open UI -->
 <script>
 $(document).ready(function() {
-$(".fancybox").fancybox({ 
+$(".cclogin").fancybox({ 
     'padding':          0,
     'width':        800,
     'height':       350,
@@ -30,7 +30,7 @@ $(".fancybox").fancybox({
 				'box-shadow' : '0px 0px 20px white',}
 			}}
 }); 
-    $(".fancybox").eq(0).trigger('click');
+    $(".cclogin").eq(0).trigger('click');
 });</script>
 {%endblock%}
 {%block content%}
@@ -43,7 +43,8 @@ $(".fancybox").fancybox({
 	</h1>
 	<h1 class="page-header heart clear">My Favorites</h1>
 	{% if not hasCard%}
-	<div id="fancybox"><a href="{{ URL }}/creditcardsubmit" class="fancybox fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter payment card information to get the full tivly experience</a> <a href="{{ URL }}/faq2" style="text-decoration: none;border:none;font-size:18px"> (Learn More)</a>
+	<div id="cclogin">
+	<a href="{{ URL }}/creditcardsubmit" class="fancybox fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter payment card information to get the full tivly experience</a>
 	</div>
 	<br class="clear"/>
 	{%endif%}
