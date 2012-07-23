@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     url(r'rec/(?P<bname>\w{0,50})/$', recommendation),
     url(r'business/(?P<bname>\w{0,50})/$', businessInfo),
     url(r'offer/(?P<recid>\w{0,6})/$', getOffer),
-    url(r'/creditacard',creditCardSubmission),
-    url(r'/faq2', faq2),
+    url(r'creditcard',creditCardSubmission),
+    url(r'faq2', faq2),
 )
