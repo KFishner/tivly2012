@@ -164,6 +164,11 @@ def accountInfo(request):
     redirect = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('myaccount.html', locals(), context_instance= RequestContext(request))
 
+def youSure(request):
+    URL = settings.URL
+    return render_to_response('delete.html', locals(), context_instance= RequestContext(request))
+
+
 def deleteAccount(request):
     csid = request.COOKIES.get('csID')
     csu = CardSpringUser.objects.get(csID = csid)
@@ -183,11 +188,7 @@ def deleteAccount(request):
         r.delete()
     
     fbu.delete()
-    deleted = True
-    URL = settings.URL
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
-    return render_to_response('myaccount.html', locals(),context_instance= RequestContext(request))
+    return redirect('google.com')
 
     
 def aboutUs(request):
