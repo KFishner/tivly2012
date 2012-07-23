@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Tivly</title>
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="{{ STATIC_URL }}content-type" content="text/html;charset=utf-8" />
+    
+    <!-- Include CSS -->
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32882337-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Add jQuery UI -->
+<link type="text/css" href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+<!-- Add Progressbar UI -->
+
+<!-- Add ShareThis -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "269ded35-cfb6-4b85-b449-f860b82be542"}); </script>
+</head>
+
+
+<body style="background-color:black">
+<div class="container" style="width:95%;">
+    <div class="grid onehalf" style="width:40%; margin-top:20px;">
+                <img src="images/tagline.png"/>
+    </div>
+
+    <div class="grid onehalf last" style="width:55%; margin-top:20px;">
+        <h2>Enter your card information so we can load it with discounts</h2>
+                <!-- start contact form -->
+{% if errors and request.method == 'POST' %}
+<ul>
+	{% for error in errors %}
+	<li>{{ error }}</li> 
+	{% endfor %}
+</ul>
+{% endif %} 
+{% if not errors and request.method == 'POST'%} 
+<script>
+alert(Thank you!You can now redeem your offer);
+</script> 
+{% endif %}	
+
+ <form action="" method="POST" id="registration_form">
+ {%csrf_token%}
+            <p style="font-size: 18px;">
+                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+            </p>
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+		<option value="01">01</option>
+		<option value="02">02</option>
+		<option value="03">03</option>
+		<option value="04">04</option>
+		<option value="05">05</option>
+		<option value="06">06</option>
+		<option value="07">07</option>
+		<option value="08">08</option>
+		<option value="09">09</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+
+	</select> <select class="expiration-year" name="year">
+		<option value="2013">2012</option>
+		<option value="2013">2013</option>
+		<option value="2014">2014</option>
+		<option value="2015">2015</option>
+		<option value="2016">2016</option>
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+	</select>*</p>
+                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" /><a href="faq2.html" style="text-decoration: none;border:none;font-size:16px"> (or Learn More)</a>
+
+        </form><!-- end contact form -->
+
+    </div>
+</div><!-- END MAIN CONTAINER -->
+
+<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#registration_form').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			CardSpring.addCard(cardSpringResponseHandler, {
+				publisher_id : publisher_id,
+				security_token : security_token,
+				timestamp : timestamp,
+				hmac : hmac
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : user_id
+			}, "all");
+			return false;
+		});
+	});
+
+</script>
+        
+</body>
+</html>

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns,url
-from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure
+from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure, creditCardSubmission, faq2
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -17,5 +17,7 @@ urlpatterns = patterns('',
     url(r'^newdiscoveries/$', newDiscoveries),
     url(r'rec/(?P<bname>\w{0,50})/$', recommendation),
     url(r'business/(?P<bname>\w{0,50})/$', businessInfo),
-    url(r'offer/(?P<recid>\w{0,6})/$', getOffer)
+    url(r'offer/(?P<recid>\w{0,6})/$', getOffer),
+    url(r'/creditacard',creditCardSubmission),
+    url(r'/faq2', faq2),
 )

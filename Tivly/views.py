@@ -34,9 +34,16 @@ def loginWithRec (request,recid):
                      
 def home(request):
     #template variables...
-    URL = settings.URL
-    
+    URL = settings.URL  
     user = CSUser(request)
+    
+    cc = Cards.objects.filter(csID = user.csUser.csID)
+    
+    if cc:
+        hasCard = True
+    
+    else:
+        hasCard = False
     recid =request.COOKIES.get('recID', None)
     rec = MyRecommendations.objects.filter(recID = recid)
     
@@ -190,7 +197,14 @@ def deleteAccount(request):
     fbu.delete()
     return redirect('google.com')
 
-    
+def creditCardSubmission(request):
+    if request.method == 'POST':
+        errors = validateCard(request)
+    return render_to_response('creditcard.html', locals(),context_instance= RequestContext(request))
+
+def faq2(request):
+    return render_to_response('faq2.html',context_instance= RequestContext(request))
+
 def aboutUs(request):
     return render_to_response('aboutus.html',context_instance= RequestContext(request))
 
