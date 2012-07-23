@@ -4,7 +4,7 @@ Created on Jul 3, 2012
 @author: bryanantigua
 '''
 from Tivly.models import Businesses, Rewards
-from CardSpring import CreateBusinessConnection,CreateAnApp
+from CardSpring import createBusinessConnection,createAnApp
 import string
 import random
 
@@ -25,11 +25,12 @@ def AddBusiness(values):
                    tuesdayHours = values['tuesdayHours'], wednesdayHours = values['wednesdayHours'],thursdayHours = values['thursdayHours'],
                    fridayHours = values['fridayHours'], saturdayHours = values['saturdayHours'], sundayHours = values['sundayHours'], 
                    description = values['description'], pictureLocation = values['pictureLocation'],website = values['website'])
-    CreateBusinessConnection(values['businessID'])
+    createBusinessConnection(values['businessID'])
     b.save()
     
 def AddReward(values, redemptionValues):
     r = Rewards(rID = values['rID'],appID = values['appID'],businessID = values['businessID'], description = values['description'],
                  pointsNeeded = values['pointsNeeded'] )
-    CreateAnApp(values['businessID'], redemptionValues)
+    createAnApp(values['businessID'], redemptionValues)
     r.save()
+        

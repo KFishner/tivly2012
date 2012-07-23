@@ -54,7 +54,7 @@ from urlparse import parse_qsl
 #print 'you\'re wiped !'
 #
 
-response = CreateACard('5RVRHK','1129384599856','2020-03')
+response = createACard('5RVRHK','1129384599856','2020-03')
 print response
 
 

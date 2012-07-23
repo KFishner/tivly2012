@@ -5,7 +5,7 @@ Created on Jul 6, 2012
 '''
 from Tivly.models import UserPoints,MyRewards,Rewards
 from datetime import datetime
-from CardSpring import DeleteAUserApp
+from CardSpring import deleteAUserApp
 
 def callBack(request):    
         csid = request.POST['user_id']
@@ -15,4 +15,4 @@ def callBack(request):
         myReward.used = True
         myReward.dateUsed = datetime.now()
         myReward.save()
-        DeleteAUserApp(csid,request.POST['app_id'])
+        deleteAUserApp(csid,request.POST['app_id'])

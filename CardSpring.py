@@ -11,7 +11,7 @@ import httplib2
 
 from web1 import settings
    
-def Authenticate():
+def authenticate():
     password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
     top_level_url = "api-test.cardspring.com"
     password_mgr.add_password(None, top_level_url, settings.CARDSPRING_APP_ID, settings.CARDSPRING_APP_SECRET)
@@ -20,142 +20,165 @@ def Authenticate():
     opener.addheaders = [('Accept', 'application/json'),("Content-Type","application/x-www-form-urlencoded")]
     urllib2.install_opener(opener)
     
-def AuthenticateWithHttplib2():
+def authenticateWithHttplib2():
     h = httplib2.Http()
     h.add_credentials(settings.CARDSPRING_APP_ID, settings.CARDSPRING_APP_SECRET)
     header = {"Content-type": "application/x-www-form-urlencoded","Accept":"application/json"}
     auth = {'h': h, 'header' : header}
     return auth
 
-def DeleteAUser(csID):
-    auth = AuthenticateWithHttplib2()
-    response, content = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID, method = "DELETE", headers = auth['header'])
-    return response
 
-def DeleteACard(csID,token):
-    auth = AuthenticateWithHttplib2()
-    response, content = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID+'/cards/'+token, method = "DELETE", headers = auth['header'])
-    return response
+######################################################################
+#####                   USER ACTIONS                             #####
+######################################################################
 
-def DeleteABusinessConnection(businessID):
-    auth = AuthenticateWithHttplib2()
-    response, content = auth['h'].request("https://api.cardspring.com/v1/businesses/"+businessID+"/connection", method = "DELETE", headers = auth['header'])
-    return response
-    
-def DeleteAnApp(businessID, appID):
-    auth = AuthenticateWithHttplib2()
-    response, content = auth['h'].request("https://api-test.cardspring.com/v1/businesses/"+businessID+"/apps/"+appID, method = "DELETE", headers = auth['header'])
-    return response
-
-def ModifyAnApp(businessID,appID, values):
-    auth = AuthenticateWithHttplib2()
-    data = urllib.urlencode(values)
-    response, content = auth['h'].request('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps/'+appID, method = "PUT",body = data, headers = auth['header'])
-    return response
-
-def DeleteAUserApp(csID,appID):
-    auth = AuthenticateWithHttplib2()
-    response, content = auth['h'].request('https://api-test.cardspring.com/v1/users/'+csID+'/apps/'+appID, method = "DELETE",headers = auth['header'])
-    return response
-
-
-    
-def GetPublisherInfo():
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1')
-
-def CreateAUser(csID):
-    Authenticate()
+def createAUser(csID):
+    authenticate()
     values = {'user_id':csID}
     url = 'https://api-test.cardspring.com/v1/users'
     data = urllib.urlencode(values)
     return urllib2.urlopen(url,data)
     
-def GetAUser(csID):
-    Authenticate()
+def getAUser(csID):
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+ csID)
 
-def GetUsers():
-    Authenticate()
+def getUsers():
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users')
+def deleteAUser(csID):
+    auth = authenticateWithHttplib2()
+    response = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID, method = "DELETE", headers = auth['header'])
+    return response
 
-def RetrieveACard(csID,token):
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/cards/'+token)
 
-def GetAllBusinesses(filters):
-    Authenticate()
-    data = urllib.urlencode(filters)
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses',data)
+######################################################################
+#####                   APP ACTIONS                              #####
+######################################################################
 
-def GetABusiness(businessID):
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID)
+def deleteAnApp(businessID, appID):
+    auth = authenticateWithHttplib2()
+    response = auth['h'].request("https://api-test.cardspring.com/v1/businesses/"+businessID+"/apps/"+appID, method = "DELETE", headers = auth['header'])
+    return response
 
-def GetAllStores(businessID):
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/stores')
-
-def GetAStore(businessID,storeID):
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/stores/'+storeID)
-
-def CreateBusinessConnection(businessID):
-    Authenticate()
-    values = {'permissions' :'notification,purchase_data,redemption', 'authorization':'signature'}
+def modifyAnApp(businessID,appID, values):
+    auth = authenticateWithHttplib2()
     data = urllib.urlencode(values)
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+ businessID+'/connection', data)
+    response = auth['h'].request('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps/'+appID, method = "PUT",body = data, headers = auth['header'])
+    return response
 
-def GetBusinessConnections(activity):
-    Authenticate()
-    values = {'connection':activity}
-    data = urllib.urlencode(values)
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses',data)
-
-def CreateAnApp(businessID,redemptionValues):
-    Authenticate()
-#    values = {'redemption[discount_summary]':'10 Off 50','redemption[discount_description]':'Save+%2410+your+next+purchase+of+%2450+or+more+at+The+Gap',
+def createAnApp(businessID,redemptionValues):
+#   Example of values ... 
+#   values = {'redemption[discount_summary]':'10 Off 50','redemption[discount_description]':'Save+%2410+your+next+purchase+of+%2450+or+more+at+The+Gap',
 #              'redemption[type]':'terminal_discount','redemption[min_purchase]':'5000','redemption[amount]':'1000','notification[type]':'all_payment_events',
 #              'notification[min_purchase]':'5000'}  
+    authenticate()
     data = urllib.urlencode(redemptionValues)
     return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps',data) 
 
-def GetAnApp(businessID,appID):
-    Authenticate()
+def getAnApp(businessID,appID):
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps/'+appID)
      
-def ListApps(businessID):
-    Authenticate()
+def listApps(businessID):
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps')
 
-def GetAllEvents():
-    Authenticate()
-    return urllib2.urlopen('https://api-test.cardspring.com/v1/events')
+#=================== SPECIFIC TO USER================================#
 
-def GetAppConnections(csID):
-    Authenticate()
+def getUserAppConnections(csID):
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/apps')
 
-def CreateUserAppConnection(csID,appID):
-    Authenticate()
+def createUserAppConnection(csID,appID):
+    authenticate()
     values = {'app_id':appID}
     data  = urllib.urlencode(values)
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/apps',data)
 
-def GetUserAppConnection(csID,appID):
-    Authenticate()
+def getUserAppConnection(csID,appID):
+    authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/apps'+appID)
 
-def CreateACard(csID,cardNumber,exp):
-    Authenticate()
+
+def deleteAUserApp(csID,appID):
+    auth = authenticateWithHttplib2()
+    response = auth['h'].request('https://api-test.cardspring.com/v1/users/'+csID+'/apps/'+appID, method = "DELETE",headers = auth['header'])
+    return response
+
+######################################################################
+#####                   CARD ACTIONS                             #####
+######################################################################
+
+def deleteACard(csID,token):
+    auth = authenticateWithHttplib2()
+    response = auth['h'].request("https://api-test.cardspring.com/v1/users/"+csID+'/cards/'+token, method = "DELETE", headers = auth['header'])
+    return response
+
+def createACard(csID,cardNumber,exp):
+    authenticate()
     values = {'pan':cardNumber,'expiration':exp}
     data  = urllib.urlencode(values)
     return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/cards',data)
+
+def retrieveACard(csID,token):
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/users/'+csID+'/cards/'+token)
+
+def deleteABusinessConnection(businessID):
+    auth = authenticateWithHttplib2()
+    response = auth['h'].request("https://api.cardspring.com/v1/businesses/"+businessID+"/connection", method = "DELETE", headers = auth['header'])
+    return response
+    
+
+
+######################################################################
+#####                   BUSINESS ACTIONS                         #####
+######################################################################
+
+def getAllBusinesses(filters):
+    authenticate()
+    data = urllib.urlencode(filters)
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses',data)
+
+def getABusiness(businessID):
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID)
+
+def getAllStores(businessID):
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/stores')
+
+def getAStore(businessID,storeID):
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/stores/'+storeID)
+
+def createBusinessConnection(businessID):
+    authenticate()
+    values = {'permissions' :'notification,purchase_data,redemption', 'authorization':'signature'}
+    data = urllib.urlencode(values)
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+ businessID+'/connection', data)
+
+def getBusinessConnections(activity):
+    authenticate()
+    values = {'connection':activity}
+    data = urllib.urlencode(values)
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses',data)
+
+######################################################################
+#####                   RANDO ACTIONS                            #####
+######################################################################
+  
+def getPublisherInfo():
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1')
+
+def getAllEvents():
+    authenticate()
+    return urllib2.urlopen('https://api-test.cardspring.com/v1/events')
  
 # Only in Test Environment....
-
-def TestTransaction(values):
-    Authenticate()
+def testTransaction(values):
+    authenticate()
     data = urllib.urlencode(values)
     return urllib2.urlopen('https://api-test.cardspring.com/v1/transactions',data)
-

@@ -4,7 +4,7 @@ from django.template import RequestContext
 from Facebook import facebookLogin
 from django.shortcuts import render_to_response
 from Management import IDGenerator
-from CardSpring import CreateAUser,CreateUserAppConnection, DeleteAUser
+from CardSpring import createAUser,createUserAppConnection, deleteAUser
 from django.shortcuts import redirect
 from googlemaps import GoogleMaps
 from datetime import datetime
@@ -13,43 +13,31 @@ from Tivly.models import CardSpringUser, MyRecommendations,UserPoints, Businesse
 
 import json
 
-def login (request):       
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
+def validateCard(request):
     errors = []
-    if request.method == 'POST':
-        number = request.POST.get('number')
-        if not number:
-            errors.append('Enter a correct credit card number')
-        
-        month = request.POST.get('month')
-        if not month:
-            errors.append('Enter a correct month')
-        
-        year = request.POST.get('year')
-        if not year:
-            errors.append('Enter a correct year')
-        
-        if not errors:
-            exp = year+"-"+month
-            result = json.load(request.POST.get())
-            d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
-            d.save()
-    return render_to_response('signin.html', locals(),context_instance= RequestContext(request))
+    number = request.POST.get('number')
+    if not number:
+        errors.append('Enter a correct credit card number')
     
+    month = request.POST.get('month')
+    if not month:
+        errors.append('Enter a correct month')
+    
+    year = request.POST.get('year')
+    if not year:
+        errors.append('Enter a correct year')
+    
+    if not errors:
+        result = json.load(request.POST.get())
+        d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
+        d.save()
+    else:
+        return errors  
 
-def loginWithRec (request,recid):
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
-    response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
-    response.set_cookie('recID',recid)
-    return response
-
-def home(request):
-    URL = settings.URL
+def getCardSpringUser(request):
     code = request.GET.get('code', None)    
     cardspringID = request.COOKIES.get('csID',None)
-
+    
     if code is not None:
         fbUser = facebookLogin(request)
         CSUser = CardSpringUser.objects.filter(fbID = fbUser.fb_id)
@@ -57,8 +45,7 @@ def home(request):
             cardspringID = IDGenerator()
             CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
             CSUser.save()                
-            CreateAUser(cardspringID)
-            justCreated = True
+            createAUser(cardspringID)
             CSUser = CardSpringUser.objects.filter(csID = cardspringID)
     
     elif cardspringID is not None:
@@ -68,27 +55,83 @@ def home(request):
         cardspringID = IDGenerator()
         CSUser = CardSpringUser(csID = cardspringID, points = 0, fbID = fbUser.fb_id, dateJoined = datetime.now())
         CSUser.save()                
-        CreateAUser(cardspringID)
-        justCreated = True
+        createAUser(cardspringID)
         CSUser = CardSpringUser.objects.filter(csID = cardspringID)
     
     CSUser = CSUser[0]
+    return CSUser
+
+def addRecommendationToRewards(request,CSUser,recid):
+    rec = MyRecommendations.objects.filter(recID = recid)  
+    if rec.exists():
+        rec = rec[0]
+        userPoints = UserPoints.objects.filter(csID = CSUser.csID, businessID = rec.businessID)
+            
+        if not userPoints.exists():
+            userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
+            userPoints.save()
+            setReward(CSUser.csID,request,recid)
+    return
+
+def getRewardStatistics(business,csid):
+    allRewards = Rewards.objects.filter(businessID = business.businessID)
+    allMyRewards = MyRewards.objects.filter(csID = csid)
+    used = len(MyRewards.objects.filter(csID = csid, used = True))
+    left = len(allMyRewards) - used
+    redeemed = 0
+    recommended = len(MyRecommendations.objects.filter(csID =csid, businessID = business.businessID))
+    for rewardLookUp in allRewards:
+        redeemed += len(MyRewards.objects.filter(reccomendedBy = csid, reward = rewardLookUp))
+    
+    return used,left,redeemed,recommended
+
+def setReward(csid,request, recid):
+    recommendation = MyRecommendations.objects.filter(recID = recid)[0]
+    createUserAppConnection(csid,recommendation.appID)
+    recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
+    myReward = MyRewards(csID = csid, reward = recReward, reccomendedBy = recommendation.csID, used = False)
+    myReward.save()
+    recommendation.delete()
+
+def getMap(businessid):
+    GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
+    gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
+    business = Businesses.objects.filter(businessID = businessid)[0]
+    address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
+    lat, lng = gmaps.address_to_latlng(address)
+    return lat,lng
+
+###############################################################################################
+def login (request):
+    #template variables...       
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    redirect = settings.FACEBOOK_REDIRECT_URI
+    
+    if request.method == 'POST':
+        errors = validateCard(request)
+
+    return render_to_response('signin.html', locals(),context_instance= RequestContext(request))
+    
+
+def loginWithRec (request,recid):
+    #template variables...
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+    redirect = settings.FACEBOOK_REDIRECT_URI
+    
+    response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
+    response.set_cookie('recID',recid)
+    return response
+                     
+def home(request):
+    #template variables...
+    URL = settings.URL
+    
+    CSUser = getCardSpringUser(request)
     recid = request.COOKIES.get('recID', None)
     
     if recid is not None:
-        rec = MyRecommendations.objects.filter(recID = recid)
-        
-        if rec.exists():
-            rec = rec[0]
-            userPoints = UserPoints.objects.filter(csID = CSUser.csID, businessID = rec.businessID)
-            
-            if not userPoints.exists():
-                userPoints = UserPoints(csID = CSUser.csID, businessID = rec.businessID, points = 0, visits = 0)
-                userPoints.save()
-                setReward(CSUser.csID,request,recid)
-                 
-    URL = settings.URL    
-
+        addRecommendationToRewards(request, CSUser, recid)
+    
     myRewards = MyRewards.objects.filter(csID = CSUser.csID)
     businessList= []
     
@@ -98,130 +141,75 @@ def home(request):
             continue
         else:
             businessList.append(business)
-        
-    allPoints = UserPoints.objects.filter(csID = CSUser.csID)
-
     
     response = render_to_response('myfavorites.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('csID',CSUser.csID)
     return response
 
 def businessInfo(request, bname):
-    
+    #template variables...
     bname =  bname.replace('_',' ')
+    csid = request.COOKIES.get('csID')
     business = Businesses.objects.filter(businessName = bname)[0]
-    points = UserPoints.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID)[0]
-    recommended = len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID))
-    
-    allRewards = Rewards.objects.filter(businessID = business.businessID)
-    redeemed = 0
-    
-    allMyRewards = MyRewards.objects.filter(csID = request.COOKIES.get('csID'))
-    used = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'), used = True))
-    left = len(allMyRewards) - used
-    for rewardLookUp in allRewards:
-        redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
-    
-    rewards = Rewards.objects.filter(businessID = business.businessID).order_by('pointsNeeded')
-    rewards0 = rewards[0] 
-    rewards1 = rewards[1]  
-    rewards2 = rewards[2] 
-    rewards3 = rewards[3] 
-    
-    
     lat,lng = getMap(business.businessID)
+    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
+    used,left,redeemed,recommended = getRewardStatistics(business,csid)
+    
+    
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
 
 def recommendation(request,bname):
+    #template variables...
     URL = settings.URL
+    csid = request.COOKIES.get('csID')
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
+   
     rewards = Rewards.objects.filter(businessID = business.businessID)
     for reward in rewards:
         if reward.pointsNeeded == 0: 
             rewards0 = reward 
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = request.COOKIES.get('csID'), dateGiven = datetime.now())
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = csid, dateGiven = datetime.now())
     myRecommendation.save()
     
-    recommended = len(MyRecommendations.objects.filter(csID = request.COOKIES.get('csID'), businessID = business.businessID))
-    allRewards = Rewards.objects.filter(businessID = business.businessID)
-    redeemed = 0
-    
-    for rewardLookUp in allRewards:
-        redeemed += len(MyRewards.objects.filter(reccomendedBy = request.COOKIES.get('csID'), reward = rewardLookUp))
-    
-    myRewardsRemaining = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'),used = False))
-    myRewardsUsed = len(MyRewards.objects.filter(csID = request.COOKIES.get('csID'),used = True))
-
+    used,left,redeemed,recommended = getRewardStatistics(business,csid)
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
 def getOffer(request, recid):
-        
+    #template variables ... 
     csid = request.COOKIES.get('csID', None)
-    CSUser = CardSpringUser.objects.filter(csID = csid)
     
+    CSUser = CardSpringUser.objects.filter(csID = csid)
     if not CSUser.exists() or csid is None:
         return loginWithRec(request,recid)
   
     else:
-        rec = MyRecommendations.objects.filter(recID = recid)
-        
-        if rec.exists():
-            rec =rec[0]
-            userPoints = UserPoints.objects.filter(csID = csid, businessID = rec.businessID)
-            
-            if not userPoints.exists():
-                userPoints = UserPoints(csID = csid, businessID = rec.businessID, points = 0, visits = 0)
-                userPoints.save() 
-        
-                setReward(csid,request, recid)    
-        return redirect(settings.URL+'/home')
-
-def setReward(csid,request, recid):
-    recommendation = MyRecommendations.objects.filter(recID = recid)[0]
-    CreateUserAppConnection(csid,recommendation.appID)
-    recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
-    myReward = MyRewards(csID = csid, reward = recReward, reccomendedBy = recommendation.csID, used = False)
-    myReward.save()
-    recommendation.delete()  
-    
-def logout(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
+        addRecommendationToRewards(request,CSUser,recid)
+        return redirect(settings.URL+'/home')  
 
 def discoveries(request):
+    #template variables...
     errors = []
-    URL = settings.URL
-    if request.method == 'POST':
-        number = request.POST.get('number')
-        if not number:
-            errors.append('Enter a correct credit card number')
-        
-        month = request.POST.get('month')
-        if not month:
-            errors.append('Enter a correct month')
-        
-        year = request.POST.get('year')
-        if not year:
-            errors.append('Enter a correct year')
-        
-        if not errors:
-            exp = year+"-"+month
-            result = json.load(request.POST.get())
-            d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
-            d.save()
-            
     csid = request.COOKIES.get('csID')
-    cc = Cards.objects.filter(csID = csid)
-    hasCard = True
+    URL = settings.URL
     
-    if not cc:
+    if request.method == 'POST':
+        errors = validateCard(request)
+        
+    cc = Cards.objects.filter(csID = csid)
+    
+    if cc:
+        hasCard = True
+    
+    else:
         hasCard = False
     
     
     myRewards = MyRewards.objects.filter(csID = csid)
     myUserPoints = UserPoints.objects.filter(csID = csid)
+    
     redeemable = {}
     for reward in myRewards:
         pointValue = -1
@@ -234,14 +222,6 @@ def discoveries(request):
             redeemable[reward.reward] = business
             
     return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
-
-def getMap(businessid):
-    GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
-    gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
-    business = Businesses.objects.filter(businessID = businessid)[0]
-    address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
-    lat, lng = gmaps.address_to_latlng(address)
-    return lat,lng
 
 def contact(request):
     errors = []
@@ -268,6 +248,7 @@ def callback(request):
         
 
 def accountInfo(request):
+    #template variables...
     URL = settings.URL
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
@@ -281,7 +262,7 @@ def deleteAccount(request):
     Fbf = FBFriends.objects.filter(user = fbu)
     myr = MyRewards.objects.filter(csID = csid)
     
-    DeleteAUser(csid)
+    deleteAUser(csid)
     csu.delete()
    
     token.delete()
@@ -304,9 +285,6 @@ def aboutUs(request):
 
 def jobs(request):
     return render_to_response('jobs.html',context_instance= RequestContext(request))
-
-def privacy(request):
-    return render_to_response('base.html',context_instance= RequestContext(request))
 
         
     
