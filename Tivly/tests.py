@@ -54,8 +54,10 @@ from urlparse import parse_qsl
 #print 'you\'re wiped !'
 #
 
-response = createACard('5RVRHK','1129384599856','2020-03')
-print response
+#response = createACard('5RVRHK','1129384599856','2020-03')
+recid = 'YU9D4N'
+print MyRecommendations.objects.filter(recID = recid)
+
 
 
 

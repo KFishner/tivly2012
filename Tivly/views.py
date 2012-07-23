@@ -39,7 +39,7 @@ def home(request):
     recid =request.COOKIES.get('recID', None)
     rec = MyRecommendations.objects.filter(recID = recid)
     
-    if rec.exists() is not None :
+    if rec.exists():
         CSUser.addRecommendationToRewards(recid)
 
     businessList= []
