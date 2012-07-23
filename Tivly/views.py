@@ -36,9 +36,10 @@ def home(request):
     URL = settings.URL
     
     CSUser = CardSpringUser(request)
-    recid = request.COOKIES.get('recID', None)
+    recid =request.COOKIES.get('recID', None)
+    rec = MyRecommendations.objects.filter(recID = recid)
     
-    if recid is not None:
+    if rec.exists() is not None :
         CSUser.addRecommendationToRewards(recid)
 
     businessList= []
