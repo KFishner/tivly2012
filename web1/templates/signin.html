@@ -4,7 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Signin - Tivly</title>
-    <link href="images/favicon.ico" rel="shortcut icon">
+    <link href="{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon">
 
     
     <!-- Include CSS -->
@@ -43,82 +43,35 @@
 
 </head>
 
-<body style="background-image: url('{{STATIC_URL}}images/signinbg.png');width:100%;height:100%">
+<body style="background-image: url('{{ STATIC_URL }}images/signinbg.png');width:100%;height:100%">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=324960610922985";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <script type="text/javascript">
     mixpanel.track("Signin Viewed")
 </script>
 <div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
     <div class="grid onehalf" style="width:40%; margin-top:20px;">
-                <img src="{{STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
+                <img src="{{ STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
     </div>
 
     <div class="grid onehalf last" style="width:55%; margin-top:20px;">
-        <h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span>
-        </h2><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{ redirect }}&scope=publish_stream,email,read_friendlists,&display=popup">
-      <img src="http://developers.facebook.com/images/devsite/login-button.png"/>
- </a>
-
-    <br class="clear" />
-        <h2>Enter your card information so we can load it with discounts</h2>
-                <!-- start payment card form -->
-         <form action="" method="POST" id="registration_form">
- {%csrf_token%}
-   <p style="font-size: 18px;">
-                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
-            </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
-
-	</select> <select class="expiration-year" name="year">
-		<option value="2013">2012</option>
-		<option value="2013">2013</option>
-		<option value="2014">2014</option>
-		<option value="2015">2015</option>
-		<option value="2016">2016</option>
-		<option value="2017">2017</option>
-		<option value="2018">2018</option>
-	</select>*</p>
-                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
-            </p>
-</form>
-<br/>
-<br/>
-<script src="https://js.cardspring.com/v1/cs.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#registration_form').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');
-			CardSpring.addCard(cardSpringResponseHandler, {
-				publisher_id : publisher_id,
-				security_token : security_token,
-				timestamp : timestamp,
-				hmac : hmac
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : user_id
-			}, "all");
-			return false;
-		});
-	});
-
-</script><!-- end form -->
+        <div style="position:relative;text-align: center;margin-top:50px;"><h2>Get out and <span style="color:#09c">c</span><span style="color:#0c6">o</span><span style="color:#f96">l</span><span style="color:#09c">o</span><span style="color:#0c6">r</span><span style="color:#f96">.</span></h2>
+        <div class="fb-login-button" data-show-faces="true" data-width="300" data-max-rows="2"></div>
+        </div>
 
     </div>
 </div>
 <!-- END MAIN CONTAINER -->
+
+
+
+
 
 </body>
 </html>
