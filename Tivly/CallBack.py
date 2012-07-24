@@ -22,13 +22,13 @@ def callBack(request):
     
     uniqueReward = RewardHistory.objects.filter(csID = csid, reward = rewardLookUp)
     
-    if not uniqueReward.exists():
+    if len(uniqueReward) == 1:
         addToUniqueHistory = UniqueRewardHistory(csID = csid, reccomendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
         addToUniqueHistory.save()
     
     Costumer = UniqueBusinessHistory.objects.filter(csID =csid, businessID = myReward.reward.businessID)
     if not Costumer.exists():
-        newCustomer = UniqueBusinessHistory(csiD = csid, businessID = myReward.reward.businessID, reward = myReward.reward, dateUsed = datetime.now())
+        newCustomer = UniqueBusinessHistory(csID = csid, businessID = myReward.reward.businessID, reward = myReward.reward, dateUsed = datetime.now())
         newCustomer.save()
         
 #    deleteAUserApp(csid,request.POST['app_id'])
