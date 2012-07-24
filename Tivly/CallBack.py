@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from CardSpringActions import deleteAUserApp
 
 def callBack(request):    
-    result = request.Post.get()
+    result = request.POST.get()
     csid = result['user_id']
     rewardLookUp = Rewards.objects.filter(appID = request.POST['app_id'])[0]
     myReward = MyRewards.objects.filter(csID = csid, reward = rewardLookUp)
