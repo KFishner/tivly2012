@@ -112,7 +112,29 @@ class Transaction(models.Model):
     transaction_id = models.CharField(max_length = 30)
     store_id = models.CharField(max_length = 30) 
     date = models.DateField(blank = True, null = True)
-    
+
+class UniqueRewardHistory(models.Model):
+    csID = models.CharField(max_length = 6)
+    reccomendedBy = models.CharField(max_length = 6)
+    reward = models.ForeignKey(Rewards)
+    dateUsed = models.DateField(blank = True, null = True)
+
+class RewardHistory(models.Model):
+    csID = models.CharField(max_length = 6)
+    reccomendedBy = models.CharField(max_length = 6)
+    reward = models.ForeignKey(Rewards)
+    dateUsed = models.DateField(blank = True, null = True)
+
+class UniqueBusinessHistory(models.Model):
+    csID = models.CharField(max_length = 6)
+    reward = models.ForeignKey(Rewards)
+    dateUsed = models.DateField(blank = True, null = True)
+    businessID = models.CharField(max_length = 40)
+
+
+#######################################################
+######              MISC                         ######
+#######################################################
 class ContactUsForm(models.Model):
     name = models.CharField(max_length = 40)
     email = models.CharField(max_length = 60)
