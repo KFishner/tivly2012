@@ -19,6 +19,9 @@
     <h1 class="page-header key">My Account</h1>
     
         <table>
+        	<tr>
+                <td style="border:none"><a href="{{ URL }}/logout">Log Out</a></td>
+            </tr>
             <tr>
             	<td>Connect with FaceBook</td>
                 <td><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
@@ -81,9 +84,6 @@
 
 </script>
         </td><!-- end form -->
-            </tr>
-            <tr>
-            </tr>
             <tr>
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
             </tr>
