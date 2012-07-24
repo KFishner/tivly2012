@@ -86,7 +86,7 @@ class CSUser:
     def setReward(self, recid):
         recommendation = MyRecommendations.objects.filter(recID = recid)[0]
         
-        if recommendation.businessID is not "tivly":
+        if recommendation.businessID != "tivly":
             createUserAppConnection(self.csUser.csID,recommendation.appID)
         recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
         myReward = MyRewards(csID = self.csUser.csID, reward = recReward, reccomendedBy = recommendation.csID, used = False)
