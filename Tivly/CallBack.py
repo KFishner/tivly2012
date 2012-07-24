@@ -23,7 +23,7 @@ def callBack(request):
     uniqueReward = RewardHistory.objects.filter(csID = csid, reward = rewardLookUp)
     
     if not uniqueReward.exists():
-        addToUniqueHistory = UniqueRewardHistory(csID = csid, reccommendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
+        addToUniqueHistory = UniqueRewardHistory(csID = csid, reccomendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
         addToUniqueHistory.save()
     
     Costumer = UniqueBusinessHistory.objects.filter(csID =csid, businessID = myReward.reward.businessID)
