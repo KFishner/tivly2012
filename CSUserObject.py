@@ -78,9 +78,9 @@ class CSUser:
             if not userPoints.exists():
                 userPoints = UserPoints(csID = self.csUser.csID, businessID = rec.businessID, points = 0, visits = 0)
                 userPoints.save()
-                self.setReward(self,recid)
+                self.setReward(recid)
             
-            self.setReward(self,recid)
+            self.setReward(recid)
         return
     
     def setReward(self, recid):
