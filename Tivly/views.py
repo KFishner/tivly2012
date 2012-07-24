@@ -29,7 +29,7 @@ def login (request):
 def loginWithRec (request,recid):
     #template variables...
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
+    facebookRedirect = 'https://tivly.com/home'
     
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('recID',recid)
