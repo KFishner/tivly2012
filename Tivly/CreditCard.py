@@ -20,9 +20,9 @@ def validateCard(request):
     if not year:
         errors.append('Enter a correct year')
     
-    if not errors:
-        result = json.load(request.POST.get())
-        d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
-        d.save()
-    else:
-        return errors 
+#    if not errors:
+#        result = json.load(request.POST)
+#        d = Cards(csID=request.COOKIES.get('csID'), token=result['token'], last4=result['last4'], expDate=result['expiration'], cardType=result['type'], typeString=result['type_string'])
+#        d.save()
+#    else:
+    return errors 
