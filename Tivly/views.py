@@ -163,7 +163,7 @@ def contact(request):
 @csrf_exempt    
 def callback(request):
     if request.method == "POST" or request.method == "post":
-        callBack(request)
+        return callBack(request)
         
 
 def accountInfo(request):
