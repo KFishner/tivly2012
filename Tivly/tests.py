@@ -30,31 +30,31 @@ request = {}
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 #############################################
-csid = '5RVRHK'
+csid = 'XE6AN1'
 #deleteAUser(csid)
-print getUsers().read()
-csu = CardSpringUser.objects.get(csID = csid)
-csu.delete()
-print 'csu deleted'
-fbu = FBUser.objects.get(first_name = 'Bryan')
-token = FBAccessTokens.objects.get(user = fbu)
-token.delete()
-print 'token deleted'
-Fbf = FBFriends.objects.filter(user = fbu)
-for f in Fbf:
-    f.delete()
-print 'friends deleted!'    
-myr = MyRewards.objects.filter(csID = csid)
-
-for r in myr:
-    r.delete()
-    print 'reward deleted'
-
-fbu.delete()
-print 'fb deleted'
-
-print 'you\'re wiped !'
+print getAUser(csid).read()
+#csu = CardSpringUser.objects.get(csID = csid)
+#csu.delete()
+#print 'csu deleted'
+#fbu = FBUser.objects.get(first_name = 'Bryan')
+#token = FBAccessTokens.objects.get(user = fbu)
+#token.delete()
+#print 'token deleted'
+#Fbf = FBFriends.objects.filter(user = fbu)
+#for f in Fbf:
+#    f.delete()
+#print 'friends deleted!'    
+#myr = MyRewards.objects.filter(csID = csid)
 #
+#for r in myr:
+#    r.delete()
+#    print 'reward deleted'
+#
+#fbu.delete()
+#print 'fb deleted'
+#
+#print 'you\'re wiped !'
+##
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
 

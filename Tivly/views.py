@@ -17,7 +17,7 @@ def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://tivly.com/home'
-    redirectURL = 'https://'+settings.URL + '/splash'
+    redirectURL = 'https://tivly.com/splash'
 
     csid = request.COOKIES.get('csID',None)
     if csid is None:
