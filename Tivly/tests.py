@@ -57,19 +57,19 @@ request = {}
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
 
-#authenticate()
-#print urllib2.urlopen('https://api-test.cardspring.com/v1').read()
+authenticate()
+print urllib2.urlopen('https://api.cardspring.com/v1').read()
 
-try:
-    values = {'event_type':'settlement','transaction_id':'yN0LiDG5YOwt','purchase_date_time':'2012-01-01 12:34:56','amount':2000,'currency':'USD','app_id':'kpj90OAR8sg9',
-              'business_id':'l5sxg80QSa7O','store_id':'qmGITK2sHg5G','user_id':'5RVRHK','card_token':'K9o694RkK34r'}
-    url = 'http://mygoods.co/callback'
-    data = urllib.urlencode(values)
-    urllib2.urlopen(url,data)
-    print 'success!'
-    
-except urllib2.HTTPError, error:
-    print error.read()
+#try:
+#    values = {'event_type':'settlement','transaction_id':'yN0LiDG5YOwt','purchase_date_time':'2012-01-01 12:34:56','amount':2000,'currency':'USD','app_id':'kpj90OAR8sg9',
+#              'business_id':'l5sxg80QSa7O','store_id':'qmGITK2sHg5G','user_id':'5RVRHK','card_token':'K9o694RkK34r'}
+#    url = 'http://mygoods.co/callback'
+#    data = urllib.urlencode(values)
+#    urllib2.urlopen(url,data)
+#    print 'success!'
+#    
+#except urllib2.HTTPError, error:
+#    print error.read()
  
 
 
