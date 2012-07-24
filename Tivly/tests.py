@@ -16,6 +16,7 @@ import unicodedata
 import httplib2
 from web1 import settings
 from urlparse import parse_qsl
+from django.http import HttpResponse
 request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
