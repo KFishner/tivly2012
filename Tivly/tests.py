@@ -16,7 +16,6 @@ import unicodedata
 import httplib2
 from web1 import settings
 from urlparse import parse_qsl
-from CSUser import CSUser
 request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
@@ -56,17 +55,11 @@ request = {}
 #
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
-password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
-top_level_url = "api-test.cardspring.com"
-password_mgr.add_password(None, top_level_url, settings.CARDSPRING_APP_ID, settings.CARDSPRING_APP_SECRET)
-handler = urllib2.HTTPBasicAuthHandler(password_mgr)
-opener = urllib2.build_opener(handler)
-opener.addheaders = [('Accept', 'application/json'),("Content-Type","application/x-www-form-urlencoded")]
-urllib2.install_opener(opener)
-values = {'user_id':csID}
-url = 'https://api-test.cardspring.com/v1/users'
+values = {'event_type':'redemption','transaction_id':'yN0LiDG5YOwt','purchase_date_time':'2012-01-01 12:34:56&','amount':'2000','currency':'USD','app_id':'NLWgAaWVclvK',
+          'business_id':'l5sxg80QSa7O','store_id':'qmGITK2sHg5G','store_id':'qmGITK2sHg5G','user_id':'1234','card_token':'K9o694RkK34r'}
+url = 'http://www.tivly.com/callback'
 data = urllib.urlencode(values)
-return urllib2.urlopen(url,data)
+urllib2.urlopen(url,data)
 
 
 
