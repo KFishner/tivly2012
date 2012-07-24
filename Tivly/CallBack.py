@@ -17,7 +17,7 @@ def callBack(request):
     myReward.dateUsed = datetime.now()
     myReward.save()
     
-    addToHistory = RewardHistory(csID = csid, reccommendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
+    addToHistory = RewardHistory(csID = csid, reccomendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
     addToHistory.save()
     
     uniqueReward = RewardHistory.objects.filter(csID = csid, reward = rewardLookUp)
