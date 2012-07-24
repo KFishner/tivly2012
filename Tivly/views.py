@@ -72,7 +72,8 @@ def businessInfo(request, bname):
     user = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
-    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
+    rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
+    rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     
     

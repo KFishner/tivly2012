@@ -71,6 +71,19 @@
 		$( "#tabs" ).tabs();
 	});
 	</script>
+	
+<script>
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: {{ redeemed }}*100/{{rewards5.pointsNeeded}}
+		});           
+	});
+	$(function() {
+		$( "#progressbar2" ).progressbar({
+			value: {{redeemed}}*100/{{rewards10.pointsNeeded}}
+		});           
+	});
+</script>
 {%endblock%}
 
 {%block content%}
@@ -94,7 +107,7 @@
 				<div class="getsocial">
 					<h1>Share {{ business.businessName }} with your friends!</h1>
 					<h2 style="font-size: 24px">
-						They get a <span style="color: #ff9966">{{rewards0.description }}</span>, and you do too - everyone's a winner
+						They get <span style="color: #ff9966">{{rewards0.description }}</span>, and you earn points towards awesome rewards - check your progress in my {{business.businessName }}
 					</h2>
 				</div>
 				<!-- Start Shareaholic Sexy Bookmark HTML-->
@@ -120,22 +133,21 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 			<div id="tabs-2">
 				<table>
 					<tr>
-						<td style="padding-right: 100px">Recommended to Friends</td>
-						<td>{{ recommended }}</td>
-					</tr>
-					<tr>
 						<td style="padding-right: 100px">Redeemed by Friends</td>
 						<td>{{ redeemed }}</td>
 					</tr>
 					<tr>
-						<td style="padding-right: 100px">My Used Rewards</td>
-						<td>{{ used}}</td>
-					</tr>
-					<tr>
-						<td style="padding-right: 100px; color: #09c">Remaining
-							Rewards</td>
-						<td style="color: #09c">{{left }}</td>
-					</tr>
+					<td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c"> {{rewards5.pointsNeeded}} friends</span> redeem discounts, you get {{rewards5.description}}!</em></td>
+                    		</tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c">{{rewards10.pointsNeeded}} friends</span> redeem discounts, you get {{rewards10.description}}!</em></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                            </tr>
 				</table>
 			</div>
 		</div>
