@@ -10,8 +10,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 #URL = 'http://127.0.0.1:8000'
-#URL = 'http://mygoods.co'
-URL = 'http://www.tivly.com'
+URL = 'http://mygoods.co'
+#URL = 'http://www.tivly.com'
 FACEBOOK_APP_ID = '162129900588207'
 FACEBOOK_API_KEY = '162129900588207'
 FACEBOOK_API_SECRET = '25789f366ebd6f92e50952f5eeb22fe7'
