@@ -18,7 +18,7 @@ def login (request):
     redirectURL = settings.URL + '/splash'
 
     csid = request.COOKIES.get('csID',None)
-    if csid is None:
+    if csid is not None:
         return redirect(redirectURL)
     else:
         return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
