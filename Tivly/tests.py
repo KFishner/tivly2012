@@ -66,6 +66,7 @@ try:
     url = 'http://mygoods.co/callback'
     data = urllib.urlencode(values)
     urllib2.urlopen(url,data)
+    
 except urllib2.HTTPError, error:
     print error.read()
  
