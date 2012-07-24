@@ -15,11 +15,11 @@ def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
-    URL = settings.URL
+    redirectURL = settings.URL + '/splash'
 
     csid = request.COOKIES.get('csID',None)
     if csid is None:
-        return redirect(URL+'/splash')
+        return redirect(redirectURL)
     else:
         return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
 
