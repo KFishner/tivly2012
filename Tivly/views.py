@@ -14,10 +14,12 @@ from CSUserObject import CSUser
 def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
+    facebookRedirect = settings.FACEBOOK_REDIRECT_URI
+    redirectURL = settings.URL + '/splash'
+
     csid = request.COOKIES.get('csID',None)
     if csid is None:
-        return redirect('mygoods.co/splash')
+        return redirect(redirectURL)
     else:
         return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
 
