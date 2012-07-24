@@ -197,6 +197,11 @@ def deleteAccount(request):
     fbu.delete()
     return redirect('google.com')
 
+def logout(request):
+    response = redirect(settings.URL)
+    response.delete_cookie('csID')
+    return response
+
 def creditCardSubmission(request):
     if request.method == 'POST':
         errors = validateCard(request)
