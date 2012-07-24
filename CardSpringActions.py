@@ -76,6 +76,8 @@ def createAnApp(businessID,redemptionValues):
     data = urllib.urlencode(redemptionValues)
     return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps',data) 
 
+#def signUpForAllApps
+
 def getAnApp(businessID,appID):
     authenticate()
     return urllib2.urlopen('https://api-test.cardspring.com/v1/businesses/'+businessID+'/apps/'+appID)
