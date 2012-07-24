@@ -17,7 +17,7 @@ def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = settings.FACEBOOK_REDIRECT_URI
-    redirectURL = settings.URL + '/splash'
+    redirectURL = 'https://'+settings.URL + '/splash'
 
     csid = request.COOKIES.get('csID',None)
     if csid is None:
