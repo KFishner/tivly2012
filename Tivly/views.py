@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    facebookRedirect = settings.FACEBOOK_REDIRECT_URI
+    facebookRedirect = 'https://'+settings.FACEBOOK_REDIRECT_URI
     redirectURL = 'https://'+settings.URL + '/splash'
 
     csid = request.COOKIES.get('csID',None)
