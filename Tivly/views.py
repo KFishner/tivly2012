@@ -10,6 +10,8 @@ from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyReward
 from CreditCard import validateCard
 from GMaps import getMap
 from CSUserObject import CSUser
+from django.views.decorators.csrf import csrf_exempt
+
 
 def login (request):
     #template variables...       
@@ -158,7 +160,7 @@ def contact(request):
             return render_to_response('contact.html', locals(),context_instance= RequestContext(request))
     return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
 
-
+@csrf_exempt    
 def callback(request):
     if request.method == "POST":
         callBack(request)
