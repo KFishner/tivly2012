@@ -10,18 +10,18 @@ from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyReward
 from CreditCard import validateCard
 from GMaps import getMap
 from CSUserObject import CSUser
- 
 
 def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = settings.FACEBOOK_REDIRECT_URI
-    
-    if request.method == 'POST':
-        errors = validateCard(request)
+    URL = settings.URL
 
-    return render_to_response('signin.html', locals(),context_instance= RequestContext(request))
-    
+    csid = request.COOKIES.get('csID',None)
+    if csid is None:
+        return redirect(URL+'/splash')
+    else:
+        return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
 
 def loginWithRec (request,recid):
     #template variables...
