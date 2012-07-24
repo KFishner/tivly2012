@@ -56,8 +56,17 @@ request = {}
 #
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
-CSUser = CSUser(request)
-print CSUser.myRewards
+password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
+top_level_url = "api-test.cardspring.com"
+password_mgr.add_password(None, top_level_url, settings.CARDSPRING_APP_ID, settings.CARDSPRING_APP_SECRET)
+handler = urllib2.HTTPBasicAuthHandler(password_mgr)
+opener = urllib2.build_opener(handler)
+opener.addheaders = [('Accept', 'application/json'),("Content-Type","application/x-www-form-urlencoded")]
+urllib2.install_opener(opener)
+values = {'user_id':csID}
+url = 'https://api-test.cardspring.com/v1/users'
+data = urllib.urlencode(values)
+return urllib2.urlopen(url,data)
 
 
 
