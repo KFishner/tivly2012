@@ -8,7 +8,6 @@ from datetime import datetime
 from django.http import HttpResponse
 from CardSpringActions import deleteAUserApp
 
-@csrf_exempt    
 def callBack(request):    
     result = request.Post.get()
     csid = result['user_id']
