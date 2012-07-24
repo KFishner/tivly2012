@@ -12,7 +12,7 @@ def callBack(request):
     result = request.POST
     csid = result['user_id']
     rewardLookUp = Rewards.objects.filter(appID = request.POST['app_id'])[0]
-    myReward = MyRewards.objects.filter(csID = csid, reward = rewardLookUp)
+    myReward = MyRewards.objects.filter(csID = csid, reward = rewardLookUp)[0]
     myReward.used = True
     myReward.dateUsed = datetime.now()
     myReward.save()
