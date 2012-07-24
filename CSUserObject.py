@@ -79,6 +79,8 @@ class CSUser:
                 userPoints = UserPoints(csID = self.csUser.csID, businessID = rec.businessID, points = 0, visits = 0)
                 userPoints.save()
                 self.setReward(self,recid)
+            
+            self.setReward(self,recid)
         return
     
     def setReward(self, recid):
@@ -89,7 +91,7 @@ class CSUser:
         recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
         myReward = MyRewards(csID = self.csUser.csid, reward = recReward, reccomendedBy = recommendation.csID, used = False)
         myReward.save()
-        recommendation.delete()
+#        recommendation.delete()
 
         
         

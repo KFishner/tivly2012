@@ -6,6 +6,7 @@ from web1 import settings
 
 def home(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
     errors = []
     popup = False
     if request.method == 'POST':
@@ -48,6 +49,7 @@ def merchantsignup(request):
     URL = settings.URL
     errors = []
     popup = False
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
     if request.method == 'POST':
         if not request.POST.get('name', ''):
             errors.append('Enter a name please')

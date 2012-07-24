@@ -7,6 +7,7 @@ from Tivly.models import Transaction,UniqueBusinessHistory,MyRewards,Rewards, Re
 from datetime import datetime
 from django.http import HttpResponse
 from CardSpringActions import deleteAUserApp
+from web1 import settings
 
 def callBack(request):    
     result = request.POST
@@ -31,7 +32,7 @@ def callBack(request):
         newCustomer = UniqueBusinessHistory(csID = csid, businessID = myReward.reward.businessID, reward = myReward.reward, dateUsed = datetime.now())
         newCustomer.save()
         
-#    deleteAUserApp(csid,request.POST['app_id'])
+    deleteAUserApp(csid,request.POST['app_id'])
     transaction = Transaction(csID = result['user_id'], appID = result['app_id'], date = datetime.now(), event_type = result['event_type'], businessID = myReward.reward.businessID,
                               currency= result['currency'], amount = result['amount'],card_token = result['card_token'], transaction_id = result['transaction_id'], store_id = result['store_id'],
                              )
