@@ -56,12 +56,15 @@ request = {}
 #
 
 #response = createACard('5RVRHK','1129384599856','2020-03')
-values = {'event_type':'redemption','transaction_id':'yN0LiDG5YOwt','purchase_date_time':'2012-01-01 12:34:56&','amount':'2000','currency':'USD','app_id':'NLWgAaWVclvK',
-          'business_id':'l5sxg80QSa7O','store_id':'qmGITK2sHg5G','store_id':'qmGITK2sHg5G','user_id':'1234','card_token':'K9o694RkK34r'}
-url = 'http://www.tivly.com/callback'
-data = urllib.urlencode(values)
-urllib2.urlopen(url,data)
 
+#values = {'event_type':'redemption','transaction_id':'yN0LiDG5YOwt','purchase_date_time':'2012-01-01 12:34:56&','amount':'2000','currency':'USD','app_id':'NLWgAaWVclvK',
+#          'business_id':'l5sxg80QSa7O','store_id':'qmGITK2sHg5G','store_id':'qmGITK2sHg5G','user_id':'1234','card_token':'K9o694RkK34r'}
+#url = 'http://www.mygoods.co/callback'
+#data = urllib.urlencode(values)
+#print urllib2.urlopen(url,data)
+
+authenticate()
+print urllib2.urlopen('https://api-test.cardspring.com/v1').read()
 
 
 
