@@ -89,7 +89,7 @@ class CSUser:
         if recommendation.businessID is not "tivly":
             createUserAppConnection(self.csUser.csID,recommendation.appID)
         recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
-        myReward = MyRewards(csID = self.csUser.csid, reward = recReward, reccomendedBy = recommendation.csID, used = False)
+        myReward = MyRewards(csID = self.csUser.csID, reward = recReward, reccomendedBy = recommendation.csID, used = False)
         myReward.save()
 #        recommendation.delete()
 
