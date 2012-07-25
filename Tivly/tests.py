@@ -17,6 +17,7 @@ import httplib2
 from web1 import settings
 from urlparse import parse_qsl
 from django.http import HttpResponse
+from googlemaps import GoogleMaps
 request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
@@ -73,7 +74,12 @@ print getAUser(csid).read()
 #except urllib2.HTTPError, error:
 #    print error.read()
  
-
+GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
+gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
+business = Businesses.objects.filter(businessID = 'tivly')[0]
+address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
+lat, lng = gmaps.address_to_latlng(address)
+print lat,lng
 
 
 
