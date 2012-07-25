@@ -90,24 +90,50 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '162129900588207', // App ID
-      channelUrl : '//WWW.tivly.COM/channel.html', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
       xfbml      : true  // parse XFBML
-    });
+    });    
 
-    // Additional initialization code here
   };
 
   // Load the SDK Asynchronously
   (function(d){
-     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-     if (d.getElementById(id)) {return;}
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
      js = d.createElement('script'); js.id = id; js.async = true;
      js.src = "//connect.facebook.net/en_US/all.js";
-     ref.parentNode.insertBefore(js, ref);
+     d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
 </script>
+
+function share(){
+  FB.ui(
+    {
+      method: 'feed',
+      name: 'Facebook Dialogs',
+      link: 'http://developers.facebook.com/docs/reference/dialogs/',
+      picture: 'http://fbrell.com/f8.jpg',
+      caption: 'Reference Documentation',
+      description: 'Dialogs provide a simple, consistent interface for applications to interface with users.',
+      message: 'Facebook Dialogs are easy!'
+    },
+
+    function(response) {
+      if (response && response.post_id) {
+
+        // THE POST WAS PUBLISHED
+        alert('Post was published.');
+
+      } else {
+
+        // THE POST WAS NOT PUBLISHED
+        alert('Post was not published.');
+
+      }
+    }
+  );
+}
 {%endblock%}
 
 {%block content%}
