@@ -321,7 +321,7 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 }
 
 .cloud-container .cloud-icons{
-	background:url(../images/restaurant-cloud.png) repeat-x scroll 0 0 transparent;
+	background:url(../splash_images/restaurant-cloud.png) repeat-x scroll 0 0 transparent;
 	height:318px;
 	position:absolute;
 	left:0;
