@@ -16,8 +16,8 @@ from django.views.decorators.csrf import csrf_exempt
 def login (request):
     #template variables...       
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    facebookRedirect = 'https://tivly.com/home'
-    redirectURL = 'https://tivly.com/splash'
+    facebookRedirect = 'https://www.tivly.com/home'
+    redirectURL = 'https://www.tivly.com/splash'
 
     csid = request.COOKIES.get('csID',None)
     if csid is None:
@@ -29,7 +29,7 @@ def login (request):
 def loginWithRec (request,recid):
     #template variables...
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    facebookRedirect = 'https://tivly.com/home'
+    facebookRedirect = 'https://www.tivly.com/home'
     
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('recID',recid)
