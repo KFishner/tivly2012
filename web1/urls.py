@@ -1,5 +1,5 @@
 from django.conf.urls import patterns,include,url
-from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,logout,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure, creditCardSubmission, faq2
+from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,logout,home,callback,newDiscoveries, test, recommendation,businessInfo,getOffer, youSure, creditCardSubmission, faq2
 from django.views.decorators.csrf import csrf_exempt
 
 # Uncomment the next two lines to enable the admin:
@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'offer/(?P<recid>\w{0,6})/$', getOffer),
     url(r'creditcard',creditCardSubmission),
     url(r'faq2', faq2),
+    url(r'test', test)
 )
 
 urlpatterns += patterns('',

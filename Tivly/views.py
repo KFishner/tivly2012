@@ -221,6 +221,9 @@ def aboutUs(request):
 def jobs(request):
     return render_to_response('jobs.html',context_instance= RequestContext(request))
 
+def test(request):
+    return render_to_response('test.html',context_instance= RequestContext(request))
+
         
     
 
