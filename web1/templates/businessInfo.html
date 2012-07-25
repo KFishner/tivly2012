@@ -84,6 +84,30 @@
 		});           
 	});
 </script>
+
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '162129900588207', // App ID
+      channelUrl : '//WWW.tivly.COM/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
 {%endblock%}
 
 {%block content%}
@@ -110,16 +134,17 @@
 						They get <span style="color: #ff9966">{{rewards0.description }}</span>, and you earn points towards awesome rewards - check your progress in my {{business.businessName }}
 					</h2>
 				</div>
-<!-- Start Shareaholic Sexy Bookmark HTML-->
+			<div><a name="fb_share" type="button" share_url="{{ URL }}/offer/{{ recid }}"></a></div>
+<!-- Start Shareaholic Sexy Bookmark HTML
 				<div class="shr_class shareaholic-show-on-load"></div>
-				<!-- End Shareaholic Sexy Bookmark HTML -->
-				<!-- Start Shareaholic Sexy Bookmark settings -->
+				End Shareaholic Sexy Bookmark HTML
+				Start Shareaholic Sexy Bookmark settings
 				<script type="text/javascript">
 var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ recid }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"${title} - ${short_link} via @Shareaholic"}};
 var SHRSB_Globals = {"perfoption":"1"};
 </script>
-				<!-- End Shareaholic Sexy Bookmark settings -->
-				<!-- Start Shareaholic Sexy Bookmark script -->
+				End Shareaholic Sexy Bookmark settings
+				Start Shareaholic Sexy Bookmark script
 				<script type="text/javascript">
 (function() {
 var sb = document.createElement("script"); sb.type = "text/javascript";sb.async = true;
@@ -128,7 +153,7 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 })();
 </script>
 
-				<!-- End Shareaholic Sexy Bookmark script -->
+				End Shareaholic Sexy Bookmark script -->
 			</div>
 			<div id="tabs-2">
 				<table>
