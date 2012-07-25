@@ -68,6 +68,8 @@ def home(request):
 
 def businessInfo(request, bname):
     #template variables...
+    URL = settings.URL
+    recid = '6F7J06'
     bname =  bname.replace('_',' ')
     user = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
