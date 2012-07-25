@@ -1,62 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+{%extends 'base.html'%}
+{%block title%}My Account - Tivly{%endblock%}
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>My Account - Tivly</title>
-    <link href="favicon.ico" rel="shortcut icon">
 
-    
-    <!-- Include CSS -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
-
-    <!-- Include Scripts -->	
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/jquery.color.js"></script>
-    <script type="text/javascript" src="js/slides.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>	
-    <script type="text/javascript" src="js/custom.js"></script>
-    
-    <!-- Google Analytics -->	
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-32882337-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-    <!-- Google Analytics -->
-<!-- start Mixpanel -->
-<script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
-a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
-mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
-<!-- end Mixpanel -->
-    
-</head>
-
-<body>
+{%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("Delete Account Visited")
     
 </script>
+{%endblock%}
+
+{%block content%}
 <div style="width:50%; margin:0px auto; margin-top:10%;">
 
 <h1>Are you for serious?</h1>
 <input type="submit" value="I am indeed, for serious" tabindex="5" id="submit" name="submit" action = "{{ URL }}/delete"/>
 </div>
-
-
-
-
-
-
-
-</body>
-</html>
+{%endblock%}

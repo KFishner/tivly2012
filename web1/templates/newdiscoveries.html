@@ -67,9 +67,9 @@ $(".cclogin").fancybox({
 					<h5>{{ business.businessName }} - {{reward.description }}</h5>
 					<h6>{{ business.city }}</h6>
 					<a href="{{ URL }}/business/{{ business.website }}"><img
-						src="{{business.pictureLocation }}" /></a> <a
-						href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
-				</div>
+						src="{{business.pictureLocation }}" /></a> 
+<!-- 						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
+ -->				</div>
 			</td> 
 			{% if not forloop.last and forloop.count|divisibleby:"3"%}
 		</tr>
