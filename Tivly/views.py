@@ -43,7 +43,7 @@ def home(request):
     cc = Cards.objects.filter(csID = user.csUser.csID)
     
     if cc:
-        hasCard = True
+        hasCard = True  
     
     else:
         hasCard = False
@@ -74,6 +74,7 @@ def businessInfo(request, bname):
     lat,lng = getMap(business.businessID)
     rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
     rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
+    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     
     
