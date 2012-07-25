@@ -44,19 +44,6 @@
       }
     </script>
 
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32882337-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
 <!-- Add jQuery UI -->
 <link type="text/css"
 	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
@@ -84,58 +71,6 @@
 		});           
 	});
 </script>
-
-<div id="fb-root"></div>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '162129900588207', // App ID
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      oauth      : true, // enable OAuth 2.0
-      xfbml      : true  // parse XFBML
-    });    
-
-  };
-
-  // Load the SDK Asynchronously
-  (function(d){
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     d.getElementsByTagName('head')[0].appendChild(js);
-   }(document));
-</script>
-<script type="text/javascript">
-function share(){
-  FB.ui(
-    {
-      method: 'feed',
-      name: 'Facebook Dialogs',
-      link: 'http://developers.facebook.com/docs/reference/dialogs/',
-      picture: 'http://fbrell.com/f8.jpg',
-      caption: 'Reference Documentation',
-      description: 'Dialogs provide a simple, consistent interface for applications to interface with users.',
-      message: 'Facebook Dialogs are easy!'
-    },
-
-    function(response) {
-      if (response && response.post_id) {
-
-        // THE POST WAS PUBLISHED
-        alert('Post was published.');
-
-      } else {
-
-        // THE POST WAS NOT PUBLISHED
-        alert('Post was not published.');
-
-      }
-    }
-  );
-}
-
-</script>
 {%endblock%}
 
 {%block content%}
@@ -162,19 +97,18 @@ function share(){
 						They get <span style="color: #ff9966">{{rewards0.description }}</span>, and you earn points towards awesome rewards - check your progress in my {{business.businessName }}
 					</h2>
 				</div>
-				
-				<div class="fb-share" data-href="{{ URL }}/offer/{{ recid }}" data-send="true" data-width="450" data-show-faces="true"></div>
-	<!-- Start Shareaholic Sexy Bookmark HTML
-				<div class="shr_class shareaholic-show-on-load"></div>
-				End Shareaholic Sexy Bookmark HTML
-				Start Shareaholic Sexy Bookmark settings
+								
+<!-- 	Start Shareaholic Sexy Bookmark HTML
+ -->				<div class="shr_class shareaholic-show-on-load"></div>
+				<!-- End Shareaholic Sexy Bookmark HTML -->
+				<!-- Start Shareaholic Sexy Bookmark settings -->
 				<script type="text/javascript">
 var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ recid }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"${title} - ${short_link} via @Shareaholic"}};
 var SHRSB_Globals = {"perfoption":"1"};
 </script>
-				End Shareaholic Sexy Bookmark settings
-				Start Shareaholic Sexy Bookmark script
-				<script type="text/javascript">
+<!-- 				End Shareaholic Sexy Bookmark settings-->	
+<!-- 			Start Shareaholic Sexy Bookmark script -->				
+<script type="text/javascript">
 (function() {
 var sb = document.createElement("script"); sb.type = "text/javascript";sb.async = true;
 sb.src = ("https:" == document.location.protocol ? "https://dtym7iokkjlif.cloudfront.net" : "http://cdn.shareaholic.com") + "/media/js/jquery.shareaholic-publishers-sb.min.js";
@@ -182,8 +116,8 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 })();
 </script>
 
-				End Shareaholic Sexy Bookmark script -->
-			</div>
+<!-- 				End Shareaholic Sexy Bookmark script
+ -->			</div>
 			<div id="tabs-2">
 				<table>
 					<tr>
