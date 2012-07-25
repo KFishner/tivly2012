@@ -73,6 +73,7 @@ def businessInfo(request, bname):
     bname =  bname.replace('_',' ')
     user = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
+    hashtag = business.businessName
     lat,lng = getMap(business.businessID)
     rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
     rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
