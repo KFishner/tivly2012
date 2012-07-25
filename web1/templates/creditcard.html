@@ -1,13 +1,56 @@
-{% extends 'base.html'%}
-{%block title%}Login - Tivly{%endblock%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Tivly</title>
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="{{ STATIC_URL }}content-type" content="text/html;charset=utf-8" />
+    
+    <!-- Include CSS -->
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 
-{%block extraHead%}
-<style type="text/css">
-body {background-color:black;}
-</style>
-{%endblock%}
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
 
-{%block content%}
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32882337-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Add jQuery UI -->
+<link type="text/css" href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+<!-- Add Progressbar UI -->
+
+<!-- Add ShareThis -->
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "269ded35-cfb6-4b85-b449-f860b82be542"}); </script>
+</head>
+
+
+<body style="background-color:black">
 <div class="container" style="width:95%;">
     <div class="grid onehalf" style="width:40%; margin-top:20px;">
                 <img src="{{ STATIC_URL }}images/tagline.png"/>
@@ -85,4 +128,6 @@ alert(Thank you!You can now redeem your offer);
 	});
 
 </script>
-{%endblock%}
+        
+</body>
+</html>
