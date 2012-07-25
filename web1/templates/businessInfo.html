@@ -1,30 +1,10 @@
 {% extends 'base.html'%}
 {%block title%}My Favorites - Tivly{% endblock%}
 {%block extraHead%}
-<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet"
-	type="text/css" />
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-
-<!-- Include CSS -->
-<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet"
-	type="text/css" />
-<link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet"
-	type="text/css" media="screen" />
-
-<!-- Include Scripts -->
-<script type="text/javascript"
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
-<script type="text/javascript"
-	src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
-
 <script type="text/javascript"
 	src="http://maps.googleapis.com/maps/api/js?key={{ GOOGLEMAPS_API_KEY }}&sensor=false">
     </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
       function initialize() {
         var myOptions = {
           center: new google.maps.LatLng({{ lat }}, {{ lng }}),
@@ -42,7 +22,7 @@
   		map: map
 		});
       }
-    </script> -->
+    </script>
 
 <!-- Add jQuery UI -->
 <link type="text/css"
@@ -53,7 +33,7 @@
 <script type="text/javascript"
 	src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
 <!-- Add Tabs UI -->
-<!-- <script>
+<script>
 	$(function() {
 		$( "#tabs" ).tabs();
 	});
@@ -70,7 +50,7 @@
 			value: {{redeemed}}*100/{{rewards10.pointsNeeded}}
 		});           
 	});
-</script> -->
+</script>
 {%endblock%}
 
 {%block content%}
