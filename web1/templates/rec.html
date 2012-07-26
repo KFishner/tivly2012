@@ -38,6 +38,20 @@
 		$( "#tabs" ).tabs();
 	});
 	</script>
+	
+<script>
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: {{ redeemed }}*100/{{rewards5.pointsNeeded}}
+		});           
+	});
+	$(function() {
+		$( "#progressbar2" ).progressbar({
+			value: {{redeemed}}*100/{{rewards10.pointsNeeded}}
+		});           
+	});
+</script>
+
 {%endblock%}
 
 {%block content%}
