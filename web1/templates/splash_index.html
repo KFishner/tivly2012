@@ -4,10 +4,14 @@
 {%block extraHead%} <meta name="google-site-verification" content="kKhNkhNGqjYuNXW_UtOZyLhg1_JSIdwlOyYxP7W738U" />
 {%endblock%}
 
-{% block js%}
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
+{%block js%}
+    <script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/superfish.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.color.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/slides.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -30,7 +34,9 @@
      ref.parentNode.insertBefore(js, ref);
    }(document));
 </script>
+{%endblock%}
 
+{%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("Landing Page Loaded")
 </script>
