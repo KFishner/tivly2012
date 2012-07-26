@@ -1,10 +1,9 @@
 {%extends 'base.html'%} 
 {% block title %}My Discoveries{%endblock%} 
 
-{%block extraHead%}
+{%block js%}
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL }}js/superfish.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/jquery.color.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/slides.min.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
@@ -37,14 +36,13 @@ $(".cclogin").fancybox({
     $(".cclogin").trigger('click');
 });</script>
 {%endblock%}
+
 {%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("New Discoveries Viewed")
 </script>
-{%endblock%} {%block content%}
-
-
-<!-- START MAIN CONTAINER -->
+{%endblock%} 
+{%block content%}
 <div class="container">
 
 	<h1 class="page-header" style="font-size: 26px; color: #00cc66">
@@ -79,5 +77,4 @@ $(".cclogin").fancybox({
 	<br class="clear" />
 	<br class="clear" />
 </div>
-<!-- END MAIN CONTAINER -->
 {%endblock%}

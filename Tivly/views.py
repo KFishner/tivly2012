@@ -175,7 +175,7 @@ def accountInfo(request):
     #template variables...
     URL = settings.URL
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    redirect = settings.FACEBOOK_REDIRECT_URI
+    redirect = 'https://www.tivly.com/home'
     return render_to_response('myaccount.html', locals(), context_instance= RequestContext(request))
 
 def youSure(request):

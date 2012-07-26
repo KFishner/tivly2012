@@ -1,17 +1,34 @@
 {% extends 'base.html' %}
 {%block title%} My Account - Tivly {%endblock%}
 
+{%block js%}
+<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#contactform').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			CardSpring.addCard(cardSpringResponseHandler, {
+				publisher_id : publisher_id,
+				security_token : security_token,
+				timestamp : timestamp,
+				hmac : hmac
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : user_id
+			}, "all");
+			return false;
+		});
+	});
+
+</script>
+{%endblock%}
 {% block MixPanel %}
 <script type="text/javascript">
     mixpanel.track("My Account Visited")
 </script>
 {% endblock %}
-
-{%block extraHead%}
-<script type="text/javascript"
-        src="https://js.cardspring.com/v1/cs.js">
-</script>
-{%endblock%}
 
 {%block content%}
 <div class="container">
@@ -32,7 +49,7 @@
             <tr> 
                  <tr>
                 <td>Connect Payment Card</td>
-                <td>        <form id="contactform" method="post" action="ajax.php">
+                <td>        <form id="contactform" method="post" action="">
             <p style="font-size: 18px;">
                 Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
             </p>
@@ -62,27 +79,6 @@
                 <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
             </p>
         </form>
-        <script src="https://js.cardspring.com/v1/cs.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#contactform').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');
-			CardSpring.addCard(cardSpringResponseHandler, {
-				publisher_id : publisher_id,
-				security_token : security_token,
-				timestamp : timestamp,
-				hmac : hmac
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : user_id
-			}, "all");
-			return false;
-		});
-	});
-
-</script>
         </td><!-- end form -->
             <tr>
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
