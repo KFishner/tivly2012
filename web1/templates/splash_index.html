@@ -2,9 +2,9 @@
 {%block title%}Tivly- Rewarding Discovery{%endblock%}
 
 {%block extraHead%} <meta name="google-site-verification" content="kKhNkhNGqjYuNXW_UtOZyLhg1_JSIdwlOyYxP7W738U" />
- {%endblock%}
-{% block extraScript%}
+{%endblock%}
 
+{% block js%}
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -34,8 +34,7 @@
 <script>
     mixpanel.track_links("#app-store a, #mxp a", "User Subscribe")
 </script>
-
-{% endblock%}
+{%endblock%}
 
 {%block content%}
 <!-- START MAIN CONTAINER -->

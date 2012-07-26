@@ -8,19 +8,13 @@
 
 
 	<!-- Include CSS -->
-	<link href="{{ STATIC_URL }}splash_css/style.css" rel="stylesheet"
-		type="text/css" />
-	<link href="{{ STATIC_URL }}splash_css/jquery.fancybox.css" rel="stylesheet"
-		type="text/css" media="screen" />
+	<link href="{{ STATIC_URL }}splash_css/style.css" rel="stylesheet" type="text/css" />
+	{%block css%}{%endblock%}
+
 
 	<!-- Include Scripts -->
-	<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/superfish.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.color.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/slides.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
-	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
+	{%block js%}{%endblcok%}
+
 	<!-- Google Analytics -->
 	<script type="text/javascript">
     
@@ -41,6 +35,7 @@
 a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
 mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
 	<!-- end Mixpanel -->
+
 {%block extraHead%}{%endblock%}
 </head>
 

@@ -2,10 +2,7 @@
 {%block title%}Tivly - {{ business.businessName }}{% endblock%}
 
 {%block js%}
-<script type="text/javascript" src="{{STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
-<script type="text/javascript"
-	src="http://maps.googleapis.com/maps/api/js?key={{ GOOGLEMAPS_API_KEY }}&sensor=false">
-    </script>
+<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?key={{ GOOGLEMAPS_API_KEY }}&sensor=false"></script>
 <script type="text/javascript">
       function initialize() {
         var myOptions = {
@@ -27,13 +24,10 @@
     </script>
 
 <!-- Add jQuery UI -->
-<link type="text/css"
-	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
-	rel="stylesheet" />
-<script type="text/javascript"
-	src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript"
-	src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<link type="text/css"href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+
 <!-- Add Tabs UI -->
 <script>
 	$(function() {
@@ -55,7 +49,7 @@
 </script>
 
 <!-- Start Shareaholic Sexy Bookmark settings -->
-				<script type="text/javascript">
+<script type="text/javascript">
 var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ recid }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"Get rewarded for sharing the restaurants you love - {{ URL }}/offer/{{ recid }} - @Tivlytweets @{{ hashtag }}"}};
 var SHRSB_Globals = {"perfoption":"1"};
 </script>
