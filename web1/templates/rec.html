@@ -87,22 +87,21 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 			<div id="tabs-2">
 				<table>
 					<tr>
-						<td style="padding-right: 100px">Recommended to Friends</td>
-						<td>{{ recommended }}</td>
-					</tr>
-					<tr>
 						<td style="padding-right: 100px">Redeemed by Friends</td>
 						<td>{{ redeemed }}</td>
 					</tr>
 					<tr>
-						<td style="padding-right: 100px">My Used Rewards</td>
-						<td>{{ used }}</td>
-					</tr>
-					<tr>
-						<td style="padding-right: 100px; color: #09c">Remaining
-							Rewards</td>
-						<td style="color: #09c">{{ left }}</td>
-					</tr>
+					<td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c"> {{rewards5.pointsNeeded}} friends</span> redeem discounts, you get {{rewards5.description}}!</em></td>
+                    		</tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c">{{rewards10.pointsNeeded}} friends</span> redeem discounts, you get {{rewards10.description}}!</em></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                            </tr>
 				</table>
 			</div>
 		</div>
