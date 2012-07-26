@@ -10,9 +10,9 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
     <script type="text/javascript" src="{{STATIC_URL }}js/custom.js"></script>	
-<<script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function() {
-		$(".fancybox").fancybox();
+		$("a.fancybox").fancybox();
 	});
 </script>	
 
@@ -69,7 +69,7 @@ $(".cclogin").fancybox({
 					<h6>{{business.city}}</h6>
 					<a href="{{ URL }}/business/{{ business.website }}"><img
 						src="{{ business.pictureLocation }}" /></a> 
-						<a href="{{ URL }}/rec/{{ business.website }}/" id = "fancybox" class="fancybox fancybox.iframe">Recommend</a>
+						<a href="{{ URL }}/rec/{{ business.website }}/" id="fancybox" class="fancybox fancybox.iframe">Recommend</a>
 				</div>
 			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
 		</tr>
@@ -79,4 +79,11 @@ $(".cclogin").fancybox({
 		</tr>
 	</table>
 	<br class="clear"/>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("a.fancybox").fancybox();
+	});
+</script>	
+	
 {%endblock%}
