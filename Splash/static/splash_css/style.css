@@ -442,6 +442,7 @@ a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90p
 #subscribe-area{
 	background:url(../splash_images/sub-bg.png) top repeat-x;
 	height:80px;
+	margin-top:20%;
 	display:none;
 }
 
