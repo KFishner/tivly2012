@@ -24,28 +24,28 @@ CARDSPRING_APP_SECRET = 'AwBPNgNZYXwT560aW7ufZlCQUKZ2ifIt'
 CARDSPRING_CALLBACK_URL = ''
 
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': 'heroku_063679ad3e51f7b',                      # Or path to database file if using sqlite3.
-#        'USER': 'bdcc025d2dc912',                      # Not used with sqlite3.
-#        'PASSWORD': '42d8ab4f',                  # Not used with sqlite3.
-#        'HOST': 'us-cdbr-east.cleardb.com',                      # Set to empty string for localhost. Not used with sqlite3.
-#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#    }
-#}
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'web1db',                      # Or path to database file if using sqlite3.
-        'USER': 'antiguab',                      # Not used with sqlite3.
-        'PASSWORD': '6104330240',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'NAME': 'heroku_063679ad3e51f7b',                      # Or path to database file if using sqlite3.
+        'USER': 'bdcc025d2dc912',                      # Not used with sqlite3.
+        'PASSWORD': '42d8ab4f',                  # Not used with sqlite3.
+        'HOST': 'us-cdbr-east.cleardb.com',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'web1db',                      # Or path to database file if using sqlite3.
+#        'USER': 'antiguab',                      # Not used with sqlite3.
+#        'PASSWORD': '6104330240',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
