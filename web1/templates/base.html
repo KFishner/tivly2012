@@ -54,11 +54,11 @@
 				<div id="primary-nav" class="header-right">
 
 					<ul class="sf-menu">
-						<li><a href="https://www.tivly.com/home"><img
+						<li><a href="{{ URL }}/home"><img
 								src="{{ STATIC_URL }}images/myfavorites.png" /></a></li>
-						<li><a href="https://www.tivly.com/newdiscoveries"><img
+						<li><a href="{{ URL }}/newdiscoveries"><img
 								src="{{ STATIC_URL }}images/newdiscoveries.png" /></a></li>
-						<li><a href="https://www.tivly.com/me">| My Account</a></li>
+						<li><a href="{{ URL }}/me">| My Account</a></li>
 
 					</ul>
 
@@ -68,7 +68,7 @@
 			<!-- end nav -->
 
 			<!-- LOGO -->
-			<a href="https://www.tivly.com/home" id="logo"><img
+			<a href="{{ URL }}/home" id="logo"><img
 				src="{{ STATIC_URL }}images/logo.png" border="0" alt="logo" /></a> <br
 				class="clear" />
 
@@ -92,18 +92,18 @@
 
 			<div id="footer-right">
 
-				<a href="http://www.facebook.com/gotivly" target="_blank"
+				<a class="icon" href="http://www.facebook.com/gotivly" target="_blank"
 					class="social facebook">Fan Us</a> <a
 					href="https://twitter.com/tivlytweets" target="_blank"
 					class="social twitter">Follow Us</a><br />
-				<a href="https://mixpanel.com/f/partner"><img
+				<a class="icon" href="https://mixpanel.com/f/partner"><img
 					src="https://mixpanel.com/site_media/images/partner/badge_light.png"
 					alt="Mobile Analytics" /></a>
 
 			</div>
 
-			<a id="top" href="#">Top</a> | <a href="https://www.tivly.com/aboutus">About Us</a> | <a
-				href="https://www.tivly.com/jobs">Jobs</a> | <a href="https://www.tivly.com/contact">Contact</a><br /> &copy
+			<a id="top" href="#">Top</a> | <a href="{{ URL }}/aboutus">About Us</a> | <a
+				href="{{ URL }}/jobs">Jobs</a> | <a href="{{ URL }}/contact">Contact</a><br /> &copy
 			2012 tivly Corporation<br /> <br class="clear" />
 
 		</div>
