@@ -73,14 +73,16 @@ def businessInfo(request, bname):
     URL = settings.URL
     bname =  bname.replace('_',' ')
     user = CSUser(request)
-    recid = request.COOKIES.get('recID')
     business = Businesses.objects.filter(businessName = bname)[0]
+    recid = IDGenerator()
     lat,lng = getMap(business.businessID)
     rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
     rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
     rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csUser.csID, dateGiven = datetime.now())
+    myRecommendation.save()
     
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
