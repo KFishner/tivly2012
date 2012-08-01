@@ -76,12 +76,12 @@ def businessInfo(request, bname):
     business = Businesses.objects.filter(businessName = bname)[0]
     recid = IDGenerator()
     lat,lng = getMap(business.businessID)
-    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
-    rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
-    rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
+    level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
+    level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
+    introReward = Rewards.objects.filter(businessID = business.businessID, level = 0)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csUser.csID, dateGiven = datetime.now())
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
     myRecommendation.save()
     
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
