@@ -32,7 +32,7 @@ request = {}
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 #############################################
-csid = 'XE6AN1'
+csid = '2YIKLB'
 #deleteAUser(csid)
 response = HttpResponse()
 response.set_cookie('csID', csid)

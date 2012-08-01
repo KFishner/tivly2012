@@ -24,7 +24,7 @@ class CSUser:
         code = request.GET.get('code', None)
 #        code = None    
         cardspringID = request.COOKIES.get('csID',None)
-#        cardspringID = 'XE6AN1'
+#        cardspringID = '2YIKLB'
         
         if code is not None:
             fbUser = facebookLogin(request)
