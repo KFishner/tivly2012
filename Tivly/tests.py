@@ -6,6 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from CardSpringActions import * 
+from CSUserObject import *
 from Tivly.models import *
 from Tivly.views import *
 import urllib2
@@ -33,7 +34,13 @@ request = {}
 #############################################
 csid = 'XE6AN1'
 #deleteAUser(csid)
-print getAUser(csid).read()
+response = HttpResponse()
+response.set_cookie('csID', csid)
+csUser = CSUser(response)
+business = Businesses.objects.filter(businessID = 'tivly')[0]
+used,left,redeemed,recommended = csUser.getRewardStatistics(business)
+
+print 'used: ' + str(used),'left: ' + str(left),'redeemed: ' + str(redeemed),'reccommended ' + str(recommended)
 #csu = CardSpringUser.objects.get(csID = csid)
 #csu.delete()
 #print 'csu deleted'
@@ -74,12 +81,6 @@ print getAUser(csid).read()
 #except urllib2.HTTPError, error:
 #    print error.read()
 # 
-#GOOGLEMAPS_API_KEY = settings.GOOGLEMAPS_API_KEY
-#gmaps = GoogleMaps(GOOGLEMAPS_API_KEY)
-#business = Businesses.objects.filter(businessID = 'tivly')[0]
-#address = business.street + ' ' + business.city + ' ' + str(business.zipCode)
-#lat, lng = gmaps.address_to_latlng(address)
-#print lat,lng
 
 
 

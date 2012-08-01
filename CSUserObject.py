@@ -21,8 +21,10 @@ class CSUser:
         
     
     def getCardSpringUser(self,request):
-        code = request.GET.get('code', None)    
+        code = request.GET.get('code', None)
+#        code = None    
         cardspringID = request.COOKIES.get('csID',None)
+#        cardspringID = 'XE6AN1'
         
         if code is not None:
             fbUser = facebookLogin(request)
@@ -35,7 +37,7 @@ class CSUser:
                 CSUser = CardSpringUser.objects.filter(csID = cardspringID)
         
         elif cardspringID is not None:
-            CSUser = CardSpringUser.objects.filter(csID = request.COOKIES.get('csID'))
+            CSUser = CardSpringUser.objects.filter(csID = cardspringID)
         
         else:
             cardspringID = IDGenerator()
@@ -54,7 +56,7 @@ class CSUser:
         
         for reward in self.myRewards:
             if reward.reward.businessID == business.businessID:
-                if reward.used == False:
+                if reward.used is False:
                     left += 1
                 else:
                     used += 1
@@ -62,7 +64,7 @@ class CSUser:
         recRewards = MyRewards.objects.filter(reccomendedBy = self.csUser.csID)
         recommended = len(recRewards)
         for reward in recRewards:
-            if reward.used == True:
+            if reward.used is True:
                 redeemed += 1
             
         return used,left,redeemed,recommended
@@ -78,7 +80,6 @@ class CSUser:
             if not userPoints.exists():
                 userPoints = UserPoints(csID = self.csUser.csID, businessID = rec.businessID, points = 0, visits = 0)
                 userPoints.save()
-                self.setReward(recid)
             
             self.setReward(recid)
         return
@@ -86,7 +87,7 @@ class CSUser:
     def setReward(self, recid):
         recommendation = MyRecommendations.objects.filter(recID = recid)[0]
         
-        if recommendation.businessID != "tivly":
+        if recommendation.businessID is not "tivly":
             createUserAppConnection(self.csUser.csID,recommendation.appID)
         recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
         myReward = MyRewards(csID = self.csUser.csID, reward = recReward, reccomendedBy = recommendation.csID, used = False)

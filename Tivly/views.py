@@ -47,11 +47,13 @@ def home(request):
     
     else:
         hasCard = False
+        
     recid =request.COOKIES.get('recID', None)
-    rec = MyRecommendations.objects.filter(recID = recid)
+    if recid is not None:
+        rec = MyRecommendations.objects.filter(recID = recid)
     
-    if rec.exists():
-        user.addRecommendationToRewards(recid)
+        if rec.exists():
+            user.addRecommendationToRewards(recid)
 
     businessList= []
     
@@ -73,9 +75,9 @@ def businessInfo(request, bname):
     user = CSUser(request)
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
+    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
     rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
     rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
-    rewards0 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     
     
@@ -89,12 +91,9 @@ def recommendation(request,bname):
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
    
-    rewards = Rewards.objects.filter(businessID = business.businessID)
-    for reward in rewards:
-        if reward.pointsNeeded == 0: 
-            rewards0 = reward 
+    introReward = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)
     recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = rewards0.appID ,rID =rewards0.rID , csID = user.csUser.csID, dateGiven = datetime.now())
+    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
     myRecommendation.save()
     
     used,left,redeemed,recommended = user.getRewardStatistics(business)
