@@ -53,6 +53,7 @@ class Rewards(models.Model):
     businessID = models.CharField(max_length = 40)
     description = models.CharField(max_length = 300)
     pointsNeeded = models.IntegerField()
+    level = models.IntegerField()
 
 #==================USER SPECIFIC=======================#
     
