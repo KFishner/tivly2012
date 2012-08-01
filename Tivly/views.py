@@ -91,7 +91,7 @@ def recommendation(request,bname):
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
    
-    introReward = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)
+    introReward = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
     recid = IDGenerator()
     myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
     myRecommendation.save()
