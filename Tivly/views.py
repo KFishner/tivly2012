@@ -90,9 +90,9 @@ def recommendation(request,bname):
     user = CSUser(request)
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
-    rewards5 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 5)[0]
-    rewards10 = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 10)[0]
-    introReward = Rewards.objects.filter(businessID = business.businessID, pointsNeeded = 0)[0]
+    level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
+    level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
+    introReward = Rewards.objects.filter(businessID = business.businessID, level = 0)[0]
     recid = IDGenerator()
     myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
     myRecommendation.save()
