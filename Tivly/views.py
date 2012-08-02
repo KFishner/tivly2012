@@ -139,7 +139,7 @@ def newDiscoveries(request):
     
     redeemable = {}
     for targetReward in myRewards:
-        pointValue = len(MyRewards.objects.filter(reward = targetReward, reccommendedBy = user.csUser.csID, used = True))  
+        pointValue = len(MyRewards.objects.filter(reward = targetReward, reccomendedBy = user.csUser.csID, used = True))  
         if targetReward.reward.pointsNeeded <= pointValue and targetReward.used != True:
             business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
             redeemable[targetReward.reward] = business
