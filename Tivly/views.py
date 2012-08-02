@@ -26,13 +26,14 @@ def login (request):
         FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
         return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
 
-def loginWithRec (request,recid):
+def loginWithRec(request,recommendedBy,rid):
     #template variables...
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
-    response.set_cookie('recID',recid)
+    response.set_cookie('rID',rid)
+    response.set_cookie('recommendedBy',recommendedBy)
     return response
                      
 def home(request):
@@ -48,12 +49,13 @@ def home(request):
     else:
         hasCard = False
         
-    recid =request.COOKIES.get('recID', None)
-    if recid is not None:
-        rec = MyRecommendations.objects.filter(recID = recid)
-    
-        if rec.exists():
-            user.addRecommendationToRewards(recid)
+    rid = request.COOKIES.get('rID', None)
+    recommendedBy = request.COOKIES.get('recommendedBy', None)
+    if rid is not None:
+        rewardToAdd = Rewards.objects.filter(rID = rid)
+        rewardCheck = MyRewards.objects.filter(csID = user.csID, reward = rewardToAdd)
+        if not rewardCheck.exists():
+            user.addRecommendationToRewards(recommendedBy,rid)
 
     businessList= []
     
@@ -73,17 +75,16 @@ def businessInfo(request, bname):
     URL = settings.URL
     bname =  bname.replace('_',' ')
     user = CSUser(request)
+    csID = user.csUser.csID
     business = Businesses.objects.filter(businessName = bname)[0]
-    recid = IDGenerator()
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
     level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
     introReward = Rewards.objects.filter(businessID = business.businessID, level = 0)[0]
     used,left,redeemed,recommended = user.getRewardStatistics(business)
-    
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
-    myRecommendation.save()
-    
+    rID = introReward.rID
+#    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
+#    myRecommendation.save()
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
 
@@ -91,29 +92,29 @@ def recommendation(request,bname):
     #template variables...
     URL = settings.URL
     user = CSUser(request)
+    csID = user.csUser.csID
     bname =  bname.replace('_',' ')
     business = Businesses.objects.filter(businessName = bname)[0]
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
     level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
     introReward = Rewards.objects.filter(businessID = business.businessID, level = 0)[0]
-    recid = IDGenerator()
-    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
-    myRecommendation.save()
-    
+    rID = introReward.rID
+#    myRecommendation = MyRecommendations(businessID = business.businessID, recID = recid, appID = introReward.appID ,rID =introReward.rID , csID = user.csUser.csID, dateGiven = datetime.now())
+#    myRecommendation.save()
     used,left,redeemed,recommended = user.getRewardStatistics(business)
     return render_to_response('rec.html', locals(),context_instance= RequestContext(request))
 
-def getOffer(request, recid):
+def getOffer(request,recommendedBy, rid):
     #template variables ... 
     csid = request.COOKIES.get('csID', None)
     user = CardSpringUser.objects.filter(csID = csid)
     
     if not user.exists() or csid is None:
-        return loginWithRec(request,recid)
+        return loginWithRec(request,recommendedBy,rid)
   
     else:
         user = CSUser(request)
-        user.addRecommendationToRewards(recid)
+        user.addRecommendationToRewards(recommendedBy,rid)
         return redirect(settings.URL+'/home')  
 
 def newDiscoveries(request):

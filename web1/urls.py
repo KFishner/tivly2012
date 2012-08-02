@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^newdiscoveries/$', newDiscoveries),
     url(r'rec/(?P<bname>\w{0,50})/$', recommendation),
     url(r'^business/(?P<bname>\w{0,50})/$', businessInfo),
-    url(r'^offer/(?P<recid>\w{0,6})/$', getOffer),
+    url(r'^offer/(?P<recommendedBy>\w{0,6})/(?P<rid>\w{0,6})/$', getOffer),
     url(r'^creditcard',creditCardSubmission),
     url(r'^faq2', faq2),
     url(r'^test', test)

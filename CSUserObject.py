@@ -71,28 +71,38 @@ class CSUser:
     
     
 
-    def addRecommendationToRewards(self,recid):
-        rec = MyRecommendations.objects.filter(recID = recid)  
-        if rec.exists():
-            rec = rec[0]
-            userPoints = UserPoints.objects.filter(csID = self.csUser.csID, businessID = rec.businessID)
+    def addRecommendationToRewards(self,recommendedBy,rid):
+        rewardToAdd = Rewards.objects.filter(rID = rid)  
+        if rewardToAdd.exists():
+            rewardToAdd = rewardToAdd[0]
+            userPoints = UserPoints.objects.filter(csID = self.csUser.csID, businessID = rewardToAdd.businessID)
                 
             if not userPoints.exists():
-                userPoints = UserPoints(csID = self.csUser.csID, businessID = rec.businessID, points = 0, visits = 0)
+                userPoints = UserPoints(csID = self.csUser.csID, businessID = rewardToAdd.businessID, points = 0, visits = 0)
                 userPoints.save()
             
-            self.setReward(recid)
+            self.setReward(recommendedBy,rid)
         return
     
-    def setReward(self, recid):
-        recommendation = MyRecommendations.objects.filter(recID = recid)[0]
+    def setReward(self, recommendedby,rid):
+        rewardToAdd = Rewards.objects.filter(rID = rid)[0]
+        myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
+        myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
         isUsed = True
-        if recommendation.businessID != "tivly":
-            createUserAppConnection(self.csUser.csID,recommendation.appID)
+        if rewardToAdd.businessID != "tivly":
+            createUserAppConnection(self.csUser.csID,rewardToAdd.appID)
+            createUserAppConnection(self.csUser.csID,myLevel1Reward.appID)
+            createUserAppConnection(self.csUser.csID,myLevel2Reward.appID)
             isUsed = False
-        recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
-        myReward = MyRewards(csID = self.csUser.csID, reward = recReward, reccomendedBy = recommendation.csID, used = isUsed)
-        myReward.save()
+            
+#        recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
+        myIntroReward = MyRewards(csID = self.csUser.csID, reward = rewardToAdd, reccomendedBy = recommendedby, used = isUsed)
+        ml1r = MyRewards(csID = self.csUser.csID, reward = myLevel1Reward, reccomendedBy = recommendedby, used = False)
+        ml2r = MyRewards(csID = self.csUser.csID, reward = myLevel2Reward, reccomendedBy = recommendedby, used = False)
+
+        myIntroReward.save()
+        ml1r.save()
+        ml2r.save()
 #        recommendation.delete()
 
         
