@@ -138,15 +138,11 @@ def newDiscoveries(request):
     myUserPoints = user.userPoints
     
     redeemable = {}
-    for reward in myRewards:
-        pointValue = -1
-        for userPoints in myUserPoints:
-            if userPoints.businessID == reward.reward.businessID:
-                pointValue = userPoints.points
-            
-        if reward.reward.pointsNeeded <= pointValue and pointValue != -1:
-            business = Businesses.objects.filter(businessID = reward.reward.businessID)[0]
-            redeemable[reward.reward] = business
+    for targetReward in myRewards:
+        pointValue = len(MyRewards.objects.filter(reward = targetReward, reccommendedBy = user.csUser.csID, used = True))  
+        if targetReward.reward.pointsNeeded <= pointValue and targetReward.used != True:
+            business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
+            redeemable[targetReward.reward] = business
             
     return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
 
