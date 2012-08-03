@@ -24,6 +24,7 @@ CARDSPRING_APP_SECRET = 'AwBPNgNZYXwT560aW7ufZlCQUKZ2ifIt'
 CARDSPRING_CALLBACK_URL = ''
 
 PREPEND_WWW = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 DATABASES = {
     'default': {
@@ -119,6 +120,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'djangosecure.middleware.SecurityMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +149,7 @@ INSTALLED_APPS = (
     'south',
     'Tivly',
     'Splash',
+    'djangosecure',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',
