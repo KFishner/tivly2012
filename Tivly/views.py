@@ -14,7 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def login (request):
-    #template variables...       
+    #template variables... 
+    pictureAvailable = False      
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     redirectURL = 'https://www.tivly.com/splash'
@@ -28,9 +29,10 @@ def login (request):
 
 def loginWithRec(request,recommendedBy,rid):
     #template variables...
+    pictureAvailable = True
+    pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].pictureLocation
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
-    
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
     response.set_cookie('recommendedBy',recommendedBy)

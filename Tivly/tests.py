@@ -81,35 +81,37 @@ csid = '2YIKLB'
 #except urllib2.HTTPError, error:
 #    print error.read()
 # 
+#
+#
+#print len(MyRewards.objects.filter(reccomendedBy = 'XE6AN1', used = True))
+#
+#myRewards = MyRewards.objects.filter(csID = 'XE6AN1')
+#
+#points = 0
+#redeemable = {}
+#firstTime = True
+#for targetReward in myRewards:
+#    pointValue = len(MyRewards.objects.filter(reccomendedBy = 'XE6AN1', used = True))
+#    print 'reward: '+targetReward.reward.description  
+#    print 'points needed: '+str(targetReward.reward.pointsNeeded)
+#    print 'point value: '+str(pointValue)
+#    print 'used?: '+ str(targetReward.used)
+#    if targetReward.reward.pointsNeeded <= pointValue and targetReward.used == False:
+#        print 'here!'
+#        business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
+#        redeemable[targetReward.reward] = business
+#
+##for reward in myRewards:
+##    if reward.reward.level == 0:
+##        reward.used = True
+##    else:
+##        reward.used = False
+##    reward.save()
+#            
+#print redeemable
 
 
-print len(MyRewards.objects.filter(reccomendedBy = 'XE6AN1', used = True))
-
-myRewards = MyRewards.objects.filter(csID = 'XE6AN1')
-
-points = 0
-redeemable = {}
-firstTime = True
-for targetReward in myRewards:
-    pointValue = len(MyRewards.objects.filter(reccomendedBy = 'XE6AN1', used = True))
-    print 'reward: '+targetReward.reward.description  
-    print 'points needed: '+str(targetReward.reward.pointsNeeded)
-    print 'point value: '+str(pointValue)
-    print 'used?: '+ str(targetReward.used)
-    if targetReward.reward.pointsNeeded <= pointValue and targetReward.used == False:
-        print 'here!'
-        business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
-        redeemable[targetReward.reward] = business
-
-#for reward in myRewards:
-#    if reward.reward.level == 0:
-#        reward.used = True
-#    else:
-#        reward.used = False
-#    reward.save()
-            
-print redeemable
-
+print Businesses.objects.filter(businessID = Rewards.objects.filter(rID = '000000')[0].businessID)[0].pictureLocation
 
 
 
