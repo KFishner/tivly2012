@@ -53,7 +53,7 @@ def home(request):
     recommendedBy = request.COOKIES.get('recommendedBy', None)
     if rid is not None:
         rewardToAdd = Rewards.objects.filter(rID = rid)
-        rewardCheck = MyRewards.objects.filter(csID = user.csID, reward = rewardToAdd)
+        rewardCheck = MyRewards.objects.filter(csID = user.csUser.csID, reward = rewardToAdd)
         if not rewardCheck.exists():
             user.addRecommendationToRewards(recommendedBy,rid)
 
