@@ -139,15 +139,21 @@ def newDiscoveries(request):
     points = 0
     redeemable = {}
     for targetReward in myRewards:
-        pointValue = 0
-        for rewardTotal in myRewards:
-            if targetReward.reward.businessID == rewardTotal.reward.businessID:
-                pointValue += len(MyRewards.objects.filter(reward = rewardTotal, reccomendedBy = user.csUser.csID, used = True))  
-                
-#        pointValue = len(MyRewards.objects.filter(reward = targetReward, reccomendedBy = user.csUser.csID, used = True))  
-        if targetReward.reward.pointsNeeded <= pointValue and targetReward.used != True:
-            business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
-            redeemable[targetReward.reward] = business
+#        pointValue = 0
+#        for rewardTotal in myRewards:
+#            if targetReward.reward.businessID == rewardTotal.reward.businessID:
+#                pointValue += len(MyRewards.objects.filter(reward = rewardTotal, reccomendedBy = user.csUser.csID, used = True))  
+#                
+##        pointValue = len(MyRewards.objects.filter(reward = targetReward, reccomendedBy = user.csUser.csID, used = True))  
+#        if targetReward.reward.pointsNeeded <= pointValue and targetReward.used == False:
+#            business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
+#            redeemable[targetReward.reward] = business
+
+            pointValue = len(MyRewards.objects.filter(reccomendedBy = user.csUser.csID, used = True))
+            if targetReward.reward.pointsNeeded <= pointValue and targetReward.used == False:
+                business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
+                redeemable[targetReward.reward] = business
+
             
     return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
 
