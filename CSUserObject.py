@@ -96,9 +96,9 @@ class CSUser:
             isUsed = False
             
 #        recReward = Rewards.objects.filter(appID = recommendation.appID)[0]
-        myIntroReward = MyRewards(csID = self.csUser.csID, reward = rewardToAdd, reccomendedBy = recommendedby, used = isUsed)
-        ml1r = MyRewards(csID = self.csUser.csID, reward = myLevel1Reward, reccomendedBy = recommendedby, used = False)
-        ml2r = MyRewards(csID = self.csUser.csID, reward = myLevel2Reward, reccomendedBy = recommendedby, used = False)
+        myIntroReward = MyRewards(businessID = rewardToAdd.businessID, csID = self.csUser.csID, reward = rewardToAdd, reccomendedBy = recommendedby, used = isUsed)
+        ml1r = MyRewards(businessID = myLevel1Reward.businessID,csID = self.csUser.csID, reward = myLevel1Reward, reccomendedBy = recommendedby, used = False)
+        ml2r = MyRewards(businessID = myLevel1Reward.businessID, csID = self.csUser.csID, reward = myLevel2Reward, reccomendedBy = recommendedby, used = False)
 
         myIntroReward.save()
         ml1r.save()
