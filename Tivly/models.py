@@ -93,6 +93,7 @@ class MyRewards(models.Model):
     csID = models.CharField(max_length = 6)
     reccomendedBy = models.CharField(max_length = 6)
     reward = models.ForeignKey(Rewards)
+    businessID = models.CharField(max_length = 40)
     used = models.BooleanField(default=False)
     dateUsed = models.DateField(blank = True, null = True)
 
