@@ -61,7 +61,7 @@ class CSUser:
                 else:
                     used += 1
                 
-        recRewards = MyRewards.objects.filter(reccomendedBy = self.csUser.csID)
+        recRewards = MyRewards.objects.filter(businessID = business.businessID, reccomendedBy = self.csUser.csID)
         recommended = len(recRewards)
         for reward in recRewards:
             if reward.used is True:
