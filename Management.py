@@ -8,7 +8,6 @@ from CardSpringActions import createBusinessConnection,createAnApp
 import string
 import random
 
-
 ########################################################
 #####             MANAGEMENT TOOLS                 #####
 ########################################################

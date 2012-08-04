@@ -9,6 +9,7 @@ from CardSpringActions import *
 from CSUserObject import *
 from Tivly.models import *
 from Tivly.views import *
+from Management import *
 import urllib2
 import urllib
 import json
@@ -110,8 +111,12 @@ csid = '2YIKLB'
 #            
 #print redeemable
 
+values = {'businessID':'racecourse','businessName':'The Fleming Race Course','city':'Long Valley','street':'1 Fleming Ct.','zipcode': '07853',
+          'mondayHours':'7:30am - 9:00pm','tuesdayHours':'7:30am - 9:00pm','wednesdayHours':'7:30am - 9:00pm', 'thursdayHours':'7:30am - 9:00pm',
+          'fridayHours':'7:30am - 9:00pm','saturdayHours':'7:30am - 9:00pm','sundayHours':'7:30am - 9:00pm', 'description':'Oldest race course in New Jersey, home to the classics',
+          'pictureLocation':'somewhere','website':'https://www.facebook.com/pages/Fleming-Racecourse/507330119294163'}
 
-print Businesses.objects.filter(businessID = Rewards.objects.filter(rID = '000000')[0].businessID)[0].pictureLocation
+AddBusiness(values)
 
 
 
