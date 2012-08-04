@@ -89,7 +89,7 @@ class CSUser:
         myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
         myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
         isUsed = True
-        if rewardToAdd.businessID is not "tivly" or rewardToAdd.appID is not "racecourse" :
+        if str(rewardToAdd.businessID) is not "tivly" or str(rewardToAdd.appID) is not "racecourse" :
             createUserAppConnection(self.csUser.csID,rewardToAdd.appID)
             createUserAppConnection(self.csUser.csID,myLevel1Reward.appID)
             createUserAppConnection(self.csUser.csID,myLevel2Reward.appID)
