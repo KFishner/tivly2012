@@ -122,7 +122,8 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'sslify.middleware.SSLifyMiddleware',
+#    'sslify.middleware.SSLifyMiddleware',
+    'custom.middleware.SSL.SSLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,6 +153,7 @@ INSTALLED_APPS = (
     'Tivly',
     'Splash',
     'djangosecure',
+    'custom',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',
