@@ -24,7 +24,7 @@ CARDSPRING_APP_SECRET = 'AwBPNgNZYXwT560aW7ufZlCQUKZ2ifIt'
 CARDSPRING_CALLBACK_URL = ''
 
 PREPEND_WWW = True
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True
 #SECURE_SSL_HOST = "www.tivly.com"
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
@@ -122,8 +122,8 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-#    'sslify.middleware.SSLifyMiddleware',
-    'custom.SSL.SSLMiddleware',
+    'sslify.middleware.SSLifyMiddleware',
+#    'custom.SSL.SSLMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,7 +152,6 @@ INSTALLED_APPS = (
     'south',
     'Tivly',
     'Splash',
-    'djangosecure',
     'custom',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
