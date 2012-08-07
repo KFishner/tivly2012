@@ -11,6 +11,8 @@ from CreditCard import validateCard
 from GMaps import getMap
 from CSUserObject import CSUser
 from django.views.decorators.csrf import csrf_exempt
+from hashlib import sha1
+import hmac
 
 
 def login (request):
@@ -186,8 +188,18 @@ def callback(request):
 def accountInfo(request):
     #template variables...
     URL = settings.URL
+    user = CSUser(request)
+    csid = user.csUser.csID
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     redirect = 'https://www.tivly.com/home'
+    CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
+    
+    securityToken = IDGenerator(32)
+    timestamp = datetime.now()
+    key = settings.CARDSPRING_APP_ID
+    raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
+    hashed = hmac.new(key, raw, sha1)
+    digestedHash = hashed.digest()
     return render_to_response('myaccount.html', locals(), context_instance= RequestContext(request))
 
 def youSure(request):

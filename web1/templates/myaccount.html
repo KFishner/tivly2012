@@ -8,15 +8,15 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			CardSpring.addCard(cardSpringResponseHandler, {
-				publisher_id : publisher_id,
-				security_token : security_token,
-				timestamp : timestamp,
-				hmac : hmac
+				publisher_id : {{ CARDSPRING_APP_ID }},
+				security_token : {{ securityKey }},
+				timestamp : {{ timestamp }},
+				hmac : {{ digestedHash }}
 			}, {
 				card_number : $('.card-number').val(),
 				exp_month : $('.expiration-month').val(),
 				exp_year : $('.expiration-year').val(),
-				user_id : user_id
+				user_id : {{ csid }}
 			}, "all");
 			return false;
 		});
@@ -51,7 +51,7 @@
                 <td>Connect Payment Card</td>
                 <td>        <form id="contactform" method="post" action="">
             <p style="font-size: 18px;">
-                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>

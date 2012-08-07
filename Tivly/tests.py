@@ -15,7 +15,6 @@ import urllib
 import json
 import httplib
 import unicodedata
-import httplib2
 from web1 import settings
 from urlparse import parse_qsl
 from django.http import HttpResponse
@@ -110,14 +109,24 @@ csid = '2YIKLB'
 ##    reward.save()
 #            
 #print redeemable
+#
+#values = {'businessID':'racecourse','businessName':'The Fleming Race Course','city':'Long Valley','street':'1 Fleming Ct.','zipcode': '07853',
+#          'mondayHours':'7:30am - 9:00pm','tuesdayHours':'7:30am - 9:00pm','wednesdayHours':'7:30am - 9:00pm', 'thursdayHours':'7:30am - 9:00pm',
+#          'fridayHours':'7:30am - 9:00pm','saturdayHours':'7:30am - 9:00pm','sundayHours':'7:30am - 9:00pm', 'description':'Oldest race course in New Jersey, home to the classics',
+#          'pictureLocation':'somewhere','website':'https://www.facebook.com/pages/Fleming-Racecourse/507330119294163'}
+#
+#AddBusiness(values)
 
-values = {'businessID':'racecourse','businessName':'The Fleming Race Course','city':'Long Valley','street':'1 Fleming Ct.','zipcode': '07853',
-          'mondayHours':'7:30am - 9:00pm','tuesdayHours':'7:30am - 9:00pm','wednesdayHours':'7:30am - 9:00pm', 'thursdayHours':'7:30am - 9:00pm',
-          'fridayHours':'7:30am - 9:00pm','saturdayHours':'7:30am - 9:00pm','sundayHours':'7:30am - 9:00pm', 'description':'Oldest race course in New Jersey, home to the classics',
-          'pictureLocation':'somewhere','website':'https://www.facebook.com/pages/Fleming-Racecourse/507330119294163'}
+from hashlib import sha1
+import hmac
+import binascii
 
-AddBusiness(values)
-
+securityToken = IDGenerator(32)
+timestamp = datetime.now()
+key = settings.CARDSPRING_APP_ID
+raw = '{'+securityToken+'}:{'+str(timestamp)+'}:{XE6AN1}'
+hashed = hmac.new(key, raw, sha1)
+hashed.digest()
 
 
 
