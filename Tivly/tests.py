@@ -117,16 +117,18 @@ csid = '2YIKLB'
 #
 #AddBusiness(values)
 
-from hashlib import sha1
-import hmac
-import binascii
+URL = settings.URL
+csid = 'blah'
+FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+redirect = 'https://www.tivly.com/home'
+CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
 
 securityToken = IDGenerator(32)
 timestamp = datetime.now()
 key = settings.CARDSPRING_APP_ID
-raw = '{'+securityToken+'}:{'+str(timestamp)+'}:{XE6AN1}'
+raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
 hashed = hmac.new(key, raw, sha1)
-hashed.digest()
+print hashed.digest()
 
 
 
