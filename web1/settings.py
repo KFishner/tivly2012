@@ -25,6 +25,8 @@ CARDSPRING_CALLBACK_URL = ''
 
 PREPEND_WWW = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
 
 DATABASES = {
     'default': {
@@ -135,7 +137,6 @@ ROOT_URLCONF = 'web1.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'web1.wsgi.application'
 
-PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

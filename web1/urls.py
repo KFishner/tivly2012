@@ -1,6 +1,7 @@
 from django.conf.urls import patterns,include,url
 from Tivly.views import login,accountInfo,aboutUs,jobs,contact,deleteAccount,logout,home,callback,newDiscoveries, test, recommendation,businessInfo,getOffer, youSure, creditCardSubmission, faq2
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -29,3 +30,9 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     url(r'^splash/', include('Splash.urls')),
 )
+
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
+
