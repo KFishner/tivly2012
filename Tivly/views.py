@@ -33,7 +33,7 @@ def loginWithRec(request,recommendedBy,rid):
     #template variables...
     pictureAvailable = True
     pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].pictureLocation
-    businessName = pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
+    businessName = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
