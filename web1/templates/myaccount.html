@@ -7,7 +7,9 @@
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
-			CardSpring.addCard(cardSpringResponseHandler, {
+			CardSpring.addCard(cardSpringResponseHandler(response){
+			alert(response);
+			}, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
 				security_token : '{{ securityToken }}',
 				timestamp : '{{ timestamp }}',
@@ -21,11 +23,6 @@
 			return false;
 		});
 	});
-	
-	cardSpringResponseHandler(response){
-	
-	alert(response);
-	}
 
 </script>
 {%endblock%}
