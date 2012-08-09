@@ -191,6 +191,8 @@ def accountInfo(request):
     response = False
     if request.method == "POST":
         error = request.POST["error"]
+        if error is None:
+            error = "error was none"    
         response = True
         
     URL = settings.URL
