@@ -3,7 +3,12 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Signin - Tivly</title>
+    {% if pictureAvailable%}
+    <title>Signin - {{business.businessName }}</title>
+    
+    {% else %}
+    <title>Signin- Tivly</title>
+    {%endif%}
     <link href="{{URL}}{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon">
 
     
