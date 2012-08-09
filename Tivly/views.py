@@ -200,7 +200,7 @@ def accountInfo(request):
     key = settings.CARDSPRING_APP_ID
     raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
     hashed = hmac.new(key, raw, sha1)
-#    digestedHash = hashed.digest()
+    digestedHash = '0x' + hashed.hexdigest()
     return render_to_response('myaccount.html', locals(), context_instance= RequestContext(request))
 
 def youSure(request):
