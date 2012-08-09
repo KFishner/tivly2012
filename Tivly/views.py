@@ -190,7 +190,7 @@ def accountInfo(request):
     #template variables...
     response = False
     if request.method == "POST":
-        error = str(request.POST.get('error'))
+        error = request.POST.get('error')
         response = True
         
     URL = settings.URL
