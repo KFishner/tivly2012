@@ -195,12 +195,12 @@ def accountInfo(request):
     redirect = 'https://www.tivly.com/home'
     CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
     
-    securityToken = IDGenerator(32)
-    timestamp = datetime.now()
-    key = settings.CARDSPRING_APP_ID
-    raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
-    hashed = hmac.new(key, raw, sha1)
-    digestedHash = hashed.digest()
+#    securityToken = IDGenerator(32)
+#    timestamp = datetime.now()
+#    key = settings.CARDSPRING_APP_ID
+#    raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
+#    hashed = hmac.new(key, raw, sha1)
+#    digestedHash = hashed.digest()
     return render_to_response('myaccount.html', locals(), context_instance= RequestContext(request))
 
 def youSure(request):
@@ -251,6 +251,9 @@ def jobs(request):
 def test(request):
     return render_to_response('test.html',context_instance= RequestContext(request))
 
+
+def howto(request):
+    return render_to_response('howto1.html',context_instance= RequestContext(request))
         
     
 

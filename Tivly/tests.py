@@ -128,7 +128,7 @@ timestamp = datetime.now()
 key = settings.CARDSPRING_APP_ID
 raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
 hashed = hmac.new(key, raw, sha1)
-print hashed.digest()
+print '0x'+hashed.hexdigest()
 
 
 
