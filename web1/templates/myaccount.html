@@ -7,9 +7,8 @@
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
-			CardSpring.addCard(cardSpringResponseHandler(error,reason){
-			alert('hi');
-			}, {
+			CardSpring.addCard(cardSpringResponseHandler(response)
+			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
 				security_token : '{{ securityToken }}',
 				timestamp : '{{ timestamp }}',
@@ -23,6 +22,10 @@
 			return false;
 		});
 	});
+	
+	cardSpringResponseHandler(response){
+	alert("hello");
+	};
 
 </script>
 {%endblock%}
