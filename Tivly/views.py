@@ -187,14 +187,7 @@ def callback(request):
         
 
 def accountInfo(request):
-    #template variables...
-    response = False
-    if request.method == "POST":
-        error = request.POST.get('error')
-        if error is None:
-            error = "error was none"    
-        response = True
-        
+    #template variables...       
     URL = settings.URL
     user = CSUser(request)
     csid = user.csUser.csID
