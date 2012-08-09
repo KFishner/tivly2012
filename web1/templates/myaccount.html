@@ -8,24 +8,18 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			CardSpring.addCard(cardSpringResponseHandler, {
-				publisher_id : {{ CARDSPRING_APP_ID }},
-				security_token : {{ securityToken }},
-				timestamp : {{ timestamp }},
-				hmac : {{ digestedHash }}
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
 			}, {
 				card_number : $('.card-number').val(),
 				exp_month : $('.expiration-month').val(),
 				exp_year : $('.expiration-year').val(),
-				user_id : {{ csid }}
+				user_id : '{{ csid }}'
 			}, "all");
 			return false;
 		});
-	});
-	
-	$(document).ready(function() {
-		$('#contactform').submit(function(event) {
-		alert("got an error");
-			});
 	});
 
 </script>

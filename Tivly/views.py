@@ -190,7 +190,7 @@ def accountInfo(request):
     #template variables...
     response = False
     if request.method == "POST":
-        error = request.POST.get('error',None)
+        error = request.POST.get('error')
         if error is None:
             error = "error was none"    
         response = True
