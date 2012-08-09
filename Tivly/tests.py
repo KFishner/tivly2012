@@ -129,7 +129,7 @@ key = settings.CARDSPRING_APP_ID
 raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
 hashed = hmac.new(key, raw, sha1)
 print '0x'+hashed.hexdigest()
-
+print getAUser('XE6AN1').read()
 
 
     

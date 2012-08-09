@@ -20,6 +20,7 @@
 			}, "all");
 			return false;
 		});
+		alert("error");
 	});
 
 </script>
@@ -31,6 +32,12 @@
 {% endblock %}
 
 {%block content%}
+{% if response %}
+<script>
+alert("{{error}}");
+</script>
+{%endif%}
+
 <div class="container">
 
     <h1 class="page-header key">My Account</h1>
