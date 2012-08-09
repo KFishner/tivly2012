@@ -26,8 +26,9 @@ def login (request):
     if csid is None:
         return redirect(redirectURL)
     else:
-        FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
-        return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
+#        FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+#        return render_to_response('signin.html', locals(),context_instance= RequestContext(request)) 
+        return redirect(facebookRedirect)
 
 def loginWithRec(request,recommendedBy,rid):
     #template variables...
