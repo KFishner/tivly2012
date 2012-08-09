@@ -20,7 +20,12 @@
 			}, "all");
 			return false;
 		});
-		alert("error");
+	});
+	
+	$(document).ready(function() {
+		$('#contactform').submit(function(event) {
+		alert("got an error");
+			});
 	});
 
 </script>
