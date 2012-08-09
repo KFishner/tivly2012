@@ -9,7 +9,7 @@
 			$('.submit-button').attr('disabled', 'disabled');
 			CardSpring.addCard(cardSpringResponseHandler, {
 				publisher_id : {{ CARDSPRING_APP_ID }},
-				security_token : {{ securityKey }},
+				security_token : {{ securityToken }},
 				timestamp : {{ timestamp }},
 				hmac : {{ digestedHash }}
 			}, {
