@@ -4,34 +4,7 @@
 {%block js%}
 <script src="https://js.cardspring.com/v1/cs.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#contactform').submit(function(event) {
-			alert("error");	
-			$('.submit-button').attr('disabled', 'disabled');
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
-			return false;
-		});
-	});
-	
-			
-	cardSpringResponseHandler(response){
-	alert("hello");
-	};
-	
-	
-</script>
+
 {%endblock%}
 {% block MixPanel %}
 <script type="text/javascript">
@@ -101,7 +74,34 @@ alert("{{error}}");
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
             </tr>
         </table>
-    
+  <script>
+	$(document).ready(function() {
+		$('#contactform').submit(function(event) {
+			alert("error");	
+			$('.submit-button').attr('disabled', 'disabled');
+			CardSpring.addCard(cardSpringResponseHandler
+			, {
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : '{{ csid }}'
+			}, "all");
+			return false;
+		});
+	});
+	
+			
+	cardSpringResponseHandler(response){
+	alert("hello");
+	};
+	
+	
+</script>  
 
 
 
