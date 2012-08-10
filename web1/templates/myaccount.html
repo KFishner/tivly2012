@@ -19,14 +19,16 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
+			
+			
+	if(cardSpringResponseHandler){
+	alert("hello");
+	};
+			
 			return false;
 		});
 	});
 	
-	if (cardSpringResponseHandler){
-	alert("hello");
-	};
-
 </script>
 {%endblock%}
 {% block MixPanel %}
