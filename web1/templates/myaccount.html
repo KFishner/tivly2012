@@ -19,16 +19,16 @@
 				exp_month : $('.expiration-month').val(),
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
-			}, "all");
-			
+			}, "all");	
+			return false;
+		});
+	});
+	
 			
 	if(cardSpringResponseHandler){
 	alert("hello");
 	};
-			
-			return false;
-		});
-	});
+	
 	
 </script>
 {%endblock%}
