@@ -7,6 +7,7 @@
 <script>
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
+			alert("error"):	
 			$('.submit-button').attr('disabled', 'disabled');
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
@@ -20,7 +21,6 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-			alert("error"):	
 			return false;
 		});
 	});
