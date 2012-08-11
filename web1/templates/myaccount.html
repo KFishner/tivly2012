@@ -73,6 +73,9 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			alert("error 1");
+			cardSpringResponseHandler(response){
+			alert("error 2");
+			};
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -85,7 +88,6 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-			alert("error 2");
 			return false;
 		});
 	});
