@@ -73,7 +73,9 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			alert("error 1");
-			CardSpring.addCard(cardSpringResponseHandler
+			CardSpring.addCard(function(response) {  
+    	alert('error 2');  
+})
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
 				security_token : '{{ securityToken }}',
@@ -89,8 +91,6 @@
 			return false;
 		});
 	});
-	
-	alert("error 3");
 </script>  
 
 
