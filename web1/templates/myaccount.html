@@ -71,7 +71,6 @@
   <script>
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
-			alert("error in here");	
 			$('.submit-button').attr('disabled', 'disabled');
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
@@ -86,6 +85,8 @@
 				user_id : '{{ csid }}'
 			}, "all");
 			return false;
+			if(cardSpringResponseHandler){
+			alert("error");
 		});
 	});
 </script>  
