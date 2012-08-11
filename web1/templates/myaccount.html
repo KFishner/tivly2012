@@ -13,10 +13,12 @@
 {% endblock %}
 
 {%block content%}
-{% if response %}
 <script>
-alert("{{error}}");
-</script>
+	
+	if (jQuery) {  
+alert('jQuery is loaded!');  
+}  
+	</script>
 {%endif%}
 
 <div class="container">
@@ -99,11 +101,6 @@ alert("{{error}}");
 	cardSpringResponseHandler(response){
 	alert("hello");
 	};
-	
-	if (jQuery) {  
-alert('jQuery is loaded!');  
-}  
-	
 </script>  
 
 
