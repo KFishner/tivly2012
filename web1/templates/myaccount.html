@@ -73,9 +73,7 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			alert("error 1");
-			CardSpring.addCard(function(response) {  
-    	alert('error 2');  
-})
+			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
 				security_token : '{{ securityToken }}',
