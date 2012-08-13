@@ -71,13 +71,14 @@
   <script>
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');
+			$('.submit-button').attr('disabled', 'disabled');	
+			
+			cardSpringResponseHandler = function(response){
+			
 			success = function(data, textStatus, jqXHR){
 			alert(data);
 			};
 			
-			
-			cardSpringResponseHandler = function(response){
 			if(typeof response.error !== "undefined")
 			{
 			var error = response.error;
