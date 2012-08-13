@@ -14,6 +14,8 @@ from django.views.decorators.csrf import csrf_exempt
 from hashlib import sha1
 import hmac
 import time
+import json
+from django.http import HttpResponse
 
 def login (request):
     #template variables... 
@@ -242,11 +244,16 @@ def creditCardSubmission(request):
 
 def processCreditCard(request):
     if request.method == "POST":
-        
-        cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
-        expDate = request.POST['expiration'])
-        cardToAdd.save();        
-    return 
+        try:
+            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
+            expDate = request.POST['expiration'])
+            cardToAdd.save();  
+        except:
+                json_data = json.dumps({"HTTPRESPONSE":"fail"})
+                return HttpResponse(json_data, mimetype="application/json")
+              
+        json_data = json.dumps({"HTTPRESPONSE":"sucess"})
+        return HttpResponse(json_data, mimetype="application/json")
 
 
 def faq2(request):

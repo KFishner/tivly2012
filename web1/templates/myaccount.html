@@ -94,8 +94,12 @@
   						"expiration": response.expiration,
   						'csrfmiddlewaretoken': '{{ csrf_token }}'
   					} ,
-    success:function(response){},
-    complete:function(){},
+    success:function(response){
+    	alert(response.HTTPRESPONSE);
+    },
+    complete:function(){
+        	alert(response.HTTPRESPONSE);
+    },
     error:function (xhr, textStatus, thrownError){
         alert("error doing something");
     }
