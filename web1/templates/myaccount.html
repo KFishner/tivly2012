@@ -82,7 +82,7 @@
 			
 			else
 			{
-			alert(response);		
+			alert('info: ' + response.token + '  ' + response.last4 + ' ' + response.brand + '  ' + response.brand_string + '  ' + response.expiration);
 			$.post('https://www.tivly.com/ccprocess/',{
   						"token": response.token,
   						"last4": repsonse.last4,
