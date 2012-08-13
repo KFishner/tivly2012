@@ -240,6 +240,14 @@ def creditCardSubmission(request):
         errors = validateCard(request)
     return render_to_response('creditcard.html', locals(),context_instance= RequestContext(request))
 
+def processCreditCard(request):
+    
+    if request.method == "POST":
+        cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST.get('token'), last4 = request.POST.get('last4'), cardType = request.POST.get("brand") ,typeString = request.POST.get('brand_string'),
+        expDate = request.POST.get('expiration'))
+        cardToAdd.save();        
+    return redirect('https://www.tivly.com')
+
 def faq2(request):
     return render_to_response('faq2.html',context_instance= RequestContext(request))
 
