@@ -74,11 +74,6 @@
 			$('.submit-button').attr('disabled', 'disabled');	
 			
 			cardSpringResponseHandler = function(response){
-			
-			success = function(data, textStatus, jqXHR){
-			alert(data);
-			};
-			
 			if(typeof response.error !== "undefined")
 			{
 			var error = response.error;
@@ -96,9 +91,8 @@
   						"brand_string":response.brand_string,
   						"expiration": response.expiration,
   						'csrfmiddlewaretoken': '{%csrf_token%}'
-  					} ,
-  					success
-				);
+  					}
+  				  );
 			
 			}
 			};
