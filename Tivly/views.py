@@ -254,7 +254,9 @@ def processCreditCard(request):
               
         json_data = json.dumps({"HTTPRESPONSE":"sucess"})
         return HttpResponse(json_data, mimetype="application/json")
-
+    else:
+        json_data = json.dumps({"HTTPRESPONSE":"fail"})
+        return HttpResponse(json_data, mimetype="application/json")
 
 def faq2(request):
     return render_to_response('faq2.html',context_instance= RequestContext(request))
