@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from Management import IDGenerator
 from CardSpringActions import deleteAUser
 from django.shortcuts import redirect
-from datetime import time,datetime
+from datetime import datetime
 from CallBack import callBack
 from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
@@ -13,7 +13,7 @@ from CSUserObject import CSUser
 from django.views.decorators.csrf import csrf_exempt
 from hashlib import sha1
 import hmac
-
+import time
 
 def login (request):
     #template variables... 

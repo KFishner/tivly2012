@@ -19,6 +19,7 @@ from web1 import settings
 from urlparse import parse_qsl
 from django.http import HttpResponse
 from googlemaps import GoogleMaps
+import time
 request = {}
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
@@ -117,19 +118,20 @@ csid = '2YIKLB'
 #
 #AddBusiness(values)
 
-URL = settings.URL
-csid = 'blah'
-FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-redirect = 'https://www.tivly.com/home'
-CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
+#URL = settings.URL
+#csid = 'blah'
+#FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+#redirect = 'https://www.tivly.com/home'
+#CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
+#
+#securityToken = IDGenerator(32)
+#timestamp = datetime.now()
+#key = settings.CARDSPRING_APP_ID
+#raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
+#hashed = hmac.new(key, raw, sha1)
+#print '0x'+hashed.hexdigest()
+#print getAUser('XE6AN1').read()
 
-securityToken = IDGenerator(32)
-timestamp = datetime.now()
-key = settings.CARDSPRING_APP_ID
-raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{XE6AN1}'
-hashed = hmac.new(key, raw, sha1)
-print '0x'+hashed.hexdigest()
-print getAUser('XE6AN1').read()
-
+print time.time()
 
     
