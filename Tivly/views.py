@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from Management import IDGenerator
 from CardSpringActions import deleteAUser
 from django.shortcuts import redirect
-from datetime import datetime
+from datetime import time,datetime
 from CallBack import callBack
 from Tivly.models import CardSpringUser, MyRecommendations, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
@@ -197,7 +197,7 @@ def accountInfo(request):
     CARDSPRING_APP_ID = settings.CARDSPRING_APP_ID
     
     securityToken = IDGenerator(32)
-    timestamp = datetime.now()
+    timestamp = time.time()
     key = settings.CARDSPRING_APP_ID
     raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{'+csid+'}'
     hashed = hmac.new(key, raw, sha1)
