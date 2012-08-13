@@ -143,6 +143,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     PROJECT_PATH +'/templates',
+    'path/to/debug_toolbar/templates',
 )
 
 
@@ -150,6 +151,7 @@ INSTALLED_APPS = (
     'south',
     'Tivly',
     'Splash',
+    'debug_toolbar',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',
