@@ -73,10 +73,6 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
-			
-			responseHandler = function(response){
-			alert('got one');
-			}
 			if(typeof response.error !== "undefined")
 			{
 			var error = response.error;
@@ -87,14 +83,23 @@
 			else
 			{
 			alert('info: ' + response.token + '  ' + response.last4 + ' ' + response.brand + '  ' + response.brand_string + '  ' + response.expiration);
-			$.post('https://www.tivly.com/ccprocess/',{
+			$.ajax({
+    url:"https://www.tivly.com/ccprocess/",
+    type: "POST",
+    data: {
   						"token": response.token,
   						"last4": repsonse.last4,
   						"brand": response.brand,
   						"brand_string":response.brand_string,
   						"expiration": response.expiration,
-  					},responseHandler
-				);
+  						'csrfmiddlewaretoken': '{{ csrf_token }}'
+  					} ,
+    success:function(response){},
+    complete:function(){},
+    error:function (xhr, textStatus, thrownError){
+        alert("error doing something");
+    }
+});
 			
 			}
 			};
