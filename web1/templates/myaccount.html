@@ -71,8 +71,7 @@
   <script>
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');	
-			
+			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
 			if(typeof response.error !== "undefined")
 			{
@@ -90,9 +89,8 @@
   						"brand": response.brand,
   						"brand_string":response.brand_string,
   						"expiration": response.expiration,
-  						'csrfmiddlewaretoken': '{%csrf_token%}'
-  					}
-  				  );
+  					} 
+				);
 			
 			}
 			};
