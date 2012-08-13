@@ -190,6 +190,17 @@ def callback(request):
         
 
 def accountInfo(request):
+    if request.method == "POST":
+        try:
+            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
+            expDate = request.POST['expiration'])
+            cardToAdd.save();
+            json_data = json.dumps({"HTTPRESPONSE":"sucess"})
+            return HttpResponse(json_data, mimetype="application/json") 
+         
+        except:
+            json_data = json.dumps({"HTTPRESPONSE":"fail"})
+            return HttpResponse(json_data, mimetype="application/json")
     #template variables...       
     URL = settings.URL
     user = CSUser(request)
