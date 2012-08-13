@@ -188,7 +188,7 @@ def callback(request):
     if request.method == "POST" or request.method == "post":
         return callBack(request)
         
-
+@csrf_exempt
 def accountInfo(request):
     if request.method == "POST":
         try:
