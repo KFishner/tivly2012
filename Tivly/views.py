@@ -241,12 +241,13 @@ def creditCardSubmission(request):
     return render_to_response('creditcard.html', locals(),context_instance= RequestContext(request))
 
 def processCreditCard(request):
-    
     if request.method == "POST":
-        cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST.get('token'), last4 = request.POST.get('last4'), cardType = request.POST.get("brand") ,typeString = request.POST.get('brand_string'),
-        expDate = request.POST.get('expiration'))
+        
+        cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
+        expDate = request.POST['expiration'])
         cardToAdd.save();        
-    return redirect('https://www.tivly.com')
+    return 
+
 
 def faq2(request):
     return render_to_response('faq2.html',context_instance= RequestContext(request))
