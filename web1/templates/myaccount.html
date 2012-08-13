@@ -72,6 +72,11 @@
 	$(document).ready(function() {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
+			success = function(data, textStatus, jqXHR){
+			alert(data);
+			}
+			
+			
 			cardSpringResponseHandler = function(response){
 			if(typeof response.error !== "undefined")
 			{
@@ -83,19 +88,16 @@
 			else
 			{
 			alert('info: ' + response.token + '  ' + response.last4 + ' ' + response.brand + '  ' + response.brand_string + '  ' + response.expiration);
-			
-			$.ajax({
-  type: 'POST',
-  url: 'https://www.tivly.com/ccprocess/',
-  data: {
+			$.post('https://www.tivly.com/ccprocess/',{
   						"token": response.token,
   						"last4": repsonse.last4,
   						"brand": response.brand,
   						"brand_string":response.brand_string,
   						"expiration": response.expiration,
-  						'csrfmiddlewaretoken': '{{ csrf_token }}'
+  						'csrfmiddlewaretoken': '{%csrf_token%}'
   					} ,
-				});
+  					success,
+				);
 			
 			}
 			};
