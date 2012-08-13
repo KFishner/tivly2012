@@ -86,13 +86,7 @@
 			$.ajax({
 	type: 'POST',
     url:'https://www.tivly.com/ccprocess/',
-    data: {
-  						"token": response.token,
-  						"last4": repsonse.last4,
-  						"brand": response.brand,
-  						"brand_string":response.brand_string,
-  						"expiration": response.expiration,
-  					} ,
+    data: {} ,
     success:function(response){
     	alert(response.HTTPRESPONSE);
     }
