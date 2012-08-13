@@ -198,7 +198,7 @@ def accountInfo(request):
     
     securityToken = IDGenerator(32)
     timestamp = time.time()
-    key = settings.CARDSPRING_APP_ID
+    key = settings.CARDSPRING_APP_SECRET
     raw = '{'+securityToken+'}:{'+str(datetime.now())+'}:{'+csid+'}'
     hashed = hmac.new(key, raw, sha1)
     digestedHash = '0x' + hashed.hexdigest()
