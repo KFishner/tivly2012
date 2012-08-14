@@ -9,7 +9,7 @@ from CardSpringActions import createAUser,createUserAppConnection
 from datetime import datetime
 from Tivly.models import FBUser,MyRecommendations,Cards, UserPoints, MyRewards,Rewards, CardSpringUser
 
-class CSUser:
+class User:
     
     def __init__(self, request):
         self.csUser = self.getCardSpringUser(request)
@@ -22,9 +22,7 @@ class CSUser:
     
     def getCardSpringUser(self,request):
         code = request.GET.get('code', None)
-#        code = None    
         cardspringID = request.COOKIES.get('csID',None)
-#        cardspringID = '2YIKLB'
         
         if code is not None:
             fbUser = facebookLogin(request)

@@ -132,6 +132,6 @@ csid = '2YIKLB'
 #print '0x'+hashed.hexdigest()
 #print getAUser('XE6AN1').read()
 
-print time.time()
+print getAUser('XE6AN1').read()
 
     

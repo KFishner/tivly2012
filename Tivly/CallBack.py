@@ -11,6 +11,8 @@ from web1 import settings
 
 def callBack(request):    
     result = request.POST
+    
+    #Find the user and the reward as mark it as used
     csid = result['user_id']
     rewardLookUp = Rewards.objects.filter(appID = request.POST['app_id'])[0]
     myReward = MyRewards.objects.filter(csID = csid, reward = rewardLookUp)[0]
@@ -18,10 +20,13 @@ def callBack(request):
     myReward.dateUsed = datetime.now()
     myReward.save()
     
+    #add to our general history...
     addToHistory = RewardHistory(csID = csid, reccomendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())
     addToHistory.save()
     
+    #add to our unique history...
     uniqueReward = RewardHistory.objects.filter(csID = csid, reward = rewardLookUp)
+    
     
     if len(uniqueReward) == 1:
         addToUniqueHistory = UniqueRewardHistory(csID = csid, reccomendedBy = myReward.reccomendedBy, reward = rewardLookUp,dateUsed = datetime.now())

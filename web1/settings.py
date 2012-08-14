@@ -10,8 +10,11 @@ ADMINS = (
 MANAGERS = ADMINS
 
 #URL = 'http://127.0.0.1:8000'
-#URL = 'http://mygoods.co'
 URL = 'https://www.tivly.com'
+
+######################################################################
+#####                   API KEYS                                 #####
+######################################################################
 FACEBOOK_APP_ID = '162129900588207'
 FACEBOOK_API_KEY = '162129900588207'
 FACEBOOK_API_SECRET = '25789f366ebd6f92e50952f5eeb22fe7'
@@ -21,7 +24,6 @@ GOOGLEMAPS_API_KEY = 'AIzaSyCBmQUttEkUKRbedtfa7cqIEAx0szbcKmk'
 
 CARDSPRING_APP_ID = 'APztm1Gl9obNGyzFJphGJpUGHQuXKXNT'
 CARDSPRING_APP_SECRET = 'AwBPNgNZYXwT560aW7ufZlCQUKZ2ifIt' 
-CARDSPRING_CALLBACK_URL = ''
 
 PREPEND_WWW = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
