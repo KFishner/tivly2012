@@ -269,9 +269,9 @@ def merchantInfo(request):
         if not errors:
             popup = True
             if  request.POST.get('amexSES'):
-                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'),signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
             else:
-                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'),signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = 'none',address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
            
             msuf.save()
             return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
