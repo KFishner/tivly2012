@@ -26,59 +26,61 @@
         <!-- start merchant info form -->
         <form id="merchantInfoform" method="post" action="">
         {%csrf_token%}
-            <p>
-            	<label for="name">MerchantID *</label>
-                <input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" />
-            </p>
-			<p>
-                <label for="name">Business Name *</label>
-                <input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" />
+        <table>
+            <tr>
+            	<td><label for="name">MerchantID *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" /></td>
+            </tr>
+			<tr>
+                <td><label for="name">Business Name *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Amex SES </label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Address *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="address" name="address" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Zip Code *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" /></td>
                 
-            </p>
-            <p>
-                <label for="name">Amex SES </label>
-                <input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" />
-                
-            </p>
-            <p>
-                <label for="name">Address *</label>
-                <input type="text" tabindex="1" size="22" value="" id="address" name="address" />
-            </p>
-            <p>
-                <label for="name">Zip Code *</label>
-                <input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" />
-                
-            </p>
-            <p>
-                <label for="name">City *</label>
-                <input type="text" tabindex="1" size="22" value="" id="city" name="city" />
-                
-            </p>
-            <p>
-                <label for="name">State *</label>
-                <input type="text" tabindex="1" size="22" value="" id="state" name="state" />
-            </p>
-            <p>
-                <label for="name">Phone Number *</label>
-				<input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" />
-            </p>
-        	<p>
-                <label for="name">Email *</label>
-                <input type="text" tabindex="1" size="22" value="" id="email" name="email" />
-            </p>
-            <p>
-                <label for="name">Signer Name *</label>
-                <input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" />
-            </p>
-            <p>
-                <label for="name">Signer Title *</label>
-        		<input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" />
-            </p>
-            <p>
-                <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
-            </p>
-        </form><!-- end merchant info form -->
-    
+            </tr>
+            <tr>
+                <td><label for="name">City *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="city" name="city" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">State *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="state" name="state" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Phone Number *</label></td>
+				<td><input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" /></td>
+            </tr>
+        	<tr>
+                <td><label for="name">Email *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="email" name="email" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Signer Name *</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" /></td>
+            </tr>
+            <tr>
+                <td><label for="name">Signer Title *</label></td>
+        		<td><input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" /></td>
+            </tr>
+               <tr>
+                 <td>Check to agree to terms of service <input type="checkbox" value="Send Message" tabindex="5" id="agree" name="agree" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" /></td>
+            </tr>
+        </form>
+        <!-- end merchant info form -->
+    </table>
     </div>  
     <br class="clear" />
     
