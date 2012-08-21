@@ -6,7 +6,7 @@ from CardSpringActions import deleteAUser
 from django.shortcuts import redirect
 from datetime import datetime
 from CallBack import callBack
-from Tivly.models import CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
+from Tivly.models import MerchantInfoForm,CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
 from GMaps import getMap
 from GeneralUser import User
@@ -269,9 +269,9 @@ def merchantInfo(request):
         if not errors:
             popup = True
             if  request.POST.get('amexSES'):
-                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
             else:
-                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = 'none',address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = 'none',address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
            
             msuf.save()
             return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
