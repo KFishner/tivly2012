@@ -137,6 +137,23 @@ class UniqueBusinessHistory(models.Model):
 #######################################################
 ######              MISC                         ######
 #######################################################
+
+class MerchantInfoForm(models.Model):
+    merchantID = models.CharField(max_length = 50)
+    businessName = models.CharField(max_length = 50)
+    amexSES = models.CharField(max_length = 50)
+    address = models.CharField(max_length = 50)
+    zipCode = models.CharField(max_length = 50)
+    city = models.CharField(max_length = 50)
+    state = models.CharField(max_length = 50)
+    phoneNumber = models.CharField(max_length = 50)
+    email = models.CharField(max_length = 50)
+    signerName = models.CharField(max_length = 50)
+    signerTitle = models.CharField(max_length = 50)
+    date = models.DateTimeField
+    
+    
+
 class ContactUsForm(models.Model):
     name = models.CharField(max_length = 40)
     email = models.CharField(max_length = 60)

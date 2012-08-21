@@ -236,6 +236,44 @@ def logout(request):
     response = redirect(settings.URL)
     response.delete_cookie('csID')
     return response
+
+def merchantInfo(request):
+    errors = []
+    popup = False    
+    
+    if request.method == 'POST':
+        if not request.POST.get('merchantID', ''):
+            errors.append('Enter a valid Merchant ID please')
+        if not request.POST.get('businessName', ''):
+            errors.append('Enter a valid business name please')
+        if not request.POST.get('address', ''):
+            errors.append('Enter a valid street address please')
+        if not request.POST.get('zipCode', ''):
+            errors.append('Enter a valid zip code please')
+        if not request.POST.get('city', ''):
+            errors.append('Enter a valid city please')
+        if not request.POST.get('state', ''):
+            errors.append('Enter a valid state please')
+        if not request.POST.get('phoneNumber', ''):
+            errors.append('Enter a valid phone number please')
+        if not request.POST.get('email', ''):
+            errors.append('Enter a valid email please')
+        if not request.POST.get('signerName', ''):
+            errors.append('Enter a valid name for signer please')
+        if not request.POST.get('signerTitle', ''):
+            errors.append('Enter a valid signer title please')
+        
+        if not errors:
+            popup = True
+            if  request.POST.get('amexSES'):
+                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'),signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+            else:
+                msuf = ContactUsForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'),signerName = request.POST.get('signerName'),singerTitle = request.POST.get('signerTitle'),date= datetime.now())
+           
+            msuf.save()
+            return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
+    return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
+
     
 ######################################################################
 #####                   FLAT PAGES                               #####

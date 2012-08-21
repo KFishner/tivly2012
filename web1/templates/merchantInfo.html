@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+{% if popup %}
+<script>confirm("Thanks for signing up! We will reply within 24 hours");</script>
+{% endif %}
+    <h1 class="page-header contact">Contact Page</h1>
+    
+    <div class="grid onehalf">
+    
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    	<h4>Merchant Authorization Form</h4>
+        
+    	<p>We'll get back to you within 24 hours</p>
+    	
+        <!-- start merchant info form -->
+        <form id="merchantInfoform" method="post" action="">
+        {%csrf_token%}
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" />
+                <label for="name">MerchantID *</label>
+            </p>
+			<p>
+                <input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" />
+                <label for="name">Business Name *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" />
+                <label for="name">Amex SES </label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="address" name="address" />
+                <label for="name">Address *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" />
+                <label for="name">Zip Code *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="city" name="city" />
+                <label for="name">City *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="state" name="state" />
+                <label for="name">State *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" />
+                <label for="name">Phone Number *</label>
+            </p>
+        	<p>
+                <input type="text" tabindex="1" size="22" value="" id="email" name="email" />
+                <label for="name">Email *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" />
+                <label for="name">Signer Name *</label>
+            </p>
+            <p>
+                <input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" />
+                <label for="name">Signer Title *</label>
+            </p>
+            <p>
+                <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
+            </p>
+        </form><!-- end merchant info form -->
+    
+    </div>  
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+{%endblock%}
