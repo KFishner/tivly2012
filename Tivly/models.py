@@ -150,10 +150,9 @@ class MerchantInfoForm(models.Model):
     email = models.CharField(max_length = 50)
     signerName = models.CharField(max_length = 50)
     signerTitle = models.CharField(max_length = 50)
-    date = models.DateTimeField
+    date = models.DateField()
     
     
-
 class ContactUsForm(models.Model):
     name = models.CharField(max_length = 40)
     email = models.CharField(max_length = 60)
