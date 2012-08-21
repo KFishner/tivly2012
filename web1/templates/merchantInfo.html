@@ -27,48 +27,52 @@
         <form id="merchantInfoform" method="post" action="">
         {%csrf_token%}
             <p>
+            	<label for="name">MerchantID *</label>
                 <input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" />
-                <label for="name">MerchantID *</label>
             </p>
 			<p>
-                <input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" />
                 <label for="name">Business Name *</label>
+                <input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" />
+                
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" />
                 <label for="name">Amex SES </label>
+                <input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" />
+                
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="address" name="address" />
                 <label for="name">Address *</label>
+                <input type="text" tabindex="1" size="22" value="" id="address" name="address" />
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" />
                 <label for="name">Zip Code *</label>
+                <input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" />
+                
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="city" name="city" />
                 <label for="name">City *</label>
+                <input type="text" tabindex="1" size="22" value="" id="city" name="city" />
+                
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="state" name="state" />
                 <label for="name">State *</label>
+                <input type="text" tabindex="1" size="22" value="" id="state" name="state" />
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" />
                 <label for="name">Phone Number *</label>
+				<input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" />
             </p>
         	<p>
-                <input type="text" tabindex="1" size="22" value="" id="email" name="email" />
                 <label for="name">Email *</label>
+                <input type="text" tabindex="1" size="22" value="" id="email" name="email" />
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" />
                 <label for="name">Signer Name *</label>
+                <input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" />
             </p>
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" />
                 <label for="name">Signer Title *</label>
+        		<input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" />
             </p>
             <p>
                 <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
