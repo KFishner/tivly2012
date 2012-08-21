@@ -262,6 +262,8 @@ def merchantInfo(request):
             errors.append('Enter a valid name for signer please')
         if not request.POST.get('signerTitle', ''):
             errors.append('Enter a valid signer title please')
+        if not request.POST('agree',''):
+            errors.append('Please agree to terms of service')
         
         if not errors:
             popup = True
