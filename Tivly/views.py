@@ -272,7 +272,7 @@ def merchantInfo(request):
            
             msuf.save()
             return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
-    return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
+    return render_to_response('merhcnatInfo.html',{'errors': errors},context_instance= RequestContext(request))
 
     
 ######################################################################
