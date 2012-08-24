@@ -90,6 +90,9 @@ def jobs(request):
     URL = settings.URL
     return render_to_response('splash_jobs.html',locals(),context_instance= RequestContext(request))
 
+def privacy(request):
+    URL = settings.URL
+    return render_to_response('splash_privacy.html',locals(),context_instance= RequestContext(request))
 
 
     
