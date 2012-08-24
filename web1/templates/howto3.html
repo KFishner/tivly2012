@@ -10,12 +10,15 @@
     <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!-- Include Scripts -->	
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+<!--     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+ -->    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
     <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
+    
+    <script src="https://js.cardspring.com/v1/cs.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     
 <script type="text/javascript">
@@ -41,9 +44,10 @@
         <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Rewards Directly Loaded to Your Payment Card</h2>
                 <!-- start contact form -->
         <div style="display:block;margin-left:25%;margin-top:25px;">
-        <form id="contactform" method="post" >
+        <form id="contactform" method="POST" action="">
+                {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
@@ -68,18 +72,57 @@
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
 	</select>*</p>
-                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" /><a href="faq2.html" style="text-decoration: none;border:none;font-size:16px"> (or Learn More)</a>
-
+                <input type="submit" class="submit-button" value="submit" tabindex="5"/>
+            </p>
         </form></div><!-- end contact form -->
         <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Just <em>Swipe</em> to Redeem</h2>
 
 </div>
 <!-- END MAIN CONTAINER -->
 
-
-
-
-
-
-
+  <script type="text/javascript">
+	$(document).ready(function()
+	 {
+		$('#contactform').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			cardSpringResponseHandler = function(response){
+			if(typeof response.error !== "undefined")
+			{
+				var error = response.error;
+				var reason = response.reason;
+				alert(error + '    ' + reason);
+			}
+			
+			else
+			{
+			
+			alert('Thank you, your card is registered!');
+			$.ajax({
+			type: 'POST',
+    		url:'https://www.tivly.com/me',
+    		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
+    		success:function(response, textStatus, jqXHR){
+    			alert('Hello');
+    		}
+				 });
+			
+			}
+			};
+			
+			CardSpring.addCard(cardSpringResponseHandler
+			, {
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : '{{ csid }}'
+			}, "all");
+			return false;
+		});
+	});
+</script> 
 </body></html>

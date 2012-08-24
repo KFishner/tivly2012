@@ -295,8 +295,26 @@ def test(request):
     return render_to_response('test.html',context_instance= RequestContext(request))
 
 
-def howto(request):
-    return render_to_response('howto1.html',context_instance= RequestContext(request))
+def howto(request,number):
+    URL = settings.URL
+    csid = request.COOKIES.get('csID')
+    #these are for authentication with CardSpring JS library...
+    securityToken = IDGenerator(32)
+    timestamp = int(time.time())
+    key = settings.CARDSPRING_APP_SECRET
+    raw = securityToken +':'+str(timestamp)+':'+ csid
+    hashed = hmac.new(key, raw, sha1)
+    digestedHash = hashed.hexdigest()
+    if number is 1:
+        return render_to_response('howto1.html',locals(),context_instance= RequestContext(request))
+    
+    if number is 2:
+        return render_to_response('howto2.html',locals(),context_instance= RequestContext(request))
+    
+    if number is 3:
+        return render_to_response('howto3.html',locals(),context_instance= RequestContext(request))
+
+        
         
     
 
