@@ -198,6 +198,13 @@ h1.page-header.cloud{background:url(../images/cloud.png) no-repeat 0 center scro
 h1.page-header.features{background:url(../images/features.png) no-repeat 0 center scroll;}
 h1.page-header.contact{background:url(../images/contact.png) no-repeat 0 center scroll;}
 h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scroll;}
+h1.page-header.key{background:url(../images/icons/key.png) no-repeat 0 center scroll;}
+h1.page-header.search{background:url(../images/icons/search.png) no-repeat 0 center scroll;}
+h1.page-header.user{background:url(../images/icons/user.png) no-repeat 0 center scroll;}
+h1.page-header.tag{background:url(../images/icons/tag.png) no-repeat 0 center scroll;}
+h1.page-header.star{background:url(../images/icons/star.png) no-repeat 0 center scroll;}
+
+
 
 /*-----------------------------------------------------------------------------------*/
 /*	Superfish Nav
@@ -321,7 +328,7 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 }
 
 .cloud-container .cloud-icons{
-	background:url(../splash_images/restaurant-cloud.png) repeat-x scroll 0 0 transparent;
+	background:url(../images/restaurant-cloud.png) repeat-x scroll 0 0 transparent;
 	height:318px;
 	position:absolute;
 	left:0;
@@ -396,11 +403,11 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 }
 
 .pagination li:hover a{
-    background: url("../splash_images/pages.png") no-repeat scroll -30px 0 transparent;
+    background: url("../images/pages.png") no-repeat scroll -30px 0 transparent;
 }
 
 .pagination li.current a{
-    background: url("../splash_images/pages.png") no-repeat scroll 0 0 transparent;
+    background: url("../images/pages.png") no-repeat scroll 0 0 transparent;
 }
 
 a.next, a.prev{
@@ -413,10 +420,10 @@ a.next, a.prev{
 	border-bottom:none;
 }
 
-a.next{background: url("../splash_images/pages.png") no-repeat scroll -45px 0 transparent;}
-a.next:hover{background: url("../splash_images/pages.png") no-repeat scroll -75px 0 transparent;}
-a.prev{background: url("../splash_images/pages.png") no-repeat scroll -60px 0 transparent;margin:0 8px 0 383px;}
-a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90px 0 transparent;}
+a.next{background: url("../images/pages.png") no-repeat scroll -45px 0 transparent;}
+a.next:hover{background: url("../images/pages.png") no-repeat scroll -75px 0 transparent;}
+a.prev{background: url("../images/pages.png") no-repeat scroll -60px 0 transparent;margin:0 8px 0 383px;}
+a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 transparent;}
 
 .screenshots{
 	margin:45px 0 0 20px;
@@ -440,8 +447,8 @@ a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90p
 /*-----------------------------------------------------------------------------------*/
 
 #subscribe-area{
-	background:url(../splash_images/sub-bg.png) top repeat-x;
-	height:80px;
+	background:url(../images/sub-bg.png) top repeat-x;
+	height:172px;
 	display:none;
 }
 
@@ -500,7 +507,7 @@ a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90p
 /*-----------------------------------------------------------------------------------*/
 
 #bottom-content{
-	background:url(../splash_images/bottom-gradient.png) left top repeat-x;
+	background:url(../images/bottom-gradient.png) left top repeat-x;
 }
 
 .slide-break, .text-replace{
@@ -516,7 +523,7 @@ a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90p
 }
 
 .slide-break .wb-logo{
-	background:url(../splash_images/logo-light.png) no-repeat;
+	background:url(../images/logo-light.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -528,7 +535,7 @@ a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90p
 	width:100px;
 }
 .slide-break .wb-logo2{
-background:url(../splash_images/logo-contact.png) no-repeat;
+background:url(../images/logo-contact.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -540,7 +547,7 @@ background:url(../splash_images/logo-contact.png) no-repeat;
 	width:175px;
 }
 .slide-break a .wb-logo2:hover{
-background:url(../splash_images/logo-contact2.png) no-repeat;
+background:url(../images/logo-contact2.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -558,7 +565,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 }
 
 .text-replace .wb-lightbox{
-	background:url(../splash_images/lightbox.png) no-repeat;
+	background:url(../images/lightbox.png) no-repeat;
     display: inline-block;
     margin:-1px -2px 0 8px;
     overflow: hidden;
@@ -615,7 +622,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	height:199px;
 	display:block;
 	width:202px;
-	background:url(../splash_images/app-store-hover.png) left center no-repeat;
+	background:url(../images/app-store-hover.png) left center no-repeat;
 	margin:0 0 0 379px;
 	border-bottom:none;
 }
@@ -767,7 +774,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	background:url(../splash_images/permalink.png) no-repeat scroll 0 0 #ACB3BA;
+	background:url(../images/permalink.png) no-repeat scroll 0 0 #ACB3BA;
 	width:42px;
 	height:42px;
 	float:right;
@@ -813,7 +820,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	color:#ACB3BA;
 	font-size:22px;
 	font-style:italic;
-	background:url(../splash_images/comments.png) no-repeat 0 center scroll;
+	background:url(../images/comments.png) no-repeat 0 center scroll;
 }
 
 #comments a{
@@ -887,14 +894,14 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	color:#ACB3BA;
 	font-size:22px;
 	font-style:italic;
-	background:url(../splash_images/add-comment.png) no-repeat 0 center scroll;
+	background:url(../images/add-comment.png) no-repeat 0 center scroll;
 }
 
 #commentform{
 	margin:30px 0 30px 0;
 }
 
-#commentform #author, #commentform #email, #commentform #url, #commentform #comment, #contactform #name, #contactform #email, #contactform #message, .searchform #q{
+#commentform #author, #commentform #email, #commentform #url, #commentform #comment, #contactform #name, #contactform #email, #contactform #message, .searchform #q, #CCregistration_form .card-number{
 	border:1px solid #f1f1f1;
 	background:#f8f8f8;
 	padding:6px;
@@ -911,7 +918,8 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	font-size:12px;
 }
 
-#commentform #submit, #contactform #submit, .searchform #submit{
+}
+#commentform #submit, #contactform #submit, .searchform #submit, #CCregistration_form #submit-button{
     -webkit-transition: background-color .3s linear;
 	-moz-transition: background-color .3s linear;
 	-o-transition: background-color .3s linear;
@@ -923,7 +931,22 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 	color:#ffffff;
 	cursor:pointer;
 }
+.submit-button{
+	-webkit-transition: background-color .3s linear;
+	-moz-transition: background-color .3s linear;
+	-o-transition: background-color .3s linear;
+	-ms-transition: background-color .3s linear;
+	transition: background-color .3s linear;
+	border:0px;
+	background-color:#ACB3BA;
+	padding:6px 10px;
+	color:#ffffff;
+	cursor:pointer;
+}
+.submit-button:hover{
+	background-color:#555555;
 
+}
 #commentform #submit:hover, #contactform #submit:hover, .searchform #submit:hover{
 	background-color:#555555;
 }
@@ -957,7 +980,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 .widget-title{
 	font-size:11px;
 	text-transform:uppercase;
-	background:url(../splash_images/sidebar-border.png) repeat-x 0 3px scroll;
+	background:url(../images/sidebar-border.png) repeat-x 0 3px scroll;
 	color:#AAAAAA;
 	font-weight:bold;
 	margin:0 0 15px 0;
@@ -966,7 +989,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 .widget-title span{
 	padding:0 20px 0 17px;
 	min-width:80px;
-	background:url(../splash_images/sidebar-ring.png) no-repeat 0 3px scroll #ffffff;
+	background:url(../images/sidebar-ring.png) no-repeat 0 3px scroll #ffffff;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -988,7 +1011,7 @@ background:url(../splash_images/logo-contact2.png) no-repeat;
 .fancybox span{
 	display:block;
 	z-index:1;
-	background:url(../splash_images/img-hover.png) repeat scroll center center transparent;
+	background:url(../images/img-hover.png) repeat scroll center center transparent;
 	height:100%;
 	width:100%;
 	position:absolute;
