@@ -13,5 +13,5 @@ urlpatterns = patterns('',
     url(r'^aboutus/',aboutus),
     url(r'^jobs/', jobs),
     url(r'^privacy/', privacy),
-    url(r'^userterms/', userterms)   
+    url(r'^userterms/', userterms) 
 )
