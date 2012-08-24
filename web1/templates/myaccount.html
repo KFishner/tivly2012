@@ -68,8 +68,9 @@
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
             </tr>
         </table>
-  <script>
-	$(document).ready(function() {
+  <script type="text/javascript">
+	$(document).ready(function()
+	 {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){

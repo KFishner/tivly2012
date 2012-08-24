@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{%block title%} My Account - Tivly {%endblock%}
+
+{%block js%}
+<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+{%endblock%}
+{% block MixPanel %}
+<script type="text/javascript">
+    mixpanel.track("My Account Visited")
+</script>
+{% endblock %}
+
+{%block content%}
+<div class="container">
+
+    <h1 class="page-header key">My Account</h1>
+    
+        <table>
+        	<tr>
+                <td style="border:none"><a href="{{ URL }}/logout">Log Out</a></td>
+            </tr>
+            <tr>
+            	<td>Connect with Facebook</td>
+                <td><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
+      				<img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></td>
+           </tr>
+                <!--  <td>Connect with Twitter</td>
+                <td></td> -->
+            <tr> 
+                 <tr>
+                <td>Connect Payment Card</td>
+                <td>        
+                <form id="contactform" method="POST" action="">
+                {%csrf_token%}
+            <p style="font-size: 18px;">
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+            </p>
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+		<option value="01">01</option>
+		<option value="02">02</option>
+		<option value="03">03</option>
+		<option value="04">04</option>
+		<option value="05">05</option>
+		<option value="06">06</option>
+		<option value="07">07</option>
+		<option value="08">08</option>
+		<option value="09">09</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+
+	</select> <select class="expiration-year" name="year">
+		<option value="2013">2012</option>
+		<option value="2013">2013</option>
+		<option value="2014">2014</option>
+		<option value="2015">2015</option>
+		<option value="2016">2016</option>
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+	</select>*</p>
+                <input type="submit" class="submit-button" value="submit" tabindex="5"/>
+            </p>
+        </form>
+        </td><!-- end form -->
+            <tr>
+                <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
+            </tr>
+        </table>
+  <script type="text/javascript" id="js">
+	$(document).ready(function()
+	 {
+		$('#contactform').submit(function(event) {
+			$('.submit-button').attr('disabled', 'disabled');
+			cardSpringResponseHandler = function(response){
+			if(typeof response.error !== "undefined")
+			{
+				var error = response.error;
+				var reason = response.reason;
+				alert(error + '    ' + reason);
+			}
+			
+			else
+			{
+			
+			alert('Thank you, your card is registered!');
+			$.ajax({
+			type: 'POST',
+    		url:'https://www.tivly.com/me',
+    		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
+    		success:function(response, textStatus, jqXHR){
+    			alert('Hello');
+    		}
+				 });
+			
+			}
+			};
+			
+			CardSpring.addCard(cardSpringResponseHandler
+			, {
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : '{{ csid }}'
+			}, "all");
+			return false;
+		});
+	});
+</script>  
+
+
+
+    
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+{%endblock%}
+
