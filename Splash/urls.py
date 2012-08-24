@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from Splash.views import home, contact, merchants, merchantsignup, faq, aboutus, jobs, privacy
+from Splash.views import home, contact, merchants, merchantsignup, faq, aboutus, jobs, privacy, userterms
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
@@ -12,5 +12,6 @@ urlpatterns = patterns('',
     url(r'^faq/', faq),
     url(r'^aboutus/',aboutus),
     url(r'^jobs/', jobs),
-    url(r'^privacy', privacy)    
+    url(r'^privacy/', privacy),
+    url(r'^userterms/', userterms)   
 )
