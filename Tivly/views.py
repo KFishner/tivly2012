@@ -174,12 +174,13 @@ def callback(request):
         
 def accountInfo(request):
     #after CS.addCard is sucessful, this adds the credit card Token to our DB...
-    print "in account info"
-    print "expiration = " ,
-    #print request.POST['expiration']
-    print "request ="
-    print request
+
     if request.method == "POST":
+        print "in account info"
+        print "expiration = " ,
+        #print request.POST['expiration']
+        print "request ="
+        print request
         try:
             cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
             expDate = request.POST['expiration'])
