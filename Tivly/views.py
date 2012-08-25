@@ -182,6 +182,7 @@ def accountInfo(request):
         print "request ="
         print request
         try:
+            print "*****ADDING CARD*********"
             cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
             expDate = request.POST['expiration'])
             cardToAdd.save();
