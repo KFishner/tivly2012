@@ -33,7 +33,6 @@ $(".cclogin").fancybox({
 				'box-shadow' : '0px 0px 20px white',}
 			}}
 }); 
-    $(".cclogin").trigger('click');
 });</script>
 {%endblock%}
 
@@ -52,8 +51,8 @@ $(".cclogin").fancybox({
 	<h1 class="page-header search clear">My Rewards</h1>
 	
 {% if not hasCard %} 
-    <!--  <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Find out how to get the full tivly experience!</a> 
-    </div><br class="clear" /> -->
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Find out how to get the full tivly experience!</a> 
+    </div><br class="clear" /> 
 {%endif%}
 
 	<table>

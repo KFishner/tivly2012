@@ -174,8 +174,15 @@ def callback(request):
         
 def accountInfo(request):
     #after CS.addCard is sucessful, this adds the credit card Token to our DB...
+    print request.method
     if request.method == "POST":
+        print "in account info"
+        print "expiration = " ,
+        #print request.POST['expiration']
+        print "request ="
+        print request
         try:
+            print "*****ADDING CARD*********"
             cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
             expDate = request.POST['expiration'])
             cardToAdd.save();
@@ -305,18 +312,4 @@ def howto(request,number):
     raw = securityToken +':'+str(timestamp)+':'+ csid
     hashed = hmac.new(key, raw, sha1)
     digestedHash = hashed.hexdigest()
-    if number is 1:
-        return render_to_response('howto1.html',locals(),context_instance= RequestContext(request))
-    
-    if number is 2:
-        return render_to_response('howto2.html',locals(),context_instance= RequestContext(request))
-    
-    if number is 3:
-        return render_to_response('howto3.html',locals(),context_instance= RequestContext(request))
-
-        
-        
-    
-
-
-
+    return render_to_response('howto'+str(number)+'.html',locals(),context_instance= RequestContext(request))

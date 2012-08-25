@@ -2,7 +2,7 @@
 {%block title%} My Account - Tivly {%endblock%}
 
 {%block js%}
-<script src="https://js.cardspring.com/v1/cs.js"></script>
+<script type="text/javascript" src="https://js.cardspring.com/v1/cs.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 {%endblock%}
@@ -68,13 +68,13 @@
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
             </tr>
         </table>
-  <script type="text/javascript" id="js">
+  <script type="text/javascript">
 	$(document).ready(function()
 	 {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
-			if(typeof response.error !== "undefined")
+			if((typeof response.error) != "undefined")
 			{
 				var error = response.error;
 				var reason = response.reason;
@@ -83,20 +83,29 @@
 			
 			else
 			{
-			
+			alert(response.token + '    ' + response.last4 + '   '+ response.brand + '    ' + response.brand_string + '    ' + response.expiration);
 			alert('Thank you, your card is registered!');
 			$.ajax({
 			type: 'POST',
-    		url:'https://www.tivly.com/me',
+    		url:'www.tivly.com/me',
+    		async: false,
     		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
-    		success:function(response, textStatus, jqXHR){
-    			alert('Hello');
-    		}
+     		//.done(function() { alert("success"); })
+            //.fail(function() { alert("error"); })
+            //.always(function() { alert("complete"); });
+    		//success:function(response, textStatus, jqXHR){
+    		//	alert('Hello');
+    		//},
+    		 error: function () {
+            alert('Error');
+            }
 				 });
 			
 			}
+
+			alert('Hello 2');
 			};
-			
+			alert('adding card');
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -109,6 +118,7 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
+			alert('card added');
 			return false;
 		});
 	});
