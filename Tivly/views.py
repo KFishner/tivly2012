@@ -305,13 +305,13 @@ def howto(request,number):
     raw = securityToken +':'+str(timestamp)+':'+ csid
     hashed = hmac.new(key, raw, sha1)
     digestedHash = hashed.hexdigest()
-    if number is 1:
+    if number is '1':
         return render_to_response('howto1.html',locals(),context_instance= RequestContext(request))
     
-    if number is 2:
+    if number is '2':
         return render_to_response('howto2.html',locals(),context_instance= RequestContext(request))
     
-    if number is 3:
+    if number is '3':
         return render_to_response('howto3.html',locals(),context_instance= RequestContext(request))
 
         
