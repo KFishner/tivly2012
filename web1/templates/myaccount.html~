@@ -92,10 +92,14 @@
     		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
     		success:function(response, textStatus, jqXHR){
     			alert('Hello');
-    		}
+    		},
+    		 error: function () {
+            alert('Error');
+            }
 				 });
 			
 			}
+			alert('Hello 2');
 			};
 			
 			CardSpring.addCard(cardSpringResponseHandler
