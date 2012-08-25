@@ -73,7 +73,6 @@
 	 {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
-			alert("hello! in js");
 			cardSpringResponseHandler = function(response){
 			if((typeof response.error) != "undefined")
 			{
