@@ -102,7 +102,7 @@
 			}
 			alert('Hello 2');
 			};
-			
+			alert('adding card');
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -115,6 +115,7 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
+			alert('card added');
 			return false;
 		});
 	});
