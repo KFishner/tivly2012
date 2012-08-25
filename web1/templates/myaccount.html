@@ -88,11 +88,11 @@
 			$.ajax({
 			type: 'POST',
     		url:'https://www.tivly.com/me',
-    		async: false,
+    		//async: false,
     		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
-    .done(function() { alert("success"); })
-    .fail(function() { alert("error"); })
-    .always(function() { alert("complete"); });
+    //.done(function() { alert("success"); })
+    //.fail(function() { alert("error"); })
+    //.always(function() { alert("complete"); });
 			};
 			alert('adding card');
 			CardSpring.addCard(cardSpringResponseHandler
