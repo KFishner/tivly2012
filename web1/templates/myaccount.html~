@@ -87,7 +87,7 @@
 			alert('Thank you, your card is registered!');
 			$.ajax({
 			type: 'POST',
-    		url:'https://www.tivly.com/me',
+    		url:'http://www.tivly.com/me',
     		async: false,
     		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
      		//.done(function() { alert("success"); })
