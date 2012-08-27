@@ -1,7 +1,7 @@
 # Django settings for web1 project.
 import os
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#DEBUG = True
+#TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Peter', 'pgrabows@princeton.edu'),
