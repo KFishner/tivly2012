@@ -4,7 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {%if pictureAvailable %}
-        <title>Signin - {{businessName}}</title>
+        <title>{{businessName}} Reward</title>
     {%else%}
     <title>Signin - Tivly</title>
     {%endif%}
@@ -76,12 +76,14 @@
     mixpanel.track("Signin Viewed")
 </script>
 
-<div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
-    <div class="grid onehalf" style="width:40%; margin-top:20px;">
+<div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:black;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
+    <br style="line-height: 30px" />
+    <div>
+    <div class="grid onehalf" style="width:55%;">
     			{% if pictureAvailable%}
-    			<h2 style = "text-align: center;">{{ businessName }}</h2>
-    			<p style="color:white; font-size:35px; text-align: center;font-family: georgia">Woot! You have a reward</p>
-    			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
+    			<p style="color:white; margin-top:0px; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward:</p>
+    			<h2 style="text-align: center;font-size:34px;font-weight: bold;"><i>{{ description }} at {{ businessName }}</i></h2>
+			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
     			{%else%}
     			
                 <img src="{{ STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
@@ -89,16 +91,24 @@
     </div>
     
 	
-    <div class="grid onehalf last" style="width:55%; margin-top:20px;">
+    <div class="grid onehalf last" style="width:40%;">
     	
-        <div style="position:relative;text-align: center;margin-top:50px;"><h2>Validate account to receive your reward</h2>
-        <div><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></div>
-        </div>
-   		<div class="fb-like" style="display:inline-block; margin-top:60px; margin-left:30%;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div>       
-        
+    <h2 style="text-align: center;">Validate account to receive reward</h2>
+    <div style="display: block;margin-left:auto;margin-right:auto">
+    <a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display:block;margin-left: auto; margin-right: auto;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a>
+    <div style="display:block;margin-left: auto;margin-right:auto;margin-top:10px;"><div class="fb-like" style="display:block;text-align: center;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div></div>
+    <div>
+	<p>Tired of remembering to use paper or mobile discounts?</p>
+	<p>Don't fret - this special reward is loaded directly to your credit card.</p>
+	<p>Just <i>Swipe</i> to redeem.</p>
+	<p><i>Powered by Tivly</i></p>
+    </div>
+    </div>
+    </div>
+    </div>
+    <br style="clear:both;line-height: 22px;" />
 
     </div>
-</div>
 <!-- END MAIN CONTAINER -->
 
 
