@@ -77,7 +77,8 @@
 </script>
 
 <div class="container" style="position:relative; width:80%;box-shadow: 0px 0px 20px white;background:black;margin-top:200px;display:inline-block; margin-left:0px;margin-right:0px;">
-    <div class="grid onehalf" style="width:55%; margin-top:20px;">
+    <br style="line-height: 30px" />
+    <div class="grid onehalf" style="width:55%;">
     			{% if pictureAvailable%}
     			<p style="color:white; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward:</p>
     			<h2 style="text-align: center;font-size:34px;font-weight: bold;">10% discount at {{ businessName }}</h2>
@@ -89,13 +90,13 @@
     </div>
     
 	
-    <div class="grid onehalf last" style="width:40%; margin-top:20px;">
+    <div class="grid onehalf last" style="width:40%;">
     	
     <h2 style="text-align: center;">Validate account to receive reward</h2>
-    <a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display: inline-block;margin-left: 0px; margin-right: 0px;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a>
-   		<div class="fb-like" style="display:inline-block; margin-top:60px; margin-left:30%;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div>
+    <div style="display: block;margin-left:auto;margin-right:auto"><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display: block;margin-left: 0px; margin-right: 0px;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a></div>
+   		<div class="fb-like" style="display:block; margin-top:60px; margin-left:auto;margin-right:auto" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div>
     </div>
-    <br class="clear" />
+    <br style="clear:both;line-height: 20px;" />
 
     </div>
 <!-- END MAIN CONTAINER -->
