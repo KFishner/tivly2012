@@ -33,6 +33,7 @@ def login (request):
 def loginWithRec(request,recommendedBy,rid):
     #template variables...
     pictureAvailable = True
+    reward = Rewards.objects.filter(rID = rid)
     pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].pictureLocation
     businessName = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
