@@ -82,7 +82,7 @@
     <div class="grid onehalf" style="width:55%;">
     			{% if pictureAvailable%}
     			<p style="color:white; margin-top:0px; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward:</p>
-    			<h2 style="text-align: center;font-size:34px;font-weight: bold;">10% discount at {{ businessName }}</h2>
+    			<h2 style="text-align: center;font-size:34px;font-weight: bold;"><i>10% Discount at {{ businessName }}</i></h2>
 			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
     			{%else%}
     			
@@ -96,7 +96,7 @@
     <h2 style="text-align: center;">Validate account to receive reward</h2>
     <div style="display: block;margin-left:auto;margin-right:auto">
     <a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display:block;margin-left: auto; margin-right: auto;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a>
-    <div style="display:block;margin-left: auto;margin-right:auto;margin-top:40px;"><div class="fb-like" style="display:block;margin-left:auto;margin-right:auto;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div></div>
+    <div style="display:block;margin-left: auto;margin-right:auto;margin-top:60px;"><div class="fb-like" style="display:block;text-align: center;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div></div>
     </div>
     </div>
     </div>
