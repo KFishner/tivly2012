@@ -77,9 +77,9 @@
 </script>
 
 <div class="container" style="width:80%;position:absolute;box-shadow: 0px 0px 20px white;background:black;margin-top:20%;margin-left:10%;margin-right:10%;">
-    <div class="grid onehalf" style="width:40%; margin-top:20px;">
+    <div class="grid onehalf" style="width:55%; margin-top:20px;">
     			{% if pictureAvailable%}
-    			<p style="color:white; font-size:35px; text-align: center;font-family: georgia">Woot! You have a reward</p>
+    			<p style="color:white; font-weight:bold; font-size:30px; text-align: center;font-family: georgia">Woot! You got a reward:</p>
     			<h2 style = "text-align: center;">10% discount at {{ businessName }}</h2>
 			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
     			{%else%}
@@ -89,7 +89,7 @@
     </div>
     
 	
-    <div class="grid onehalf last" style="width:55%; margin-top:20px;">
+    <div class="grid onehalf last" style="width:40%; margin-top:20px;">
     	
         <div style="position:relative;text-align: center;margin-top:50px;"><h2>Validate account to receive reward</h2>
         <div><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></div>
