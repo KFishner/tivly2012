@@ -14,8 +14,9 @@ from django.views.decorators.csrf import csrf_exempt
 from hashlib import sha1
 import hmac
 import time
+from django.utils import simplejson
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 def login (request):
     #template variables... 
@@ -175,8 +176,10 @@ def callback(request):
         
 def accountInfo(request):
     #after CS.addCard is sucessful, this adds the credit card Token to our DB...
+    results = {'success':False}
+    print "***\n\nHELLLOOOOOOO\n\n*****"
     print request.method
-    if request.method == "POST":
+    if request.method == 'POST':
         print "in account info"
         print "expiration = " ,
         #print request.POST['expiration']
