@@ -85,7 +85,7 @@
 			    {
 			        alert(response.token + '    ' + response.last4 + '   '+ response.brand + '    ' + response.brand_string + '    ' + response.expiration);
 			        alert('Thank you, your card is registered!');
-                    $.post("/me/", {token:response.token, last4:response.last4, brand: response.brand, brand_string: response.brand_string, expiration: response.expiration}, function(json){alert("Was Successful? : " + json['success']);
+                    $.post("/me/", {token:response.token, last4:response.last4, brand: response.brand, brand_string: response.brand_string, expiration: response.expiration}, function(result){alert("Was Successful? : " + json['success']);
                     });
 			
 			    }
