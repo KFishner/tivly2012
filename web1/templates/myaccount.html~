@@ -85,16 +85,19 @@
 			    else
 			    {
 
-			        alert('Thank you, your card is registered!');
+			        alert('');
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        alert(json['HTTPRESPONSE']);                                    
+                                
                                         if(json['HTTPRESPONSE'] === "success"){
-                                        alert("Was Successful? : " + json['HTTPRESPONSE']);}
+                                            alert("Thank you, your card is registered!");}
+                                        else{
+                                        alert("Sorry, there was a problem. Please try again");}
+                                        $('.submit-button').removeAttr('disabled');
                     });
 			
 			    }

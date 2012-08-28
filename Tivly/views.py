@@ -189,10 +189,12 @@ def accountInfo(request):
             if created:
                 cardToAdd.save();
                 print "created new card"
+                json_data = json.dumps({"HTTPRESPONSE":"new"})
             else:
                 print "pulled old card"
-            json_data = json.dumps({"HTTPRESPONSE":"success"})
-            print "\n***successfuly added!!!***\n"
+                json_data = json.dumps({"HTTPRESPONSE":"old"})
+            
+            print "\n***successfully added!!!***\n"
             return HttpResponse(json_data, mimetype="application/json") 
          
         except Exception as e:
