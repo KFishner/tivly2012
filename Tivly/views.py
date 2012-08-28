@@ -179,8 +179,10 @@ def accountInfo(request):
     results = {'success':False}
     print "***\n\nHELLLOOOOOOO\n\n*****"
     print "request.get = "
-    print request.GET()
-    if request.method == u'GET' and requst.GET:
+    expiration = request.GET.get("expiration", None)
+    print request.GET
+    print "end request.get"
+    if request.method == u'GET' and expiration:
         print "in account info"
         print "expiration = " ,
         #print request.POST['expiration']
