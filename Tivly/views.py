@@ -186,16 +186,16 @@ def accountInfo(request):
     if request.method == u'GET' and expiration:
         print "in account info"
         print "start print\n\n" 
-        print request.POST['expiration']
-        print request.POST['token']
-        print request.POST['last4']
-        print request.POST['brand']
+        print request.GET['expiration']
+        print request.GET['token']
+        print request.GET['last4']
+        print request.GET['brand']
         print "end print\n\n"
         print ""
         try:
             print "*****ADDING CARD*********"
-            exdate = parser.parse(request.POST['expiration'])
-            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
+            exdate = parser.parse(request.GET['expiration'])
+            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.GET['token'], last4 = request.GET['last4'], cardType = request.GET["brand"] ,typeString = request.GET['brand_string'],
             expDate = exdate)
             cardToAdd.save();
             json_data = json.dumps({"HTTPRESPONSE":"sucess"})
