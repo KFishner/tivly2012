@@ -74,6 +74,18 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
+						CardSpring.addCard(cardSpringResponseHandler
+			, {
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : '{{ csid }}'
+			}, "all");
 			    if((typeof response.error) != "undefined")
 			    {
 				    var error = response.error;
@@ -106,18 +118,7 @@
 
 			};
 
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
+
 			return false;
 		});
 	});

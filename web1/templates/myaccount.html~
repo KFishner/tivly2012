@@ -74,6 +74,18 @@
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
+						CardSpring.addCard(cardSpringResponseHandler
+			, {
+				publisher_id : '{{ CARDSPRING_APP_ID }}',
+				security_token : '{{ securityToken }}',
+				timestamp : '{{ timestamp }}',
+				hmac : '{{ digestedHash }}'
+			}, {
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
+				user_id : '{{ csid }}'
+			}, "all");
 			    if((typeof response.error) != "undefined")
 			    {
 				    var error = response.error;
@@ -91,6 +103,7 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
+                                        alert(json['HTTPRESPONSE']);
                                         if(json['HTTPRESPONSE'].valueOf() == "success".valueOf()){
                                         alert("Thank you, your card is registered!"]);
                                         }else{
@@ -105,18 +118,7 @@
 
 			};
 
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
+
 			return false;
 		});
 	});
