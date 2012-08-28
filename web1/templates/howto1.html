@@ -86,7 +86,7 @@
 	 {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
-			alert("cs appid=" + {{ CARDSPRING_APP_ID }} + " sectoken=" + {{ securityToken }} + " timestamp= " +{{ timestamp }} + " hash = " + {{ digestedHash }} + " ccnum " + $('.card-number').val() + " exp" + $('.expiration-month').val() + $('.expiration-year').val() + " user = " + {{ csid }});
+			alert("cs appid=" + "{{ CARDSPRING_APP_ID }}" + " sectoken=" + "{{ securityToken }}" + " timestamp= " +"{{ timestamp }}" + " hash = " + "{{ digestedHash }}" + " ccnum " + $('.card-number').val() + " exp" + $('.expiration-month').val() + $('.expiration-year').val() + " user = " + {{ csid }});
 			cardSpringResponseHandler = function(response){
 			    if((typeof response.error) != "undefined")
 			    {
