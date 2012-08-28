@@ -84,7 +84,7 @@
 			    else
 			    {
 
-			        alert('Thank you, your card is registered!');
+			        
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
@@ -95,6 +95,7 @@
                                             + json['HTTPRESPONSE']);
                                     }
                               );
+                    alert('Thank you, your card is registered!');
 			
 			    }
 
