@@ -1,4 +1,6 @@
 # Django settings for web1 project.
+from django.conf import global_settings
+
 import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -88,6 +90,10 @@ STATIC_ROOT = PROJECT_PATH + '/staticfiles'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "Tivly.context_processors.cardspring",
+)
 #TEMPLATE_CONTEXT_PROCESSORS = 
 #('Tivly.context_processors.cardspring',
 #"django.contrib.auth.context_processors.auth",
