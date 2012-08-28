@@ -92,7 +92,7 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        if(true){
+                                        if(json['HTTPRESPONSE'].valueOf() == "success".valueOf()){
                                         alert("Was Successful? : " + json['HTTPRESPONSE']);}
                     });
 			
