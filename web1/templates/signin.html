@@ -78,7 +78,6 @@
 
 <div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:black;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
     <br style="line-height: 30px" />
-    <div>
     <div class="grid onehalf" style="width:55%;">
     			{% if pictureAvailable%}
     			<p style="color:white; margin-top:0px; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward:</p>
@@ -92,21 +91,17 @@
     
 	
     <div class="grid onehalf last" style="width:40%;">
-    	
-    <h2 style="text-align: center;">Validate account to receive reward</h2>
+    <h2 style="text-align: center; margin-top:40px;">Validate account to receive</h2>
     <div style="display: block;margin-left:auto;margin-right:auto">
     <a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display:block;margin-left: auto; margin-right: auto;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a>
     <div style="display:block;margin-left: auto;margin-right:auto;margin-top:10px;"><div class="fb-like" style="display:block;text-align: center;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div></div>
-    <div>
-	<p>Tired of remembering to use paper or mobile discounts?</p>
-	<p>Don't fret - this special reward is loaded directly to your credit card.</p>
-	<p>Just <i>Swipe</i> to redeem.</p>
-	<p><i>Powered by Tivly</i></p>
+
     </div>
     </div>
-    </div>
-    </div>
-    <br style="clear:both;line-height: 22px;" />
+    <br class="clear">
+	<p style="text-align: right;margin-right:5px;"><i>Powered by Tivly</i></p>
+
+
 
     </div>
 <!-- END MAIN CONTAINER -->
