@@ -91,7 +91,7 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        if(json['HTTPRESPONSE'] === "success"){
+                                        if(json['HTTPRESPONSE'].valueOf() == "success".valueOf()){
                                         alert("Thank you, your card is registered!"]);
                                         }else{
                                         alert("Sorry, we encountered an error. Please Try again");
