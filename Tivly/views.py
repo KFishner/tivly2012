@@ -199,9 +199,11 @@ def accountInfo(request):
             expDate = exdate)
             cardToAdd.save();
             json_data = json.dumps({"HTTPRESPONSE":"sucess"})
+            print "\n\n***successfuly added!!!***\n\n"
             return HttpResponse(json_data, mimetype="application/json") 
          
-        except:
+        except Exception as e:
+            print str(e)
             json_data = json.dumps({"HTTPRESPONSE":"fail"})
             return HttpResponse(json_data, mimetype="application/json")
     
