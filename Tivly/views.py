@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from Management import IDGenerator
 from CardSpringActions import deleteAUser
+from dateutil import parser
 from django.shortcuts import redirect
 from datetime import datetime
 from CallBack import callBack
@@ -193,8 +194,9 @@ def accountInfo(request):
         print ""
         try:
             print "*****ADDING CARD*********"
+            exdate = parser.parse(request.POST['expiration'])
             cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
-            expDate = request.POST['expiration'])
+            expDate = exdate)
             cardToAdd.save();
             json_data = json.dumps({"HTTPRESPONSE":"sucess"})
             return HttpResponse(json_data, mimetype="application/json") 
