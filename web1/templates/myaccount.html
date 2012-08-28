@@ -79,20 +79,32 @@
 				    var error = response.error;
 				    var reason = response.reason;
 				    alert(error + '    ' + reason);
+				    $('.submit-button').removeAttr('disabled');
 			    }
 			
 			    else
 			    {
-			        alert(response.token + '    ' + response.last4 + '   '+ response.brand + '    ' + response.brand_string + '    ' + response.expiration);
-			        alert('Thank you, your card is registered!');
-                    $.getJSON("/me/", {token:response.token, last4:response.last4, brand: response.brand, brand_string: response.brand_string, expiration: response.expiration}, function(json){alert("Was Successful? : " + json['success']);
+
+			        alert('');
+                    $.getJSON("/me/", {token:response.token, 
+                                    last4:response.last4, 
+                                    brand: response.brand, 
+                                    brand_string: response.brand_string, 
+                                    expiration: response.expiration}, 
+                                    function(json){
+                                
+                                        if(json['HTTPRESPONSE'] === "success"){
+                                            alert("Thank you, your card is registered!");}
+                                        else{
+                                        alert("Sorry, there was a problem. Please try again");}
+                                        $('.submit-button').removeAttr('disabled');
                     });
 			
 			    }
 
-			    alert('Hello 2');
+
 			};
-			alert('adding card');
+
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -105,7 +117,7 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-			alert('card added');
+
 			return false;
 		});
 	});
