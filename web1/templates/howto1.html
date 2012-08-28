@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+{%block js%}
+<script type="text/javascript" src="https://js.cardspring.com/v1/cs.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+{%endblock%}
 <html>
 <head>
     <title>How-To - Tivly</title>
@@ -16,11 +21,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
     <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
-    
-    <script src="https://js.cardspring.com/v1/cs.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-    
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -80,35 +81,44 @@
 </div>
 <!-- END MAIN CONTAINER -->
 
-  <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function()
 	 {
 		$('#contactform').submit(function(event) {
 			$('.submit-button').attr('disabled', 'disabled');
+			alert("cs appid=" + {{ CARDSPRING_APP_ID }} + " sectoken=" + {{ securityToken }} + " timestamp= " +{{ timestamp }} + " hash = " + {{ digestedHash }} + " ccnum " + $('.card-number').val() + " exp" + $('.expiration-month').val() + $('.expiration-year').val() + " user = " + {{ csid }});
 			cardSpringResponseHandler = function(response){
-			if(typeof response.error !== "undefined")
-			{
-				var error = response.error;
-				var reason = response.reason;
-				alert(error + '    ' + reason);
-			}
+			    if((typeof response.error) != "undefined")
+			    {
+				    var error = response.error;
+				    var reason = response.reason;
+				    alert(error + '    ' + reason);
+				    $('.submit-button').removeAttr('disabled');
+			    }
 			
-			else
-			{
+			    else
+			    {
+                    $.getJSON("/me/", {token:response.token, 
+                                    last4:response.last4, 
+                                    brand: response.brand, 
+                                    brand_string: response.brand_string, 
+                                    expiration: response.expiration}, 
+                                    function(json){
+                                
+                                        if(json['HTTPRESPONSE'] === "new"){
+                                            alert("Thank you, your card is registered!");}
+                                        else if(json['HTTPRESPONSE'] === "old"){
+                                            alert("This card has already been registered! Please feel free to continue exploring the site");}                          
+                                        else{
+                                        alert("Sorry, there was a problem. Please try again");}
+                                        $('.submit-button').removeAttr('disabled');
+                    });
 			
-			alert('Thank you, your card is registered!');
-			$.ajax({
-			type: 'POST',
-    		url:'https://www.tivly.com/me',
-    		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
-    		success:function(response, textStatus, jqXHR){
-    			alert('Hello');
-    		}
-				 });
-			
-			}
+			    }
+
+
 			};
-			
+            alert("cs appid=" + {{ CARDSPRING_APP_ID }} + " sectoken=" + {{ securityToken }} + " timestamp= " +{{ timestamp }} + " hash = " + {{ digestedHash }} + " ccnum " + $('.card-number').val() + " exp" + $('.expiration-month').val() + $('.expiration-year').val() + " user = " + {{ csid }});
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -121,8 +131,9 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
+
 			return false;
 		});
 	});
-</script> 
+</script>  
 </body></html>
