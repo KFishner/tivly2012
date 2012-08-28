@@ -179,7 +179,7 @@ def accountInfo(request):
     results = {'success':False}
     print "***\n\nHELLLOOOOOOO\n\n*****"
     print request.method
-    if request.method == u'POST':
+    if request.method == 'POST':
         print "in account info"
         print "expiration = " ,
         #print request.POST['expiration']
