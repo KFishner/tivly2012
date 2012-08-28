@@ -91,11 +91,14 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        alert("Was Successful? : " 
-                                            + json['HTTPRESPONSE']);
-                                    }
+                                        if(json['HTTPRESPONSE'] === "success"){
+                                        alert("Thank you, your card is registered!"]);
+                                        }else{
+                                        alert("Sorry, we encountered an error. Please Try again");
+                                        $('.submit-button').removeAttr('disabled');
+                                        }
                               );
-                    alert('Thank you, your card is registered!');
+
 			
 			    }
 
