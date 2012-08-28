@@ -199,6 +199,9 @@ def accountInfo(request):
             expDate = exdate)
             if created:
                 cardToAdd.save();
+                print "created new card"
+            else:
+                print "pulled old card"
             json_data = json.dumps({"HTTPRESPONSE":"sucess"})
             print "\n\n***successfuly added!!!***\n\n"
             return HttpResponse(json_data, mimetype="application/json") 
