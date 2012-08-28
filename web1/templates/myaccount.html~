@@ -79,6 +79,7 @@
 				    var error = response.error;
 				    var reason = response.reason;
 				    alert(error + '    ' + reason);
+				    $('.submit-button')removeAttr('disabled');
 			    }
 			
 			    else
@@ -91,7 +92,8 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        alert("Was Successful? : " + json['HTTPRESPONSE']);
+                                        if(true){
+                                        alert("Was Successful? : " + json['HTTPRESPONSE']);}
                     });
 			
 			    }
