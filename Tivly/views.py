@@ -185,12 +185,12 @@ def accountInfo(request):
     print "end request.get"
     if request.method == u'GET' and expiration:
         print "in account info"
-        print "start print" ,
+        print "start print\n\n" 
         print request.POST['expiration']
         print request.POST['token']
         print request.POST['last4']
         print request.POST['brand']
-        print "end print"
+        print "end print\n\n"
         print ""
         try:
             print "*****ADDING CARD*********"
