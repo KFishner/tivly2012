@@ -195,9 +195,10 @@ def accountInfo(request):
         try:
             print "*****ADDING CARD*********"
             exdate = parser.parse(request.GET['expiration'])
-            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.GET['token'], last4 = request.GET['last4'], cardType = request.GET["brand"] ,typeString = request.GET['brand_string'],
+            cardToAdd, created = Cards.objects.get_or_create(csID = request.COOKIES.get('csID'),token = request.GET['token'], last4 = request.GET['last4'], cardType = request.GET["brand"] ,typeString = request.GET['brand_string'],
             expDate = exdate)
-            cardToAdd.save();
+            if created:
+                cardToAdd.save();
             json_data = json.dumps({"HTTPRESPONSE":"sucess"})
             print "\n\n***successfuly added!!!***\n\n"
             return HttpResponse(json_data, mimetype="application/json") 
