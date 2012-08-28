@@ -87,6 +87,16 @@ STATIC_ROOT = PROJECT_PATH + '/staticfiles'
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+TEMPLATE_CONTEXT_PROCESSORS = 
+('Tivly.context_processors.cardspring',
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.core.context_processors.tz",
+"django.contrib.messages.context_processors.messages",)
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
