@@ -184,9 +184,13 @@ def accountInfo(request):
     print "end request.get"
     if request.method == u'GET' and expiration:
         print "in account info"
-        print "expiration = " ,
+        print "start print" ,
         print request.POST['expiration']
-
+        print request.POST['token']
+        print request.POST['last4']
+        print request.POST['brand']
+        print "end print"
+        print ""
         try:
             print "*****ADDING CARD*********"
             cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
