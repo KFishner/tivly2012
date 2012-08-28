@@ -84,8 +84,6 @@
 			
 			    else
 			    {
-
-			        alert('');
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
@@ -93,8 +91,10 @@
                                     expiration: response.expiration}, 
                                     function(json){
                                 
-                                        if(json['HTTPRESPONSE'] === "success"){
+                                        if(json['HTTPRESPONSE'] === "new"){
                                             alert("Thank you, your card is registered!");}
+                                        else if(json['HTTPRESPONSE'] === "old"){
+                                            alert("This card has already been registered! Please feel free to continue exploring the site");}                          
                                         else{
                                         alert("Sorry, there was a problem. Please try again");}
                                         $('.submit-button').removeAttr('disabled');
