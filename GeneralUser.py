@@ -136,7 +136,7 @@ class User:
             print name
             busname = str(rewardToAdd.businessID)
             try:
-                body = bodyTemplate % (name, busname, busname busname, busname,)
+                body = bodyTemplate % (name, busname, busname busname, )
                 messages.append((subject, body, fromAddr, [email.encode('ascii')]))
                 messages = tuple(messages)
                 send_mass_mail(messages)
