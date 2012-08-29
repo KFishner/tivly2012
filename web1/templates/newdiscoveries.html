@@ -55,12 +55,12 @@ $(".cclogin").fancybox({
     </div><br class="clear" /> 
 {%endif%}
 
-	<table>
+	<table style="border:none">
 		<tr>
 			{%for reward,business in redeemable.items %}
-			<td style="width:60%">
-					<h2>{{ business.businessName }} - {{reward.description }}</h2>
-					<h2>{{ business.city }}</h2>
+			<td style="width:60%; text-align: center">
+					<h2 style="color:#333333">{{reward.description }}</h2>
+					<h2>{{ business.businessName }}</h2>
 			</td>
 			<td style="width:40%">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
