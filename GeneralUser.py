@@ -30,7 +30,7 @@ class User:
             messages.append((subject, body, fromAddr, [email.encode('ascii')]))
             messages = tuple(messages)
             send_mass_mail(messages)
-            print "message sent to %s" email
+            print "message sent to %s" % email
         except Exception as e:
             print str(e)
         
