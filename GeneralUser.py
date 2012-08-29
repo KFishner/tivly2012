@@ -26,7 +26,7 @@ class User:
             print "sending email"
             subject = "Welcome to Tivly!" 
             fromAddr = "info@tivly.com"
-            bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team\n\n\n\nCopyright 2012 Tivly, All rights reserved.\nYou are receiving this email because you redeemed a discount at one of our partner stores or signed up at www.tivly.com\n\nOur mailing address is:\n\nTivly\n151 Lytton Ave\nPalo Alto, CA 94031"
+            bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account at www.tivly.com\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team\n\n\n\nCopyright 2012 Tivly, All rights reserved.\nYou are receiving this email because you redeemed a discount at one of our partner stores or signed up at www.tivly.com\n\nOur mailing address is:\n\nTivly\n151 Lytton Ave\nPalo Alto, CA 94031"
             messages = []
             try:
                 body = bodyTemplate % (name)
@@ -121,7 +121,29 @@ class User:
         myIntroReward.save()
         ml1r.save()
         ml2r.save()
-#        recommendation.delete()
+        print "\n\n********REWARDS SAVED, SENDING EMAIL******\n\n"
+
+        if True:
+            print "sending new rewardemail"
+            subject = "Congratulations! A New Reward" 
+            fromAddr = "info@tivly.com"
+            bodyTemplate = "Congratulations %s!\n\n%s is now in your favorites on Tivly!\n\nShare %s with your friends!\n\t1 -- Sign in to your account at www.tivly.com\n\t2 -- Select %s\n\t3 -- Share via Facebook, Twitter, or email\n\t4 -- Earn points when your friends redeem their rewards\n\t5 -- Swipe your payment card at %s to redeem your own rewards - that's it!\n\nReply to this email with any questions\n\nBest Regards,\nThe Tivly Team\n\n\nCopyright 2012 Tivly, All rights reserved.\nYou are receiving this email because you redeemed a discount at one of our partner stores or signed up at www.tivly.com\n\nOur mailing address is:\n\nTivly\n151 Lytton Ave\nPalo Alto, CA 94031"
+            messages = []
+            email = str(self.fbUser.email)
+            name = str(self.fbUser.first_name)
+            
+            print email
+            print name
+            busname = str(rewardToAdd.businessID)
+            try:
+                body = bodyTemplate % (name, busname, busname, busname,busname )
+                messages.append((subject, body, fromAddr, [email.encode('ascii')]))
+                messages = tuple(messages)
+                send_mass_mail(messages)
+                print "message sent to %s" % email
+            except Exception as e:
+                print str(e)
+#        recommendation.delete() 4
 
         
         
