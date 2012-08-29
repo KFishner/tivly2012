@@ -17,7 +17,8 @@
 <!-- Add Fancybox Open UI-->
 <script>
 $(document).ready(function() {
-$(".cclogin").fancybox({ 
+    $(".cclogin").trigger('click');
+    $(".cclogin").fancybox({ 
     'padding':          0,
     'width':        850,
     'height':       350,
@@ -38,7 +39,8 @@ $(".cclogin").fancybox({
 				'box-shadow' : '0px 0px 20px white',}
 			}}
 }); 
-});</script>
+});
+</script>
 {%endblock%}
 
 {%block MixPanel%}
