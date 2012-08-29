@@ -1234,3 +1234,13 @@ td{
 .tchover-wrapper.pin span{background:url(../images/pin-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.like span{background:url(../images/like-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.tweet span{background:url(../images/tweet-hover.png) repeat scroll center center transparent;}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Hover
+/*-----------------------------------------------------------------------------------*/
+
+.hover:hover{
+	position: relative;
+	bottom:1px;
+	box-shadow: 0px 2px 3px gray;
+}
