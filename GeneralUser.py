@@ -21,19 +21,23 @@ class User:
         self.myRewards = MyRewards.objects.filter(csID = self.csUser.csID)
         email = self.fbUser.email
         name = self.fbUser.first_name
-        print "sending email"
-        subject = "Welcome to Tivly!" 
-        fromAddr = "info@tivly.com"
-        bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team"
-        messages = []
-        try:
-            body = bodyTemplate % (name)
-            messages.append((subject, body, fromAddr, [email.encode('ascii')]))
-            messages = tuple(messages)
-            send_mass_mail(messages)
-            print "message sent to %s" % email
-        except Exception as e:
-            print str(e)
+        print "self.csuser.emailed = " + str(self.csUser.emailed)
+        if not self.csUser.emailed:
+            print "sending email"
+            subject = "Welcome to Tivly!" 
+            fromAddr = "info@tivly.com"
+            bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team"
+            messages = []
+            try:
+                body = bodyTemplate % (name)
+                messages.append((subject, body, fromAddr, [email.encode('ascii')]))
+                messages = tuple(messages)
+                send_mass_mail(messages)
+                self.csUser.emailed = True
+                self.csUser.emailed.save()
+                print "message sent to %s" % email
+            except Exception as e:
+                print str(e)
         
     
     def getCardSpringUser(self,request):
