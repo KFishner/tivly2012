@@ -34,7 +34,7 @@ class User:
                 messages = tuple(messages)
                 send_mass_mail(messages)
                 self.csUser.emailed = True
-                self.csUser.emailed.save()
+                self.csUser.save()
                 print "message sent to %s" % email
             except Exception as e:
                 print str(e)
