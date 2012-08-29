@@ -3,6 +3,7 @@ Created on Jul 22, 2012
 
 @author: bryanantigua
 '''
+from django.core.mail import *
 from Facebook import facebookLogin
 from Management import IDGenerator
 from CardSpringActions import createAUser,createUserAppConnection
