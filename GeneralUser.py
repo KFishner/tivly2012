@@ -26,7 +26,7 @@ class User:
             print "sending email"
             subject = "Welcome to Tivly!" 
             fromAddr = "info@tivly.com"
-            bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team\n\n\n\nCopyright © 2012 Tivly, All rights reserved.\nYou are receiving this email because you redeemed a discount at one of our partner stores or signed up at www.tivly.com\n\nOur mailing address is:\n\nTivly\n151 Lytton Ave\nPalo Alto, CA 94031"
+            bodyTemplate = "Hi %s,\n\nWelcome to Tivly!\n\nGetting started:\n\t1 -- Signin to your account\n\t2 -- Share the places you love with friends\n\t3 -- Start earning points towards awesome rewards\n\t4 -- Swipe your payment card at your favorite places to redeem rewards - that's it!\n\nReply to this email with any questions\nYou can check it out at http://www.tivly.com/splash/.\n\nBest Regards,\nThe Tivly Team\n\n\n\nCopyright 2012 Tivly, All rights reserved.\nYou are receiving this email because you redeemed a discount at one of our partner stores or signed up at www.tivly.com\n\nOur mailing address is:\n\nTivly\n151 Lytton Ave\nPalo Alto, CA 94031"
             messages = []
             try:
                 body = bodyTemplate % (name)
