@@ -58,17 +58,19 @@ $(".cclogin").fancybox({
 	<table>
 		<tr>
 			{%for reward,business in redeemable.items %}
-			<td>
-				<div class="grid onethird">
-					<h5>{{ business.businessName }} - {{reward.description }}</h5>
-					<h6>{{ business.city }}</h6>
+			<td style="width:60%">
+					<h2>{{ business.businessName }} - {{reward.description }}</h2>
+					<h2>{{ business.city }}</h2>
+			</td>
+			<td style="width:40%">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
 						src="{{business.pictureLocation }}" /></a> 
 <!-- 						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
- -->				</div>
-			</td> 
-			{% if not forloop.last and forloop.count|divisibleby:"3"%}
+ -->			
+			</td>
 		</tr>
+			{% if not forloop.last and forloop.count|divisibleby:"3"%}
+
 		<tr>
 		{% endif %} 
 		{% endfor %}
