@@ -139,7 +139,7 @@ class User:
                 print "message sent to %s" % email
             except Exception as e:
                 print str(e)
-#        recommendation.delete()
+#        recommendation.delete() 4
 
         
         
