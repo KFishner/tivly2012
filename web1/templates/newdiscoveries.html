@@ -62,7 +62,7 @@ $(".cclogin").fancybox({
 		    {%for reward,business in redeemable.items %}
 		    
 		    
-			<td style="width:60%; text-align: center;border:none;">
+			<td class="hovers" style="width:60%; text-align: center;border:none;">
 			    <a href="{{ URL }}/business/{{ business.website }}"><div>
 					<h2 style="color:#333333;font-size:40px;">{{reward.description }}</h2>
 					<h2>{{ business.businessName }}</h2>
