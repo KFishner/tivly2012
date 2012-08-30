@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from Management import IDGenerator
 from CardSpringActions import deleteAUser
+from dateutil import parser
 from django.shortcuts import redirect
 from datetime import datetime
 from CallBack import callBack
@@ -14,8 +15,9 @@ from django.views.decorators.csrf import csrf_exempt
 from hashlib import sha1
 import hmac
 import time
+from django.utils import simplejson
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 def login (request):
     #template variables... 
@@ -175,22 +177,28 @@ def callback(request):
         
 def accountInfo(request):
     #after CS.addCard is sucessful, this adds the credit card Token to our DB...
-    print request.method
-    if request.method == "POST":
-        print "in account info"
-        print "expiration = " ,
-        #print request.POST['expiration']
-        print "request ="
-        print request
+
+    expiration = request.GET.get("expiration", None)
+
+    if request.method == u'GET' and expiration:
         try:
             print "*****ADDING CARD*********"
-            cardToAdd = Cards(csID = request.COOKIES.get('csID'),token = request.POST['token'], last4 = request.POST['last4'], cardType = request.POST["brand"] ,typeString = request.POST['brand_string'],
-            expDate = request.POST['expiration'])
-            cardToAdd.save();
-            json_data = json.dumps({"HTTPRESPONSE":"sucess"})
+            exdate = parser.parse(request.GET['expiration'])
+            cardToAdd, created = Cards.objects.get_or_create(csID = request.COOKIES.get('csID'),token = request.GET['token'], last4 = request.GET['last4'], cardType = request.GET["brand"] ,typeString = request.GET['brand_string'],
+            expDate = exdate)
+            if created:
+                cardToAdd.save();
+                print "created new card"
+                json_data = json.dumps({"HTTPRESPONSE":"new"})
+            else:
+                print "pulled old card"
+                json_data = json.dumps({"HTTPRESPONSE":"old"})
+            
+            print "\n***successfully added!!!***\n"
             return HttpResponse(json_data, mimetype="application/json") 
          
-        except:
+        except Exception as e:
+            print str(e)
             json_data = json.dumps({"HTTPRESPONSE":"fail"})
             return HttpResponse(json_data, mimetype="application/json")
     

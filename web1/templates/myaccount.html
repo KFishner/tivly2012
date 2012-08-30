@@ -18,18 +18,18 @@
     <h1 class="page-header key">My Account</h1>
     
         <table>
-        	<tr>
+            <tr>
                 <td style="border:none"><a href="{{ URL }}/logout">Log Out</a></td>
             </tr>
-            <tr>
+            <!-- <tr>
             	<td>Connect with Facebook</td>
                 <td><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
-      				<img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></td>
-           </tr>
+      				<img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></td> 
+           </tr> -->
                 <!--  <td>Connect with Twitter</td>
                 <td></td> -->
             <tr> 
-                 <tr>
+                <tr>
                 <td>Connect Payment Card</td>
                 <td>        
                 <form id="contactform" method="POST" action="">
@@ -79,33 +79,32 @@
 				    var error = response.error;
 				    var reason = response.reason;
 				    alert(error + '    ' + reason);
+				    $('.submit-button').removeAttr('disabled');
 			    }
 			
 			    else
 			    {
-			        alert(response.token + '    ' + response.last4 + '   '+ response.brand + '    ' + response.brand_string + '    ' + response.expiration);
-			        alert('Thank you, your card is registered!');
-			        $.ajax({
-			            type: 'POST',
-                		url:'www.tivly.com/me',
-                		async: false,
-                		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
-                 		//.done(function() { alert("success"); })
-                        //.fail(function() { alert("error"); })
-                        //.always(function() { alert("complete"); });
-                		//success:function(response, textStatus, jqXHR){
-                		//	alert('Hello');
-                		//},
-                		 error: function () {
-                                alert('Error');
-                         }
-		            });
+                    $.getJSON("/me/", {token:response.token, 
+                                    last4:response.last4, 
+                                    brand: response.brand, 
+                                    brand_string: response.brand_string, 
+                                    expiration: response.expiration}, 
+                                    function(json){
+                                
+                                        if(json['HTTPRESPONSE'] === "new"){
+                                            alert("Thank you, your card is registered!");}
+                                        else if(json['HTTPRESPONSE'] === "old"){
+                                            alert("This card has already been registered! Please feel free to continue exploring the site");}                          
+                                        else{
+                                        alert("Sorry, there was a problem. Please try again");}
+                                        $('.submit-button').removeAttr('disabled');
+                    });
 			
 			    }
 
-			    alert('Hello 2');
+
 			};
-			alert('adding card');
+
 			CardSpring.addCard(cardSpringResponseHandler
 			, {
 				publisher_id : '{{ CARDSPRING_APP_ID }}',
@@ -118,7 +117,7 @@
 				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-			alert('card added');
+
 			return false;
 		});
 	});

@@ -3,22 +3,19 @@
 <head>
     <title>How-To - Tivly</title>
     <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="{{ STATIC_URL }}content-type" content="text/html;charset=utf-8" />
     
     <!-- Include CSS -->
     <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
     <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!-- Include Scripts -->	
-<!--     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
- -->    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
     <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
-    
-    <script src="https://js.cardspring.com/v1/cs.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     
 <script type="text/javascript">
@@ -40,89 +37,38 @@
 
 <body style="background-color:black">
 <!-- START MAIN CONTAINER -->
-<div>
-        <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Rewards Directly Loaded to Your Payment Card</h2>
-                <!-- start contact form -->
-        <div style="display:block;margin-left:25%;margin-top:25px;">
-        <form id="contactform" method="POST" action="">
-                {%csrf_token%}
-            <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
-            </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
-		<option value="01">01</option>
-		<option value="02">02</option>
-		<option value="03">03</option>
-		<option value="04">04</option>
-		<option value="05">05</option>
-		<option value="06">06</option>
-		<option value="07">07</option>
-		<option value="08">08</option>
-		<option value="09">09</option>
-		<option value="10">10</option>
-		<option value="11">11</option>
-		<option value="12">12</option>
+<div class="container" style="width:100%" >
+    <div style="padding-bottom:15px;">
+    <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Get Points When Your Recommendations are Taken</h2>
+    </div>
+<div class="grid onehalf" style="width:45%;">
+    <h2 style="text-align: center; font-size: 24px;">Click to See Your Progress</h2>
+    </div>
+    <div class="grid onehalf" style="width:45%">
+    <h2 style="text-align: center;font-size: 24px;">Get Closer to Rewards Each Time a Friend Goes</h2>
+    </div>
+    
+    <br class="clear" />
 
-	</select> <select class="expiration-year" name="year">
-		<option value="2013">2012</option>
-		<option value="2013">2013</option>
-		<option value="2014">2014</option>
-		<option value="2015">2015</option>
-		<option value="2016">2016</option>
-		<option value="2017">2017</option>
-		<option value="2018">2018</option>
-	</select>*</p>
-                <input type="submit" class="submit-button" value="submit" tabindex="5"/>
-            </p>
-        </form></div><!-- end contact form -->
-        <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Just <em>Swipe</em> to Redeem</h2>
+    <div class="grid onehalf" style="width:45%;">
+    <img src="{{STATIC_URL}}images/howto/mydemo.jpg" style="display:block;margin-left:auto;margin-right:auto"/>
+    </div>
+    <div class="grid onehalf" style="width:45%">
+    <img src="{{STATIC_URL}}images/howto/progress.jpg" style="display:block;margin-left:auto;margin-right:auto"/>
+    </div>
+    
+    <br class="clear" />
+    <div style="text-align: right;padding-top:6px;padding-right:20px;">
+    <a href="{{ URL }}/me" style="color:white;font-family: georgia; font-size:40px;text-decoration: none;">Next <span style="color:#00cc66">></span></a>
+    </div>
+    <br class="clear" />
 
-</div>
-<!-- END MAIN CONTAINER -->
+</div><!-- END MAIN CONTAINER -->
 
-  <script type="text/javascript">
-	$(document).ready(function()
-	 {
-		$('#contactform').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');
-			cardSpringResponseHandler = function(response){
-			if(typeof response.error !== "undefined")
-			{
-				var error = response.error;
-				var reason = response.reason;
-				alert(error + '    ' + reason);
-			}
-			
-			else
-			{
-			
-			alert('Thank you, your card is registered!');
-			$.ajax({
-			type: 'POST',
-    		url:'https://www.tivly.com/me',
-    		data: {"token": response.token,"last4": repsonse.last4,"brand": response.brand,"brand_string":response.brand_string,"expiration": response.expiration}.serialize(),
-    		success:function(response, textStatus, jqXHR){
-    			alert('Hello');
-    		}
-				 });
-			
-			}
-			};
-			
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
-			return false;
-		});
-	});
-</script> 
+
+
+
+
+
+
 </body></html>

@@ -1188,3 +1188,9 @@ background:url(../images/logo-contact2.png) no-repeat;
 .tchover-wrapper.pin span{background:url(../images/pin-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.like span{background:url(../images/like-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.tweet span{background:url(../images/tweet-hover.png) repeat scroll center center transparent;}
+
+.hovers:hover{
+	position:relative;
+	bottom:2px;
+	box-shadow: 3px 3px 3px gray;
+}

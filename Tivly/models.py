@@ -63,7 +63,7 @@ class CardSpringUser(models.Model):
     fbID = models.BigIntegerField(blank = True, null = True)
     TwitID = models.BigIntegerField(blank = True, null = True)
     dateJoined = models.DateField(blank = True, null = True)
-
+    emailed = models.BooleanField(default=False)
     
 class Cards(models.Model):
     csID = models.CharField(max_length = 6)

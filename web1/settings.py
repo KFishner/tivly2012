@@ -1,10 +1,13 @@
 # Django settings for web1 project.
+from django.conf import global_settings
+
 import os
-#DEBUG = True
-#TEMPLATE_DEBUG = DEBUG
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Peter', 'pgrabows@princeton.edu'),
+    ('Peter', 'mythander889@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -86,6 +89,21 @@ STATIC_ROOT = PROJECT_PATH + '/staticfiles'
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
+
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    "Tivly.context_processors.cardspring",
+)
+#TEMPLATE_CONTEXT_PROCESSORS = 
+#('Tivly.context_processors.cardspring',
+#"django.contrib.auth.context_processors.auth",
+#"django.core.context_processors.debug",
+#"django.core.context_processors.i18n",
+#"django.core.context_processors.media",
+#"django.core.context_processors.static",
+#"django.core.context_processors.tz",
+#"django.contrib.messages.context_processors.messages"
+#)
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -181,3 +199,12 @@ LOGGING = {
         },
     }
 }
+
+"""settings for email"""
+DEFAULT_FROM_EMAIL = 'info@tivly.com'
+SERVER_EMAIL = 'info@tivly.com'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'info@tivly.com'
+EMAIL_HOST_PASSWORD = 'startup2012'
