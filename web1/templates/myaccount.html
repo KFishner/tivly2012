@@ -127,7 +127,7 @@
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                
+                                        alert("submitted!");
                                         if(json['HTTPRESPONSE'] === "new"){
                                             alert("Thank you, your card is registered!");}
                                         else if(json['HTTPRESPONSE'] === "old"){
