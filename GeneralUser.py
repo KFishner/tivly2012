@@ -107,7 +107,7 @@ class User:
         myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
         myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
         isUsed = True
-        if str(rewardToAdd.businessID) != "tivly" and str(rewardToAdd.appID) != "racecourse" and str(rewardToAdd.businessID) != "l5sxg80QSa7O":
+        if str(rewardToAdd.businessID) != "tivly" and str(rewardToAdd.appID) != "racecourse" and rewardToAdd.businessID != "l5sxg80QSa7O":
             createUserAppConnection(self.csUser.csID,rewardToAdd.appID)
             createUserAppConnection(self.csUser.csID,myLevel1Reward.appID)
             createUserAppConnection(self.csUser.csID,myLevel2Reward.appID)

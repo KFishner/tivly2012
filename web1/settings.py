@@ -2,12 +2,13 @@
 from django.conf import global_settings
 
 import os
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#DEBUG = True
+#TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Peter', 'pgrabows@princeton.edu'),
     ('Peter', 'mythander889@gmail.com'),
+    ('Bryan', 'antigua.b@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
