@@ -88,75 +88,72 @@
 	    var month = $('#month').val();
 	    var year = $('#year').val();
 	    alert(cnumber + "   " + month + "   " + year);
-		$('#contactform').submit(function(event) {
-		    var error = false;
-			$('.submit-button').attr('disabled', 'disabled');
-			cardSpringResponseHandler = function(response){
-			    if((typeof response.error) != "undefined")
-			    {
-				    var errorstr = response.error;
-				    var reasonstr = response.reason;
-				    if(errorstr !== "already_registered"){                
-                        error = true
-                        alert("Sorry, there was a problem. Please try again\nError: " + errorerrorstr + " Reason: " + reasonstr);
-                    }else{
-                    csalreg = true;
-                    }
-				    $('.submit-button').removeAttr('disabled');			
+		$('.submit-button').attr('disabled', 'disabled');
+		cardSpringResponseHandler = function(response){
+		    if((typeof response.error) != "undefined")
+		    {
+			    var errorstr = response.error;
+			    var reasonstr = response.reason;
+			    if(errorstr !== "already_registered"){                
+                    error = true
+                    alert("Sorry, there was a problem. Please try again\nError: " + errorstr + " Reason: " + reasonstr);
+                }else{
+                csalreg = true;
                 }
-			
-			    if (!error){
-    		        var token = response.token;
-		            if (csalreg){
-		                var last4 =  cnumber.slice(-4);
-		                var brand_string = GetCardType(cnumber);
-		                var brand = brand_string;
-		                var expiration = month + " " +year;
-		            }else{
-		                var last4 =  response.last4;
-		                var brand_string = response.brand_string;
-		                var brand =response.brand;
-		                var expiration = response.expiration;
-		            }
-		            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-			        alert("submitting ajax!");
-                    $.getJSON("/me/", {token:token, 
-                                    last4:last4, 
-                                    brand: brand, 
-                                    brand_string: brand_string, 
-                                    expiration: expiration}, 
-                                    function(json){
-                                        alert("submitted ajax!");
-                                        if(json['HTTPRESPONSE'] === "new"){
-                                            alert("Thank you, your card is registered!");}
-                                        else if(json['HTTPRESPONSE'] === "old"){
-                                            alert("This card has already been registered! Please feel free to continue exploring the site");}                          
-                                        else{
-                                            alert("Sorry, there was a problem. Please try again");}
-                                        $('.submit-button').removeAttr('disabled');
-                    });
-			
-			    }
+			    $('.submit-button').removeAttr('disabled');			
+            }
+		
+		    if (!error){
+		        var token = response.token;
+	            if (csalreg){
+	                var last4 =  cnumber.slice(-4);
+	                var brand_string = GetCardType(cnumber);
+	                var brand = brand_string;
+	                var expiration = month + " " +year;
+	            }else{
+	                var last4 =  response.last4;
+	                var brand_string = response.brand_string;
+	                var brand =response.brand;
+	                var expiration = response.expiration;
+	            }
+	            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
+		        alert("submitting ajax!");
+                $.getJSON("/me/", {token:token, 
+                                last4:last4, 
+                                brand: brand, 
+                                brand_string: brand_string, 
+                                expiration: expiration}, 
+                                function(json){
+                                    alert("submitted ajax!");
+                                    if(json['HTTPRESPONSE'] === "new"){
+                                        alert("Thank you, your card is registered!");}
+                                    else if(json['HTTPRESPONSE'] === "old"){
+                                        alert("This card has already been registered! Please feel free to continue exploring the site");}                          
+                                    else{
+                                        alert("Sorry, there was a problem. Please try again");}
+                                    $('.submit-button').removeAttr('disabled');
+                });
+		
+		    }
 
 
-			};
+		};
 
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
+		CardSpring.addCard(cardSpringResponseHandler
+		, {
+			publisher_id : '{{ CARDSPRING_APP_ID }}',
+			security_token : '{{ securityToken }}',
+			timestamp : '{{ timestamp }}',
+			hmac : '{{ digestedHash }}'
+		}, {
+			card_number : $('.card-number').val(),
+			exp_month : $('.expiration-month').val(),
+			exp_year : $('.expiration-year').val(),
+			user_id : '{{ csid }}'
+		}, "all");
 
-			return false;
+		return false;
 		});
-	});
 });
 
 </script>  
