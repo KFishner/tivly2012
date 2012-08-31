@@ -71,6 +71,13 @@
   <script type="text/javascript">
 	$(document).ready(function()
 	 {
+	    alert("submitted!");
+	    var error = false;
+	    var csalreg = false;
+	    var cnumber = $('#cnumber').val();
+	    var month = $('#month').val();
+	    var year = $('#year').val();
+	    alert(cnumber + "   " + month + "   " + year);
 		$('#contactform').submit(function(event) {
 		    var error = false;
 			$('.submit-button').attr('disabled', 'disabled');
@@ -79,7 +86,7 @@
 			    {
 				    var errorstr = response.error;
 				    var reasonstr = response.reason;
-				    if(error !== "already_registered"){                
+				    if(errorstr !== "already_registered"){                
                         error = true
                         alert("Sorry, there was a problem. Please try again\nError: " + errorerrorstr + " Reason: " + reasonstr);
                         }
@@ -87,6 +94,7 @@
 			    }
 			
 			    if (!error){
+			        alert("submitted!")
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 

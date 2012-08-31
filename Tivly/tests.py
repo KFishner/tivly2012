@@ -6,7 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from CardSpringActions import * 
-from CSUserObject import *
+from GeneralUser import User
 from Tivly.models import *
 from Tivly.views import *
 from Management import *
@@ -131,7 +131,8 @@ csid = '2YIKLB'
 #hashed = hmac.new(key, raw, sha1)
 #print '0x'+hashed.hexdigest()
 #print getAUser('XE6AN1').read()
-
-print getAUser('XE6AN1').read()
+reward = Rewards.objects.filter(rID = 123457)[0]
+if reward.businessID == "l5sxg80QSa7O":
+    print 'hello'
 
     
