@@ -35,7 +35,7 @@
                 <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="20" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>
                 <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
