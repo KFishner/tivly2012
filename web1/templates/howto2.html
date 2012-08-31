@@ -134,9 +134,9 @@
 				timestamp : '{{ timestamp }}',
 				hmac : '{{ digestedHash }}'
 			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
+				card_number : cnumber,
+				exp_month : month,
+				exp_year : year,
 				user_id : '{{ csid }}'
 			}, "all");
 
