@@ -36,7 +36,7 @@
                 {%csrf_token%}
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onChange="SetTypeText(this.value)"/>*
-                Type<p id="ccNumber"> </p>
+                Type<b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
@@ -81,7 +81,7 @@
 
 function SetTypeText(number)
     {
-        var typeField = document.getElementById("cardType");
+        var typeField = document.getElementById("cctype");
         typeField.innerHTML = GetCardType(number);
     }
 
