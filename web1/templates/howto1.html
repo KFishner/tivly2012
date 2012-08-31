@@ -38,19 +38,19 @@
 <body style="background-color:#444; color:#222;text-shadow: 0px 2px 3px #555">
 <!-- START MAIN CONTAINER -->
 <div class="container" style="width:100%" >
-    	<h3 style="font-size: 40px;text-align: center; margin-top:15px">You have {{introReward.description }} at {{ business.businessName }}</h3>
-    <div class="grid onehalf" style="width:54%;display:inline-block;float:left;border-top:2px dotted #555;border-bottom:2px dotted #555">
+    	<h3 style="font-size: 40px;text-align: center; margin-top:15px;border-bottom:2px dotted #555"">You have {{introReward.description }} at {{ business.businessName }}</h3>
+    <div class="grid onehalf" style="width:54%;display:inline-block;float:left;">
 	<h3 style="font-size: 30px;text-align: center; padding:25px 0px 25px 0px;">Load this reward to your payment card by submitting to the right</h3>
     </div>
     <div class="grid onehalf.last" style="width:41%; display:inline-block;float:left;margin:0px;height:140px;border-top:2px dotted #555;border-bottom:2px dotted #555">
 	<div>
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
-            <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
-                Type <input id="ccNumber" onChange="SetTypeText(this.value)" />
+            <p>
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />
+		<!--*Type <input id="ccNumber" onChange="SetTypeText(this.value)" /> -->
             </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
+        <p>Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -77,7 +77,7 @@
             </p>
         </form></div><!-- end contact form -->    </div>
 <br style="clear:both" />
-<h3 style="font-size: 36px;text-align: center">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Awesome.</span></h3>
+<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #555">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Awesome.</span></h3>
 
 
 <br class="clear" />
