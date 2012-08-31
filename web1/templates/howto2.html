@@ -101,7 +101,7 @@
 			    }
 			
 			    if (!error){
-
+			        alert(response.token + "   " + response.last4 + "   " +response.brand + "   " +response.brand_string+ "   " + response.expiration);
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
@@ -135,7 +135,7 @@
 				exp_year : $('#year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-			alert(response.token + "   " + response.last4 + "   " +response.brand + "   " +response.brand_string+ "   " + response.expiration);
+
 
 			return false;
 		});
