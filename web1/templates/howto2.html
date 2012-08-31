@@ -91,11 +91,12 @@
 			cardSpringResponseHandler = function(response){
 			    if((typeof response.error) != "undefined")
 			    {
-				    var error = response.error;
-				    var reason = response.reason;
+				    var errorstr = response.error;
+				    var reasonstr = response.reason;
 				    if(error != "already_registered"){                
+                        error = true
                         alert("Sorry, there was a problem. Please try again\nError: " + error);
-                        error = true}
+                        }
 				    $('.submit-button').removeAttr('disabled');
 			    }
 			
