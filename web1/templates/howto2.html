@@ -48,7 +48,7 @@
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
                 Type <input id="ccNumber" onChange="SetTypeText(this.value)" />
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
@@ -117,16 +117,16 @@
 			            var expiration = month + " " +year;
 			        }else{
 			            var last4 =  response.last4;
-			            var brand_string = GetCardType(cnumber);
-			            var brand =response.brand_string;
+			            var brand_string = response.brand_string;
+			            var brand =response.brand;
 			            var expiration = response.expiration;
 			        }
-			        alert(response.token + "   " + response.last4 + "   " +response.brand + "   " +response.brand_string+ "   " + response.expiration);
-                    $.getJSON("/me/", {token:response.token, 
-                                    last4:response.last4, 
-                                    brand: response.brand, 
-                                    brand_string: response.brand_string, 
-                                    expiration: response.expiration}, 
+			        alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
+                    $.getJSON("/me/", {token:token
+                                    last4:last4, 
+                                    brand: brand, 
+                                    brand_string: brand_string, 
+                                    expiration: expiration}, 
                                     function(json){
                                 
                                         if(json['HTTPRESPONSE'] === "new"){
