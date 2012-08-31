@@ -72,21 +72,20 @@
 	$(document).ready(function()
 	 {
 		$('#contactform').submit(function(event) {
+		    var error = false;
 			$('.submit-button').attr('disabled', 'disabled');
 			cardSpringResponseHandler = function(response){
 			    if((typeof response.error) != "undefined")
 			    {
 				    var error = response.error;
 				    var reason = response.reason;
-				    if(error == "already_registered"){
-                        alert("This card has already been registered! Please feel free to continue exploring the site");}
-                    else{                      
-                        alert("Sorry, there was a problem. Please try again\nError: " + error);}    
+				    if(error != "already_registered"){                
+                        alert("Sorry, there was a problem. Please try again\nError: " + error);
+                        error = true}
 				    $('.submit-button').removeAttr('disabled');
 			    }
 			
-			    else
-			    {
+			    if (!error){
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
