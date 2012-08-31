@@ -48,8 +48,8 @@
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
-                Type <input id="ccNumber" onChange="SetTypeText(this.value)" />
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
+                Type: <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
@@ -76,24 +76,30 @@
 	</select>*</p>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
             </p>
-        </form></div><!-- end contact form -->
-        <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Just <em>Swipe</em> to Redeem</h2>
+        </form>
+        </td><!-- end form -->
+            <tr>
+                <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
+            </tr>
+        </table>
 
 
-</div>
-<!-- END MAIN CONTAINER -->
 
+
+    
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
 <script type="text/javascript">
 
 function SetTypeText(number)
     {
-        var typeField = document.getElementById("cardType");
+        var typeField = document.getElementById("cctype");
         typeField.innerHTML = GetCardType(number);
     }
 
 function GetCardType(number)
     {            
-        alert("Number = " + number);
         var re = new RegExp("^4");
         if (number.match(re) != null)
             return "Visa";
@@ -114,16 +120,14 @@ function GetCardType(number)
     }
 </script>
 <script type="text/javascript">
-$(document).ready(function()
- {
-	$('#contactform').submit(function(event) {
-	    alert("submitted!");
+	$(document).ready(function(){
+	 
+	 $('#contactform').submit(function(event) {
 	    var error = false;
 	    var csalreg = false;
 	    var cnumber = $('#cnumber').val();
 	    var month = $('#month').val();
 	    var year = $('#year').val();
-	    alert(cnumber + "   " + month + "   " + year);
 		$('.submit-button').attr('disabled', 'disabled');
 		cardSpringResponseHandler = function(response){
 		    if((typeof response.error) != "undefined")
@@ -134,38 +138,36 @@ $(document).ready(function()
                     error = true
                     alert("Sorry, there was a problem. Please try again\nError: " + errorstr + " Reason: " + reasonstr);
                 }else{
-                    csalreg = true;
+                csalreg = true;
                 }
-			    $('.submit-button').removeAttr('disabled');
-		    }
+			    $('.submit-button').removeAttr('disabled');			
+            }
 		
 		    if (!error){
 		        var token = response.token;
-		        if (csalreg){
-		            var last4 =  cnumber.slice(-4);
-		            var brand_string = GetCardType(cnumber);
-		            var brand = brand_string;
-		            var expiration = month + " " +year;
-		        }else{
-		            var last4 =  response.last4;
-		            var brand_string = response.brand_string;
-		            var brand =response.brand;
-		            var expiration = response.expiration;
-		        }
-		        alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-                $.getJSON("/me/", {token:token
+	            if (csalreg){
+	                var last4 =  cnumber.slice(-4);
+	                var brand_string = GetCardType(cnumber);
+	                var brand = brand_string;
+	                var expiration = year+"-"+month+"-"+"28";
+	            }else{
+	                var last4 =  response.last4;
+	                var brand_string = response.brand_string;
+	                var brand =response.brand;
+	                var expiration = response.expiration;
+	            }
+                $.getJSON("/me/", {token:token, 
                                 last4:last4, 
                                 brand: brand, 
                                 brand_string: brand_string, 
                                 expiration: expiration}, 
                                 function(json){
-                            
                                     if(json['HTTPRESPONSE'] === "new"){
                                         alert("Thank you, your card is registered!");}
                                     else if(json['HTTPRESPONSE'] === "old"){
                                         alert("This card has already been registered! Please feel free to continue exploring the site");}                          
                                     else{
-                                    alert("Sorry, there was a problem. Please try again");}
+                                        alert("Sorry, there was a problem. Please try again");}
                                     $('.submit-button').removeAttr('disabled');
                 });
 		
@@ -181,15 +183,15 @@ $(document).ready(function()
 			timestamp : '{{ timestamp }}',
 			hmac : '{{ digestedHash }}'
 		}, {
-			card_number : cnumber,
-			exp_month : month,
-			exp_year : year,
+			card_number : $('.card-number').val(),
+			exp_month : $('.expiration-month').val(),
+			exp_year : $('.expiration-year').val(),
 			user_id : '{{ csid }}'
 		}, "all");
 
 		return false;
-	});
-
+		});
 });
+
 </script>  
 </body></html>
