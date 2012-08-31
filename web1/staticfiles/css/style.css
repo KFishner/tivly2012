@@ -196,7 +196,7 @@ h1.page-header{
 	border-bottom:1px solid #EFEFEF;
 	padding:20px 0px 20px 33px;
 	margin:50px 0 20px 0 !important;
-	color:#262BA4;
+	color:#3B5998;
 	font-size:37px;
 }
 h3.page-header{
@@ -1233,7 +1233,6 @@ td{
 .tchover-wrapper.pin span{background:url(../images/pin-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.like span{background:url(../images/like-hover.png) repeat scroll center center transparent;}
 .tchover-wrapper.tweet span{background:url(../images/tweet-hover.png) repeat scroll center center transparent;}
-
 /*-----------------------------------------------------------------------------------*/
 /*	Hover
 /*-----------------------------------------------------------------------------------*/
