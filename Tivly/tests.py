@@ -6,6 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from CardSpringActions import * 
+from GeneralUser import User
 from CSUserObject import *
 from Tivly.models import *
 from Tivly.views import *
@@ -131,7 +132,13 @@ csid = '2YIKLB'
 #hashed = hmac.new(key, raw, sha1)
 #print '0x'+hashed.hexdigest()
 #print getAUser('XE6AN1').read()
-
-print getAUser('XE6AN1').read()
+user = User('2YIKLB')
+myRewards = user.myRewards
+redeemable ={}
+for targetReward in myRewards:
+    pointValue = len(MyRewards.objects.filter(businessID = targetReward.businessID, reccomendedBy = user.csUser.csID, used = True))
+    if targetReward.reward.pointsNeeded <= pointValue and targetReward.used == False:
+        business = Businesses.objects.filter(businessID = targetReward.reward.businessID)[0]
+        redeemable[targetReward.reward] = business
 
     
