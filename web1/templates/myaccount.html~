@@ -79,15 +79,16 @@
 
   <script type="text/javascript">
 	$(document).ready(function()
+	throw("ready!");
 	 {
 	 $('#contactform').submit(function(event) {
-	    alert("submitted!");
+	    throw("submitted!");
 	    var error = false;
 	    var csalreg = false;
 	    var cnumber = $('#cnumber').val();
 	    var month = $('#month').val();
 	    var year = $('#year').val();
-	    alert(cnumber + "   " + month + "   " + year);
+	    throw(cnumber + "   " + month + "   " + year);
 		$('#contactform').submit(function(event) {
 		    var error = false;
 			$('.submit-button').attr('disabled', 'disabled');
@@ -99,10 +100,10 @@
 				    if(errorstr !== "already_registered"){                
                         error = true
                         alert("Sorry, there was a problem. Please try again\nError: " + errorerrorstr + " Reason: " + reasonstr);
-                        }
-				    $('.submit-button').removeAttr('disabled');
-			    }else{
+                    }else{
                     csalreg = true;
+                    }
+				    $('.submit-button').removeAttr('disabled');			
                 }
 			
 			    if (!error){
@@ -118,15 +119,15 @@
 		                var brand =response.brand;
 		                var expiration = response.expiration;
 		            }
-		            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-			        alert("submitted!");
+		            throw(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
+			        throw("submitted!");
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                
+                                        throw("submitted!");
                                         if(json['HTTPRESPONSE'] === "new"){
                                             alert("Thank you, your card is registered!");}
                                         else if(json['HTTPRESPONSE'] === "old"){
@@ -157,6 +158,8 @@
 			return false;
 		});
 	});
+};)
+
 </script>  
 
 {%endblock%}
