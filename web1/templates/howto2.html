@@ -91,7 +91,10 @@
 			    {
 				    var error = response.error;
 				    var reason = response.reason;
-				    alert(error + '    ' + reason);
+				    if(error == "already_registered"){
+                        alert("This card has already been registered! Please feel free to continue exploring the site");}
+                    else{                      
+                        alert("Sorry, there was a problem. Please try again\nError: " + error);}    
 				    $('.submit-button').removeAttr('disabled');
 			    }
 			
