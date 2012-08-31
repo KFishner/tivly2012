@@ -35,8 +35,8 @@
                 <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
-                Type<p id="ccNumber">  </p>
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onChange="SetTypeText(this.value)"/>*
+                Type: <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
@@ -81,13 +81,12 @@
 
 function SetTypeText(number)
     {
-        var typeField = document.getElementById("cardType");
+        var typeField = document.getElementById("cctype");
         typeField.innerHTML = GetCardType(number);
     }
 
 function GetCardType(number)
     {            
-        alert("Number = " + number);
         var re = new RegExp("^4");
         if (number.match(re) != null)
             return "Visa";
@@ -111,13 +110,11 @@ function GetCardType(number)
 	$(document).ready(function(){
 	 
 	 $('#contactform').submit(function(event) {
-	    alert("submitted cf!");
 	    var error = false;
 	    var csalreg = false;
 	    var cnumber = $('#cnumber').val();
 	    var month = $('#month').val();
 	    var year = $('#year').val();
-	    alert(cnumber + "   " + month + "   " + year);
 		$('.submit-button').attr('disabled', 'disabled');
 		cardSpringResponseHandler = function(response){
 		    if((typeof response.error) != "undefined")
@@ -146,15 +143,12 @@ function GetCardType(number)
 	                var brand =response.brand;
 	                var expiration = response.expiration;
 	            }
-	            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-		        alert("submitting ajax!");
                 $.getJSON("/me/", {token:token, 
                                 last4:last4, 
                                 brand: brand, 
                                 brand_string: brand_string, 
                                 expiration: expiration}, 
                                 function(json){
-                                    alert("submitted ajax!");
                                     if(json['HTTPRESPONSE'] === "new"){
                                         alert("Thank you, your card is registered!");}
                                     else if(json['HTTPRESPONSE'] === "old"){
