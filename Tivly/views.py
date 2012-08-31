@@ -319,8 +319,19 @@ def test(request):
 
 
 def howto(request,number):
+    
     URL = settings.URL
     csid = request.COOKIES.get('csID')
+    user = User(request)
+    rewards = user.myRewards
+    
+    for reward in rewards:
+        if reward.level == 0:
+            introReward = reward
+            break
+        
+    business = Businesses.objects.filter(businessID = introReward.businessID)
+    
     #these are for authentication with CardSpring JS library...
     securityToken = IDGenerator(32)
     timestamp = int(time.time())
