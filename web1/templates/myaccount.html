@@ -136,7 +136,7 @@ function GetCardType(number)
 	                var last4 =  cnumber.slice(-4);
 	                var brand_string = GetCardType(cnumber);
 	                var brand = brand_string;
-	                var expiration = month + " " +year;
+	                var expiration = year+"-"+month+"-"+"28";
 	            }else{
 	                var last4 =  response.last4;
 	                var brand_string = response.brand_string;
