@@ -41,7 +41,6 @@ h1{
 	font-size:30px;
 	font-weight:normal;
 	font-family:Georgia, "Times New Roman", Times, serif;
-	font-style:italic;
 }
 
 h2{
@@ -197,7 +196,8 @@ h1.page-header{
 	padding:20px 0px 20px 33px;
 	margin:50px 0 20px 0 !important;
 	color:#3B5998;
-	font-size:37px;
+	font-size:40px;
+	font-weight: bold;
 }
 h3.page-header{
 	cursor:default;
