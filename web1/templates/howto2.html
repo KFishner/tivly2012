@@ -95,7 +95,7 @@
 				    var reasonstr = response.reason;
 				    if(error != "already_registered"){                
                         error = true
-                        alert("Sorry, there was a problem. Please try again\nError: " + error);
+                        alert("Sorry, there was a problem. Please try again\nError: " + errorstr + " Reason: " + reasonstr);
                         }
 				    $('.submit-button').removeAttr('disabled');
 			    }
