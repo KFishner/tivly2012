@@ -17,7 +17,7 @@
 <!-- Add Fancybox Open UI-->
 <script>
 $(document).ready(function() {
-$(".cclogin").fancybox({ 
+    $(".cclogin").fancybox({ 
     'padding':          0,
     'width':        850,
     'height':       350,
@@ -37,8 +37,10 @@ $(".cclogin").fancybox({
 				'background-color' : '#666',
 				'box-shadow' : '0px 0px 20px white',}
 			}}
-}); 
-});</script>
+});
+     //$(".cclogin").eq(0).trigger('click');
+});
+</script>
 {%endblock%}
 
 {%block MixPanel%}
@@ -51,21 +53,23 @@ $(".cclogin").fancybox({
 <div class="container">
         
 <!--     <h1 class="page-header" style="font-size: 26px; color:#00cc66">Favorite restaurant not on tivly yet? Sign them up and get $25! <a href="{{STATIC_URL }}merchantsignup">Click for details</a></h1>
- -->    <h1 class="page-header heart clear">My Favorites - Start Sharing</h1>
-    
+ -->
+<div style="background:#33cc66; height:4px; width:225px; position:relative; margin-left:36.5%"></div> 
+<br class="clear" />
+<br class="clear" />
+<br class="clear" />
+
     {% if not hasCard%}
-    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Find out how to get the full tivly experience!</a> 
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to get the full Tivly experience</a> 
     </div><br class="clear" /> 
-    {%endif%}
+    {%endif%}  
     <table>
-		<tr>
+		<tr style="border:none">
 			{% for business in businessList %}
 			<td>
 				<div class="grid onethird">
-					<h3>{{ business.businessName }}</h3>
-					<h6>{{business.city}}</h6>
 					<a href="{{ URL }}/business/{{ business.website }}"><img
-						src="{{ business.pictureLocation }}" /></a> 
+						src="{{ business.pictureLocation }}" style="margin-top:4px;"/></a> 
 						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
 				</div>
 			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}

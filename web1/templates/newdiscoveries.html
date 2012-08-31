@@ -48,28 +48,38 @@ $(".cclogin").fancybox({
 		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
 			href="https://tivly.com/merchantsignup">Click for details</a>
 	</h1> -->
-	<h1 class="page-header search clear">My Rewards</h1>
+<div style="background:#33cc66; height:4px; width:225px; position:relative; margin-left:59%"></div> 
+<br class="clear" />
 	
 {% if not hasCard %} 
-    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Find out how to get the full tivly experience!</a> 
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to get the full Tivly experience</a> 
     </div><br class="clear" /> 
 {%endif%}
 
-	<table>
+	<table style="border:none">
+		
 		<tr>
-			{%for reward,business in redeemable.items %}
-			<td>
-				<div class="grid onethird">
-					<h5>{{ business.businessName }} - {{reward.description }}</h5>
-					<h6>{{ business.city }}</h6>
-					<a href="{{ URL }}/business/{{ business.website }}"><img
-						src="{{business.pictureLocation }}" /></a> 
+		    
+		    {%for reward,business in redeemable.items %}
+		    
+		    
+			<td class="hovers" style="width:60%; text-align: center;border:none;">
+			    <a href="{{ URL }}/business/{{ business.website }}"><div>
+					<h2 style="color:#333333;font-size:40px;">{{reward.description }}</h2>
+					<h2>{{ business.businessName }}</h2>
+			    </div></a>
+			</td>
+			<td style="width:40%; border:none;">
+					<a href="{{ URL }}/business/{{ business.website }}">
+					    <img
+						src="{{business.pictureLocation }}" style="display:block; margin-left:auto;margin-right:auto;box-shadow:4px 3px 4px #666666;border:1px solid #444;" /> </a>
 <!-- 						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
- -->				</div>
-			</td> 
-			{% if not forloop.last and forloop.count|divisibleby:"3"%}
+ -->			
+			</td>
 		</tr>
-		<tr>
+			{% if not forloop.last and forloop.count|divisibleby:"3"%}
+
+		<tr class="hovers">
 		{% endif %} 
 		{% endfor %}
 		</tr>
