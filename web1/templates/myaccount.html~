@@ -72,6 +72,12 @@
 	$(document).ready(function()
 	 {
 	    alert("submitted!");
+	    var error = false;
+	    var csalreg = false;
+	    var cnumber = $('#cnumber').val();
+	    var month = $('#month').val();
+	    var year = $('#year').val();
+	    alert(cnumber + "   " + month + "   " + year);
 		$('#contactform').submit(function(event) {
 		    var error = false;
 			$('.submit-button').attr('disabled', 'disabled');
@@ -88,6 +94,7 @@
 			    }
 			
 			    if (!error){
+			        alert("submitted!")
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
