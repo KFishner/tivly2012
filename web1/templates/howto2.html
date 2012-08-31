@@ -48,7 +48,8 @@
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />
+                Type <input id="ccNumber" onChange="SetTypeText(this.value)" />
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
@@ -87,6 +88,7 @@
 	 {
 		$('#contactform').submit(function(event) {
 		    var error = false;
+		    var csalreg = false;
 		    var cnumber = $('#cnumber').val();
 		    var month = $('#month').val();
 		    var year = $('#year').val();
@@ -100,11 +102,25 @@
 				    if(errorstr !== "already_registered"){                
                         error = true
                         alert("Sorry, there was a problem. Please try again\nError: " + errorstr + " Reason: " + reasonstr);
+                        }else{
+                        csalreg = true
                         }
 				    $('.submit-button').removeAttr('disabled');
 			    }
 			
 			    if (!error){
+			        var token = response.token;
+			        if (csalreg){
+			            var last4 =  cnumber.slice(-4);
+			            var brand_string = GetCardType(cnumber);
+			            var brand = brand_string;
+			            var expiration = month + " " +year;
+			        }else{
+			            var last4 =  response.last4;
+			            var brand_string = GetCardType(cnumber);
+			            var brand =response.brand_string;
+			            var expiration = response.expiration;
+			        }
 			        alert(response.token + "   " + response.last4 + "   " +response.brand + "   " +response.brand_string+ "   " + response.expiration);
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
@@ -142,6 +158,32 @@
 
 			return false;
 		});
+		function SetTypeText(number)
+	        {
+		        var typeField = document.getElementById("cardType");
+		        typeField.innerHTML = GetCardType(number);
+	        }
+ 
+        function GetCardType(number)
+        {            
+            var re = new RegExp("^4");
+            if (number.match(re) != null)
+                return "Visa";
+ 
+            re = new RegExp("^(34|37)");
+            if (number.match(re) != null)
+                return "American Express";
+ 
+            re = new RegExp("^5[1-5]");
+            if (number.match(re) != null)
+                return "MasterCard";
+ 
+            re = new RegExp("^6011");
+            if (number.match(re) != null)
+                return "Discover";
+ 
+            return "";
+        }
 	});
 </script>  
 </body></html>
