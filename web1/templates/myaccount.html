@@ -79,7 +79,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	alert("ready!");
 	 
 	 $('#contactform').submit(function(event) {
 	    alert("submitted cf!");
@@ -121,11 +120,11 @@
 		            }
 		            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
 			        alert("submitting ajax!");
-                    $.getJSON("/me/", {token:response.token, 
-                                    last4:response.last4, 
-                                    brand: response.brand, 
-                                    brand_string: response.brand_string, 
-                                    expiration: response.expiration}, 
+                    $.getJSON("/me/", {token:token, 
+                                    last4:last4, 
+                                    brand: brand, 
+                                    brand_string: brand_string, 
+                                    expiration: expiration}, 
                                     function(json){
                                         alert("submitted ajax!");
                                         if(json['HTTPRESPONSE'] === "new"){
