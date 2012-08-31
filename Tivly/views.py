@@ -330,7 +330,7 @@ def howto(request,number):
             introReward = reward.reward
             break
         
-    business = Businesses.objects.filter(businessID = introReward.businessID)
+    business = Businesses.objects.filter(businessID = introReward.reward.businessID)
     
     #these are for authentication with CardSpring JS library...
     securityToken = IDGenerator(32)
