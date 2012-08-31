@@ -326,11 +326,11 @@ def howto(request,number):
     rewards = user.myRewards
     
     for reward in rewards:
-        if reward.level == 0:
-            introReward = reward
+        if reward.reward.level == 0:
+            introReward = reward.reward
             break
         
-    business = Businesses.objects.filter(businessID = introReward.businessID)
+    business = Businesses.objects.filter(businessID = introReward.businessID)[0]
     
     #these are for authentication with CardSpring JS library...
     securityToken = IDGenerator(32)
