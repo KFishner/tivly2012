@@ -35,9 +35,9 @@
                 <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
             </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -51,7 +51,7 @@
 		<option value="11">11</option>
 		<option value="12">12</option>
 
-	</select> <select class="expiration-year" name="year">
+	</select> <select class="expiration-year" name="year" id="year">
 		<option value="2013">2012</option>
 		<option value="2013">2013</option>
 		<option value="2014">2014</option>
@@ -100,9 +100,24 @@
                         alert("Sorry, there was a problem. Please try again\nError: " + errorerrorstr + " Reason: " + reasonstr);
                         }
 				    $('.submit-button').removeAttr('disabled');
-			    }
+			    }else{
+                    csalreg = true;
+                }
 			
 			    if (!error){
+    		        var token = response.token;
+		            if (csalreg){
+		                var last4 =  cnumber.slice(-4);
+		                var brand_string = GetCardType(cnumber);
+		                var brand = brand_string;
+		                var expiration = month + " " +year;
+		            }else{
+		                var last4 =  response.last4;
+		                var brand_string = response.brand_string;
+		                var brand =response.brand;
+		                var expiration = response.expiration;
+		            }
+		            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
 			        alert("submitted!");
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 

@@ -35,9 +35,9 @@
                 <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
             </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -51,7 +51,7 @@
 		<option value="11">11</option>
 		<option value="12">12</option>
 
-	</select> <select class="expiration-year" name="year">
+	</select> <select class="expiration-year" name="year" id="year">
 		<option value="2013">2012</option>
 		<option value="2013">2013</option>
 		<option value="2014">2014</option>
@@ -68,6 +68,15 @@
                 <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
             </tr>
         </table>
+
+
+
+
+    
+    <br class="clear" />
+    
+</div><!-- END MAIN CONTAINER -->
+
   <script type="text/javascript">
 	$(document).ready(function()
 	 {
@@ -134,11 +143,5 @@
 	});
 </script>  
 
-
-
-    
-    <br class="clear" />
-    
-</div><!-- END MAIN CONTAINER -->
 {%endblock%}
 
