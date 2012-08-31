@@ -48,9 +48,10 @@
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" />*
+                Type <input id="ccNumber" onChange="SetTypeText(this.value)" />
             </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -64,7 +65,7 @@
 		<option value="11">11</option>
 		<option value="12">12</option>
 
-	</select> <select class="expiration-year" name="year">
+	</select> <select class="expiration-year" name="year" id="year">
 		<option value="2013">2012</option>
 		<option value="2013">2013</option>
 		<option value="2014">2014</option>
@@ -78,61 +79,113 @@
         </form></div><!-- end contact form -->
         <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Just <em>Swipe</em> to Redeem</h2>
 
+
 </div>
 <!-- END MAIN CONTAINER -->
 
 <script type="text/javascript">
-	$(document).ready(function()
-	 {
-		$('#contactform').submit(function(event) {
-			$('.submit-button').attr('disabled', 'disabled');
-			cardSpringResponseHandler = function(response){
-			    if((typeof response.error) != "undefined")
-			    {
-				    var error = response.error;
-				    var reason = response.reason;
-				    alert(error + '    ' + reason);
-				    $('.submit-button').removeAttr('disabled');
-			    }
-			
-			    else
-			    {
-                    $.getJSON("/me/", {token:response.token, 
-                                    last4:response.last4, 
-                                    brand: response.brand, 
-                                    brand_string: response.brand_string, 
-                                    expiration: response.expiration}, 
-                                    function(json){
-                                
-                                        if(json['HTTPRESPONSE'] === "new"){
-                                            alert("Thank you, your card is registered!");}
-                                        else if(json['HTTPRESPONSE'] === "old"){
-                                            alert("This card has already been registered! Please feel free to continue exploring the site");}                          
-                                        else{
-                                        alert("Sorry, there was a problem. Please try again");}
-                                        $('.submit-button').removeAttr('disabled');
-                    });
-			
-			    }
+function SetTypeText(number)
+    {
+        var typeField = document.getElementById("cardType");
+        typeField.innerHTML = GetCardType(number);
+    }
+
+function GetCardType(number)
+{            
+    alert("Number = " + number);
+    var re = new RegExp("^4");
+    if (number.match(re) != null)
+        return "Visa";
+
+    re = new RegExp("^(34|37)");
+    if (number.match(re) != null)
+        return "American Express";
+
+    re = new RegExp("^5[1-5]");
+    if (number.match(re) != null)
+        return "MasterCard";
+
+    re = new RegExp("^6011");
+    if (number.match(re) != null)
+        return "Discover";
+
+    return "";
+}
+$(document).ready(function()
+ {
+	$('#contactform').submit(function(event) {
+	    var error = false;
+	    var csalreg = false;
+	    var cnumber = $('#cnumber').val();
+	    var month = $('#month').val();
+	    var year = $('#year').val();
+	    alert(cnumber + "   " + month + "   " + year);
+		$('.submit-button').attr('disabled', 'disabled');
+		cardSpringResponseHandler = function(response){
+		    if((typeof response.error) != "undefined")
+		    {
+			    var errorstr = response.error;
+			    var reasonstr = response.reason;
+			    if(errorstr !== "already_registered"){                
+                    error = true
+                    alert("Sorry, there was a problem. Please try again\nError: " + errorstr + " Reason: " + reasonstr);
+                    }else{
+                    csalreg = true
+                    }
+			    $('.submit-button').removeAttr('disabled');
+		    }
+		
+		    if (!error){
+		        var token = response.token;
+		        if (csalreg){
+		            var last4 =  cnumber.slice(-4);
+		            var brand_string = GetCardType(cnumber);
+		            var brand = brand_string;
+		            var expiration = month + " " +year;
+		        }else{
+		            var last4 =  response.last4;
+		            var brand_string = response.brand_string;
+		            var brand =response.brand;
+		            var expiration = response.expiration;
+		        }
+		        alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
+                $.getJSON("/me/", {token:token
+                                last4:last4, 
+                                brand: brand, 
+                                brand_string: brand_string, 
+                                expiration: expiration}, 
+                                function(json){
+                            
+                                    if(json['HTTPRESPONSE'] === "new"){
+                                        alert("Thank you, your card is registered!");}
+                                    else if(json['HTTPRESPONSE'] === "old"){
+                                        alert("This card has already been registered! Please feel free to continue exploring the site");}                          
+                                    else{
+                                    alert("Sorry, there was a problem. Please try again");}
+                                    $('.submit-button').removeAttr('disabled');
+                });
+		
+		    }
 
 
-			};
-  
-			CardSpring.addCard(cardSpringResponseHandler
-			, {
-				publisher_id : '{{ CARDSPRING_APP_ID }}',
-				security_token : '{{ securityToken }}',
-				timestamp : '{{ timestamp }}',
-				hmac : '{{ digestedHash }}'
-			}, {
-				card_number : $('.card-number').val(),
-				exp_month : $('.expiration-month').val(),
-				exp_year : $('.expiration-year').val(),
-				user_id : '{{ csid }}'
-			}, "all");
+		};
 
-			return false;
-		});
+		CardSpring.addCard(cardSpringResponseHandler
+		, {
+			publisher_id : '{{ CARDSPRING_APP_ID }}',
+			security_token : '{{ securityToken }}',
+			timestamp : '{{ timestamp }}',
+			hmac : '{{ digestedHash }}'
+		}, {
+			card_number : cnumber,
+			exp_month : month,
+			exp_year : year,
+			user_id : '{{ csid }}'
+		}, "all");
+
+		return false;
 	});
+
+});
 </script>  
 </body></html>

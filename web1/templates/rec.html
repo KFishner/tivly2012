@@ -67,15 +67,19 @@
 	<div class="grid onehalf last" style="width: 55%; margin-top: 20px;">
 		<div id="tabs">
 			<ul>
-				<li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
+				<li><a href="#tabs-1" style="font-size: 20px">Share</a></li>
 				<li><a href="#tabs-2" style="font-size: 20px">My
 						{{business.businessName}}</a></li>
 			</ul>
 			<div id="tabs-1">
 				<div class="getsocial">
+					<h1>Share {{ business.businessName }}:</h1>
+
 				<!-- Start Shareaholic Sexy Bookmark HTML-->
 				<div class="shr_class shareaholic-show-on-load"></div>
 				<!-- End Shareaholic Sexy Bookmark HTML -->
+				<p style="margin:0px">Or, copy this unique link anywhere you want to share:</p>
+				<h6 style="margin:0px">https://www.tivly.com/offer/2YIKLB/000000/</h6>
 				<!-- Start Shareaholic Sexy Bookmark settings -->
 				<script type="text/javascript">
 var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ csID }}/{{ rID }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"Get rewarded for sharing the restaurants you love - {{ URL }}/offer/{{csID}}/{{ rID }} - @Tivlytweets {{ hashtag }}"}};
@@ -92,9 +96,8 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 </script>
 
 				<!-- End Shareaholic Sexy Bookmark script -->
-					<h1>Share {{ business.businessName }} with your friends!</h1>
 					<h2 style="font-size: 24px">
-						They get <span style="color: #ff9966">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in my {{business.businessName }}
+						They get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in my {{business.businessName }}
 					</h2>
 				</div>
 			</div>
