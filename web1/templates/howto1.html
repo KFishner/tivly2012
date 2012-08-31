@@ -39,11 +39,8 @@
 <!-- START MAIN CONTAINER -->
 <div class="container" style="width:100%" >
     	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #555"">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
-    <div class="grid onehalf" style="width:42%;display:inline-block;float:left;">
 	<h3 style="font-size: 30px;text-align: center; padding:25px 0px 25px 0px;">Load this reward to your payment card</h3>
-    </div>
-    <div class="grid onehalf.last" style="width:55%; display:inline-block;float:left;margin:0px;">
-	<div>
+	<div style="display:block; margin-left:auto;margin-right:auto;margin-top:15px;">
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <h3 style="font-size: 22px">
@@ -75,7 +72,7 @@
 	</select>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
             </h3>
-        </form></div><!-- end contact form -->    </div>
+        </form></div><!-- end contact form --> 
 <br style="clear:both" />
 <h3 style="font-size: 36px;text-align: center;border-top:2px dotted #555;padding-top:15px;margin-bottom:15px;">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
 
