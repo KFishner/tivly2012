@@ -38,7 +38,7 @@ $(document).ready(function() {
 				'box-shadow' : '0px 0px 20px white',}
 			}}
 });
-    $(".cclogin").eq(0).trigger('click');
+     //$(".cclogin").eq(0).trigger('click');
 });
 </script>
 {%endblock%}
@@ -62,7 +62,7 @@ $(document).ready(function() {
     {% if not hasCard%}
     <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to get the full Tivly experience</a> 
     </div><br class="clear" /> 
-    {%endif%}
+    {%endif%}  
     <table>
 		<tr style="border:none">
 			{% for business in businessList %}
