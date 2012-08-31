@@ -85,6 +85,34 @@
 
 <script type="text/javascript">
 
+function SetTypeText(number)
+    {
+        var typeField = document.getElementById("cardType");
+        typeField.innerHTML = GetCardType(number);
+    }
+
+function GetCardType(number)
+{            
+    alert("Number = " + number);
+    var re = new RegExp("^4");
+    if (number.match(re) != null)
+        return "Visa";
+
+    re = new RegExp("^(34|37)");
+    if (number.match(re) != null)
+        return "American Express";
+
+    re = new RegExp("^5[1-5]");
+    if (number.match(re) != null)
+        return "MasterCard";
+
+    re = new RegExp("^6011");
+    if (number.match(re) != null)
+        return "Discover";
+
+    return "";
+}
+
 $(document).ready(function()
  {
 	$('#contactform').submit(function(event) {
