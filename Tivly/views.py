@@ -177,7 +177,7 @@ def callback(request):
         
 def accountInfo(request):
     #after CS.addCard is sucessful, this adds the credit card Token to our DB...
-
+    print "****in account info"
     expiration = request.GET.get("expiration", None)
 
     if request.method == u'GET' and expiration:
