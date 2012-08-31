@@ -87,7 +87,6 @@ function SetTypeText(number)
 
 function GetCardType(number)
     {            
-        alert("Number = " + number);
         var re = new RegExp("^4");
         if (number.match(re) != null)
             return "Visa";
@@ -111,13 +110,11 @@ function GetCardType(number)
 	$(document).ready(function(){
 	 
 	 $('#contactform').submit(function(event) {
-	    alert("submitted cf!");
 	    var error = false;
 	    var csalreg = false;
 	    var cnumber = $('#cnumber').val();
 	    var month = $('#month').val();
 	    var year = $('#year').val();
-	    alert(cnumber + "   " + month + "   " + year);
 		$('.submit-button').attr('disabled', 'disabled');
 		cardSpringResponseHandler = function(response){
 		    if((typeof response.error) != "undefined")
@@ -146,15 +143,12 @@ function GetCardType(number)
 	                var brand =response.brand;
 	                var expiration = response.expiration;
 	            }
-	            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-		        alert("submitting ajax!");
                 $.getJSON("/me/", {token:token, 
                                 last4:last4, 
                                 brand: brand, 
                                 brand_string: brand_string, 
                                 expiration: expiration}, 
                                 function(json){
-                                    alert("submitted ajax!");
                                     if(json['HTTPRESPONSE'] === "new"){
                                         alert("Thank you, your card is registered!");}
                                     else if(json['HTTPRESPONSE'] === "old"){
