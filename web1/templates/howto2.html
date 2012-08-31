@@ -50,7 +50,7 @@
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
             </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -64,7 +64,7 @@
 		<option value="11">11</option>
 		<option value="12">12</option>
 
-	</select> <select class="expiration-year" name="year" id="year">
+	</select> <select class="expiration-year" name="year">
 		<option value="2013">2012</option>
 		<option value="2013">2013</option>
 		<option value="2014">2014</option>
@@ -130,12 +130,11 @@
 				timestamp : '{{ timestamp }}',
 				hmac : '{{ digestedHash }}'
 			}, {
-				card_number : $('#name').val(),
-				exp_month : $('#month').val(),
-				exp_year : $('#year').val(),
+				card_number : $('.card-number').val(),
+				exp_month : $('.expiration-month').val(),
+				exp_year : $('.expiration-year').val(),
 				user_id : '{{ csid }}'
 			}, "all");
-
 
 			return false;
 		});
