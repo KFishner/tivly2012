@@ -77,19 +77,20 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
     <div class="grid onehalf last" style="margin-top:40px;">
 		<div id="tabs">
 			<ul>
-				<li><a href="#tabs-1" style="font-size: 20px">Get Social</a></li>
+				<li><a href="#tabs-1" style="font-size: 20px">Share</a></li>
 				<li><a href="#tabs-2" style="font-size: 20px">My
 						{{business.businessName}}</a></li>
 			</ul>
 			<div id="tabs-1">
 				<div class="getsocial">
+			      <h1>Share {{ business.businessName }}:</h1>
 				<!-- Start Shareaholic Sexy Bookmark HTML-->
 				<div class="shr_class shareaholic-show-on-load"></div>
 				<!-- End Shareaholic Sexy Bookmark HTML -->
 				<p style="margin:0px">Or, copy this unique link anywhere you want to share:</p>
 				<h6 style="margin:0px">https://www.tivly.com/offer/2YIKLB/000000/</h6>
 				<br class = "clear"/>
-					<h1>Share {{ business.businessName }} with friends!</h1>
+
 					<h2 style="font-size: 24px">
 						They get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in my {{business.businessName }}
 					</h2>
