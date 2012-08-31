@@ -94,7 +94,7 @@
 			    }
 			
 			    if (!error){
-			        alert("submitted!")
+			        alert("submitted!");
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
