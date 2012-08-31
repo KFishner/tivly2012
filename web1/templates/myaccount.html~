@@ -77,12 +77,12 @@
     
 </div><!-- END MAIN CONTAINER -->
 
-  <script type="text/javascript">
-	$(document).ready(function()
+<script type="text/javascript">
+	$(document).ready(function(){
 	alert("ready!");
-	 {
+	 
 	 $('#contactform').submit(function(event) {
-	    alert("submitted!");
+	    alert("submitted cf!");
 	    var error = false;
 	    var csalreg = false;
 	    var cnumber = $('#cnumber').val();
@@ -100,10 +100,10 @@
 				    if(errorstr !== "already_registered"){                
                         error = true
                         alert("Sorry, there was a problem. Please try again\nError: " + errorerrorstr + " Reason: " + reasonstr);
-                        }
-				    $('.submit-button').removeAttr('disabled');
-			    }else{
+                    }else{
                     csalreg = true;
+                    }
+				    $('.submit-button').removeAttr('disabled');			
                 }
 			
 			    if (!error){
@@ -120,14 +120,14 @@
 		                var expiration = response.expiration;
 		            }
 		            alert(last4 + "   " + brand_string + "   " +brand + "   " +expiration+ "   " + token);
-			        alert("submitted!");
+			        alert("submitting ajax!");
                     $.getJSON("/me/", {token:response.token, 
                                     last4:response.last4, 
                                     brand: response.brand, 
                                     brand_string: response.brand_string, 
                                     expiration: response.expiration}, 
                                     function(json){
-                                        alert("submitted!");
+                                        alert("submitted ajax!");
                                         if(json['HTTPRESPONSE'] === "new"){
                                             alert("Thank you, your card is registered!");}
                                         else if(json['HTTPRESPONSE'] === "old"){
@@ -158,7 +158,7 @@
 			return false;
 		});
 	});
-};)
+});
 
 </script>  
 
