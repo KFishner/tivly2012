@@ -35,16 +35,16 @@
 
 
 
-<body style="background-image: url('{{ STATIC_URL }}images/bg/darkdenim3.png');background-repeat: repeat; color:#222;text-shadow: 0px 2px 3px #555">
+<body style="background-image: url('{{ STATIC_URL }}images/bg/brushed.png');background-repeat: repeat; color:#222;text-shadow: 0px 2px 3px #444">
 <!-- START MAIN CONTAINER -->
 <div class="container" style="width:100%" >
-    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #555"">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #222">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
 	<h3 style="font-size: 30px;text-align: center; padding:10px 0px 5px 0px;">Load this reward to your payment card</h3>
 	<div style="display:block; margin-left:257px;margin-bottom:20px;">
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <h3 style="font-size: 22px">
-                Card Number <input class="card-number" style="border:2px solid #222; box-shadow: 0px 2px 3px #555" type="text" tabindex="1" size="20" value="" id="cnumber" name="name" />
+                Card Number <input class="card-number" style="border:2px solid #222; box-shadow: 0px 2px 3px #222" type="text" tabindex="1" size="20" value="" id="cnumber" name="name" />
 		<!--*Type <input id="ccNumber" onChange="SetTypeText(this.value)" /> -->
             </h3>
         <h3 style="font-size:22px;">Expiration Date <select class="expiration-month" name="month" id="month">
