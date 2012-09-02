@@ -43,7 +43,11 @@
 	});
 	$(function() {
 		$( "#progressbar2" ).progressbar({
-			value: {{redeemed}}*100/{{level2Reward.pointsNeeded}}
+			value: {{redeemed}}*100/{{level2Reward.pointsNeeded}},
+			helpers : {
+			    css : {
+				'background' : '#c2d2d2',}
+			}
 		});           
 	});
 </script>
