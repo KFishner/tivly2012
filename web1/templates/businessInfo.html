@@ -43,7 +43,7 @@
 	});
 	$(function() {
 		$( "#progressbar2" ).progressbar({
-			value: {{redeemed}}*100/{{level2Reward.pointsNeeded}}
+			value: {{redeemed}}*100/{{level2Reward.pointsNeeded}},
 		});           
 	});
 </script>
@@ -84,15 +84,21 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 			<div id="tabs-1">
 				<div class="getsocial">
 			      <h1>Share {{ business.businessName }}:</h1>
-				<!-- Start Shareaholic Sexy Bookmark HTML-->
+					<ul style="border:none">
+					  <li style="display:inline-block; float:left"><a href="https://www.facebook.com" target="_blank" style="border:none"><img style="padding:2px;border:none; width:50px;" src="{{ STATIC_URL }}images/social/facebook.png" /></a></li>
+					  <li style="display:inline-block; float:left"><a href="https://twitter.com/" target="_blank" style="border:none"><img style="padding:2px;width:50px;border:none;border-radius: 10px;" src="{{ STATIC_URL }}images/social/twitter.png" /></a></li>
+					  <li style="display:inline-block; float:left"><a href="https://www.gmail.com" target="_blank" style="border:none"><img style="padding:2px;border:none;width:50px;" src="{{ STATIC_URL }}images/social/email.png" /></a></li>
+					</ul>
+					<br style="clear:both">
+				<!-- Start Shareaholic Sexy Bookmark HTML
 				<div class="shr_class shareaholic-show-on-load"></div>
-				<!-- End Shareaholic Sexy Bookmark HTML -->
-				<p style="margin:0px">Or, copy this unique link anywhere you want to share:</p>
-				<h6 style="margin:0px"> {{ URL }}/offer/{{ csID }}/{{ rID }}/</h6>
-				<br class = "clear"/>
-
-					<h2 style="font-size: 24px">
-						They get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in my {{business.businessName }}
+				 End Shareaholic Sexy Bookmark HTML -->
+				    <div style="margin:0px; padding:2px 10px 2px 8px; border: 1px dotted #bbb; border-radius: 3px;display:inline-block;">
+				<p style="margin:0px">Copy this unique link anywhere you want to share:</p>
+				<h6 style="margin:0px; font-size:16px; color:#333"> {{ URL }}/offer/{{ csID }}/{{ rID }}/</h6>
+				    </div>
+					<h2 style="font-size: 24px; margin:10px 0px 0px 0px">
+						Friends get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in My {{business.businessName }}
 					</h2>
 				</div>
 					</div>
@@ -103,16 +109,16 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 						<td>{{ redeemed }}</td>
 					</tr>
 					<tr>
-					<td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c"> {{level1Reward.pointsNeeded}} friends</span> redeem rewards, you get {{level1Reward.description}}!</em></td>
+					<td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#3c6"> {{level1Reward.pointsNeeded}} friends</span> redeem rewards, you get {{level1Reward.description}}!</em></td>
                     		</tr>
                             <tr>
-                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar" style="border:2px solid #3c6; padding:0px; margin:0px;"></div></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#09c">{{level2Reward.pointsNeeded}} friends</span> redeem rewards, you get {{level2Reward.description}}!</em></td>
+                                <td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#3c6">{{level2Reward.pointsNeeded}} friends</span> redeem rewards, you get {{level2Reward.description}}!</em></td>
                             </tr>
                             <tr>
-                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid blue; padding:0px; margin:0px;"></div></td>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid #3c6; padding:0px; margin:0px;"></div></td>
                             </tr>
 				</table>
 			</div>

@@ -60,7 +60,7 @@ $(document).ready(function() {
 <br class="clear" />
 
     {% if not hasCard%}
-    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to get the full Tivly experience</a> 
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to redeem your rewards</a> 
     </div><br class="clear" /> 
     {%endif%}  
     <table>
@@ -70,7 +70,7 @@ $(document).ready(function() {
 				<div class="grid onethird">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
 						src="{{ business.pictureLocation }}" style="margin-top:4px;"/></a> 
-						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Recommend</a>
+						<a href="{{ URL }}/rec/{{ business.website }}/" class="fancybox fancybox.iframe">Share</a>
 				</div>
 			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
 		</tr>

@@ -8,6 +8,8 @@
 
 	<!-- Include CSS -->
 	<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+	<link href="{{ STATIC_URL }}css/jquery-ui-1.8.21.custom.css" rel="stylesheet" type="text/css" />
+
 	{%block css%}{%endblock%} <!-- End CSS -->
 
 
@@ -90,7 +92,7 @@
 			<div id="footer-right">
 
 				<a class="icon" href="http://www.facebook.com/gotivly" target="_blank"
-					class="social facebook">Fan Us</a> <a
+					class="social facebook" style="border:none">Fan Us</a> <a
 					href="https://twitter.com/tivlytweets" target="_blank"
 					class="social twitter">Follow Us</a><br />
 				<a class="icon" href="https://mixpanel.com/f/partner"><img
@@ -100,7 +102,7 @@
 			</div>
 
 			<a id="top" href="#">Top</a> | <a href="{{ URL }}/aboutus">About Us</a> | <a
-				href="{{ URL }}/jobs">Jobs</a> | <a href="{{ URL }}/contact">Contact</a><br /> &copy
+				href="{{ URL }}/jobs">Jobs</a> | <a href="{{ URL }}/splash/privacy">Privacy</a> | <a href="{{ URL }}/splash/userterms">Terms</a> | <a href="{{ URL }}/contact">Contact</a><br /> &copy
 			2012 tivly Corporation<br /> <br class="clear" />
 
 		</div>
