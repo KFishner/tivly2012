@@ -2,17 +2,17 @@
 {%block title%} Business Dashboard{%endblock%}
 {%block css%}
     <link href="{{STATIC_URL}}css/bizstyle.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{STATIC_URL}}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 {%endblock%}
 
 {%block js%}
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>	 
+    <script type="text/javascript" src="{{STATIC_URL}}js/superfish.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/custom.js"></script>	 
 	<!-- Add jQuery UI -->
-<link type="text/css" href="jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
-<script type="text/javascript" src="jqueryui/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<link type="text/css" href="{{STATIC_URL}}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
 <!-- Add Tabs UI -->
 <script>
 	$(function() {
@@ -36,7 +36,7 @@
 </script>
 {%endblock%}
 
-{%block conent%}
+{%block content%}
 <!-- START MAIN CONTAINER -->
 <div class="container">
         
@@ -54,7 +54,7 @@
 		<h2 style="color:#2E6E9E;display: inline-block">Customers</h2>
 		<h2 style="color:#2E6E9E; float:right">45</h2>
 	
-		    <img src="images/biz/grouponchart.png" style="display:block" />
+		    <img src="{{STATIC_URL}}images/biz/grouponchart.png" style="display:block" />
 	    </div>
 	    
 	    <div class="grid onehalf last" style="padding-top: 80px;float:right; width:48%">
@@ -303,7 +303,7 @@
 		</div>
         <div id="tabs-4">
 	    <div class="grid onehalf" style="border-bottom:1px dotted gray">
-		<img src="images/stores/tivly.png" />
+		<img src="{{STATIC_URL}}images/stores/tivly.png" />
 	    </div>
 	    <div class="grid onehalf last" >
 		<h2>Business Image</h2>
