@@ -2,17 +2,17 @@
 {%block title%} Business Dashboard{%endblock%}
 {%block css%}
     <link href="{{STATIC_URL}}css/bizstyle.css" rel="stylesheet" type="text/css" />
-    <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{STATIC_URL}}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 {%endblock%}
 
 {%block js%}
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>	 
+    <script type="text/javascript" src="{{STATIC_URL}}js/superfish.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/custom.js"></script>	 
 	<!-- Add jQuery UI -->
-<link type="text/css" href="jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
-<script type="text/javascript" src="jqueryui/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<link type="text/css" href="{{STATIC_URL}}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
 <!-- Add Tabs UI -->
 <script>
 	$(function() {
@@ -36,7 +36,7 @@
 </script>
 {%endblock%}
 
-{%block conent%}
+{%block content%}
 <!-- START MAIN CONTAINER -->
 <div class="container">
         
