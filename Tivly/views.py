@@ -35,17 +35,25 @@ def login (request):
 def loginWithRec(request,recommendedBy,rid):
     #template variables...
     pictureAvailable = True
+    rID = rid
     description = Rewards.objects.filter(rID = rid)[0].description
     pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].pictureLocation
     businessName = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
     business = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0]
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
-    
+    csID = recommendedBy
+    if rID:
+        print "rID = " + str(rID)
+    else:
+        rID = 0
+    if csID:
+        print "csID = " + str(csID)
+    else:
+        csID = 0
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
-    csID = recommendedBy
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+
     response.set_cookie('recommendedBy',recommendedBy)
     return response
                      
@@ -89,18 +97,17 @@ def businessInfo(request, bname):
     #template variables...
     URL = settings.URL
     bname =  bname.replace('_',' ')
+    error = False
     try:
+        business = Businesses.objects.filter(businessName = bname)[0]
         user = User(request)
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
-    except:
-        user = 0
-        csID = 0
-        used = 0
-        left = 0
-        redeemed = -1
-        recommended = -1
-    business = Businesses.objects.filter(businessName = bname)[0]
+    except Exception as e:
+        print str(e)
+        error = True
+
+    
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
     level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
