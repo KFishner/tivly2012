@@ -38,11 +38,14 @@ def loginWithRec(request,recommendedBy,rid):
     description = Rewards.objects.filter(rID = rid)[0].description
     pictureLocation = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].pictureLocation
     businessName = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
+    business = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0]
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
+    csID = recommendedBy
+    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     response.set_cookie('recommendedBy',recommendedBy)
     return response
                      
@@ -95,8 +98,8 @@ def businessInfo(request, bname):
         csID = 0
         used = 0
         left = 0
-        redeemed = 0
-        recommended = 0
+        redeemed = -1
+        recommended = -1
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
