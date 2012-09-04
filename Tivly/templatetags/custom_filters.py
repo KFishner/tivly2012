@@ -2,7 +2,8 @@ from django import template
 from datetime import date
 register = template.Library()
 
-"""given a birthday, return the age of the swimmer"""
+@register.filter(is_safe=True)
+@stringfilter
 def externalurl(internalurl):
     try:
         external = "https://www.tivly.com" + str(internalurl) 
@@ -10,7 +11,6 @@ def externalurl(internalurl):
     except Exception as e:
         print str(e)
         return ""
-register.filter('externalurl', externalurl)
 
 
 
