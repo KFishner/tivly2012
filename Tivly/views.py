@@ -42,9 +42,13 @@ def loginWithRec(request,recommendedBy,rid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     csID = recommendedBy
-    if not rID:
+    if rID:
+        pass
+    else:
         rID = 0
-    if not csID:
+    if csID:
+        pass
+    else:
         csID = 0
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
@@ -97,12 +101,18 @@ def businessInfo(request, bname):
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
     except:
-        user = 0
-        csID = 0
-        used = 0
-        left = 0
-        redeemed = -1
-        recommended = -1
+        if not user:
+            user = 0
+        if not csID:
+            csID = 0
+        if not used:
+            used = 0
+        if not left:
+            left = 0
+        if not redeemed:
+            redeemed = -1
+        if not recommended:
+            recommended = -1
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
