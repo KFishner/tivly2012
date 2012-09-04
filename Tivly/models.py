@@ -46,7 +46,7 @@ class Businesses(models.Model):
     description = models.CharField(max_length = 400)
     pictureLocation = models.CharField(max_length = 50)
     website = models.CharField(max_length = 50)
-    extPictureLocation = models.CharField(max_length = 80)
+    #extPictureLocation = models.CharField(max_length = 80)
     
 class Rewards(models.Model):
     rID = models.CharField(max_length = 6)
