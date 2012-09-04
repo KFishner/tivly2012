@@ -2,8 +2,9 @@ from django import template
 from datetime import date
 register = template.Library()
 
-@register.filter(is_safe=True)
-def externalurl(internalurl):
+
+@register.tag(name="externalurl")
+def externalurl(parser,internalurl):
     try:
         external = "https://www.tivly.com" + str(internalurl) 
         return external
