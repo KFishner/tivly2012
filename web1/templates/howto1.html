@@ -1,23 +1,27 @@
-<!DOCTYPE html>
+
+{%block js%}
+<script type="text/javascript" src="https://js.cardspring.com/v1/cs.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+{%endblock%}
 <html>
 <head>
     <title>How-To - Tivly</title>
-    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     
     <!-- Include CSS -->
-    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
-    <link href="{{STATIC_URL}}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!-- Include Scripts -->	
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}js/superfish.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.color.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}js/slides.min.js"></script>
-    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>	
-    <script type="text/javascript" src="{{STATIC_URL}}js/custom.js"></script>	
+<!--     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+ -->    <script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>	
 
-    
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -35,13 +39,13 @@
 
 
 
-<body style="background-image: url('{{ STATIC_URL }}images/bg/brushed.png');background-repeat: repeat; color:#111;text-shadow: 0px 2px 3px #444">
+<body style="background-color:black">
 <!-- START MAIN CONTAINER -->
-<div class="container" style="width:100%" >
-    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
-	<h3 style="font-size: 30px;text-align: center; padding:10px 0px 5px 0px;">Load this reward to your payment card</h3>
-	<div style="display:block; margin-left:257px;margin-bottom:20px;">
-                <form id="contactform" method="POST" action="">
+<div>
+        <h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+                <!-- start contact form -->
+        <div style="display:block;margin-left:25%;margin-top:25px;">
+        <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
