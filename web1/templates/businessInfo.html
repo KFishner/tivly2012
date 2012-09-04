@@ -54,7 +54,8 @@
 <meta name="description" 
       content="This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{introReward.description }}!" />
 <link rel="image_src" 
-      href="{{ business.pictureLocation }}" />
+      href="{{ business.pictureLocation|stringformat:
+"https://www.tivly.coms"  }}" />
 
 <!-- Start Shareaholic Sexy Bookmark settings -->
 <script type="text/javascript">
@@ -93,7 +94,7 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 				<div class="getsocial">
 			      <h1>Share {{ business.businessName }}:</h1>
 					<ul style="border:none">
-					  <li style="display:inline-block; float:left"><a href="http://www.facebook.com/sharer.php?s=100&p[title]={{introReward.description }} at {{business.businessName}}&p[url]={{ URL }}/offer/{{ csID }}/{{ rID }}/&p[summary]=This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{introReward.description }}!&p[images][0]={{ business.pictureLocation }}" target="_blank" style="border:none"><img style="padding:2px;border:none; width:50px;" src="{{ STATIC_URL }}images/social/facebook.png" />
+					  <li style="display:inline-block; float:left"><a href="http://www.facebook.com/sharer.php?s=100&p[title]={{introReward.description }} at {{business.businessName}}&p[url]={{ URL }}/offer/{{ csID }}/{{ rID }}/&p[summary]=This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{introReward.description }}!" target="_blank" style="border:none"><img style="padding:2px;border:none; width:50px;" src="{{ STATIC_URL }}images/social/facebook.png" />
 					  </a></li>
 					  <li style="display:inline-block; float:left"><a href="http://twitter.com/?status=Get {{introReward.description }} at {{business.businessName}}!+{{ URL }}/offer/{{ csID }}/{{ rID }}/+%23{{business.businessName}}+%23Tivly+@tivlytweets" target="_blank" style="border:none"><img style="padding:2px;width:50px;border:none;border-radius: 10px;" src="{{ STATIC_URL }}images/social/twitter.png" /></a></li>
 
