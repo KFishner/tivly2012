@@ -43,19 +43,12 @@
 	<div style="display:block; margin-left:257px;margin-bottom:20px;">
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
-<<<<<<< HEAD
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
                 Type: <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
-=======
-            <h3 style="font-size: 22px">
-                Card Number <input class="card-number" style="border:2px solid #222; box-shadow: 0px 2px 3px #222" type="text" tabindex="1" size="20" value="" id="cnumber" name="name" />
-		<!--*Type <input id="ccNumber" onChange="SetTypeText(this.value)" /> -->
-            </h3>
-        <h3 style="font-size:22px;">Expiration Date <select class="expiration-month" name="month" id="month">
->>>>>>> d1216b591ef3ac9abf540a708f4afb4ace8e6dc3
+
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
