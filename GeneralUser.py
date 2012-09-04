@@ -103,10 +103,10 @@ class User:
         return
     
     def setReward(self, recommendedby,rid):
-        rewardToAdd = Rewards.objects.filter(rID = rid)[0]
-        business = Businesses.objects.filter(rID = rewardToAdd.businessID)
-        myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
-        myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
+        rewardToAdd = Rewards.objects.get(rID = rid)
+        business = Businesses.objects.get(businessID = rewardToAdd.businessID)
+        myLevel1Reward = Rewards.objects.get(businessID = rewardToAdd.businessID, level = 1)
+        myLevel2Reward = Rewards.objects.get(businessID = rewardToAdd.businessID, level = 2)
         isUsed = True
         if str(rewardToAdd.businessID) != "tivly" and str(rewardToAdd.appID) != "racecourse" and rewardToAdd.businessID != "l5sxg80QSa7O":
             createUserAppConnection(self.csUser.csID,rewardToAdd.appID)
