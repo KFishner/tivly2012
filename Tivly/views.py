@@ -44,11 +44,11 @@ def loginWithRec(request,recommendedBy,rid):
     facebookRedirect = 'https://www.tivly.com/home'
     csID = recommendedBy
     if rID:
-        pass
+        print "rID = " + str(rID)
     else:
         rID = 0
     if csID:
-        pass
+        print "csID = " + str(csID)
     else:
         csID = 0
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
