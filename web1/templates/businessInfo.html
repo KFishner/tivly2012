@@ -119,6 +119,33 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 					<h2 style="font-size: 24px; margin:10px 0px 0px 0px">
 						Friends get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in My {{business.businessName }}
 					</h2>
+					<script src='http://connect.facebook.net/en_US/all.js'></script>
+    <p><a onclick='postToFeed(); return false;'>Post to Feed</a></p>
+    <p id='msg'></p>
+
+    <script> 
+      FB.init({appId: "YOUR_APP_ID", status: true, cookie: true});
+
+      function postToFeed() {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: 'https://developers.facebook.com/docs/reference/dialogs/',
+          picture: 'http://fbrell.com/f8.jpg',
+          name: 'Facebook Dialogs',
+          caption: 'Reference Documentation',
+          description: 'Using Dialogs to interact with users.'
+        };
+
+        function callback(response) {
+          document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+        }
+
+        FB.ui(obj, callback);
+      }
+    
+    </script>
 				</div>
 					</div>
 			<div id="tabs-2">

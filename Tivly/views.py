@@ -103,6 +103,7 @@ def businessInfo(request, bname):
         user = User(request)
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
+        print "successfully parsed info"
     except Exception as e:
         print str(e)
         error = True
