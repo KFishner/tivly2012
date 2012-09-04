@@ -1,6 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="https://www.w3.org/1999/xhtml">
 <head>
+<!-- Facebook Sharer tags -->
+<meta property="og:title" content="{{description }} at {{business.businessName}}"/> 
+<meta property="og:type" content="website"/> 
+<meta property="og:image" content="https://tivly.com{{ business.pictureLocation}}" />
+<meta property="og:url" content="{{ URL }}/offer/{{ csID }}/{{ rID }}" />
+<meta property="og:site_name" content="Tivly" />
+<meta name="og:description" content="This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{description}}!" />
+<meta property="fb:app_id" content="{{FACEBOOK_APP_ID}}"/>
+
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {%if pictureAvailable %}
