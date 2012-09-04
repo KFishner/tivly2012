@@ -106,14 +106,22 @@ def businessInfo(request, bname):
             user = 0
         if not csID:
             csID = 0
-        if not used:
+        try:
+            used
+        except:
             used = 0
-        if not left:
+        try:
+            left
+        except:
             left = 0
-        if not redeemed:
-            redeemed = -1
-        if not recommended:
-            recommended = -1
+        try:
+            redeemed
+        except:
+            redeemed = 0
+        try:
+            recommended
+        except:
+            recommended = 0
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
