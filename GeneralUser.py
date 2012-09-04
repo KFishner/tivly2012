@@ -8,7 +8,7 @@ from Facebook import facebookLogin
 from Management import IDGenerator
 from CardSpringActions import createAUser,createUserAppConnection
 from datetime import datetime
-from Tivly.models import FBUser,MyRecommendations,Cards, UserPoints, MyRewards,Rewards, CardSpringUser
+from Tivly.models import FBUser,MyRecommendations,Cards, UserPoints, MyRewards,Rewards, Businesses, CardSpringUser
 
 class User:
     
