@@ -1,4 +1,7 @@
 {%extends 'popup_base.html'%}
+{% load custom_filters %}
+{% load url from future %}
+
 {%block title%}{{ business.businessName }} - {{business.city }}{%endblock%}
 
 {%block js%}
@@ -30,7 +33,7 @@
 <meta name="description" 
       content="This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{introReward.description }}!" />
 <link rel="image_src" 
-      href="{{ business.pictureLocation }}" />
+      href="{{ business.pictureLocation |externalurl}}" />
 <!-- Add jQuery UI -->
 <link type="text/css"
 	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
