@@ -42,9 +42,9 @@ def loginWithRec(request,recommendedBy,rid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     csID = recommendedBy
-    if !rID:
+    if not rID:
         rID = 0
-    if !csID:
+    if not csID:
         csID = 0
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
