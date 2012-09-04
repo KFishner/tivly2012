@@ -122,6 +122,7 @@ def businessInfo(request, bname):
             recommended
         except:
             recommended = 0
+    negone = -1
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
