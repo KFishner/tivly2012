@@ -41,14 +41,13 @@
     	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
 	<h3 style="font-size: 30px;text-align: center; padding:10px 0px 5px 0px;">Load this reward to your payment card</h3>
 	<div style="display:block; margin-left:257px;margin-bottom:20px;">
-        <form id="contactform" method="POST" action="">
+                <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
                 Type: <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
-
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -72,10 +71,11 @@
 		<option value="2018">2018</option>
 	</select>*</p>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
-
-            </h3>
-        </form></div><!-- end contact form --> 
+            </p>
+        </form>
 <h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding-top:15px;margin-bottom:15px;">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
+        </td><!-- end form -->
+        </table>
 
 
 
@@ -189,9 +189,4 @@ function GetCardType(number)
 });
 
 </script>  
-
-
-
-
-
 </body></html>
