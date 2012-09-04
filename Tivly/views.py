@@ -86,14 +86,23 @@ def businessInfo(request, bname):
     #template variables...
     URL = settings.URL
     bname =  bname.replace('_',' ')
-    user = User(request)
-    csID = user.csUser.csID
+    try:
+        user = User(request)
+        csID = user.csUser.csID
+        used,left,redeemed,recommended = user.getRewardStatistics(business)
+    except:
+        user = 0
+        csID = 0
+        used = 0
+        left = 0
+        redeemed = 0
+        recommended = 0
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
     level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
     introReward = Rewards.objects.filter(businessID = business.businessID, level = 0)[0]
-    used,left,redeemed,recommended = user.getRewardStatistics(business)
+
     rID = introReward.rID
     response = render_to_response('businessInfo.html', locals(),context_instance= RequestContext(request))
     return response
