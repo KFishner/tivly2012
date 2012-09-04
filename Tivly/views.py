@@ -99,6 +99,7 @@ def businessInfo(request, bname):
     bname =  bname.replace('_',' ')
     error = False
     try:
+        business = Businesses.objects.filter(businessName = bname)[0]
         user = User(request)
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
@@ -106,7 +107,7 @@ def businessInfo(request, bname):
         print str(e)
         error = True
 
-    business = Businesses.objects.filter(businessName = bname)[0]
+    
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
     level2Reward = Rewards.objects.filter(businessID = business.businessID, level = 2)[0]
