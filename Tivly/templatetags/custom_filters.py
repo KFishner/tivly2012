@@ -4,8 +4,12 @@ register = template.Library()
 
 """given a birthday, return the age of the swimmer"""
 def externalurl(internalurl):
-    external = "https://www.tivly.com" + str(internalurl) 
-    return external
+    try:
+        external = "https://www.tivly.com" + str(internalurl) 
+        return external
+    except Exception as e:
+        print str(e)
+        return ""
 register.filter('externalurl', externalurl)
 
 
