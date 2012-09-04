@@ -39,19 +39,21 @@
 
 
 
-<body style="background-color:black">
+<body style="background-image: url('{{ STATIC_URL }}images/bg/hex.png');background-repeat: repeat; color:#111;text-shadow: 0px 2px 3px #444">
 <!-- START MAIN CONTAINER -->
-<div>
-        <h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+<div class="container" style="width:100%" >
+    	<h3 style="font-size: 36px;text-align: center; padding: 10px 0px 10px 0px;border-bottom:2px dotted #333">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
                 <!-- start contact form -->
-        <div style="display:block;margin-left:25%;margin-top:25px;">
-        <form id="contactform" method="POST" action="">
+	<h3 style="font-size: 30px;text-align: center; padding:0px 0px 0px 0px;margin:0px;">Load this reward to your payment card</h3>
+<div>
+        <div style="display:block;margin-left:auto;margin-right: auto;">
+        <form id="contactform" method="POST" action="" style="display:inline-block;margin:5px 300px 0px 0px;">
                 {%csrf_token%}
-            <p style="font-size: 18px;">
-                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
-                Type: <b id="cctype"></b> 
-            </p>
-        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
+            <h3 style="font-size: 18px;">
+                Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>
+                <b id="cctype"></b> 
+            </h3>
+        <h3 style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -73,11 +75,13 @@
 		<option value="2016">2016</option>
 		<option value="2017">2017</option>
 		<option value="2018">2018</option>
-	</select>*</p>
+	</select></h3>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
-            </p>
         </form>
-<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding-top:15px;margin-bottom:15px;">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
+	</div>
+</div>
+	<br />
+<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding:10px 0px 0px 0px">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
         </td><!-- end form -->
         </table>
 
@@ -86,7 +90,6 @@
 
 
     
-    <br class="clear" />
     
 </div><!-- END MAIN CONTAINER -->
 <script type="text/javascript">
