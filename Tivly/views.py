@@ -97,32 +97,14 @@ def businessInfo(request, bname):
     #template variables...
     URL = settings.URL
     bname =  bname.replace('_',' ')
+    error = False
     try:
         user = User(request)
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
     except:
-        if not user:
-            user = 0
-        if not csID:
-            csID = 0
-        try:
-            used
-        except:
-            used = 0
-        try:
-            left
-        except:
-            left = 0
-        try:
-            redeemed
-        except:
-            redeemed = 0
-        try:
-            recommended
-        except:
-            recommended = 0
-    negone = -1
+        error = True
+
     business = Businesses.objects.filter(businessName = bname)[0]
     lat,lng = getMap(business.businessID)
     level1Reward = Rewards.objects.filter(businessID = business.businessID, level = 1)[0]
