@@ -35,22 +35,27 @@
 
 
 
-<body style="background-color:#444; color:#222;text-shadow: 0px 2px 3px #555">
+<body style="background-image: url('{{ STATIC_URL }}images/bg/brushed.png');background-repeat: repeat; color:#111;text-shadow: 0px 2px 3px #444">
 <!-- START MAIN CONTAINER -->
 <div class="container" style="width:100%" >
-    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #555"">You have {{introReward.description }} at {{ business.businessName }}</h3>
-    <div class="grid onehalf" style="width:60%;display:inline-block;float:left;">
-	<h3 style="font-size: 30px;text-align: center; padding:25px 0px 25px 0px;">Load this reward to your payment card by submitting to the right</h3>
-    </div>
-    <div class="grid onehalf.last" style="width:37%; display:inline-block;float:left;margin:0px;">
-	<div>
+    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+	<h3 style="font-size: 30px;text-align: center; padding:10px 0px 5px 0px;">Load this reward to your payment card</h3>
+	<div style="display:block; margin-left:257px;margin-bottom:20px;">
         <form id="contactform" method="POST" action="">
                 {%csrf_token%}
+<<<<<<< HEAD
             <p style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>*
                 Type: <b id="cctype"></b> 
             </p>
         <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
+=======
+            <h3 style="font-size: 22px">
+                Card Number <input class="card-number" style="border:2px solid #222; box-shadow: 0px 2px 3px #222" type="text" tabindex="1" size="20" value="" id="cnumber" name="name" />
+		<!--*Type <input id="ccNumber" onChange="SetTypeText(this.value)" /> -->
+            </h3>
+        <h3 style="font-size:22px;">Expiration Date <select class="expiration-month" name="month" id="month">
+>>>>>>> d1216b591ef3ac9abf540a708f4afb4ace8e6dc3
 		<option value="01">01</option>
 		<option value="02">02</option>
 		<option value="03">03</option>
@@ -74,11 +79,17 @@
 		<option value="2018">2018</option>
 	</select>*</p>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
+<<<<<<< HEAD
             </p>
         </form>
             <h2 style="color:white;text-align: center;font-family: georgia; font-size:40px;padding-top:10px;">Just <em>Swipe</em> to Redeem</h2>
         </td><!-- end form -->
         </table>
+=======
+            </h3>
+        </form></div><!-- end contact form --> 
+<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding-top:15px;margin-bottom:15px;">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
+>>>>>>> d1216b591ef3ac9abf540a708f4afb4ace8e6dc3
 
 
 

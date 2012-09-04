@@ -7,7 +7,6 @@
 {% if popup %}
 <script>confirm("Thanks for contacting us! We will reply within 24 hours");</script>
 {% endif %}
-    <h1 class="page-header contact">Contact Page</h1>
     
     <div class="grid onehalf">
     
@@ -18,7 +17,7 @@
             {% endfor %}
         </ul>
     {% endif %}
-    
+    <br class="clear" />
     	<h4>Send A Message</h4>
         
     	<p>We'll get back to you within 24 hours</p>
@@ -32,7 +31,7 @@
             </p>
             <p>
                 <input type="text" tabindex="2" size="22" value="" id="email" name="email" />
-                <label for="email">Email <span>(No Spam We Promise)</span> *</label>
+                <label for="email">Email *</label>
             </p>
             <p>
                 <textarea tabindex="4" rows="10" cols="58" id="message" name="message"></textarea>

@@ -341,3 +341,6 @@ def howto(request,number):
     hashed = hmac.new(key, raw, sha1)
     digestedHash = hashed.hexdigest()
     return render_to_response('howto'+str(number)+'.html',locals(),context_instance= RequestContext(request))
+
+def businessDashboard(request):
+    return render_to_response('bizdash.html',context_instance= RequestContext(request))

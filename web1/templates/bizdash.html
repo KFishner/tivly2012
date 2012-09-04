@@ -1,0 +1,428 @@
+{% extends 'business_base.html'%}
+{%block title%} Business Dashboard{%endblock%}
+{%block css%}
+    <link href="{{STATIC_URL}}css/bizstyle.css" rel="stylesheet" type="text/css" />
+    <link href="{{STATIC_URL}}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+{%endblock%}
+
+{%block js%}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/superfish.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/custom.js"></script>	 
+	<!-- Add jQuery UI -->
+<link type="text/css" href="{{STATIC_URL}}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+<!-- Add Accordian UI -->
+<script>
+	$(function() {
+		$( "#accordion" ).accordion({
+			fillSpace: true
+		});
+	});
+
+	</script>
+{%endblock%}
+
+{%block MixPanel%}
+<script type="text/javascript">
+    mixpanel.track("Busness Dashboard Viewed")
+</script>
+{%endblock%}
+
+{%block content%}
+<!-- START MAIN CONTAINER -->
+<div class="container">
+        
+<br class="clear">        
+<div id="tabs" style="width:94%; display:block;margin-left:auto;margin-right:auto;">
+    <ul>
+    <li><a href="#tabs-1" style="font-size: 20px">Analytics</a></li>
+    <li><a href="#tabs-2" style="font-size: 20px">Referral Sources</a></li>
+    <li><a href="#tabs-3" style="font-size: 20px">Customer Management</a></li>
+    <li><a href="#tabs-4" style="font-size: 20px">Business Info</a></li>
+    <li><a href="#tabs-5" style="font-size: 20px">Account</a></li>
+    </ul>
+        <div id="tabs-1">
+	    <div class="grid onehalf" style="width:48%">
+		<h2 style="color:#2E6E9E;display: inline-block">Customers</h2>
+		<h2 style="color:#2E6E9E; float:right">45</h2>
+	
+		    <img src="{{STATIC_URL}}images/biz/grouponchart.png" style="display:block" />
+	    </div>
+	    
+	    <div class="grid onehalf last" style="padding-top: 80px;float:right; width:48%">
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:40px; padding:8px;">Total Revenue</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:40px;padding: 8px;">Total Costs</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:40px;padding: 8px;background:#a0d5b5;">Marketing ROI</td>
+			<td style="width:90%; font-size:40px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+		    </tr>
+		</table>
+	    </div>
+	    <div style="clear: both">
+	    <table style="text-align: right">
+		<thead style="background: #c5dbec">
+		    <td style="background:white"></td>
+		    <td style="text-align: center">Jan</td>
+		    <td style="text-align: center">Feb</td>
+		    <td style="text-align: center">Mar</td>
+		    <td style="text-align: center">Apr</td>
+		    <td style="text-align: center">May</td>
+		    <td style="text-align: center">June</td>
+		    <td style="text-align: center">July</td>
+		    <td style="text-align: center">Aug</td>
+		    <td style="text-align: center">Sept</td>
+		    <td style="text-align: center">Oct</td>
+		    <td style="text-align: center">Nov</td>
+		    <td style="text-align: center">Dec</td>
+		</thead>
+		<tr>
+		    <td>Customers</td>
+		    <td>5</td>
+		    <td>6</td>
+		    <td>8</td>
+		    <td>12</td>
+		    <td>30</td>
+		    <td>36</td>
+		    <td>50</td>
+		    <td>90</td>
+		    <td>340</td>
+		    <td>900</td>
+		    <td>2000</td>
+		    <td>8000</td>
+		</tr>
+		<tr>
+		    <td style="background:#efe9e5">Transactions</td>
+		    <td style="background:#efe9e5">5</td>
+		    <td style="background:#efe9e5">6</td>
+		    <td style="background:#efe9e5">8</td>
+		    <td style="background:#efe9e5">12</td>
+		    <td style="background:#efe9e5">30</td>
+		    <td style="background:#efe9e5" >36</td>
+		    <td style="background:#efe9e5">50</td>
+		    <td style="background:#efe9e5">90</td>
+		    <td style="background:#efe9e5">340</td>
+		    <td style="background:#efe9e5">900</td>
+		    <td style="background:#efe9e5">2000</td>
+		    <td style="background:#efe9e5">8000</td>
+		</tr>
+		<tr>
+		    <td>Total Spent</td>
+		    <td>5</td>
+		    <td>6</td>
+		    <td>8</td>
+		    <td>12</td>
+		    <td>30</td>
+		    <td>36</td>
+		    <td>50</td>
+		    <td>90</td>
+		    <td>340</td>
+		    <td>900</td>
+		    <td>2000</td>
+		    <td>8000</td>
+		</tr>
+		<tr>
+		    <td style="background:#efe9e5">Rewards (#)</td>
+		    <td style="background:#efe9e5">5</td>
+		    <td style="background:#efe9e5">6</td>
+		    <td style="background:#efe9e5">8</td>
+		    <td style="background:#efe9e5">12</td>
+		    <td style="background:#efe9e5">30</td>
+		    <td style="background:#efe9e5">36</td>
+		    <td style="background:#efe9e5">50</td>
+		    <td style="background:#efe9e5">90</td>
+		    <td style="background:#efe9e5">340</td>
+		    <td style="background:#efe9e5">900</td>
+		    <td style="background:#efe9e5">2000</td>
+		    <td style="background:#efe9e5">8000</td>
+		</tr>
+		<tr>
+		    <td>Rewards ($)</td>
+		    <td>5</td>
+		    <td>6</td>
+		    <td>8</td>
+		    <td>12</td>
+		    <td>30</td>
+		    <td>36</td>
+		    <td>50</td>
+		    <td>90</td>
+		    <td>340</td>
+		    <td>900</td>
+		    <td>2000</td>
+		    <td>8000</td>
+		</tr>
+		
+	    </table>
+	    </div>
+	</div>	
+        <div id="tabs-2">
+	<div>
+	    <div id="accordion">
+		    <h3><a href="#">Customer Referral</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;">92</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+		    </tr>
+		</table>
+		    <h3><a href="#">Yelp</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+		    </tr>
+		</table>
+		    <h3><a href="#">Foodspotting</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">67%</td>
+		    </tr>
+		</table>
+		    <h3><a href="#">7x7 Article on 8/12/12</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">67%</td>
+		    </tr>
+		</table>
+		    <h3><a href="#">SF Food Blog</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+		    </tr>
+		</table>
+	    </div>
+	</div>
+	<br class="clear" />
+	</div>
+        <div id="tabs-3">
+		<h2 style="color:#2E6E9E;display: inline-block; font-size:70px">Customers</h2>
+		<h2 style="color:#2E6E9E; float:right;font-size:70px">263</h2>	
+		<table>
+		    <tr>
+			<td style="font-size:24px; padding:8px;background: #c5dbec"><strong>Reward</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Details</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Received</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Redeemed</strong></td>
+		    </tr>
+		    <tr>
+			<td style="font-size:24px; padding:8px;">Initial</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">10% Discount</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">263</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">90</td>
+		    </tr>
+		    <tr>
+			<td style="font-size:24px;padding: 8px;">Level 1</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">25% Discount</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">14</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">10</td>
+		    </tr>
+		    <tr>
+			<td style="font-size:24px;padding: 8px;">Level 2</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">Prime Reservation Time</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">3</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">1</td>
+		    </tr>
+		</table>
+		</div>
+        <div id="tabs-4">
+	    <div class="grid onehalf" style="border-bottom:1px dotted gray">
+		<img src="{{STATIC_URL}}images/stores/tivly.png" />
+	    </div>
+	    <div class="grid onehalf last" >
+		<h2>Business Image</h2>
+	    </div>
+	    <br class="clear" />
+	    <br class="clear" />
+
+	    <div class="grid onehalf" style="border-top:1px dotted gray; border-bottom:1px dotted gray">
+		<p>Tivly connects online marketing with customer credit cards. This allows us to match the referral source to the purchase and calculate ROI.</p>
+	    </div>
+	    <div class="grid onehalf last">
+		<h2>Business Summary</h2>
+	    </div>
+	    <br class="clear" />
+	    <br class="clear" />
+	    <div class="grid onehalf" style="border-top:1px dotted gray; border-bottom:1px dotted gray">
+        <div class="grid onethirdone" style="width:120px;margin:0px;">
+        <h6 style="margin:0px;padding:0px;">Monday</h6>
+        <p>11:30am - 2:00pm</p>
+        <p>5:30pm - 9:30pm</p>
+        <h6 style="margin:0px;padding:0px;">Tuesday</h6>
+        <p>11:30am - 2:00pm</p>
+        <p>5:30pm - 9:30pm</p>
+        <h6 style="margin:0px;padding:0px;">Wednesday</h6>
+        <p>11:30am - 2:00pm</p>
+        <p>5:30pm - 9:30pm</p>
+        </div>
+        <div class="grid onethirdone" style="width:120px;margin:0px;">
+        <h6 style="margin:0px;padding:0px;">Thursday</h6>
+        <p>11:30am - 2:00pm</p>
+        <p>5:30pm - 9:30pm</p>
+        <h6 style="margin:0px;padding:0px;">Friday</h6>
+        <p>11:30am - 2:00pm</p>
+        <p>5:30pm - 10:30pm</p>
+        </div>
+        <div class="grid onethirdone last" style="width:120px;margin:0px;hover:none;">
+        <h6 style="margin:0px;padding:0px;">Saturday</h6>
+        <p>5:30pm - 10:30pm</p>
+        <h6 style="margin:0px;padding:0px;">Sunday</h6>
+        <p>5:00pm - 9:00pm</p>
+        </div>  
+	</div>
+	    <div class="grid onehalf last">
+		<h2>Business Hours</h2>
+	    </div>
+	    <br class="clear" />
+	    <br class="clear" />
+	    <div class="grid onehalf" style="border-top:1px dotted gray; border-bottom:1px dotted gray">
+		<table>
+		    <tr>
+			<td style="font-size:24px; padding:8px;">Initial</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">10% Discount</td>
+		    </tr>
+		    <tr>
+			<td style="font-size:24px;padding: 8px;">Level 1</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">25% Discount</td>
+		    </tr>
+		    <tr>
+			<td style="font-size:24px;padding: 8px;">Level 2</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">Prime Reservation Time</td>
+		    </tr>
+		</table>
+	    </div>
+	    <div class="grid onehalf last">
+		<h2>Rewards</h2>
+	    </div>
+	    <br class="clear" />
+	    <br class="clear" />
+	</div>
+	<div id="tabs-5">
+	    <table>
+		    <tr>
+			<td style="width:90%; font-size:40px; padding:8px;">Payment Due</td>
+			<td style="width:90%; font-size:40px; padding:8px;">9/1/2012</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$120</td>
+		    </tr>
+		    <tr></tr>
+			<td style="width:90%; font-size:40px;padding: 8px;">Last Payment</td>
+			<td style="width:90%; font-size:40px; padding:8px;">8/1/2012</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$0</td>
+		    </tr>
+	    </table>
+	    <br class="clear" />
+<div>
+<form id="contactform" method="post" action="ajax.php">
+            <p style="font-size: 18px;">
+                Card Number <input style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="name" name="name" />*
+            </p>
+        <p style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month">
+		<option value="01">01</option>
+		<option value="02">02</option>
+		<option value="03">03</option>
+		<option value="04">04</option>
+		<option value="05">05</option>
+		<option value="06">06</option>
+		<option value="07">07</option>
+		<option value="08">08</option>
+		<option value="09">09</option>
+		<option value="10">10</option>
+		<option value="11">11</option>
+		<option value="12">12</option>
+
+	</select> <select class="expiration-year" name="year">
+		<option value="2013">2012</option>
+		<option value="2013">2013</option>
+		<option value="2014">2014</option>
+		<option value="2015">2015</option>
+		<option value="2016">2016</option>
+		<option value="2017">2017</option>
+		<option value="2018">2018</option>
+	</select>*</p>
+                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
+            </p>
+        </form><!-- end form --></div>
+</div>  
+
+
+    <br class="clear" />
+
+    
+</div><!-- END MAIN CONTAINER -->
+{%endblock%}
