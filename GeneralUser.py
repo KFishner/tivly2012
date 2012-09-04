@@ -104,7 +104,7 @@ class User:
     
     def setReward(self, recommendedby,rid):
         rewardToAdd = Rewards.objects.filter(rID = rid)[0]
-        business = Businesses.objects.filter(rID = rewardToAdd.businessID)
+        business = Businesses.objects.filter(businessID = rewardToAdd.businessID)
         myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
         myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
         isUsed = True
