@@ -2,7 +2,7 @@ from django import template
 from datetime import date
 register = template.Library()
 
-@register.filter
+@register.filter(is_safe=True)
 @stringfilter
 def externalurl(internalurl):
     try:
@@ -11,7 +11,6 @@ def externalurl(internalurl):
     except Exception as e:
         print str(e)
         return ""
-register.filter('externalurl', externalurl)
 
 
 
