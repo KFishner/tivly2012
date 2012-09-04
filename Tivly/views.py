@@ -41,11 +41,14 @@ def loginWithRec(request,recommendedBy,rid):
     business = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0]
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
-    
+    csID = recommendedBy
+    if !rID:
+        rID = 0
+    if !csID:
+        csID = 0
     response = render_to_response('signin.html', locals(),context_instance= RequestContext(request))
     response.set_cookie('rID',rid)
-    csID = recommendedBy
-    FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
+
     response.set_cookie('recommendedBy',recommendedBy)
     return response
                      
