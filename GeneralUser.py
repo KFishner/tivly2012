@@ -104,6 +104,7 @@ class User:
     
     def setReward(self, recommendedby,rid):
         rewardToAdd = Rewards.objects.filter(rID = rid)[0]
+        business = Businesses.objects.filter(rID = rewardToAdd.businessID)
         myLevel1Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 1)[0]
         myLevel2Reward = Rewards.objects.filter(businessID = rewardToAdd.businessID, level = 2)[0]
         isUsed = True
@@ -134,7 +135,7 @@ class User:
             
             print email
             print name
-            busname = str(rewardToAdd.businessID)
+            busname = str(business.businessName)
             try:
                 body = bodyTemplate % (name, busname, busname, busname,busname )
                 messages.append((subject, body, fromAddr, [email.encode('ascii')]))
