@@ -102,7 +102,8 @@ def businessInfo(request, bname):
         user = User(request)
         csID = user.csUser.csID
         used,left,redeemed,recommended = user.getRewardStatistics(business)
-    except:
+    except Exception as e:
+        print str(e)
         error = True
 
     business = Businesses.objects.filter(businessName = bname)[0]
