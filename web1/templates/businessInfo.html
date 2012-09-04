@@ -121,6 +121,13 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 				</div>
 					</div>
 			<div id="tabs-2">
+			    {% if redeemed == -1 %}
+			    <table>
+					<tr>
+						<td style="padding-right: 100px">Please login to see more info</td>
+					</tr>
+			    </table>
+			    {% else%}
 				<table>
 					<tr>
 						<td style="padding-right: 100px">Redeemed by Friends</td>
@@ -139,6 +146,7 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
                                 <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid #3c6; padding:0px; margin:0px;"></div></td>
                             </tr>
 				</table>
+				{% endif %}
 			</div>
 		</div>
 
