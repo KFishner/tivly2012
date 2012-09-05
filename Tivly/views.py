@@ -41,7 +41,7 @@ def loginWithRec(request,recommendedBy,rid):
     businessName = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0].businessName
     business = Businesses.objects.filter(businessID = Rewards.objects.filter(rID = rid)[0].businessID)[0]
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
-    facebookRedirect = 'https://www.tivly.com/home'
+    facebookRedirect = 'https://www.tivly.com/newdiscoveries'
     csID = recommendedBy
     firstName = FBUser.objects.filter(fb_id = CardSpringUser.objects.filter(csID =recommendedBy)[0].fbID)[0].first_name
     if rID:
@@ -144,7 +144,7 @@ def getOffer(request,recommendedBy, rid):
     else:
         user = User(request)
         user.addRecommendationToRewards(recommendedBy,rid)
-        return redirect(settings.URL+'/home')  
+        return redirect(settings.URL+'/newdiscoveries')  
 
 def newDiscoveries(request):
     #template variables...
