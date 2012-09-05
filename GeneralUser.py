@@ -42,6 +42,7 @@ class User:
                 self.csUser.save()
                 print "message sent to %s" % email
             except Exception as e:
+                print "email failed"
                 print str(e)
         
     
