@@ -19,11 +19,6 @@ class FBAccessTokens(models.Model):
     user = models.ForeignKey(FBUser)
     date_created = models.DateField()
 
-class FBFriends(models.Model):
-    name = models.CharField(max_length = 300)
-    friend_fb_id = models.BigIntegerField()
-    user = models.ForeignKey(FBUser)
-
 #######################################################
 ######                CARDSPRING                 ######
 #######################################################
@@ -74,22 +69,6 @@ class Cards(models.Model):
     cardType = models.CharField(max_length = 20)
     typeString = models.CharField(max_length = 20)
     
-class UserPoints(models.Model):
-    csID = models.CharField(max_length = 6)
-    businessID = models.CharField(max_length = 40)
-    points = models.IntegerField()
-    visits = models.IntegerField()
-    
-class MyRecommendations(models.Model):
-    csID = models.CharField(max_length = 6)
-    appID = models.CharField(max_length = 40)
-    businessID = models.CharField(max_length = 40)
-    rID = models.CharField(max_length = 6)
-    recID = models.CharField(max_length = 30)
-    reccsID = models.CharField(max_length = 6, blank = True, null = True)
-    dateGiven= models.DateField(blank = True, null = True)
-
-
 class MyRewards(models.Model):
     csID = models.CharField(max_length = 6)
     reccomendedBy = models.CharField(max_length = 6)

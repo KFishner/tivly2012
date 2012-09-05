@@ -7,7 +7,7 @@ from dateutil import parser
 from django.shortcuts import redirect
 from datetime import datetime
 from CallBack import callBack
-from Tivly.models import MerchantInfoForm,FBUser,CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
+from Tivly.models import MerchantInfoForm,FBUser,CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBAccessTokens
 from CreditCard import validateCard
 from GMaps import getMap
 from GeneralUser import User
@@ -160,7 +160,6 @@ def newDiscoveries(request):
     
     
     myRewards = user.myRewards
-    myUserPoints = user.userPoints
     points = 0
     redeemable = {}
     for targetReward in myRewards:
@@ -261,16 +260,12 @@ def deleteAccount(request):
     csu = CardSpringUser.objects.get(csID = csid)
     fbu = FBUser.objects.get(fb_id = csu.fbID)
     token = FBAccessTokens.objects.get(user = fbu)
-    Fbf = FBFriends.objects.filter(user = fbu)
     myr = MyRewards.objects.filter(csID = csid)
     
     deleteAUser(csid)
     csu.delete()
    
     token.delete()
-    for f in Fbf:
-        f.delete()
-    
     for r in myr:
         r.delete()
     

@@ -8,16 +8,14 @@ from Facebook import facebookLogin
 from Management import IDGenerator
 from CardSpringActions import createAUser,createUserAppConnection
 from datetime import datetime
-from Tivly.models import FBUser,MyRecommendations,Cards, UserPoints, MyRewards,Rewards, Businesses, CardSpringUser
+from Tivly.models import FBUser,Cards, MyRewards,Rewards, Businesses, CardSpringUser
 
 class User:
     
     def __init__(self, request):
         self.csUser = self.getCardSpringUser(request)
         self.fbUser = FBUser.objects.get(fb_id = self.csUser.fbID)
-        self.myCurrentRecommendations = MyRecommendations.objects.filter(csID = self.csUser.csID)
         self.cards = Cards.objects.filter(csID = self.csUser.csID)
-        self.userPoints = UserPoints.objects.filter(csID = self.csUser.csID)
         self.myRewards = MyRewards.objects.filter(csID = self.csUser.csID)
         email = self.fbUser.email
         name = self.fbUser.first_name
@@ -92,13 +90,7 @@ class User:
     def addRecommendationToRewards(self,recommendedBy,rid):
         rewardToAdd = Rewards.objects.filter(rID = rid)  
         if rewardToAdd.exists():
-            rewardToAdd = rewardToAdd[0]
-            userPoints = UserPoints.objects.filter(csID = self.csUser.csID, businessID = rewardToAdd.businessID)
-                
-            if not userPoints.exists():
-                userPoints = UserPoints(csID = self.csUser.csID, businessID = rewardToAdd.businessID, points = 0, visits = 0)
-                userPoints.save()
-            
+            rewardToAdd = rewardToAdd[0]      
             self.setReward(recommendedBy,rid)
         return
     

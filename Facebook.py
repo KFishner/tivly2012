@@ -7,7 +7,7 @@ import json
 import urllib2
 from urlparse import parse_qsl
 from datetime import datetime
-from Tivly.models import FBUser,FBAccessTokens,FBFriends
+from Tivly.models import FBUser,FBAccessTokens
 from web1 import settings
     
 #facebook code for authentication...
@@ -29,10 +29,6 @@ def facebookLogin(request):
     response = urllib2.urlopen(url)
     profile = json.load(response)
     
-    url = graphUrl + 'me/friends' + accessToken
-    response = urllib2.urlopen(url)
-    friends = json.load(response)['data']
-    
     #if not in database add User to Database...    
     fbUser, created = FBUser.objects.get_or_create(first_name = profile["first_name"],last_name= profile["last_name"], email = profile["email"],
     gender=profile["gender"],fb_id = profile["id"],location = profile["locale"])
@@ -45,14 +41,6 @@ def facebookLogin(request):
                                      user = fbUser, date_created =datetime.now())
         accessToken.save()
         atcreated = True
-        
-        for friend in friends:
-            try:
-                facebookFriends = FBFriends(name=friend["name"],friend_fb_id =friend["id"],user=fbUser)
-                facebookFriends.save()
-
-            except:
-                continue
     
     if atcreated == False:
         FBA = FBAccessTokens.objects.filter(user = fbUser)
