@@ -66,6 +66,7 @@ class Cards(models.Model):
     token = models.CharField(max_length = 30)
     last4 = models.IntegerField()
     expDate = models.CharField(max_length = 20)
+#    expDate = models.CharField(maxlink _length =20 )
     cardType = models.CharField(max_length = 20)
     typeString = models.CharField(max_length = 20)
     

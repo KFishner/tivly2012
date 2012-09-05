@@ -1,37 +1,46 @@
-{% extends 'base.html' %}
-{%block title%} My Account - Tivly {%endblock%}
-
-{%block js%}
-<script type="text/javascript" src="https://js.cardspring.com/v1/cs.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-{%endblock%}
-{% block MixPanel %}
-<script type="text/javascript">
-    mixpanel.track("My Account Visited")
-</script>
-{% endblock %}
-
-{%block content%}
-<div class="container">
-
-    <h1 class="page-header key">My Account</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How-To - Tivly</title>
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     
-        <table>
-            <tr>
-                <td style="border:none"><a href="{{ URL }}/logout">Log Out</a></td>
-            </tr>
-            <!-- <tr>
-            	<td>Connect with Facebook</td>
-                <td><a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{redirect}}&scope=publish_stream,email,read_friendlists,&display=popup">
-      				<img src="https://developers.facebook.com/images/devsite/login-button.png"/></a></td> 
-           </tr> -->
-                <!--  <td>Connect with Twitter</td>
-                <td></td> -->
-            <tr> 
-                <tr>
-                <td>Connect Payment Card</td>
-                <td>        
+    <!-- Include CSS -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{STATIC_URL}}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/superfish.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{STATIC_URL}}js/custom.js"></script>	
+
+    
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32882337-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+<body style="background-image: url('{{ STATIC_URL }}images/bg/brushed.png');background-repeat: repeat; color:#111;text-shadow: 0px 2px 3px #444">
+<!-- START MAIN CONTAINER -->
+<div class="container" style="width:100%" >
+    	<h3 style="font-size: 40px;text-align: center; margin-top:20px;padding-bottom:20px;border-bottom:2px dotted #444">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+	<h3 style="font-size: 30px;text-align: center; padding:10px 0px 5px 0px;">Load this reward to your payment card</h3>
+	<div style="display:block; margin-left:257px;margin-bottom:20px;">
                 <form id="contactform" method="POST" action="">
                 {%csrf_token%}
             <p style="font-size: 18px;">
@@ -64,11 +73,10 @@
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
             </p>
         </form>
+<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding-top:15px;margin-bottom:15px;">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
         </td><!-- end form -->
-            <tr>
-                <td style="border:none"><a href="{{ URL }}/making_a_mistake" class="fancybox fancybox.iframe">Delete Account</a></td>
-            </tr>
         </table>
+
 
 
 
@@ -181,6 +189,4 @@ function GetCardType(number)
 });
 
 </script>  
-
-{%endblock%}
-
+</body></html>
