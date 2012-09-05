@@ -7,7 +7,7 @@ from dateutil import parser
 from django.shortcuts import redirect
 from datetime import datetime
 from CallBack import callBack
-from Tivly.models import MerchantInfoForm,CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
+from Tivly.models import MerchantInfoForm,FBUser,CardSpringUser, Businesses, MyRewards, Rewards, ContactUsForm, Cards, FBUser,FBFriends, FBAccessTokens
 from CreditCard import validateCard
 from GMaps import getMap
 from GeneralUser import User
@@ -43,6 +43,7 @@ def loginWithRec(request,recommendedBy,rid):
     FACEBOOK_APP_ID = settings.FACEBOOK_APP_ID
     facebookRedirect = 'https://www.tivly.com/home'
     csID = recommendedBy
+    firstName = FBUser.objects.filter(fb_id = CardSpringUser.objects.filter(csID =recommendedBy)[0].fbID)[0].first_name
     if rID:
         print "rID = " + str(rID)
     else:
