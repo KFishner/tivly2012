@@ -88,11 +88,11 @@ xmlns:og="http://ogp.me/ns#"
     mixpanel.track("Signin Viewed")
 </script>
 
-<div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:black;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
+<div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:#111;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
     <br style="line-height: 30px" />
     <div class="grid onehalf" style="width:55%;">
     			{% if pictureAvailable%}
-    			<p style="color:white; margin-top:0px; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward!</p>
+    			<p style="color:white; margin-top:0px; margin-bottom: 0px;font-weight:bold; font-size:40px; text-align: center;font-family: arial;line-height: normal">You have an awesome friend! {{firstName}} sent you:</p><br>
     			<h2 style="text-align: center;font-size:34px;font-weight: bold;"><i>{{ description }} at {{ businessName }}</i></h2>
 			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
     			{%else%}

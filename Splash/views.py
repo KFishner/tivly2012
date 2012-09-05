@@ -1,25 +1,12 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from Splash.models import ContactUsForm,SignUpForm, MerchantSignUpForm
+from Splash.models import ContactUsForm, MerchantSignUpForm
 from web1 import settings
 
 def home(request):
     URL = settings.URL
     FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
-    errors = []
-    popup = False
-    if request.method == 'POST':
-        if not request.POST.get('name', ''):
-            errors.append('Enter a name please')
-        if request.POST.get('email','') and '@' not in request.POST['email']:
-            errors.append('Enter a valid e-mail address.')
-            
-        if not errors:
-            popup = True
-            suf = SignUpForm(name = request.POST.get('name'), email = request.POST.get('email'))
-            suf.save()
-            return render_to_response('splash_index.html', locals(),context_instance= RequestContext(request))
     return render_to_response('splash_index.html',locals(),context_instance= RequestContext(request))
 
 def contact(request):

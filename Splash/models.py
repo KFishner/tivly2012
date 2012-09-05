@@ -1,8 +1,4 @@
 from django.db import models
-
-class SignUpForm(models.Model):
-    name = models.CharField(max_length = 40)
-    email = models.CharField(max_length = 60)
     
 class MerchantSignUpForm(models.Model):
     name = models.CharField(max_length = 40)

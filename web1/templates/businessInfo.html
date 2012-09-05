@@ -153,10 +153,13 @@ var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb
 
 	</div>
 <br class="clear" />
+      <p style="margin:0px;font-size:18px;">{{ business.street }}, {{ business.city }}, {{ business.zipCode }}</p>
+
+	 <div class ="grid onehalf" id="map_canvas" style="width: 420px; height: 283px; margin-top:2px;">
+	 </div>
+	 
 	
-	 <div class ="grid onehalf" id="map_canvas" style="width: 420px; height: 283px; margin-top:20px;"></div>
-	
-    <div class="grid onehalf last" style="margin-top:20px;border:2px solid black;padding:5px;">
+    <div class="grid onehalf last" style="margin-top:0px;border:2px solid black;padding:5px;">
     <h5>Hours of Operation</h5>
         <div class="grid onethirdone" style="width:120px;margin:0px;">
         <h6 style="margin:0px;padding:0px;">Monday</h6>
