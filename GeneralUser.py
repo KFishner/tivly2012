@@ -30,8 +30,8 @@ class User:
             to = email
             subject = "Welcome to Tivly!" 
             try:
-                plaintext = get_template('email.txt')
-                htmly = get_template('email.html')
+                plaintext = get_template('welcome_to.txt')
+                htmly = get_template('welcome_to.html')
                 d = Context({ 'firstname': firstname })
                 text_content = plaintext.render(d)
                 html_content = htmly.render(d)
