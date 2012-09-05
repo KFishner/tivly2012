@@ -132,7 +132,7 @@ class User:
         try:
             plaintext = get_template('newreward.txt')
             htmly = get_template('newreward.html')
-            d = Context({ 'firstname': name, 'busname':busname, 'description':description })
+            d = Context({ 'firstname': name, 'busname':busname, 'description':description, 'rew1':myLevel1Reward, 'rew2':myLevel2Reward })
             subject = "Congratulations! A New Reward" 
             fromAddr = "info@tivly.com"
             text_content = plaintext.render(d)
