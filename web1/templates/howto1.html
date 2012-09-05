@@ -39,15 +39,17 @@
 
 
 
-<body style="background-image: url('{{ STATIC_URL }}images/bg/hex.png');background-repeat: repeat; color:#111;text-shadow: 0px 2px 3px #444">
+<body style="margin:27 0 0 0; background:#222; color:#f2f2f2;text-shadow: 0px 2px 3px #444">
 <!-- START MAIN CONTAINER -->
 <div class="container" style="width:100%" >
-    	<h3 style="font-size: 36px;text-align: center; padding: 10px 0px 10px 0px;border-bottom:2px dotted #333">You have a reward of {{introReward.description }} at {{ business.businessName }}</h3>
+<div class="grid onehalf" style="width:510px; display:inline-block;float:left;margin:0px">
+<iframe src="http://player.vimeo.com/video/48844972?byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+<div class="grid onehalf last" style="width:320px;padding:0 5 0 5;display:inline-block;float:left">
+    	<h3 style="font-size: 36px;text-align: center; padding: 0px 0px 10px 0px;border-bottom:2px dotted #333">You have {{introReward.description }} at {{ business.businessName }}</h3>
                 <!-- start contact form -->
-	<h3 style="font-size: 30px;text-align: center; padding:0px 0px 0px 0px;margin:0px;">Load this reward to your payment card</h3>
-<div>
+	<h3 style="font-size: 30px;text-align: center; padding:0px 0px 5px 0px;margin:0px;">Load this reward to your payment card</h3>
         <div style="display:block;margin-left:auto;margin-right: auto;">
-        <form id="contactform" method="POST" action="" style="display:inline-block;margin:5px 300px 0px 0px;">
+        <form id="contactform" method="POST" action="" style="display:inline-block;margin:5px 0px 0px 0px;">
                 {%csrf_token%}
             <h3 style="font-size: 18px;">
                 Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>
@@ -77,13 +79,13 @@
 		<option value="2018">2018</option>
 	</select></h3>
                 <input type="submit" class="submit-button" value="submit" tabindex="5"/>
-        </form>
+        </form><!-- end form -->
 	</div>
 </div>
+</div>
 	<br />
-<h3 style="font-size: 36px;text-align: center;border-top:2px dotted #444;padding:10px 0px 0px 0px">Go to {{ business.businessName }}, swipe your registered card, and get {{introReward.description }}. <span style="color:#3c6">Instantly.</span></h3>
-        </td><!-- end form -->
-        </table>
+
+
 
 
 
