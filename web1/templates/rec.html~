@@ -1,0 +1,160 @@
+{%extends 'popup_base.html'%}
+{% load custom_filters %}
+{% load url from future %}
+
+{%block title%}{{ business.businessName }} - {{business.city }}{%endblock%}
+
+{%block js%}
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/superfish.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.color.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/slides.min.js"></script>
+<script type="text/javascript"src="{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/custom.js"></script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32882337-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+<!-- Facebook Sharer tags -->
+<meta name="title" 
+      content="{{introReward.description }} at {{business.businessName}}">
+<meta name="description" 
+      content="This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{introReward.description }}!" />
+<link rel="image_src" 
+      href="{{ business.pictureLocation|externalurl}}" />
+<!-- Add jQuery UI -->
+<link type="text/css"
+	href="{{ STATIC_URL }}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="{{ STATIC_URL }}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Add Tabs UI -->
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+	</script>
+	
+<script>
+	$(function() {
+		$( "#progressbar" ).progressbar({
+			value: {{ redeemed }}*100/{{level1Reward.pointsNeeded}}
+		});           
+	});
+	$(function() {
+		$( "#progressbar2" ).progressbar({
+			value: {{ redeemed }}*100/{{level2Reward.pointsNeeded}}
+		});           
+	});
+</script>
+
+{%endblock%}
+
+{%block content%}
+<div class="container" style="width: 99%;background-color: #f2f2f2">
+
+	<div class="grid onehalf" style="width: 40%; margin-top: 10px;">
+		<img src="{{business.pictureLocation}}"
+			style="border: 1px solid black; box-shadow: 4px 3px 4px #666666;display:block;margin-left:auto;margin-right:auto;" />
+		
+		<!-- Sharing Suggestions, these can be customized for each business
+		<ul style="font-size: 24px;margin-top:20px;">Tell your friends about our:
+		<li style="font-size: 18px;margin-left:35px;margin-top:5px;">Awesome outdoor patio</li>
+		<li style="font-size: 18px;margin-left:35px;">Margaritas - best in Palo Alto!</li>
+		<li style="font-size: 18px;margin-left:35px;">Sunday brunch</li>
+		</ul>
+--> 
+	</div>
+
+	<div class="grid onehalf last" style="width: 55%; margin-top: 10px;">
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1" style="font-size: 20px">Share</a></li>
+				<li><a href="#tabs-2" style="font-size: 20px">My
+						{{business.businessName}}</a></li>
+			</ul>
+			<div id="tabs-1">
+				<div class="getsocial">
+					<h1>Share {{ business.businessName }}:</h1>
+					<ul style="border:none">
+					  <li style="display:inline-block; float:left"><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.tivly.comwww.tivly.com/offer/{{ csID }}/{{ rID }}/" target="_blank" style="border:none"><img style="padding:2px;border:none; width:50px;" src="{{ STATIC_URL }}images/social/facebook.png" />
+					  </a></li>
+					  <li style="display:inline-block; float:left"><a href="http://twitter.com/?status=Get {{introReward.description }} at {{business.businessName}}!+{{ URL }}/offer/{{ csID }}/{{ rID }}/+%23{{business.businessName}}+%23Tivly+@tivlytweets" target="_blank" style="border:none"><img style="padding:2px;width:50px;border:none;border-radius: 10px;" src="{{ STATIC_URL }}images/social/twitter.png" /></a></li>
+
+					  <li style="display:inline-block; float:left"> <a href="mailto:?subject=Get%20{{introReward.description }}%20at%20{{business.businessName}}!&body=This%20gift%20to%20{{business.businessName}}%20is%20loaded%20directly%20to%20your%20payment%20card!%20Signup,%20connect%20a%20card,%20and%20just%20swipe%20to%20redeem%20your%20{{introReward.description }}!%0A%0A{{ URL }}/offer/{{ csID }}/{{ rID }}/" target="_blank" style="border:none"><img style="padding:2px;border:none;width:50px;" src="{{ STATIC_URL }}images/social/email.png" /></a></li>
+					  
+					</ul>
+					<br style="clear:both">
+
+				<!-- Start Shareaholic Sexy Bookmark HTML
+				<div class="shr_class shareaholic-show-on-load"></div>
+				End Shareaholic Sexy Bookmark HTML -->
+				
+			      <div style="margin:0px; padding:2px 10px 2px 8px; border: 1px dotted #bbb; border-radius: 3px;display:inline-block;">
+
+				<p style="margin:0px">Copy this unique link anywhere you want to share:</p>
+				<h6 style="margin:0px; font-size: 16px; color:#333"> {{ URL }}/offer/{{ csID }}/{{ rID }}/</h6>
+			      </div>
+				<!-- Start Shareaholic Sexy Bookmark settings -->
+				<script type="text/javascript">
+var SHRSB_Settings = {"shr_class":{"src":"{{ STATIC_URL }}shareaholic_sexybookmarks","link":"{{ URL }}/offer/{{ csID }}/{{ rID }}","service":"5,7,313","apikey":"0747414f47c2b684cf5480c36b2478689","localize":true,"shortener":"bitly","shortener_key":"","designer_toolTips":true,"tip_bg_color":"black","tip_text_color":"white","twitter_template":"Get rewarded for sharing the restaurants you love - {{ URL }}/offer/{{csID}}/{{ rID }} - @Tivlytweets {{ hashtag }}"}};
+var SHRSB_Globals = {"perfoption":"1"};
+</script>
+				<!-- End Shareaholic Sexy Bookmark settings -->
+				<!-- Start Shareaholic Sexy Bookmark script -->
+				<script type="text/javascript">
+(function() {
+var sb = document.createElement("script"); sb.type = "text/javascript";sb.async = true;
+sb.src = ("https:" == document.location.protocol ? "https://dtym7iokkjlif.cloudfront.net" : "http://cdn.shareaholic.com") + "/media/js/jquery.shareaholic-publishers-sb.min.js";
+var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(sb, s);
+})();
+</script>
+
+				<!-- End Shareaholic Sexy Bookmark script -->
+					<h2 style="font-size: 22px; margin:9px 0px 0px 0px">
+						Friends get <span style="color: #33cc66">{{introReward.description }}</span>, and you earn awesome rewards - check your progress in My {{business.businessName }}
+					</h2>
+				</div>
+			</div>
+			<div id="tabs-2">
+				<table>
+					<tr>
+						<td style="padding-right: 100px">Redeemed by Friends</td>
+						<td>{{ redeemed }}</td>
+					</tr>
+					<tr>
+					<td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#3c6"> {{level1Reward.pointsNeeded}} friends</span> redeem discounts, you get {{level1Reward.description}}!</em></td>
+                    		</tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar" style="border:2px solid #3c6; padding:0px; margin:0px;"></div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding-right:0px; padding-top:0px;border:none; font-size:14px"><em>When <span style="color:#3c6">{{level2Reward.pointsNeeded}} friends</span> redeem discounts, you get {{level2Reward.description}}!</em></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="border:none;padding:0px; margin:0px;"><div id="progressbar2" style="border:2px solid #3c6; padding:0px; margin:0px;"></div></td>
+                            </tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+</div>
+<!-- END MAIN CONTAINER -->
+{%endblock%}

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml"
+xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+<!-- Facebook Sharer tags -->
+<meta property="og:title" content="{{description }} at {{business.businessName}}"/> 
+<meta property="og:type" content="website"/> 
+<meta property="og:image" content="https://tivly.com{{ business.pictureLocation}}" />
+<meta property="og:url" content="www.tivly.com/offer/{{ csID }}/{{ rID }}/" />
+<meta property="og:site_name" content="Tivly" />
+<meta name="og:description" content="This gift to {{business.businessName}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{description}}!" />
+<meta property="fb:app_id" content="{{FACEBOOK_APP_ID}}"/>
+
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {%if pictureAvailable %}
+        <title>{{businessName}} Reward</title>
+    {%else%}
+    <title>Signin - Tivly</title>
+    {%endif%}
+    <link href="{{URL}}{{ STATIC_URL }}images/favicon.ico" rel="shortcut icon">
+
+    
+    <!-- Include CSS -->
+    <link href="{{URL}}{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{URL}}{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{URL}}{{ STATIC_URL }}js/superfish.js"></script>
+    <script type="text/javascript" src="{{URL}}{{ STATIC_URL }}js/jquery.color.js"></script>
+    <script type="text/javascript" src="{{URL}}{{ STATIC_URL }}js/slides.min.js"></script>
+    <script type="text/javascript" src="{{URL}}{{ STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
+    <script type="text/javascript" src="{{URL}}{{ STATIC_URL }}js/custom.js"></script>
+    
+
+
+<!-- Google Analytics -->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32882337-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+<!-- start Mixpanel -->
+    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
+    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
+    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");</script>
+<!-- end Mixpanel -->
+
+
+</head>
+
+<body style="background-image: url('{{URL}}{{ STATIC_URL }}images/signinbg.png');width:100%;height:100%">
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : {{ FACEBOOK_APP_ID }}, // App ID
+      channelUrl : '//WWW.tivly.COM/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+
+<script>
+    mixpanel.track("Signin Viewed")
+</script>
+
+<div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:black;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
+    <br style="line-height: 30px" />
+    <div class="grid onehalf" style="width:55%;">
+    			{% if pictureAvailable%}
+    			<p style="color:white; margin-top:0px; font-weight:bold; font-size:40px; text-align: center;font-family: georgia">Woot! You got a reward!</p>
+    			<h2 style="text-align: center;font-size:34px;font-weight: bold;"><i>{{ description }} at {{ businessName }}</i></h2>
+			<img style = "display: block;margin-left: auto;margin-right: auto;" src="{{ pictureLocation }}" style="margin-left:45px;"/>
+    			{%else%}
+    			
+                <img src="{{ STATIC_URL }}images/tagline.png" style="margin-left:45px;"/>
+                {%endif%}
+    </div>
+    
+	
+    <div class="grid onehalf last" style="width:40%;">
+    <h2 style="text-align: center; margin-top:40px;">Validate account to receive</h2>
+    <div style="display: block;margin-left:auto;margin-right:auto">
+    <a href="https://graph.facebook.com/oauth/authorize?client_id={{ FACEBOOK_APP_ID }}&redirect_uri={{facebookRedirect}}&scope=publish_stream,email,read_friendlists,&display=popup"><img style="display:block;margin-left: auto; margin-right: auto;" src="https://developers.facebook.com/images/devsite/login-button.png"/></a>
+    <div style="display:block;margin-left: auto;margin-right:auto;margin-top:10px;"><div class="fb-like" style="display:block;text-align: center;" data-colorscheme="dark" data-href="https://www.facebook.com/gotivly" data-send="false" data-width="200" data-show-faces="false"></div></div>
+
+    </div>
+    </div>
+    <br class="clear">
+	<p style="text-align: right;margin-right:5px;"><i>Powered by Tivly</i></p>
+
+
+
+    </div>
+<!-- END MAIN CONTAINER -->
+
+
+
+
+
+</body>
+</html>
