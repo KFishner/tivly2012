@@ -1,5 +1,5 @@
 from django.conf.urls import patterns,include,url
-from Tivly.views import login, merchantInfo,accountInfo,aboutUs,howto,jobs,businessDashboard,contact,deleteAccount,logout,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure
+from Tivly.views import login, privacy,userterms,merchantInfo,accountInfo,aboutUs,howto,jobs,businessDashboard,contact,deleteAccount,logout,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 
@@ -25,6 +25,8 @@ urlpatterns = patterns('',
     url(r'^merchantInfo/$', merchantInfo),
     url(r'^offer/(?P<recommendedBy>\w{0,6})/(?P<rid>\w{0,6})/$', getOffer),
     url(r'^bizdash/',businessDashboard),
+    url(r'^privacy/', privacy),
+    url(r'^userterms/', userterms),
     )
 
 urlpatterns += patterns('',
