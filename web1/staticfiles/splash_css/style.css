@@ -393,7 +393,7 @@ h1.page-header.star{background:url(../images/icons/star.png) no-repeat 0 center 
 }
 
 .pagination li a{
-    background: url("../images/pages.png") no-repeat scroll -15px 0 transparent;
+    background: url("../splash_images/pages.png") no-repeat scroll -15px 0 transparent;
     display: block;
     height: 15px;
     outline: medium none;
@@ -403,11 +403,11 @@ h1.page-header.star{background:url(../images/icons/star.png) no-repeat 0 center 
 }
 
 .pagination li:hover a{
-    background: url("../images/pages.png") no-repeat scroll -30px 0 transparent;
+    background: url("../splash_images/pages.png") no-repeat scroll -30px 0 transparent;
 }
 
 .pagination li.current a{
-    background: url("../images/pages.png") no-repeat scroll 0 0 transparent;
+    background: url("../splash_images/pages.png") no-repeat scroll 0 0 transparent;
 }
 
 a.next, a.prev{
@@ -420,10 +420,10 @@ a.next, a.prev{
 	border-bottom:none;
 }
 
-a.next{background: url("../images/pages.png") no-repeat scroll -45px 0 transparent;}
-a.next:hover{background: url("../images/pages.png") no-repeat scroll -75px 0 transparent;}
-a.prev{background: url("../images/pages.png") no-repeat scroll -60px 0 transparent;margin:0 8px 0 383px;}
-a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 transparent;}
+a.next{background: url("../splash_images/pages.png") no-repeat scroll -45px 0 transparent;}
+a.next:hover{background: url("../splash_images/pages.png") no-repeat scroll -75px 0 transparent;}
+a.prev{background: url("../splash_images/pages.png") no-repeat scroll -60px 0 transparent;margin:0 8px 0 383px;}
+a.prev:hover{background: url("../splash_images/pages.png") no-repeat scroll -90px 0 transparent;}
 
 .screenshots{
 	margin:45px 0 0 20px;
@@ -447,7 +447,7 @@ a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 tra
 /*-----------------------------------------------------------------------------------*/
 
 #subscribe-area{
-	background:url(../images/sub-bg.png) top repeat-x;
+	background:url(../splash_images/sub-bg.png) top repeat-x;
 	height:172px;
 	display:none;
 }
@@ -507,7 +507,7 @@ a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 tra
 /*-----------------------------------------------------------------------------------*/
 
 #bottom-content{
-	background:url(../images/bottom-gradient.png) left top repeat-x;
+	background:url(../splash_images/bottom-gradient.png) left top repeat-x;
 }
 
 .slide-break, .text-replace{
@@ -523,7 +523,7 @@ a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 tra
 }
 
 .slide-break .wb-logo{
-	background:url(../images/logo-light.png) no-repeat;
+	background:url(../splash_images/logo-light.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -535,7 +535,7 @@ a.prev:hover{background: url("../images/pages.png") no-repeat scroll -90px 0 tra
 	width:100px;
 }
 .slide-break .wb-logo2{
-background:url(../images/logo-contact.png) no-repeat;
+background:url(../splash_images/logo-contact.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -547,7 +547,7 @@ background:url(../images/logo-contact.png) no-repeat;
 	width:175px;
 }
 .slide-break a .wb-logo2:hover{
-background:url(../images/logo-contact2.png) no-repeat;
+background:url(../splash_images/logo-contact2.png) no-repeat;
     display: inline-block;
     margin:-0px 0px 0 4px;
     overflow: hidden;
@@ -565,7 +565,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 }
 
 .text-replace .wb-lightbox{
-	background:url(../images/lightbox.png) no-repeat;
+	background:url(../splash_images/lightbox.png) no-repeat;
     display: inline-block;
     margin:-1px -2px 0 8px;
     overflow: hidden;
@@ -622,7 +622,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 	height:199px;
 	display:block;
 	width:202px;
-	background:url(../images/app-store-hover.png) left center no-repeat;
+	background:url(../splash_images/app-store-hover.png) left center no-repeat;
 	margin:0 0 0 379px;
 	border-bottom:none;
 }
@@ -774,7 +774,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
 	border-radius: 2px;
-	background:url(../images/permalink.png) no-repeat scroll 0 0 #ACB3BA;
+	background:url(../splash_images/permalink.png) no-repeat scroll 0 0 #ACB3BA;
 	width:42px;
 	height:42px;
 	float:right;
@@ -820,7 +820,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 	color:#ACB3BA;
 	font-size:22px;
 	font-style:italic;
-	background:url(../images/comments.png) no-repeat 0 center scroll;
+	background:url(../splash_images/comments.png) no-repeat 0 center scroll;
 }
 
 #comments a{
@@ -894,7 +894,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 	color:#ACB3BA;
 	font-size:22px;
 	font-style:italic;
-	background:url(../images/add-comment.png) no-repeat 0 center scroll;
+	background:url(../splash_images/add-comment.png) no-repeat 0 center scroll;
 }
 
 #commentform{
@@ -980,7 +980,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 .widget-title{
 	font-size:11px;
 	text-transform:uppercase;
-	background:url(../images/sidebar-border.png) repeat-x 0 3px scroll;
+	background:url(../splash_images/sidebar-border.png) repeat-x 0 3px scroll;
 	color:#AAAAAA;
 	font-weight:bold;
 	margin:0 0 15px 0;
@@ -989,7 +989,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 .widget-title span{
 	padding:0 20px 0 17px;
 	min-width:80px;
-	background:url(../images/sidebar-ring.png) no-repeat 0 3px scroll #ffffff;
+	background:url(../splash_images/sidebar-ring.png) no-repeat 0 3px scroll #ffffff;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -1011,7 +1011,7 @@ background:url(../images/logo-contact2.png) no-repeat;
 .fancybox span{
 	display:block;
 	z-index:1;
-	background:url(../images/img-hover.png) repeat scroll center center transparent;
+	background:url(../splash_images/img-hover.png) repeat scroll center center transparent;
 	height:100%;
 	width:100%;
 	position:absolute;
@@ -1185,9 +1185,9 @@ background:url(../images/logo-contact2.png) no-repeat;
 }
 
 .tchover-pin-button{cursor:pointer;}
-.tchover-wrapper.pin span{background:url(../images/pin-hover.png) repeat scroll center center transparent;}
-.tchover-wrapper.like span{background:url(../images/like-hover.png) repeat scroll center center transparent;}
-.tchover-wrapper.tweet span{background:url(../images/tweet-hover.png) repeat scroll center center transparent;}
+.tchover-wrapper.pin span{background:url(../splash_images/pin-hover.png) repeat scroll center center transparent;}
+.tchover-wrapper.like span{background:url(../splash_images/like-hover.png) repeat scroll center center transparent;}
+.tchover-wrapper.tweet span{background:url(../splash_images/tweet-hover.png) repeat scroll center center transparent;}
 
 .hovers:hover{
 	position:relative;
