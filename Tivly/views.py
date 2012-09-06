@@ -325,6 +325,9 @@ def merchantInfo(request):
 def faq2(request):
     return render_to_response('faq2.html',context_instance= RequestContext(request))
 
+def faq(request):
+    return render_to_response('faq.html',context_instance= RequestContext(request))
+
 def aboutUs(request):
     return render_to_response('aboutus.html',context_instance= RequestContext(request))
 
