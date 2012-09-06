@@ -12,9 +12,9 @@
 <!-- Add Fancybox Open UI -->
 <script>
 $(document).ready(function() {
-$(".cclogin").fancybox({ 
+    $(".cclogin").fancybox({ 
     'padding':          0,
-    'width':        800,
+    'width':        850,
     'height':       350,
     'padding':      0, 
     'margin':      0, 
@@ -32,8 +32,10 @@ $(".cclogin").fancybox({
 				'background-color' : '#666',
 				'box-shadow' : '0px 0px 20px white',}
 			}}
-}); 
-});</script>
+});
+     $(".cclogin").eq(0).trigger('click');
+});
+</script>
 {%endblock%}
 
 {%block MixPanel%}
