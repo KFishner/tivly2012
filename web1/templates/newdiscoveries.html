@@ -42,7 +42,8 @@ $(document).ready(function() {
 <script type="text/javascript">
     mixpanel.track("New Discoveries Viewed")
 </script>
-{%endblock%} 
+{%endblock%}
+
 {%block content%}
 <div class="container">
 
@@ -54,7 +55,7 @@ $(document).ready(function() {
 <br class="clear" />
 	
 {% if not hasCard %} 
-    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to redeem your rewards</a> 
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Sync your payment card to redeem your rewards</a></div> 
 {%endif%}
 
 	<table style="border:none">
