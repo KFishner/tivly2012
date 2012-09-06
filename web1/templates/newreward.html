@@ -369,7 +369,7 @@
                                             <td class="headerContent">
                                             
                                             	<!-- // Begin Module: Standard Header Image \\ -->
-                                            	<img src="http://www.tivly.com/static/images/email-header.png" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowdesigner="" mc:allowtext="">
+                                            	<img src="http://i.imgur.com/XkVqy.png" style="max-width:600px;" id="headerImage campaign-icon" mc:label="header_image" mc:edit="header_image" mc:allowdesigner="" mc:allowtext="">
                                             	<!-- // End Module: Standard Header Image \\ -->
                                             
                                             </td>
@@ -397,7 +397,14 @@
 								br><strong style="font-size:18px">Share this reward with friends!</strong><br>
 								    When {{rew1.pointsNeeded}} friends redeem rewards, you get {{rew1.description}}<br>
 								    When {{rew2.pointsNeeded}} friends redeem rewards, you get {{rew1.description}}<br>
-                                                                <br><br><br>
+					<ul style="display:block; margin-left:auto;margin-right:auto;">
+					  <li style="display:inline-block; float:left"><a href="http://www.facebook.com/sharer.php?s=100&p[title]={{description }} at {{busname}}&p[url]=https://www.tivly.com/offer/{{ csID }}/{{ rID }}/&p[summary]=This gift to {{busname}} is loaded directly to your payment card! Signup, connect a card, and just swipe to redeem your {{description}}!&p[image][0]=https://www.tivly.com{{business.pictureLocation}}" target="_blank" style="border:none"><img style="padding:2px;border:none; width:50px;" src="https://www.tivly.com/images/social/facebook.png" />
+					  </a></li>
+					  <li style="display:inline-block; float:left"><a href="http://twitter.com/?status=Get {{description}} at {{busname}}!+https://www.tivly.com/offer/{{ csID }}/{{ rID }}/+%23{{business.businessName}}+%23Tivly+@tivlytweets" target="_blank" style="border:none"><img style="padding:2px;width:50px;border:none;border-radius: 10px;" src="https://www.tivly.com/images/social/twitter.png" /></a></li>
+
+					  <li style="display:inline-block; float:left"> <a href="mailto:?subject=Get%20{{description}}%20at%20{{business.businessName}}!&body=This%20gift%20to%20{{business.businessName}}%20is%20loaded%20directly%20to%20your%20payment%20card!%20Signup,%20connect%20a%20card,%20and%20just%20swipe%20to%20redeem%20your%20{{description}}!%0A%0Ahttps://www.tivly.com/offer/offer/{{ csID }}/{{ rID }}/" target="_blank" style="border:none"><img style="padding:2px;border:none;width:50px;" src="https://www.tivly.com/images/social/email.png" /></a></li>
+					  
+					</ul><br><br><br>
 					<div style="padding:2px 10px 2px 8px; border: 1px dotted #bbb; border-radius: 3px;display:inline-block;margin-right:100px;">
 				Copy this unique link anywhere you want to share:<br>
 				<strong style="font-size:18px">{{ URL }}/offer/{{ csID }}/{{ rID }}/</strong>
