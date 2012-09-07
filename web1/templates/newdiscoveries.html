@@ -1,5 +1,9 @@
 {%extends 'base.html'%} 
-{% block title %}My Rewards - Tivly{%endblock%} 
+{% block title %}My Rewards - Tivly{%endblock%}
+
+{%block css%}
+<link href="{{STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+{%endblock%}
 
 {%block js%}
     
@@ -50,7 +54,7 @@ $(document).ready(function() {
 <div class="container">
 
 	<!-- <h1 class="page-header" style="font-size: 26px; color: #00cc66">
-		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
+		Favorite restaurant not on Tivly yet? Sign them up and get $25! <a
 			href="https://tivly.com/merchantsignup">Click for details</a>
 	</h1> -->
 <div style="background:#33cc66; height:4px; width:225px; position:relative; margin-left:59%"></div> 
