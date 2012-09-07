@@ -169,7 +169,9 @@ def newDiscoveries(request):
                 redeemable[targetReward.reward] = business
 
             
-    return render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
+    response = render_to_response('newdiscoveries.html', locals(),context_instance= RequestContext(request))
+    response.set_cookie('csID',user.csUser.csID)
+    return response
 
 def contact(request):
     errors = []
