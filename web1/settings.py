@@ -22,7 +22,7 @@ URL = 'https://www.tivly.com'
 FACEBOOK_APP_ID = '162129900588207'
 FACEBOOK_API_KEY = '162129900588207'
 FACEBOOK_API_SECRET = '25789f366ebd6f92e50952f5eeb22fe7'
-FACEBOOK_REDIRECT_URI = 'https://www.tivly.com/home'
+FACEBOOK_REDIRECT_URI = 'https://www.tivly.com/newdiscoveries'
 
 GOOGLEMAPS_API_KEY = 'AIzaSyCBmQUttEkUKRbedtfa7cqIEAx0szbcKmk'
 
