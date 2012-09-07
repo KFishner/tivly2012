@@ -73,10 +73,11 @@ $(document).ready(function() {
 		    
 		    
 			<td class="hovers" style="width:60%; text-align: center;border:none;">
-			    <a href="{{ URL }}/rec/{{ business.website }}" class="fancybox fancybox.iframe" style="text-align: center"><div style="text-align: center">
+			    <div style="text-align: center">
+				<a href="{{ URL }}/rec/{{ business.website }}" class="fancybox fancybox.iframe" style="text-align: center">
 					<h2 style="color:#333333;font-size:40px;text-align: center">{{reward.description }}</h2>
 					<h2 style="text-align: center">{{ business.businessName }}</h2>
-			    </div></a>
+			    </a></div>
 			</td>
 			<td style="width:40%; border:none;">
 					<a href="{{ URL }}/business/{{ business.website }}">
