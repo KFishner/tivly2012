@@ -13,6 +13,13 @@
 <link type="text/css" href="{{STATIC_URL}}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Table Style -->
+<style>
+	td{
+		padding:0px;
+	}
+</style>
+
 <!-- Add Tabs UI -->
 <script>
 	$(function() {
@@ -50,15 +57,14 @@
     <li><a href="#tabs-5" style="font-size: 20px">Account</a></li>
     </ul>
         <div id="tabs-1">
-<div class="grid onehalf" style="width:48%">
-		<h2 style="color:#2E6E9E;display: inline-block">Customers</h2>
-		<h2 style="color:#2E6E9E; float:right">120</h2>
-	
-		    <img src="images/biz/grouponchart.png" style="display:block" />
-	    </div>
+
 	    
-	    <div class="grid onehalf last" style="padding-top: 80px;float:right; width:48%">
+	    <div style="padding-top: 20px; width:48%; display:block;margin-left: 0px;margin-right: 0px">
 		<table>
+			<tr>
+			<td style="width:90%; font-size:40px; padding:8px;">Customers</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">120</td>
+		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:40px; padding:8px;">Total Revenue</td>
 			<td style="width:90%; font-size:40px;padding: 8px;">$8000</td>
@@ -171,7 +177,7 @@
 	</div>	
         <div id="tabs-2">
 	<div>
-	    <div id="accordion">
+	    <div id="accordion" style="font-size:18px">
 		<h3><a href="#"></a></h3>
 		<table>
 
