@@ -8,6 +8,8 @@
 <script>confirm("Thanks for signing up! We will reply within 24 hours");</script>
 {% endif %}
 <br class="clear">
+<br class="clear">
+
     <h1 style="color:#222; font-weight: bold">Merchant Authorization</h1>
     <p>We'll get back to you within 24 hours</p>
 
@@ -28,53 +30,54 @@
         {%csrf_token%}
         <table>
             <tr>
-            	<td><label for="name">MerchantID *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" /></td>
+            	<td><label for="name">MerchantID</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="merchantID" name="merchantID" />*</td>
             </tr>
 			<tr>
-                <td><label for="name">Business Name *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" /></td>
+                <td><label for="name">Business Name</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" />*</td>
             </tr>
             <tr>
                 <td><label for="name">Amex SES </label></td>
                 <td><input type="text" tabindex="1" size="22" value="" id="amexSES" name="amexSES" /></td>
             </tr>
             <tr>
-                <td><label for="name">Address *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="address" name="address" /></td>
+                <td><label for="name">Address</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="address" name="address" />*</td>
+            </tr>
+
+            <tr>
+                <td><label for="name">City</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="city" name="city" />*</td>
             </tr>
             <tr>
-                <td><label for="name">Zip Code *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" /></td>
+                <td><label for="name">State</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="state" name="state" />*</td>
+            </tr>
+            <tr>
+                <td><label for="name">Zip Code</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="zipCode" name="zipCode" />*</td>
                 
             </tr>
             <tr>
-                <td><label for="name">City *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="city" name="city" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">State *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="state" name="state" /></td>
-            </tr>
-            <tr>
-                <td><label for="name">Phone Number *</label></td>
-				<td><input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" /></td>
+                <td><label for="name">Phone Number</label></td>
+				<td><input type="text" tabindex="1" size="22" value="" id="phoneNumber" name="phoneNumber" />*</td>
             </tr>
         	<tr>
-                <td><label for="name">Email *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="email" name="email" /></td>
+                <td><label for="name">Email</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="email" name="email" />*</td>
             </tr>
             <tr>
-                <td><label for="name">Signer Name *</label></td>
-                <td><input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" /></td>
+                <td><label for="name">Signer Name</label></td>
+                <td><input type="text" tabindex="1" size="22" value="" id="signerName" name="signerName" />*</td>
             </tr>
             <tr>
-                <td><label for="name">Signer Title *</label></td>
-        		<td><input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" /></td>
+                <td><label for="name">Signer Title</label>*</td>
+        		<td><input type="text" tabindex="1" size="22" value="" id="signerTitle" name="signerTitle" />*</td>
             </table>
 <a title="View Tivly Merchant Agreement on Scribd" href="http://www.scribd.com/doc/105414066/Tivly-Merchant-Agreement?secret_password=1zl18zd47y0qrj9a96lr" style="margin: 12px auto 6px auto; font-family: Helvetica,Arial,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 14px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; display: block; text-decoration: underline;">Tivly Merchant Agreement</a><iframe class="scribd_iframe_embed" src="http://www.scribd.com/embeds/105414066/content?start_page=1&view_mode=scroll&access_key=key-1p6nnwpvzdhkgqro2fn8" data-auto-height="false" data-aspect-ratio="0.772727272727273" scrolling="no" id="doc_31433" width="800" height="500" frameborder="0"></iframe>           <br style="clear:both">
            <br class="clear">          
-	   <p style="color:#3c6;">Check to agree to terms of service <input type="checkbox" value="agree" tabindex="5" id="agree" name="agree" /></p>
+	   <p style="color:#3c6;font-weight: bold;font-size: 16px">Check to agree to terms of service <input type="checkbox" value="agree" tabindex="5" id="agree" name="agree" /></p>
            <br class="clear">
            <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
         </form>
