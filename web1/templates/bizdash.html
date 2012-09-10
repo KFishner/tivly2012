@@ -13,6 +13,13 @@
 <link type="text/css" href="{{STATIC_URL}}jqueryui/css/excite-bike/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}jqueryui/js/jquery-ui-1.8.21.custom.min.js"></script>
+<!-- Table Style -->
+<style>
+	td{
+		padding:0px;
+	}
+</style>
+
 <!-- Add Tabs UI -->
 <script>
 	$(function() {
@@ -51,30 +58,29 @@
     </ul>
         <div id="tabs-1">
 
-	
 	    
-	    <div style="padding-top: 20px;display:block;margin-left:0px; margin-right:0px;width:50%">
+	    <div style="padding-top: 20px; width:48%; display:block;margin-left: 0px;margin-right: 0px">
 		<table>
-		    <tr>
-			<td style="width:90%; font-size:32px; padding:8px;">Customers</td>
-			<td style="width:90%; font-size:32px;padding: 8px;">82</td>
+			<tr>
+			<td style="width:90%; font-size:40px; padding:8px;">Customers</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">120</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:32px; padding:8px;">Total Revenue</td>
-			<td style="width:90%; font-size:32px;padding: 8px;">$4000</td>
+			<td style="width:90%; font-size:40px; padding:8px;">Total Revenue</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$8000</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:32px;padding: 8px;">Total Costs</td>
-			<td style="width:90%; font-size:32px;padding: 8px;">$400</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">Total Costs</td>
+			<td style="width:90%; font-size:40px;padding: 8px;">$1200</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:32px;padding: 8px;background:#a0d5b5;">Margin</td>
-			<td style="width:90%; font-size:32px;padding: 8px;text-align: right;background:#a0d5b5;">$3600</td>
+			<td style="width:90%; font-size:40px;padding: 8px;background:#a0d5b5;">Return</td>
+			<td style="width:90%; font-size:40px;padding: 8px;text-align: right;background:#a0d5b5;">$6800</td>
 		    </tr>
 		</table>
 	    </div>
-	    <div style="clear: both">
-	    <table style="text-align: right; padding:5px 0px 0px 3px;">
+	    <br style="clear: both">
+	    <table style="text-align: right">
 		<thead style="background: #c5dbec">
 		    <td style="background:white"></td>
 		    <td style="text-align: center">Jan</td>
@@ -92,110 +98,140 @@
 		</thead>
 		<tr>
 		    <td>Customers</td>
-		    <td>5</td>
-		    <td>6</td>
+		    <td>0</td>
+		    <td>0</td>
 		    <td>8</td>
 		    <td>12</td>
 		    <td>30</td>
 		    <td>36</td>
 		    <td>50</td>
-		    <td>90</td>
-		    <td>340</td>
-		    <td>900</td>
-		    <td>2000</td>
-		    <td>8000</td>
+		    <td>120</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
 		</tr>
 		<tr>
 		    <td style="background:#efe9e5">Transactions</td>
-		    <td style="background:#efe9e5">5</td>
-		    <td style="background:#efe9e5">6</td>
+		    <td style="background:#efe9e5">0</td>
+		    <td style="background:#efe9e5">0</td>
 		    <td style="background:#efe9e5">8</td>
 		    <td style="background:#efe9e5">12</td>
-		    <td style="background:#efe9e5">30</td>
-		    <td style="background:#efe9e5" >36</td>
-		    <td style="background:#efe9e5">50</td>
-		    <td style="background:#efe9e5">90</td>
-		    <td style="background:#efe9e5">340</td>
-		    <td style="background:#efe9e5">900</td>
-		    <td style="background:#efe9e5">2000</td>
-		    <td style="background:#efe9e5">8000</td>
+		    <td style="background:#efe9e5">34</td>
+		    <td style="background:#efe9e5">40</td>
+		    <td style="background:#efe9e5">70</td>
+		    <td style="background:#efe9e5">140</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
 		</tr>
 		<tr>
 		    <td>Total Spent</td>
-		    <td>5</td>
-		    <td>6</td>
-		    <td>8</td>
-		    <td>12</td>
-		    <td>30</td>
-		    <td>36</td>
-		    <td>50</td>
-		    <td>90</td>
-		    <td>340</td>
-		    <td>900</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>800</td>
+		    <td>1200</td>
 		    <td>2000</td>
+		    <td>4000</td>
+		    <td>6000</td>
 		    <td>8000</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
 		</tr>
 		<tr>
 		    <td style="background:#efe9e5">Rewards (#)</td>
-		    <td style="background:#efe9e5">5</td>
-		    <td style="background:#efe9e5">6</td>
+		    <td style="background:#efe9e5">0</td>
+		    <td style="background:#efe9e5">0</td>
 		    <td style="background:#efe9e5">8</td>
-		    <td style="background:#efe9e5">12</td>
+		    <td style="background:#efe9e5">10</td>
+		    <td style="background:#efe9e5">24</td>
 		    <td style="background:#efe9e5">30</td>
-		    <td style="background:#efe9e5">36</td>
-		    <td style="background:#efe9e5">50</td>
-		    <td style="background:#efe9e5">90</td>
-		    <td style="background:#efe9e5">340</td>
-		    <td style="background:#efe9e5">900</td>
-		    <td style="background:#efe9e5">2000</td>
-		    <td style="background:#efe9e5">8000</td>
+		    <td style="background:#efe9e5">60</td>
+		    <td style="background:#efe9e5">120</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
+		    <td style="background:#efe9e5">-</td>
 		</tr>
 		<tr>
 		    <td>Rewards ($)</td>
-		    <td>5</td>
-		    <td>6</td>
-		    <td>8</td>
-		    <td>12</td>
-		    <td>30</td>
-		    <td>36</td>
-		    <td>50</td>
-		    <td>90</td>
-		    <td>340</td>
-		    <td>900</td>
-		    <td>2000</td>
-		    <td>8000</td>
+		    <td>0</td>
+		    <td>0</td>
+		    <td>80</td>
+		    <td>160</td>
+		    <td>300</td>
+		    <td>650</td>
+		    <td>920</td>
+		    <td>1200</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
+		    <td>-</td>
 		</tr>
 		
 	    </table>
-	    </div>
-	</div>
+	</div>	
         <div id="tabs-2">
 	<div>
-	    <div id="accordion">
-		    <h3 style="font-size: 18px"><a href="#">Customer Referral</a></h3>
+	    <div id="accordion" style="font-size:18px">
+		<h3><a href="#"></a></h3>
+		<table>
+
+		</table>
+		    <h3><a href="#">Twitter</a></h3>
 		<table>
 		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Unique Link</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">https://www.tivly.com/offer/2YIKAB/</td>
+		    </tr>
+		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
-			<td style="width:90%; font-size:24px;padding: 8px;">92</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">32</td>
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
-			<td style="width:90%; font-size:24px;padding: 8px;">$4000</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
-			<td style="width:90%; font-size:24px;padding: 8px;">$2400</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$450</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">Margin</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">$1950</td>
 		    </tr>
 		</table>
-		    <h3 style="font-size: 18px"><a href="#">Facebook</a></h3>
+		    <h3><a href="#">Facebook</a></h3>
+		<table>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Unique Link</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">https://www.tivly.com/offer/5PQ41B/</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">28</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$1600</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$450</td>
+		    </tr>
+		    <tr>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">Margin</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">$1150</td>
+		    </tr>
+		</table>
+		    <h3><a href="#">Customer Referral</a></h3>
 		<table>
 		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">60</td>
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
@@ -203,68 +239,34 @@
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$300</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">Margin</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">$3600</td>
 		    </tr>
 		</table>
-		    <h3 style="font-size: 18px"><a href="#">Twitter</a></h3>
+		    <h3><a href="#">+ Add New Source</a></h3>
 		<table>
 		    <tr>
+			<td style="width:90%; font-size:24px; padding:8px;">Unique Link</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">https://www.tivly.com/offer/9LR39C/</td>
+		    </tr>
+		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">0</td>
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$0</td>
 		    </tr>
 		    <tr>
 			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$0</td>
 		    </tr>
 		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">67%</td>
-		    </tr>
-		</table>
-		    <h3 style="font-size: 18px"><a href="#">Foodspotting</a></h3>
-		<table>
-		    <tr>
-			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">67%</td>
-		    </tr>
-		</table>
-		    <h3 style="font-size: 18px"><a href="#">SF Food Blog</a></h3>
-		<table>
-		    <tr>
-			<td style="width:90%; font-size:24px; padding:8px;">Total Referrals</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">92</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px; padding:8px;">Revenue</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$4000</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;">Cost</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;">$2400</td>
-		    </tr>
-		    <tr>
-			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">ROI</td>
-			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;">67%</td>
+			<td style="width:90%; font-size:24px;padding: 8px;background:#a0d5b5;">Margin</td>
+			<td style="width:90%; font-size:24px;padding: 8px;text-align: right;background:#a0d5b5;text-align: right;">$0</td>
 		    </tr>
 		</table>
 	    </div>
@@ -272,21 +274,21 @@
 	<br class="clear" />
 	</div>
         <div id="tabs-3">
-		<h2 style="color:#2E6E9E;display: inline-block; font-size:40px">Customers</h2>
-		<h2 style="color:#2E6E9E; float:right;font-size:70px">82</h2>
+		<h2 style="color:#222;display: inline-block; float:left;font-size:48px">Customers</h2>
+		<h2 style="color:#222; float:left;font-size:48px;margin-left:50px">120</h2>
 		<br style="clear:both">
 		<table>
 		    <tr>
-			<td style="font-size:24px; padding:8px;background: #c5dbec"><strong>Reward</strong></td>
-			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Details</strong></td>
-			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Received</strong></td>
-			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #c5dbec"><strong>Redeemed</strong></td>
+			<td style="font-size:24px; padding:8px;background: #222;color:white"><strong>Reward</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Details</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Received</strong></td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Redeemed</strong></td>
 		    </tr>
 		    <tr>
 			<td style="font-size:24px; padding:8px;">Initial</td>
-			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">10% Off</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">$10 Off</td>
 			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">263</td>
-			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">82</td>
+			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;">120</td>
 		    </tr>
 		    <tr>
 			<td style="font-size:24px;padding: 8px;">Level 1</td>

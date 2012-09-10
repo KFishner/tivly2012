@@ -1,20 +1,26 @@
 {%extends 'base.html'%} 
-{% block title %}My Rewards - Tivly{%endblock%} 
+{% block title %}My Rewards - Tivly{%endblock%}
+
+{%block css%}
+<link href="{{STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+{%endblock%}
 
 {%block js%}
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    
+    <!-- Include Scripts -->	
+       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL }}js/superfish.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/jquery.color.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/slides.min.js"></script>
     <script type="text/javascript" src="{{STATIC_URL }}js/jquery.fancybox.pack.js"></script>	
-    <script type="text/javascript" src="{{STATIC_URL }}js/custom.js"></script>	
+    <script type="text/javascript" src="{{STATIC_URL }}js/custom.js"></script>		
 
 <!-- Add Fancybox Open UI -->
 <script>
 $(document).ready(function() {
-$(".cclogin").fancybox({ 
+    $(".cclogin").fancybox({ 
     'padding':          0,
-    'width':        800,
+    'width':        850,
     'height':       350,
     'padding':      0, 
     'margin':      0, 
@@ -27,34 +33,38 @@ $(".cclogin").fancybox({
     'titleShow' : false,
     		helpers : {
 			overlay : {
-			    opacity: .8,
+			    opacity: .5,
 			    css : {
 				'background-color' : '#666',
 				'box-shadow' : '0px 0px 20px white',}
 			}}
-}); 
-});</script>
+});
+     $(".cclogin").eq(0).trigger('click');
+});
+</script>
 {%endblock%}
 
 {%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("New Discoveries Viewed")
 </script>
-{%endblock%} 
+{%endblock%}
+
 {%block content%}
 <div class="container">
 
 	<!-- <h1 class="page-header" style="font-size: 26px; color: #00cc66">
-		Favorite restaurant not on tivly yet? Sign them up and get $25! <a
+		Favorite restaurant not on Tivly yet? Sign them up and get $25! <a
 			href="https://tivly.com/merchantsignup">Click for details</a>
 	</h1> -->
 <div style="background:#33cc66; height:4px; width:225px; position:relative; margin-left:59%"></div> 
 <br class="clear" />
 	
 {% if not hasCard %} 
-    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Enter your payment card to redeem your rewards</a> 
+    <div id="cclogin"><a href="{{ URL }}/howto/1" class="cclogin fancybox.iframe" style="text-decoration: underline;font-size:18px;">Sync your payment card to redeem your rewards</a> 
+    </div>
 {%endif%}
-
+<br class="clear" /> 
 	<table style="border:none">
 		
 		<tr>
@@ -63,10 +73,11 @@ $(".cclogin").fancybox({
 		    
 		    
 			<td class="hovers" style="width:60%; text-align: center;border:none;">
-			    <a href="{{ URL }}/business/{{ business.website }}"><div>
-					<h2 style="color:#333333;font-size:40px;">{{reward.description }}</h2>
-					<h2>{{ business.businessName }}</h2>
-			    </div></a>
+			    <div style="text-align: center">
+				<a href="{{ URL }}/rec/{{ business.website }}" class="fancybox fancybox.iframe" style="text-align: center; float:none">
+					<h2 style="color:#333333;font-size:40px;text-align: center">{{reward.description }}</h2>
+					<h2 style="text-align: center">{{ business.businessName }}</h2>
+			    </a></div>
 			</td>
 			<td style="width:40%; border:none;">
 					<a href="{{ URL }}/business/{{ business.website }}">
