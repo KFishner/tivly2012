@@ -26,7 +26,7 @@ class User:
         print "self.csuser.emailed = " + str(self.csUser.emailed)
         if not self.csUser.emailed:
             print "sending email"
-            from_email = 'info@tivly.com'
+            from_email = 'team@tivly.com'
             to = email
             subject = "Welcome to Tivly!" 
             try:
@@ -134,7 +134,7 @@ class User:
             htmly = get_template('newreward.html')
             d = Context({ 'firstname': name, 'busname':busname, 'description':description, 'rew1':myLevel1Reward, 'rew2':myLevel2Reward, 'business':business, 'csID':self.csUser.csID, 'rID':rid })
             subject = "Congratulations! A New Reward" 
-            fromAddr = "info@tivly.com"
+            fromAddr = "team@tivly.com"
             text_content = plaintext.render(d)
             html_content = htmly.render(d)
             msg = EmailMultiAlternatives(subject, text_content, fromAddr, [email])
