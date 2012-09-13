@@ -300,6 +300,7 @@ def logout(request):
     return response
 
 def merchantInfo(request):
+    print "\n\n****IN MERCHANT INFO****\n\n"
     errors = []
     popup = False    
     
