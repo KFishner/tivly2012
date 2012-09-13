@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from Splash.models import ContactUsForm, MerchantSignUpForm
 from web1 import settings
-
+from django.core.mail import *
 def home(request):
     URL = settings.URL
     FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
