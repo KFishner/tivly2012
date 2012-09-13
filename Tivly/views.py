@@ -179,15 +179,35 @@ def contact(request):
     if request.method == 'POST':
         if not request.POST.get('name', ''):
             errors.append('Enter a name please')
+        else:
+            name = request.POST.get('name', '')
         if request.POST.get('email') and '@' not in request.POST['email']:
             errors.append('Enter a valid e-mail address.')
+        else:
+            email = request.POST.get('email', '')
         if not request.POST.get('message', ''):
             errors.append('Enter a message.')
-            
+        else:
+            message = request.POST.get('message', '')
         if not errors:
             popup = True
-            cuf = ContactUsForm(name = request.POST.get('name'), email = request.POST.get('email'), message = request.POST.get('message'))
+            cuf = ContactUsForm(name = name, email = email, message = message)
             cuf.save()
+            subject = "New contact us request: %s" % str(name)
+            fromAddr = "newcontactus@tivly.com"
+            body = "%s just contacted us. \n\nMessage:\n\n==========================\n\n%s\n\n==========================\n\n Email them at %s" % (str(name), str(message), str(email))
+            kevemail = "KFishner@gmail.com"
+            messages = []
+            
+            try:
+                messages.append((subject, body, fromAddr, [kevemail.encode('ascii')]))
+                messages = tuple(messages)
+                #print messages
+                print "sending kevin messages"  
+                send_mass_mail(messages)
+                print "message sent, exiting"
+            except Exception as e:
+                print str(e)
             return render_to_response('contact.html', locals(),context_instance= RequestContext(request))
     return render_to_response('contact.html',{'errors': errors},context_instance= RequestContext(request))
 
@@ -286,39 +306,75 @@ def merchantInfo(request):
     if request.method == 'POST':
         if not request.POST.get('merchantID', ''):
             errors.append('Enter a valid Merchant ID please')
+        else:
+            merchantID = request.POST.get('merchantID', '')
         if not request.POST.get('businessName', ''):
             errors.append('Enter a valid business name please')
+        else:
+            businessName = request.POST.get('businessName', '')
         if not request.POST.get('address', ''):
             errors.append('Enter a valid street address please')
+        else:
+            address = request.POST.get('address', '')
         if not request.POST.get('zipCode', ''):
             errors.append('Enter a valid zip code please')
+        else:
+            zipCode = request.POST.get('merchantID', '')
         if not request.POST.get('city', ''):
             errors.append('Enter a valid city please')
+        else:
+            city = request.POST.get('city', '')
         if not request.POST.get('state', ''):
             errors.append('Enter a valid state please')
+        else:
+            state = request.POST.get('state', '')
         if not request.POST.get('phoneNumber', ''):
             errors.append('Enter a valid phone number please')
+        else:
+            request.POST.get('phoneNumber', '')
         if not request.POST.get('email', ''):
             errors.append('Enter a valid email please')
+        else:
+            email = request.POST.get('email', '')
         if not request.POST.get('signerName', ''):
             errors.append('Enter a valid name for signer please')
+        else:
+            signerName = request.POST.get('signerName', '')
         if not request.POST.get('signerTitle', ''):
             errors.append('Enter a valid signer title please')
+        else:
+            signerTitle = request.POST.get('signerTitle', '')
+        
+        if not request.POST.get('amexSES', ''):
+            amexSES = 'none'
+        else:
+            amexSES = request.POST.get('amexSES', '')
         
         if not request.POST.get('agree',False):
             errors.append('Please agree to terms of service')
         
         if not errors:
             popup = True
-            if  request.POST.get('amexSES'):
-                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'),amexSES = request.POST.get('amexSES'), address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),signerTitle = request.POST.get('signerTitle'),date= datetime.now())
-            else:
-                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = 'none',address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),signerTitle = request.POST.get('signerTitle'),date= datetime.now())
+            msuf = MerchantInfoForm(merchantID = merchantID,businessName = businessName, amexSES = amexSES,address = address,zipCode = zipCode,city = city,state = state,phoneNumber = phoneNumber,email = email, signerName = signerName,signerTitle = signerTitle,date= datetime.now())
            
             msuf.save()
+            subject = "New Merchant Info: %s" % str(businessName)
+            fromAddr = "newmerchant@tivly.com"
+            body = "%s from %s, %s, just requested more information. Email %s at %s" % (str(businessName),str(city), str(state), str(signerName), str(email))
+            kevemail = "KFishner@gmail.com"
+            messages = []
+            
+            try:
+                messages.append((subject, body, fromAddr, [kevemail.encode('ascii')]))
+                messages = tuple(messages)
+                #print messages
+                print "sending kevin messages"  
+                send_mass_mail(messages)
+                print "message sent, exiting"
+            except Exception as e:
+                print str(e)
             return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
-    return render_to_response('merchantInfo.html',{'errors': errors},context_instance= RequestContext(request))
-
+        return render_to_response('merchantInfo.html',{'errors': errors},context_instance= RequestContext(request))
     
 ######################################################################
 #####                   FLAT PAGES                               #####
