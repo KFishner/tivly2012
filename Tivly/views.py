@@ -355,14 +355,18 @@ def merchantInfo(request):
         
         if not errors:
             popup = True
-            msuf = MerchantInfoForm(merchantID = merchantID,businessName = businessName, amexSES = amexSES,address = address,zipCode = zipCode,city = city,state = state,phoneNumber = phoneNumber,email = email, signerName = signerName,signerTitle = signerTitle,date= datetime.now())
-           
-            msuf.save()
-            subject = "New Merchant Info: %s" % str(businessName)
-            fromAddr = "newmerchant@tivly.com"
-            body = "%s from %s, %s, just requested more information. Email %s at %s" % (str(businessName),str(city), str(state), str(signerName), str(email))
-            kevemail = "KFishner@gmail.com"
-            messages = []
+            print "\n\nIN MERCHANT INFO FORM\n\n"
+            try:
+                msuf = MerchantInfoForm(merchantID = merchantID,businessName = businessName, amexSES = amexSES,address = address,zipCode = zipCode,city = city,state = state,phoneNumber = phoneNumber,email = email, signerName = signerName,signerTitle = signerTitle,date= datetime.now())
+               
+                msuf.save()
+                subject = "New Merchant Info: %s" % str(businessName)
+                fromAddr = "newmerchant@tivly.com"
+                body = "%s from %s, %s, just requested more information. Email %s at %s" % (str(businessName),str(city), str(state), str(signerName), str(email))
+                kevemail = "KFishner@gmail.com"
+                messages = []
+            except Exception as e:
+                print str(e)
             
             try:
                 messages.append((subject, body, fromAddr, [kevemail.encode('ascii')]))
