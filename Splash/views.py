@@ -80,7 +80,7 @@ def merchantsignup(request):
             try:
                 msf = MerchantSignUpForm(phone = phone,name = name,restaurantName = resname, city = city, state = state, street = address,zip = zipcode, email = email, message = message)
                 msf.save()
-                subject = "New Merchant Info: %s" % str(businessName)
+                subject = "New Merchant Info: %s" % str(resname)
                 fromAddr = "newmerchant@tivly.com"
                 body = "%s from %s, %s, just requested more information. Email %s at %s" % (str(resname),str(city), str(state), str(name), str(email))
                 kevemail = "KFishner@gmail.com"
