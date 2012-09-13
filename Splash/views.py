@@ -16,15 +16,36 @@ def contact(request):
     if request.method == 'POST':
         if not request.POST.get('name', ''):
             errors.append('Enter a name please')
+        else:
+            name = request.POST.get('name', '')
         if request.POST.get('email') and '@' not in request.POST['email']:
             errors.append('Enter a valid e-mail address.')
+        else:
+            email = request.POST.get('email')
         if not request.POST.get('message', ''):
             errors.append('Enter a message.')
+        else:
+            message = request.POST.get('message')
             
         if not errors:
             popup = True
-            cuf = ContactUsForm(name = request.POST.get('name'), email = request.POST.get('email'), message = request.POST.get('message'))
+            cuf = ContactUsForm(name = name, email = email, message = message)
             cuf.save()
+            subject = "New contact us request: %s" % str(name)
+            fromAddr = "newcontactus@tivly.com"
+            body = "%s just contacted us. \n\nMessage:\n\n==========================\n\n%s\n\n==========================\n\n Email them at %s" % (str(name), str(message), str(email))
+            kevemail = "KFishner@gmail.com"
+            messages = []
+            
+            try:
+                messages.append((subject, body, fromAddr, [kevemail.encode('ascii')]))
+                messages = tuple(messages)
+                #print messages
+                print "sending kevin messages"  
+                send_mass_mail(messages)
+                print "message sent, exiting"
+            except Exception as e:
+                print str(e)
             return render_to_response('splash_contact.html', locals(),context_instance= RequestContext(request))
     return render_to_response('splash_contact.html',locals(),context_instance= RequestContext(request))
 
