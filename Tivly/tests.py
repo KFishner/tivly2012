@@ -21,6 +21,7 @@ from django.http import HttpResponse
 from googlemaps import GoogleMaps
 import time
 request = {}
+
 #storeID ='cFHuUBk9qSCM'
 #bID = 'l5sxg80QSa7O'
 #appid = 'NLWgAaWVclvK'
@@ -33,7 +34,8 @@ request = {}
 #request = {}
 #values = {'card_token':ctoken,'event_type':'settlement','amount':'2000','business_id':bID}
 #############################################
-csid = '2YIKLB'
+csid = 'XE6AN1'
+print getAUser(csid).read()
 #deleteAUser(csid)
 #response = HttpResponse()
 #response.set_cookie('csID', csid)
@@ -131,8 +133,10 @@ csid = '2YIKLB'
 #hashed = hmac.new(key, raw, sha1)
 #print '0x'+hashed.hexdigest()
 #print getAUser('XE6AN1').read()
-reward = Rewards.objects.filter(rID = 123457)[0]
-if reward.businessID == "l5sxg80QSa7O":
-    print 'hello'
+
+#
+#reward = Rewards.objects.filter(rID = 123457)[0]
+#if reward.businessID == "l5sxg80QSa7O":
+#    print 'hello'
 
     
