@@ -2,6 +2,7 @@ from web1 import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from Management import IDGenerator
+from django.core.mail import *
 from CardSpringActions import deleteAUser
 from dateutil import parser
 from django.shortcuts import redirect
