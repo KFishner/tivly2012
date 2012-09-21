@@ -46,7 +46,20 @@
 {%block content%}
 <!-- START MAIN CONTAINER -->
 <div class="container">
-		    <h1 class="page-header" style="font-size:40px; color:#333333; font-weight: bolder">Campaign Builder</h1>
+
+        
+<br class="clear">        
+<div id="tabs" style="width:94%; display:block;margin-left:auto;margin-right:auto;">
+    <ul>
+    <li><a href="#tabs-1" style="font-size: 20px">Campaign Builder</a></li>
+    <li><a href="#tabs-2" style="font-size: 20px">Analytics</a></li>
+    <li><a href="#tabs-3" style="font-size: 20px">Referral Sources</a></li>
+    <li><a href="#tabs-4" style="font-size: 20px">Customer Management</a></li>
+    <li><a href="#tabs-5" style="font-size: 20px">Business Info</a></li>
+    <li><a href="#tabs-6" style="font-size: 20px">Account</a></li>
+    </ul>
+        <div id="tabs-1">
+	<h1 class="page-header" style="font-size:40px; color:#333333; font-weight: bolder;font-style: none;">Campaign Builder</h1>
 		<table>
 		    <tr style="background-color: #333;color:white">
 			<td style="width:70%;font-size:30px; padding:8px 0px 0px 8px;border:1px solid #444">Condition</td>
@@ -65,17 +78,8 @@
 			<td style="font-size:24px;padding: 8px;border:1px solid #444">Get $75 Off</td>
 		    </tr>
 		</table>
-        
-<br class="clear">        
-<div id="tabs" style="width:94%; display:block;margin-left:auto;margin-right:auto;">
-    <ul>
-    <li><a href="#tabs-1" style="font-size: 20px">Analytics</a></li>
-    <li><a href="#tabs-2" style="font-size: 20px">Referral Sources</a></li>
-    <li><a href="#tabs-3" style="font-size: 20px">Customer Management</a></li>
-    <li><a href="#tabs-4" style="font-size: 20px">Business Info</a></li>
-    <li><a href="#tabs-5" style="font-size: 20px">Account</a></li>
-    </ul>
-        <div id="tabs-1">
+	</div>
+        <div id="tabs-2">
 
 	    
 	    <div style="padding-top: 20px; width:48%; display:block;margin-left: 0px;margin-right: 0px">
@@ -193,7 +197,7 @@
 		
 	    </table>
 	</div>	
-        <div id="tabs-2">
+        <div id="tabs-3">
 	<div>
 	    <div id="accordion" style="font-size:18px">
 		<h3><a href="#"></a></h3>
@@ -292,13 +296,13 @@
 	</div>
 	<br class="clear" />
 	</div>
-        <div id="tabs-3">
+        <div id="tabs-4">
 		<h2 style="color:#222;display: inline-block; float:left;font-size:48px">Customers</h2>
 		<h2 style="color:#222; float:left;font-size:48px;margin-left:50px">120</h2>
 		<br style="clear:both">
 		<table>
 		    <tr>
-			<td style="font-size:24px; padding:8px;background: #222;color:white"><strong>Reward</strong></td>
+			<td style="font-size:24px; padding:8px;background: #333;color:white"><strong>Reward</strong></td>
 			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Details</strong></td>
 			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Received</strong></td>
 			<td style="width:70%; font-size:24px;padding: 8px;text-align: right;background: #222;color:white"><strong>Redeemed</strong></td>
@@ -323,7 +327,7 @@
 		    </tr>
 		</table>
 		</div>
-        <div id="tabs-4">
+        <div id="tabs-5">
 	    <div class="grid onehalf" style="border-bottom:1px dotted gray">
 		<img src="{{STATIC_URL}}images/stores/tivly.png" />
 	    </div>
@@ -395,7 +399,7 @@
 	    <br class="clear" />
 	    <br class="clear" />
 	</div>
-	<div id="tabs-5">
+	<div id="tabs-6">
 	    <table>
 		    <tr>
 			<td style="width:90%; font-size:40px; padding:8px;">Payment Due</td>
