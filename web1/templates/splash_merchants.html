@@ -1,7 +1,11 @@
 {%extends 'splash_base.html'%}
 
 {%block title%}Merchants - Tivly{%endblock%}
-
+<style>
+    td{
+	border:1px solid #333;
+    }
+</style>
 {%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("Merchant Page Visited")
@@ -23,20 +27,20 @@
 	    <h1 class="page-header" style="font-size:40px; color:#333333; font-weight: bolder">Campaign Builder</h1>
 		<table>
 		    <tr style="background-color: #333;color:white">
-			<td>Condition</td>
-			<td>Reward</td>
+			<td style="width:70%;font-size:24px; padding:8px;">Condition</td>
+			<td style="font-size:24px;padding: 8px;">Reward</td>
 		    </tr>
 		    <tr>
 			<td style="width:70%;font-size:24px; padding:8px;">First-Time Visit</td>
-			<td style="font-size:24px;padding: 8px;text-align: right;">Get 10% Off</td>
+			<td style="font-size:24px;padding: 8px;">Get 10% Off</td>
 		    </tr>
 		    <tr>
 			<td style="width:70%;font-size:24px;padding: 8px;">When you refer 3 friends</td>
-			<td style="font-size:24px;padding: 8px;text-align: right;">Get $25 Off</td>
+			<td style="font-size:24px;padding: 8px;">Get $25 Off</td>
 		    </tr>
 		    <tr>
 			<td style="width:70%;font-size:24px;padding: 8px;">When you refer 8 friends</td>
-			<td style="font-size:24px;padding: 8px;text-align: right;">Get $75 Off</td>
+			<td style="font-size:24px;padding: 8px;">Get $75 Off</td>
 		    </tr>
 		</table>
     
