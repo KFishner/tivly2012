@@ -7,7 +7,7 @@ body{
 	margin:0px;
 	padding:0px;
 	font-size:12px;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-family:Arial,Helvetica,sans-serif;
 	font-weight:normal;
 	color:#444444;
 }
@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6{
 h1{
 	font-size:30px;
 	font-weight:normal;
-	font-family:arial, "Times New Roman", Times, serif;
+	font-family:Arial,Helvetica,sans-serif;
 	font-style:italic;
 }
 
@@ -123,7 +123,7 @@ pre p, code p{
 blockquote{
 	padding:15px;
 	border:1px solid #dddddd;
-	font-family:arial, "Times New Roman", Times, serif;
+	font-family:Arial,Helvetica,sans-serif;
 	font-style:italic;
 	margin:0 0 20px 0;
 	font-size:18px;
@@ -398,7 +398,7 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 
 .slide h4{
 	font-weight:normal;
-	font-family:arial, "Times New Roman", Times, serif;
+	font-family:Arial,Helvetica,sans-serif;
 	font-style:italic;
 	font-size:18px;
 	margin-bottom:10px;
