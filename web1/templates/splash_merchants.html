@@ -1,6 +1,22 @@
 {%extends 'splash_base.html'%}
 
 {%block title%}Merchants - Tivly{%endblock%}
+{%block extraHead%} <meta name="google-site-verification" content="kKhNkhNGqjYuNXW_UtOZyLhg1_JSIdwlOyYxP7W738U" />
+{%endblock%}
+
+{%block css%}
+	<link href="{{ STATIC_URL }}css/jquery.fancybox.css" rel="stylesheet"
+		type="text/css" media="screen" />
+{%endblock%}
+
+{%block js%}
+    <script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/superfish.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.color.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/slides.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
 <style>
     td{
 	border:1px solid #333;
@@ -13,7 +29,7 @@
 {%endblock%}
 
 {%block content%}
-<!-- START MAIN CONTAINER -->
+<!-- START SLIDER -->
 <div class="slider-wrapper">
     
 
@@ -74,7 +90,7 @@
         
     <br class="clear" />
     
-</div><!-- END MAIN CONTAINER -->
+</div><!-- END SlIDER -->
 <!-- START MAIN CONTAINER -->
 <div class="container">
 <br class="clear" style="line-height: 60px"/>
