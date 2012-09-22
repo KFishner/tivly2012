@@ -44,12 +44,9 @@
             <!-- start slide -->
             <div class="slide" style="padding:40px 0px 0px 0px">
             
-            	
-                <div class="cloud-container">
-                    <div class="cloud-icons"></div>
-                    <img src="{{ STATIC_URL }}splash_images/app-cloud.png" alt="app cloud" class="app-cloud" />
-				</div>
-                
+	        <h1 class="page-header search" style="font-size:34px; padding:10px 0px 10px 0px;">Do you know if your <span style="color:#ff9966">social media campaigns</span> are <span style="color:#ff9966">profitable?</span></h1>
+		<h1 class="page-header star" style="font-size:34px; padding:10px 0px 10px 0px;"><span style="font-size: 40px">With <span style="color:#0099cc">Tivly</span>, they will be. </span><br /><b>Monetize</b>, <b>Measure</b>, and <b>Amplify</b> your <span style="color:#0099cc">social media.</span></h1>
+		
                 <br class="clear" />
                 
 			</div><!-- end slide -->
@@ -59,26 +56,114 @@
             <!-- start slide -->
             <div class="slide">
                         
-                <div class="grid onehalf">
-                
-                  <h2 class="text-replace">Share all your favorite stores from<span style="color:#ff9966"> one easy place</span></h2>
-                    
-                    <p class="justify">The more you share, the more rewards you and your friends get! A 10% discount is sent with every recommendation and <strong>automatically loaded to your friends' credit card</strong> when they sign up. When a friend uses your recommendation, you get one point towards unique rewards of your own. Check out <strong style="color:#ff9966">screenshots</strong> to see how simple Tivly is. Free lunch has never been easier.</p>
-                    
-                    <p><strong>Go ahead! Click one of the images to the right, <em>you won't be disappointed!</em></strong></p>
-                                                                                
-                </div>
-                
-                <div class="grid onehalf last">
-                                
-                	<ul class="screenshots">
-                    	<li><a href="{{ STATIC_URL }}splash_images/screens/scmyfavorites.png" class="fancybox" title="Share all your favorite restaurants from one easy place" rel="screens"><img src="{{ STATIC_URL }}splash_images/screens/smallmyfavorites.png" alt="screen1" /><span></span></a></li>
-                    	<li><a href="{{ STATIC_URL }}splash_images/screens/scbaumehome.png" class="fancybox" title="Share via Facebook, Twitter, or email" rel="screens"><img src="{{ STATIC_URL }}splash_images/screens/smallbaumehome.png" alt="screen2" /><span></span></a></li>
-                    	<li><a href="{{ STATIC_URL }}splash_images/screens/scbaumeshare.png" class="fancybox" title="Follow your rewards at all locations" rel="screens"><img src="{{ STATIC_URL }}splash_images/screens/smallbaumeshare.png" alt="screen3" /><span></span></a></li>
-                    	<li><a href="{{ STATIC_URL }}splash_images/screens/screwards.png" class="fancybox" title="There is such thing as a free lunch" rel="screens"><img src="{{ STATIC_URL }}splash_images/screens/screwardss.png" alt="screen4" /><span></span></a></li>
-                    	</ul><br class="clear"/>
-                        
-                </div>
+        <div>
+	<h1 style="font-size:40px; color:#333333; font-weight: bolder;font-style:normal;padding-left:32px">Campaign Builder</h1>
+	<p style="margin:30px 0px 0px 32px; color:#333; font-size:30px;font-family: georgia">Business Name: <input style="position:relative;bottom:4px;" type="text" tabindex="1" size="22" value="" id="businessName" name="businessName" /></p>
+
+		<table style="width:55%;padding-left:32px">
+		    <tr style="background-color: #333;color:white">
+			<td style="width:60%;font-size:30px; padding:8px 0px 0px 8px;border:1px solid #444">Condition</td>
+			<td style="font-size:30px;padding:8px 0px 0px 8px;border:1px solid #444">Reward</td>
+		    </tr>
+		    <tr>
+			<td style="width:60%;font-size:24px; padding:8px;border:1px solid #444">First-Time Visit</td>
+			<td style="font-size:24px;padding: 8px;border:1px solid #444">Get
+			<select class="points1" name="points1" id="points1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+					<option value="40">40</option></select>
+					<select class="points1" name="points1" id="points1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">$</option>
+					<option value="02">%</option></select>
+					Off</td>
+		    </tr>
+		    <tr>
+			<td style="width:60%;font-size:24px;padding: 8px;border:1px solid #444">When you refer <select class="points1" name="points1" id="points1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option></select>	
+			friends</td>
+			<td style="font-size:24px;padding: 8px;border:1px solid #444">Get <select class="reward1" name="reward1" id="reward1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+					<option value="40">40</option></select>
+					<select class="points1" name="points1" id="points1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">$</option>
+					<option value="02">%</option></select>
+					Off</td>
+		    </tr>
+		    <tr>
+			<td style="width:60%;font-size:24px;padding: 8px;border:1px solid #444">When you refer <select class="points2" name="points2" id="points2" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option></select> friends</td>
+			<td style="font-size:24px;padding: 8px;border:1px solid #444">Get <select class="reward2" name="reward2" id="reward2" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">1</option>
+					<option value="02">2</option>
+					<option value="03">3</option>
+					<option value="04">4</option>
+					<option value="05">5</option>
+					<option value="06">6</option>
+					<option value="07">7</option>
+					<option value="08">8</option>
+					<option value="09">9</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20">20</option>
+					<option value="25">25</option>
+					<option value="30">30</option>
+					<option value="35">35</option>
+					<option value="40">40</option>
+					<option value="20">50</option>
+					<option value="25">60</option>
+					<option value="30">70</option>
+					<option value="35"></option>
+					</select>
+					<select class="points1" name="points1" id="points1" style="font-size: 50px;position: relative; bottom: 3px;">
+					<option value="01">$</option>
+					<option value="02">%</option></select>
+					Off</td>
+		    </tr>
+		</table>
+		<p style="display:inline-block;float:left; font-size:18px;margin-left:32px;">See this campaign posted to Facebook and Twitter</p><a href="#" class="classname" style="display: inline-block;float:left;">Show Me</a>
+	</div>
                 
             </div><!-- end slide -->
             
@@ -97,10 +182,7 @@
 <div class="container">
 <br class="clear" style="line-height: 60px"/>
 
-    <h1 class="page-header search" style="font-size:34px; padding:10px 0px 10px 0px;">Do you know if your <span style="color:#ff9966">social media campaigns</span> are <span style="color:#ff9966">profitable?</span></h1>
-    <h1 class="page-header star" style="font-size:34px; padding:10px 0px 10px 0px;"><span style="font-size: 40px">With <span style="color:#0099cc">Tivly</span>, they will be. </span><br /><b>Monetize</b>, <b>Measure</b>, and <b>Amplify</b> your <span style="color:#0099cc">social media.</span></h1>
 
-        <br class="clear" />
 	
     <h1 class="page-header" style="font-size:40px; color:#333333; font-weight: bolder">How Tivly works</h1>
     
