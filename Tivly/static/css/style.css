@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6{
 h1{
 	font-size:30px;
 	font-weight:normal;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:arial, "Times New Roman", Times, serif;
 }
 
 h2{
@@ -121,7 +121,7 @@ pre p, code p{
 blockquote{
 	padding:15px;
 	border:1px solid #dddddd;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:arial, "Times New Roman", Times, serif;
 	font-style:italic;
 	margin:0 0 20px 0;
 	font-size:18px;
@@ -395,7 +395,7 @@ h1.page-header.error{background:url(../images/mask.png) no-repeat 0 center scrol
 
 .slide h4{
 	font-weight:normal;
-	font-family:Georgia, "Times New Roman", Times, serif;
+	font-family:arial, "Times New Roman", Times, serif;
 	font-style:italic;
 	font-size:18px;
 	margin-bottom:10px;
