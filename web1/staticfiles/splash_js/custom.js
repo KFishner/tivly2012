@@ -71,7 +71,7 @@ $(document).ready(function(){
 		prev:'prev',
 		generatePagination:true,
 		autoHeight:true,
-		bigTarget:false,
+		bigTarget:true,
 		hoverPause:true,
 		width: 960,
 		//play: 3000
