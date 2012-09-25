@@ -47,12 +47,6 @@ $(".cclogin").fancybox({
 
 {%block extraHead%}
 <style>
-.grid.onethird:hover{
-		background-color:white;
-		box-shadow: none;
-                position:relative;
-		bottom:1px;
-        }
 .grid.onethird{
                 width:252px;
                 padding:0px;
@@ -65,8 +59,9 @@ $(".cclogin").fancybox({
                 box-shadow: none;
                 border:1px solid #777
 }
-.grid.onethird a:hover{
-                color: #e2e2e2;
+.grid.onethird a{
+		text-decoration: none;
+		font-size:24px;
 }
 .getofferb {
 	-moz-box-shadow:inset 0px 1px 0px 0px #a4e271;
@@ -88,8 +83,8 @@ $(".cclogin").fancybox({
 	padding:8px 24px;
 	text-decoration:none;
 	text-shadow:1px -1px 0px #528009;
-}.getofferb a{
-    text-decoration: none;
+	text-decoration: none;
+	margin: 0px 0px 10px 50px;
 }.getofferb:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77a809), color-stop(1, #89c403) );
 	background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% );
@@ -120,7 +115,7 @@ $(".cclogin").fancybox({
     <table>
 		<tr style="border:none">
 			{%for business,reward in businessList.items %}
-			<td>
+			<td style="border:none">
 				<div class="grid onethird" style="border:1px solid #d2d2d2">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
 						src="{{ business.pictureLocation }}"/></a> 
