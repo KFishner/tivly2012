@@ -89,7 +89,7 @@ $(".cclogin").fancybox({
     <br class="clear" /> 
     <table>
 		<tr style="border:none">
-			{%for reward,business in businessList.items %}
+			{%for business,reward in businessList.items %}
 			<td>
 				<div class="grid onethird" style="border:1px solid #d2d2d2">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
