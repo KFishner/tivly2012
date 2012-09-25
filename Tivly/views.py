@@ -359,7 +359,7 @@ def merchantInfo(request):
             popup = True
             print "\n\nIN MERCHANT INFO FORM\n\n"
             try:
-                msuf = MerchantInfoForm(merchantID = merchantID,businessName = businessName, amexSES = amexSES,address = address,zipCode = zipCode,city = city,state = state,phoneNumber = phoneNumber,email = email, signerName = signerName,signerTitle = signerTitle,date= datetime.now())
+                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = request.POST.get('amexSES'),address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),signerTitle = request.POST.get('signerTitle'),date= datetime.now())
                
                 msuf.save()
                 subject = "New Merchant Info: %s" % str(businessName)
@@ -380,7 +380,7 @@ def merchantInfo(request):
             except Exception as e:
                 print str(e)
             return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
-        return render_to_response('merchantInfo.html',{'errors': errors},context_instance= RequestContext(request))
+        return render_to_response('merchantInfo.html',{'errors': errors},locals(),context_instance= RequestContext(request))
     
 ######################################################################
 #####                   FLAT PAGES                               #####
