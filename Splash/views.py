@@ -7,6 +7,7 @@ from django.core.mail import *
 def home(request):
     URL = settings.URL
     FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_index.html',locals(),context_instance= RequestContext(request))
 
 def contact(request):
