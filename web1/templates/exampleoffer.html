@@ -88,21 +88,19 @@ xmlns:og="http://ogp.me/ns#"
     mixpanel.track("Signin Viewed")
 </script>
 
-<div class="container" style="position:relative; width:85%;box-shadow: 0px 0px 20px white;background:#111;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
+<div class="container" style="position:relative;box-shadow: 0px 0px 20px white;background:#111;margin-top:150px;display:block; margin-left:auto;margin-right:auto;">
     <br style="line-height: 30px" />
         <div class="grid onehalf" style="width:510px; display:inline-block;float:left;margin:0px">
             <iframe src="http://player.vimeo.com/video/48844972?byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         </div>
         <div class="grid onehalf last" style="width:320px;padding:0 5 0 5;display:inline-block;float:left">
-            <h3 style="font-size: 36px;text-align: center; padding: 0px 0px 10px 0px;border-bottom:2px dotted #333">You have {{introReward.description }} at {{ business.businessName }}</h3>
+            <h3 style="font-size: 36px;text-align: center; padding: 0px 0px 10px 0px;border-bottom:2px dotted #333">You have $10 Off at Demo Restaurant</h3>
                         <!-- start contact form -->
                 <h3 style="font-size: 30px;text-align: center; padding:0px 0px 5px 0px;margin:0px;">Load this reward to your payment card</h3>
                 <div style="display:block;margin-left:auto;margin-right: auto;">
                 <form id="contactform" method="POST" action="" style="display:inline-block;margin:5px 0px 0px 0px;">
-                        {%csrf_token%}
                     <h3 style="font-size: 18px;">
-                        Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name" onkeyup="SetTypeText(this.value)"/>
-                        <b id="cctype"></b> 
+                        Card Number <input class="card-number" style="border:2px solid gray" type="text" tabindex="1" size="16" value="" id="cnumber" name="name""/>
                     </h3>
                 <h3 style="font-size:18px;">Expiration Date: <select class="expiration-month" name="month" id="month">
                         <option value="01">01</option>
