@@ -12,6 +12,8 @@ def home(request):
 
 def contact(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     errors = []
     popup = False
     if request.method == 'POST':
@@ -52,10 +54,14 @@ def contact(request):
 
 def merchants(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_merchants.html',locals(), context_instance= RequestContext(request))
 
 def merchantsignup(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     errors = []
     popup = False
     FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
@@ -125,22 +131,32 @@ def merchantsignup(request):
 
 def faq(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_faq.html',locals(),context_instance= RequestContext(request))
 
 def aboutus(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_aboutus.html',locals(),context_instance= RequestContext(request))
 
 def jobs(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_jobs.html',locals(),context_instance= RequestContext(request))
 
 def privacy(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_privacy.html',locals(),context_instance= RequestContext(request))
 
 def userterms(request):
     URL = settings.URL
+    FACEBOOK_API_ID = settings.FACEBOOK_APP_ID
+    FACEBOOK_REDIRECT = settings.FACEBOOK_REDIRECT_URI
     return render_to_response('splash_userterms.html',locals(),context_instance= RequestContext(request))
 
     
