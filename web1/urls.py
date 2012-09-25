@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.conf.urls import patterns,include,url
 from Tivly.views import login, privacy,userterms,faq,merchantInfo,accountInfo,aboutUs,howto,jobs,businessDashboard,exampleoffer,contact,deleteAccount,logout,home,callback,newDiscoveries,recommendation,businessInfo,getOffer, youSure
 from django.views.decorators.csrf import csrf_exempt
