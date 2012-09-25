@@ -378,9 +378,9 @@ def merchantInfo(request):
                 print "message sent, exiting"
             except Exception as e:
                 print str(e)
-            return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
+            return render_to_response('merchantInfo.html',locals(), context_instance= RequestContext(request))
         
-    return render_to_response('merchantInfo.html',{'errors': errors},locals(),context_instance= RequestContext(request))
+    return render_to_response('merchantInfo.html',locals(),context_instance= RequestContext(request))
     
 ######################################################################
 #####                   FLAT PAGES                               #####
