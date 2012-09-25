@@ -36,50 +36,50 @@
             {% endfor %}
         </ul>
     {% endif %}
-    	<h4>Send A Message</h4>
+    	<h4>Get the Full Tivly Details</h4>
         
-    	<p style="color:#3c6">We'll get back to you within 24 hours with next steps</p>
+    	<p style="color:#3c6">We'll get back to you within 24 hours</p>
     	
         <!-- start contact form -->
         <form id="contactform" method="post" action="">
         {%csrf_token%}
             <p>
-                <input type="text" tabindex="1" size="22" value="" id="name" name="name" />
-                <label for="name">Name *</label>
+                <input style="background:#eee" type="text" tabindex="1" size="22" value="" id="name" name="name" />
+                <label style="color:#333; font-weight: bolder" for="name">Name *</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="restaurant" />
-                <label for="restaurant">Business Name *</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="restaurant" />
+                <label style="color:#333; font-weight: bolder" for="restaurant">Business Name *</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="email" />
-                <label for="email">Email Address*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="email" />
+                <label style="color:#333; font-weight: bolder" for="email">Email Address*</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="phone" />
-                <label for="phone">Phone Number (mobile)*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="phone" />
+                <label style="color:#333; font-weight: bolder" for="phone">Phone Number (mobile)*</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="address" />
-                <label for="address">Street Address*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="address" />
+                <label style="color:#333; font-weight: bolder" for="address">Street Address*</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="city" />
-                <label for="city">City*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="city" />
+                <label style="color:#333; font-weight: bolder" for="city">City*</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="state" />
-                <label for="state">State*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="state" />
+                <label style="color:#333; font-weight: bolder" for="state">State*</label>
             </p>
             <p>
-                <input type="text" tabindex="2" size="22" value="" id="email" name="zip" />
-                <label for="zip">Zip Code*</label>
+                <input style="background:#eee" type="text" tabindex="2" size="22" value="" id="email" name="zip" />
+                <label style="color:#333; font-weight: bolder" for="zip">Zip Code*</label>
             </p>
             <p>
                 <textarea tabindex="4" rows="6" cols="58" id="message" name="message"></textarea>
             </p>
             <p>
-                <input type="submit" value="Send Message" tabindex="5" id="submit" name="submit" />
+                <input type="submit" value="Submit" tabindex="5" id="submit" name="submit" />
             </p>
         </form><!-- end contact form -->
     
