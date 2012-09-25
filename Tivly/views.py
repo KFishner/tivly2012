@@ -428,7 +428,7 @@ def howto(request,number):
 def businessDashboard(request):
     return render_to_response('bizdash.html',context_instance= RequestContext(request))
 
-def exampleoffer(request):
+def exampleOffer(request):
     return render_to_response('exampleoffer.html',context_instance= RequestContext(request))
 
 def directory(request):
