@@ -429,7 +429,14 @@ def businessDashboard(request):
     return render_to_response('bizdash.html',context_instance= RequestContext(request))
 
 def directory(request):
-    return render_to_response('directory.html',context_instance = RequestContext(request))
+    URL = settings.URL
+    businesses = Businesses.objects.filter()
+    businessList = {}
+    for business in businesses:
+        introreward = Rewards.objects.filter(businessID = business.businessID, level = str(0))[0]
+        businessList[business] = introreward
+        
+    return render_to_response('directory.html',locals(),context_instance = RequestContext(request))
 
 def privacy(request):
     URL = settings.URL

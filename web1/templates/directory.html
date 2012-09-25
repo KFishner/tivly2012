@@ -83,59 +83,27 @@ $(".cclogin").fancybox({
 <div class="container">
         
 <br class="clear">
-
 <h4>Location</h4>
 <br class="clear">
 <h4>Sort</h4>
-    <br class="clear" >
+    <br class="clear" /> 
     <table>
-        <tr>
-            <td>
-    <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baumehome.html"><img src="{{STATIC_URL}}images/stores/baume.jpg"/></a>
-        <h4 style="margin:10px 0px 0px 20px; font-weight: bold">$10 Off</h4>
-        <h6 style="margin:0px 0px 10px 20px">Palo Alto, CA</h6>
+		<tr style="border:none">
+			{%for reward,business in businessList.items %}
+			<td>
+				<div class="grid onethird" style="border:1px solid #d2d2d2">
+					<a href="{{ URL }}/business/{{ business.website }}"><img
+						src="{{ business.pictureLocation }}" style="margin-top:4px;"/></a> 
+						 <h4 style="margin:10px 0px 0px 20px; font-weight: bold">{{ reward.description }}</h4>
+        <h6 style="margin:0px 0px 10px 20px">{{ business.city }}</h6>
 	<a href="baumeshare.html" style="display:block;margin-left:20px;width:212px;background-color:#3c6;border:1px solid green;text-align:center;text-decoration: none;font-size:22px;border-radius: 4px;margin-bottom:10px">Get Reward</a>
-    </div>
-            </td>
-            <td>
-    <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/pampas.png"/></a>
-        <h6>Palo Alto, CA</h6>
-	<a href="baumerecommend.html">Recommend</a>
-    </div>
-            </td>
-            <td>
-    <div class="grid onethird last" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/jingjing.png"/></a>
-	<h6>Palo Alto, CA</h6>
-	<a href="baumerecommend.html">Recommend</a>
-    </div>
-            </td>
-</tr>
-<tr>
-    <td>
-    <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/evvia.png"/></a>
-	<h6>Palo Alto, CA</h6>
-	<a href="baumerecommend.html">Recommend</a>
-    </div>
-    </td>
-    <td>
-    <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/osteria.png"/></a>
-	<h6>Palo Alto, CA</h6>
-	<a href="baumerecommend.html">Recommend</a>
-    </div>
-    </td>
-    <td>
-    <div class="grid onethird last" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/tamarine.png"/></a>
-	<h6>Palo Alto, CA</h6>
-	<a href="baumerecommend.html">Recommend</a>
-    </div>
-    </td>
-</tr>
-</table>
+				</div>
+			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
+		</tr>
+		<tr>
+		{% endif %} 
+		{% endfor %}
+		</tr>
+	</table>
     <br class="clear" />
 {%endblock%}
