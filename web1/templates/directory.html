@@ -1,16 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+{% extends 'base.html'%}
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Directory</title>
-    <link href="images/favicon.ico" rel="shortcut icon">
+{%block title%}Directory{%block title%}
 
-    
+{%block css%}
     <!-- Include CSS -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />
+{%endblock%}
 
+{%block js%}
     <!-- Include Scripts -->	
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/superfish.js"></script>
@@ -18,27 +16,8 @@
     <script type="text/javascript" src="js/slides.min.js"></script>
     <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>	
     <script type="text/javascript" src="js/custom.js"></script>	
-
-<!-- Google Analytics -->
-    <script type="text/javascript">
     
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-32882337-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-<!-- start Mixpanel -->
-    <script type="text/javascript">(function(c,a){var b,d,h,e;b=c.createElement("script");b.type="text/javascript";b.async=!0;b.src=("https:"===c.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d);a._i=[];a.init=function(b,c,f){function d(a,b){var c=b.split(".");2==c.length&&(a=a[c[0]],b=c[1]);a[b]=function(){a.push([b].concat(Array.prototype.slice.call(arguments,0)))}}var g=a;"undefined"!==typeof f?g=
-    a[f]=[]:f="mixpanel";g.people=g.people||[];h="disable track track_pageview track_links track_forms register register_once unregister identify name_tag set_config people.set people.increment".split(" ");for(e=0;e<h.length;e++)d(g,h[e]);a._i.push([b,c,f])};a.__SV=1.1;window.mixpanel=a})(document,window.mixpanel||[]);
-    mixpanel.init("7ae3c4e4fd6abd8b7a861ee096120052");
-    </script>
-<!-- end Mixpanel -->
-<!-- Add Fancybox Open UI -->
+    <!-- Add Fancybox Open UI -->
 <script>
 $(document).ready(function() {
 $(".cclogin").fancybox({ 
@@ -64,7 +43,9 @@ $(".cclogin").fancybox({
 }); 
     //$(".cclogin").trigger('click');
 });</script>
+{%endblock%}
 
+{%block extraHead%}
 <style>
 .grid.onethird:hover{
 		background-color:white;
@@ -88,40 +69,16 @@ $(".cclogin").fancybox({
                 color: #e2e2e2;
 }
 </style>
-</head>
+{%endblock%}
 
-<body>
+{%block MixPanel%}
 <script type="text/javascript">
     mixpanel.track("My Favorites Viewed")
 </script>
-
-<!-- START HEADER -->
-<div id="header">
-
-	<div class="container">
-    
-    
-    	<!-- start primary nav -->
-        <div class="header-right">
-        
-            <div id="primary-nav" class="header-right">
-            
-
-                
-            </div>
-        
-        </div><!-- end nav -->
-        
-        <!-- LOGO -->        
-    	<a href="myfavorites.html" id="logo"><img src="images/logo.png" border="0" alt="WhiteBox Premium App Site Template" /></a>
-        
-        <br class="clear" />
-        
-    </div>
-    
-</div><!-- END HEADER -->
+{%endblock%}
 
 
+{%block content%}
 <!-- START MAIN CONTAINER -->
 <div class="container">
         
@@ -135,7 +92,7 @@ $(".cclogin").fancybox({
         <tr>
             <td>
     <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baumehome.html"><img src="images/stores/baume.png"/></a>
+	<a href="baumehome.html"><img src="{{STATIC_URL}}images/stores/baume.png"/></a>
         <h4 style="margin:10px 0px 0px 20px; font-weight: bold">$10 Off</h4>
         <h6 style="margin:0px 0px 10px 20px">Palo Alto, CA</h6>
 	<a href="baumeshare.html" style="display:block;margin-left:20px;width:212px;background-color:#3c6;border:1px solid green;text-align:center;text-decoration: none;font-size:22px;border-radius: 4px;margin-bottom:10px">Get Reward</a>
@@ -143,14 +100,14 @@ $(".cclogin").fancybox({
             </td>
             <td>
     <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="images/stores/pampas.png"/></a>
+	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/pampas.png"/></a>
         <h6>Palo Alto, CA</h6>
 	<a href="baumerecommend.html">Recommend</a>
     </div>
             </td>
             <td>
     <div class="grid onethird last" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="images/stores/jingjing.png"/></a>
+	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/jingjing.png"/></a>
 	<h6>Palo Alto, CA</h6>
 	<a href="baumerecommend.html">Recommend</a>
     </div>
@@ -159,21 +116,21 @@ $(".cclogin").fancybox({
 <tr>
     <td>
     <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="images/stores/evvia.png"/></a>
+	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/evvia.png"/></a>
 	<h6>Palo Alto, CA</h6>
 	<a href="baumerecommend.html">Recommend</a>
     </div>
     </td>
     <td>
     <div class="grid onethird" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="images/stores/osteria.png"/></a>
+	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/osteria.png"/></a>
 	<h6>Palo Alto, CA</h6>
 	<a href="baumerecommend.html">Recommend</a>
     </div>
     </td>
     <td>
     <div class="grid onethird last" style="border:1px solid #d2d2d2">
-	<a href="baume.html"><img src="images/stores/tamarine.png"/></a>
+	<a href="baume.html"><img src="{{STATIC_URL}}images/stores/tamarine.png"/></a>
 	<h6>Palo Alto, CA</h6>
 	<a href="baumerecommend.html">Recommend</a>
     </div>
@@ -181,34 +138,4 @@ $(".cclogin").fancybox({
 </tr>
 </table>
     <br class="clear" />
-
-    
-</div><!-- END MAIN CONTAINER -->
-
-
-
-<!-- START FOOTER -->
-<div id="footer">
-
-	<div class="container">
-    
-    
-
-    
-    	<div id="footer-right">
-        
-            <a href="http://www.facebook.com/gotivly" target="_blank" class="social facebook">Fan Us</a> <a href="https://twitter.com/tivlytweets" target="_blank" class="social twitter">Follow Us</a><br /><a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Mobile Analytics" /></a>
-            
-        </div>
-    
-		<a id="top" href="#">Top</a> | <a href="aboutus.html">About Us</a> | <a href="jobs.html">Jobs</a> | <a href="contact.html">Contact</a><br />
-        &copy 2012 tivly Corporation<br />
-        
-        <br class="clear" />
-    
-  </div>
-    
-</div><!-- END FOOTER -->
-
-</body>
-</html>
+{%endblock%}
