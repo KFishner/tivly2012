@@ -359,8 +359,7 @@ def merchantInfo(request):
             popup = True
             print "\n\nIN MERCHANT INFO FORM\n\n"
             try:
-                msuf = MerchantInfoForm(merchantID = merchantID,businessName = businessName, amexSES = amexSES,address = address,zipCode = zipCode,city = city,state = state,phoneNumber = phoneNumber,email = email, signerName = signerName,signerTitle = signerTitle,date= datetime.now())
-               
+                msuf = MerchantInfoForm(merchantID = request.POST.get('merchantID'),businessName = request.POST.get('businessName'), amexSES = request.POST.get('amexSES'),address = request.POST.get('address'),zipCode = request.POST.get('zipCode'),city = request.POST.get('city'),state = request.POST.get('state'),phoneNumber = request.POST.get('phoneNumber'),email = request.POST.get('email'), signerName = request.POST.get('signerName'),signerTitle = request.POST.get('signerTitle'),date= datetime.now())
                 msuf.save()
                 subject = "New Merchant Info: %s" % str(businessName)
                 fromAddr = "newmerchant@tivly.com"
@@ -379,8 +378,9 @@ def merchantInfo(request):
                 print "message sent, exiting"
             except Exception as e:
                 print str(e)
-            return render_to_response('merchantInfo.html', locals(),context_instance= RequestContext(request))
-        return render_to_response('merchantInfo.html',{'errors': errors},context_instance= RequestContext(request))
+            return render_to_response('merchantInfo.html',locals(), context_instance= RequestContext(request))
+        
+    return render_to_response('merchantInfo.html',locals(),context_instance= RequestContext(request))
     
 ######################################################################
 #####                   FLAT PAGES                               #####
@@ -428,8 +428,21 @@ def howto(request,number):
 def businessDashboard(request):
     return render_to_response('bizdash.html',context_instance= RequestContext(request))
 
+<<<<<<< HEAD
 def exampleoffer(request):
     return render_to_response('exampleoffer.html',context_instance= RequestContext(request))
+=======
+def directory(request):
+    URL = settings.URL
+    csid = request.COOKIES.get('csID')
+    businesses = Businesses.objects.filter()
+    businessList = {}
+    for business in businesses:
+        introreward = Rewards.objects.filter(businessID = business.businessID, level = str(0))[0]
+        businessList[business] = introreward
+        
+    return render_to_response('directory.html',locals(),context_instance = RequestContext(request))
+>>>>>>> 36f38018d2e9866b863f11435cf8c5548347d516
 
 def privacy(request):
     URL = settings.URL
