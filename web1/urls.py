@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     url(r'^privacy/', privacy),
     url(r'^userterms/', userterms),
     url(r'^faq/', faq),
-    url(r'^directory',directory)
+    url(r'^directory',directory),
     )
 
 urlpatterns += patterns('',
