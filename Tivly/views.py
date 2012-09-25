@@ -428,6 +428,9 @@ def howto(request,number):
 def businessDashboard(request):
     return render_to_response('bizdash.html',context_instance= RequestContext(request))
 
+def exampleoffer(request):
+    return render_to_response('exampleoffer.html',context_instance= RequestContext(request))
+=======
 def directory(request):
     URL = settings.URL
     csid = request.COOKIES.get('csID')
@@ -438,6 +441,7 @@ def directory(request):
         businessList[business] = introreward
         
     return render_to_response('directory.html',locals(),context_instance = RequestContext(request))
+>>>>>>> 36f38018d2e9866b863f11435cf8c5548347d516
 
 def privacy(request):
     URL = settings.URL
