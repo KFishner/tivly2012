@@ -96,7 +96,7 @@ $(".cclogin").fancybox({
 						src="{{ business.pictureLocation }}" style="margin-top:4px;"/></a> 
 						 <h4 style="margin:10px 0px 0px 20px; font-weight: bold">{{ reward.description }}</h4>
         <h6 style="margin:0px 0px 10px 20px">{{ business.city }}</h6>
-	<a href="baumeshare.html" style="display:block;margin-left:20px;width:212px;background-color:#3c6;border:1px solid green;text-align:center;text-decoration: none;font-size:22px;border-radius: 4px;margin-bottom:10px">Get Reward</a>
+	<a href="{{ URL }}/offer/{{ csID }}/{{ reward.rID }}/" style="display:block;margin-left:20px;width:212px;background-color:#3c6;border:1px solid green;text-align:center;text-decoration: none;font-size:22px;border-radius: 4px;margin-bottom:10px">Get Reward</a>
 				</div>
 			</td> {%if not forloop.last and forloop.count|divisibleby:"3"%}
 		</tr>

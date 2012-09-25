@@ -430,6 +430,7 @@ def businessDashboard(request):
 
 def directory(request):
     URL = settings.URL
+    csid = request.COOKIES.get('csID')
     businesses = Businesses.objects.filter()
     businessList = {}
     for business in businesses:
