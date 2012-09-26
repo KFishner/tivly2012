@@ -20,7 +20,7 @@
 <script>
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
-	document.getElementsByTagName('span').innerHTML = userInput;
+	document.getElementsById('bizName').innerHTML = userInput;
 }
 </script>
 
@@ -143,7 +143,7 @@ function changeText(){
 		<a name="anchor2" style="border:none"><div style="width:100%;margin-left:0px; border-bottom:1px solid #E5E5E5">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:32px;height: 32px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
-				<p class="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
+				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
 				<p style="margin:0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Sept 21</p>
 			</div>
 			</div></a>
@@ -151,14 +151,16 @@ function changeText(){
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;margin-left:0px;">
 			<p style="margin:0px;padding:0px;color:#333333;font-size: 15px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">
-				Come in to Get $10 Off at <span id="bizName">Demo Restaurant</span>! <a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
+				Come in to Get $10 Off<a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
 			</p>
 		</div>
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;padding-left:8px;border-left:2px solid #C0C9DD;padding:15px 0px 15px 8px;">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefrontw.png" style="width:90px;height: 70px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
+				<!-- hidden until I can change bizname
 				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
+				-->
 				<p style="margin:5px 0px 0px 0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Your business information posted here</p>
 			</div>
 			</div>
@@ -173,6 +175,8 @@ function changeText(){
 		</div>
 	    </div>
 	    <br style="clear:both;">
+	    <!--Twitter Post, hidden until I can figure out how to change all the bizname with user input
+	    
 	    <div style="display:inline-block;border:1px solid #E8E8E8;border-radius: 3px;margin-top:10px;padding:9px 12px">
 		<div style="margin:0px 15px 0px 0px;padding:0px;display:inline-block;float:left"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:48px;height: 48px;display:inline-block;float:left;border-radius: 2px;"/></div>
 		<div style="display:inline-block;float:left;width:290px">
@@ -195,7 +199,7 @@ function changeText(){
 		    <p style="font-size:12px; color:#999;line-height:16px;font-family: Helvetica Neue,Arial,sans-serif;margin:0px">16m</p>
 		</div>
 		
-	    </div>
+	    </div> -->
 	    </div>
 	    <div style="display:inline-block;float:left; width:400px;margin-left:50px;margin-top:80px;text-align: center;">
 		<h2 style="color:#777;font-size: 30px;">Click a Tivly link for <br> the customer's experience</h2>
