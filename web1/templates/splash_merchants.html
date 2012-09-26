@@ -20,7 +20,7 @@
 <script>
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
-	document.getElementByClassName('bizName').innerHTML = userInput;
+	document.getElementById('bizName').innerHTML = userInput;
 }
 </script>
 
@@ -151,7 +151,7 @@ function changeText(){
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;margin-left:0px;">
 			<p style="margin:0px;padding:0px;color:#333333;font-size: 15px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">
-				Come in to Get $10 Off at <span class="bizName">Demo Restaurant</span>! <a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
+				Come in to Get $10 Off at <span id="bizName">Demo Restaurant</span>! <a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
 			</p>
 		</div>
 		<br style="clear:both;line-height: 15px;">
