@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/slides.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
+
 <script>
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
@@ -85,7 +86,14 @@ function changeValue2(){
 		$( "#tabs" ).tabs();
 	});
 	</script>
-	
+<script>
+	$(function() {
+		$( "#accordion" ).accordion({
+			fillSpace: true
+		});
+	});
+
+	</script>
 {%endblock%}
 
 {%block content%}
