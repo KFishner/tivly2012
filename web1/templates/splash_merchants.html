@@ -20,7 +20,7 @@
 <script type="text/javascript">
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
-	document.getElementById('bizName').innerHTML = userInput;
+	document.getElementByClassName('bizName').innerHTML = userInput;
 }
 </script>
 <style>
@@ -107,7 +107,7 @@ function changeText(){
 	    <p style="font-size:36px;color:#333; display:inline-block;float:left;margin-top:10px;margin-left:10px">at</p>
 	    <input type="text" id='userInput' style="color:#ccc;font-size:30px;float:left; margin-left:15px;width:280px" value="Your Business" onfocus="this.value = this.value=='Your Business' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = 'Your Business' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>
 	    <span style="color:#3c6;font-size:60px;line-height:30px">*</span>
-	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="Contact" onclick='changeText()' style="display:inline-block;text-align: center">View Campaign</a></div>
+	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="Contact" onclick='changeText()' style="display:inline-block;text-align: center">Create Campaign</a></div>
 
 	</div>
 		<table style="width:590px;">
@@ -142,7 +142,7 @@ function changeText(){
 		<a name="anchor2" style="border:none"><div style="width:100%;margin-left:0px; border-bottom:1px solid #E5E5E5">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:32px;height: 32px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
-				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
+				<p class="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
 				<p style="margin:0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Sept 21</p>
 			</div>
 			</div></a>
@@ -150,14 +150,14 @@ function changeText(){
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;margin-left:0px;">
 			<p style="margin:0px;padding:0px;color:#333333;font-size: 15px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">
-				Come in to Get $10 Off at <span id="bizName">Demo Restaurant!</span> <a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
+				Come in to Get $10 Off at <span class="bizName">Demo Restaurant</span>! <a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
 			</p>
 		</div>
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;padding-left:8px;border-left:2px solid #C0C9DD;padding:15px 0px 15px 8px;">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefrontw.png" style="width:90px;height: 70px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
-				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
+				<p class="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
 				<p style="margin:5px 0px 0px 0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Your business information posted here</p>
 			</div>
 			</div>
@@ -175,11 +175,11 @@ function changeText(){
 	    <div style="display:inline-block;border:1px solid #E8E8E8;border-radius: 3px;margin-top:10px;padding:9px 12px">
 		<div style="margin:0px 15px 0px 0px;padding:0px;display:inline-block;float:left"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:48px;height: 48px;display:inline-block;float:left;border-radius: 2px;"/></div>
 		<div style="display:inline-block;float:left;width:290px">
-		    <p id="bizName" style="margin:0px;padding:0px;color:#333333;line-height:16px;font-size: 14px;font-weight: bolder;font-family: Helvetica Neue,Arial,sans-serif;display:inline-block;float:left">
+		    <p class="bizName" style="margin:0px;padding:0px;color:#333333;line-height:16px;font-size: 14px;font-weight: bolder;font-family: Helvetica Neue,Arial,sans-serif;display:inline-block;float:left">
 			Demo Restaurant 
 		    </p>
 		    <p style="margin:0px 0px 0px 4px;padding:0px;color:#999999;line-height:18px;font-size: 12px;font-family: Helvetica Neue,Arial,sans-serif;display:inline-block;float:left">
-			@<span id="bizName">DemoRestaurant</span>
+			@<span class="bizName">DemoRestaurant</span>
 		    </p>
 		    <br>
 		    <p style="margin:0px;padding:1px 0px 4px 0px;color:#333333;line-height:18px;font-size: 14px;font-family: Helvetica Neue,Arial,sans-serif;">
