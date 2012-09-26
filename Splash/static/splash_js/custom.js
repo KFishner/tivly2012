@@ -69,7 +69,7 @@ $(document).ready(function(){
 	jQuery("#feature-slider").slides({
 		next:'next',
 		prev:'prev',
-		generatePagination:true,
+		generatePagination:false,
 		autoHeight:true,
 		bigTarget:false,
 		hoverPause:true,
