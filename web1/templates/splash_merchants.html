@@ -18,23 +18,9 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
 <script>
-
-function getElementsByClass( searchClass, domNode, tagName) { 
-	if (domNode == null) domNode = document;
-	if (tagName == null) tagName = '*';
-	var el = new Array();
-	var tags = domNode.getElementsByTagName(tagName);
-	var tcl = " "+searchClass+" ";
-	for(i=0,j=0; i<tags.length; i++) { 
-		var test = " " + tags[i].className + " ";
-		if (test.indexOf(tcl) != -1) 
-			el[j++] = tags[i];
-	} 
-	return el;
-} 
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
-	document.getElementsByClass('bizName').innerHTML = userInput;
+	document.getElementsByTagName('span').innerHTML = userInput;
 }
 </script>
 
