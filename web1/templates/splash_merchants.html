@@ -18,10 +18,10 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.fancybox.pack.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
 <script>
-function getElementsByClassName(node, classname)
+function getElementsByClassName(node, bizName)
 {
     var a = [];
-    var re = new RegExp('\\b' + classname + '\\b');
+    var re = new RegExp('\\b' + bizName + '\\b');
     var els = node.getElementsByTagName("*");
     for(var i=0,j=els.length; i<j; i++)
         if(re.test(els[i].className))a.push(els[i]);
