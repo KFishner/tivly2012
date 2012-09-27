@@ -117,12 +117,12 @@ $(".cclogin").fancybox({
 <div class="container">
         
 <br class="clear">
-
+    <div style="background:#d2d2d2;border-radius:15px;padding:10px;">
     <table style="margin-left:auto;margin-right:auto;">
 		<tr style="border:none">
 			{%for business,reward in businessList.items %}
 			<td style="border:none">
-				<div class="grid onethird" style="border:1px solid #d2d2d2;margin-right:50px;">
+				<div class="grid onethird" style="border:1px solid #d2d2d2;margin:0px 40px;">
 					<a href="{{ URL }}/business/{{ business.website }}"><img
 						src="{{ business.pictureLocation }}"/></a> 
 						 <h4 style="margin:10px 0px 0px 20px; font-weight: bold">{{ reward.description }}</h4>
@@ -136,6 +136,7 @@ $(".cclogin").fancybox({
 		{% endfor %}
 		</tr>
 	</table>
+    </div>
     <br style="clear:both; line-height:30px">
 {%endblock%}
     <br style="clear:both; line-height:30px">
