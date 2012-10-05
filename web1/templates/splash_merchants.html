@@ -10,8 +10,7 @@
 {%endblock%}
 
 {%block js%}
-    <script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/superfish.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/jquery.color.js"></script>
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/slides.min.js"></script>
@@ -19,10 +18,33 @@
 	<script type="text/javascript" src="{{ STATIC_URL }}splash_js/custom.js"></script>
 
 <script>
+    onload=function(){
+if (document.getElementsByClassName == undefined) {
+	document.getElementsByClassName = function(className)
+	{
+		var hasClassName = new RegExp("(?:^|\\s)" + className + "(?:$|\\s)");
+		var allElements = document.getElementsByTagName("*");
+		var results = [];
+
+		var element;
+		for (var i = 0; (element = allElements[i]) != null; i++) {
+			var elementClass = element.className;
+			if (elementClass && elementClass.indexOf(className) != -1 && hasClassName.test(elementClass))
+				results.push(element);
+		}
+
+		return results;
+	}
+}
+}
+</script>
+<script>
 function changeText(){
 	var userInput = document.getElementById('userInput').value;
-	document.getElementById('bizName').innerHTML = userInput;
-}
+	var elems = document.getElementsByClassName('bizName');
+	for (var i = 0; i < elems.length; i++) {
+	elems[i].innerHTML = userInput;
+}}
 </script>
 <script>
 function changeValue(){
@@ -34,6 +56,12 @@ function changeValue(){
 function changeValue2(){
 	var userInput3 = document.getElementById('userInput3').value;
 	document.getElementById('offer2').innerHTML = userInput3;
+}
+</script>
+<script>
+function changeValue3(){
+	var userInput4 = document.getElementById('userInput4').value;
+	document.getElementById('offer3').innerHTML = userInput4;
 }
 </script>
 <style>
@@ -121,7 +149,7 @@ function changeValue2(){
 	    <p style="font-size:36px;color:#333; display:inline-block;float:left;margin-top:10px;margin-left:10px">at</p>
 	    <input type="text" id='userInput' style="color:#ccc;font-size:30px;float:left; margin-left:15px;width:280px" value="Your Business" onfocus="this.value = this.value=='Your Business' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = 'Your Business' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>
 	    <span style="color:#3c6;font-size:60px;line-height:30px">*</span>
-	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="Contact" onclick='changeText();changeValue();changeValue2()'' style="display:inline-block;text-align: center">Create Campaign</a></div>
+	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="Contact" onclick="changeText();changeValue();changeValue2();changeValue3()" style="display:inline-block;text-align: center">Create Campaign</a></div>
 
 	</div>
 		<table style="width:590px;">
@@ -131,16 +159,11 @@ function changeValue2(){
 		    </tr>
 		    <tr>
 			<td style="width:60%;font-size:24px; padding:8px;border:1px solid #444">First-Time Visit</td>
-			<td style="font-size:24px;padding: 8px;border:1px solid #444"> $<input type="text" id='userInput2' style="color:#ccc;font-size:24px;width:40px" value="10" onfocus="this.value = this.value=='10' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '10' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>
-Off</td>
+			<td style="font-size:24px;padding: 8px;border:1px solid #444"> $<input type="text" id='userInput2' style="color:#ccc;font-size:24px;width:40px" value="10" onfocus="this.value = this.value=='10' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '10' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>Off</td>
 		    </tr>
 		    <tr>
-			<td style="width:60%;font-size:24px;padding: 8px;border:1px solid #444">When you refer <input type="text" id="" style="color:#ccc;font-size:24px;width:30px" value="3" onfocus="this.value = this.value=='3' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '3' : this.value; this.value=='3' ? this.style.color='#ccc' : this.style.color='#000'"/> friends</td>
+			<td style="width:60%;font-size:24px;padding: 8px;border:1px solid #444">When you refer <input type="text" id="userInput4" style="color:#ccc;font-size:24px;width:30px" value="3" onfocus="this.value = this.value=='3' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '3' : this.value; this.value=='3' ? this.style.color='#ccc' : this.style.color='#000'"/> friends</td>
 			<td style="font-size:24px;padding: 8px;border:1px solid #444"> $<input type="text" id="userInput3" style="color:#ccc;font-size:24px;width:40px" value="25" onfocus="this.value = this.value=='25' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '25' : this.value; this.value=='25' ? this.style.color='#ccc' : this.style.color='#000'"/> Gift Card</td>
-		    </tr>
-		    <tr>
-			<td style="width:60%;font-size:24px;padding: 8px;border:1px solid #444">When you refer <input type="text" id="" style="color:#ccc;font-size:24px;width:30px" value="10" onfocus="this.value = this.value=='10' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '10' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/> friends</td>
-			<td style="font-size:24px;padding: 8px;border:1px solid #444"> $<input type="text" id="" style="color:#ccc;font-size:24px;width:40px" value="75" onfocus="this.value = this.value=='75' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = '75' : this.value; this.value=='75' ? this.style.color='#ccc' : this.style.color='#000'"/> Gift Card</td>
 		    </tr>
 		</table>
 		<h2 style="font-size:24px;color:#ACB3BA;margin-top: 2px">Conditions and offers are fully customizable</h2>
@@ -157,7 +180,7 @@ Off</td>
 		<a name="anchor2" style="border:none"><div style="width:100%;margin-left:0px; border-bottom:1px solid #E5E5E5">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:32px;height: 32px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
-				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
+				<p class="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Your Business</p>
 				<p style="margin:0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Sept 21</p>
 			</div>
 			</div></a>
@@ -165,16 +188,15 @@ Off</td>
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;margin-left:0px;">
 			<p style="margin:0px;padding:0px;color:#333333;font-size: 15px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">
-				Come in to get $<span id="offer">10</span> Off your first purchase! Share this offer with friends and receive a $<span id="offer2">25</span> Gift Card!<br><a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
+				Come in to get $<span id="offer">10</span> Off your first purchase! Share this offer with <span id="offer3">3</span> friends and receive a $<span id="offer2">25</span> Gift Card!<br><a href="{{ URL }}/exampleoffer" target="_blank" style="color:#3B5998;border:none;text-decoration: none;background:#F5F190">https://www.tivly.com/offer/FB/123457</a>
 			</p>
 		</div>
 		<br style="clear:both;line-height: 15px;">
 		<div style="width:96%;padding-left:8px;border-left:2px solid #C0C9DD;padding:15px 0px 15px 8px;">
 			<div style="margin:0px;padding:0px;display:inline-block;"><img src="{{ STATIC_URL }}splash_images/storefrontw.png" style="width:90px;height: 70px;display:inline-block;float:left;margin-right:8px;padding-bottom:5px;"/>
 			<div id="textfb" style="margin:0px;padding:0px;display: inline-block;float:left;">
-				<!-- hidden until I can change bizname
-				<p id="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Demo Restaurant</p>
-				-->
+				<p class="bizName" style="margin:0px;padding:0px;color:#3b5998;line-height:13px;font-size: 11px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;font-weight:bold;">Your Business</p>
+
 				<p style="margin:5px 0px 0px 0px;padding:0px;color:#999999;font-size: 11px;line-height:13px;font-family:lucida grande, tahoma, verdana, arial, sans-serif;">Your business information posted here</p>
 			</div>
 			</div>
@@ -189,7 +211,6 @@ Off</td>
 		</div>
 	    </div>
 	    <br style="clear:both;">
-	    <!--Twitter Post, hidden until I can figure out how to change all the bizname with user input
 	    
 	    <div style="display:inline-block;border:1px solid #E8E8E8;border-radius: 3px;margin-top:10px;padding:9px 12px">
 		<div style="margin:0px 15px 0px 0px;padding:0px;display:inline-block;float:left"><img src="{{ STATIC_URL }}splash_images/storefront.png" style="width:48px;height: 48px;display:inline-block;float:left;border-radius: 2px;"/></div>
@@ -213,7 +234,7 @@ Off</td>
 		    <p style="font-size:12px; color:#999;line-height:16px;font-family: Helvetica Neue,Arial,sans-serif;margin:0px">16m</p>
 		</div>
 		
-	    </div> -->
+	    </div> 
 	    </div>
 	    <div style="display:inline-block;float:left; width:400px;margin-left:50px;margin-top:80px;text-align: center;">
 		<h2 style="color:#777;font-size: 30px;">Click the Tivly link for <br> the customer's experience</h2>
