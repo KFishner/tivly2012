@@ -64,6 +64,7 @@ function changeValue3(){
 	document.getElementById('offer3').innerHTML = userInput4;
 }
 </script>
+
 <style>
     td{
 	border:1px solid #333;
@@ -132,7 +133,7 @@ function changeValue3(){
             
 	        <h1 class="page-header search" style="font-size:34px; padding:10px 0px 10px 0px;">Do your <span style="color:#33cc66">social media campaigns</span> drive <span style="color:#33cc66">in-store sales?</span></h1>
 		<h1 class="page-header star" style="font-size:34px; padding:10px 0px 10px 0px;"><span style="font-size: 40px">With <span style="color:#33cc66">Tivly</span>, they will. </span><br /><b>Monetize, Measure, and Amplify your social media.</b></h1>
-		<div style="text-align: center;margin-top: 20px"><a href="#anchor1" class="classname" title="Contact" style="display:inline-block;text-align: center">Campaign Builder</a>	    <h2 style="text-align: center;margin-top:5px;font-size:24px">(Try it out - all it takes is 30 seconds)</h2></div>
+		<div style="text-align: center;margin-top: 20px"><a href="#anchor1" class="classname" title="" style="display:inline-block;text-align: center">Campaign Builder</a>	    <h2 style="text-align: center;margin-top:5px;font-size:24px">(Try it out - all it takes is 30 seconds)</h2></div>
 
                 <br class="clear" />
                 
@@ -147,9 +148,9 @@ function changeValue3(){
 	<h2 style="font-size:24px;color:#666">Offers are loaded to customer credit cards and <a href="{{ URL }}/exampleoffer" target="_blank">redeemed in-store</a></h2>
 	<div style="display: inline-block;float:right;width:370px;margin-top:10px">
 	    <p style="font-size:36px;color:#333; display:inline-block;float:left;margin-top:10px;margin-left:10px">at</p>
-	    <input type="text" id='userInput' style="color:#ccc;font-size:30px;float:left; margin-left:15px;width:280px" value="Your Business" onfocus="this.value = this.value=='Your Business' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = 'Your Business' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>
+	    <input type="text" id='userInput' name="customer" style="color:#ccc;font-size:30px;float:left; margin-left:15px;width:280px" value="Your Business" onfocus="this.value = this.value=='Your Business' ? '' : this.value; this.style.color='#000';" onfocusout="this.value = this.value == '' ? this.value = 'Your Business' : this.value; this.value=='Your Business' ? this.style.color='#ccc' : this.style.color='#000'"/>
 	    <span style="color:#3c6;font-size:60px;line-height:30px">*</span>
-	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="Contact" onclick="changeText();changeValue();changeValue2();changeValue3()" style="display:inline-block;text-align: center">Create Campaign</a></div>
+	    <div style="text-align: center;margin-top: 40px"><a href="#anchor2" class="classname" title="" onclick="changeText();changeValue();changeValue2();changeValue3();setCookie("biz",userInput,1)" style="display:inline-block;text-align: center">Create Campaign</a></div>
 
 	</div>
 		<table style="width:590px;">
